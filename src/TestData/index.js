@@ -11,6 +11,16 @@ export const AllTestQuestionsData = [
   testData1, // 판타지 직업
   testData2, // 오늘의 운세
   testData5, // 전생
+
+  testData4, // 원석
+  testData3, // 디저트
+  testData1, // 판타지 직업
+  testData2, // 오늘의 운세
+  testData5, // 전생testData4, // 원석
+  testData3, // 디저트
+  testData1, // 판타지 직업
+  testData2, // 오늘의 운세
+  testData5, // 전생
 ];
 
 // 2. testDataList가 원본 객체 전체를 참조하도록 수정 (가장 중요!)
