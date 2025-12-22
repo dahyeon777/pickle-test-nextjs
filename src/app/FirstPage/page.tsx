@@ -3,6 +3,7 @@
 import { testDataList } from "../../TestData";
 import Link from "next/link";
 import styles from "./page.module.css";
+import CoupangAd from "@/src/components/CoupangAd";
 
 // 메인페이지
 function FirstPage() {
@@ -18,6 +19,8 @@ function FirstPage() {
 
   return (
     <>
+      {/* 이제 광고는 여기서 컴포넌트로 한 번만 딱 넣어주면 끝! */}
+      <CoupangAd />
       <div className={styles.container}>
         {/* 중요: public 폴더 안의 이미지는 import 없이 
            아래처럼 문자열 경로 "/img/..." 로 바로 쓰면 됩니다.
@@ -32,26 +35,8 @@ function FirstPage() {
       <main>
         <div className={styles["grid-container"]}>{imageList}</div>
       </main>
+
       <section className={styles.section}></section>
-
-      {/* 쿠팡 파트너스 배너 */}
-      <div
-        style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}
-      >
-        <iframe
-          src="https://coupa.ng/ck6CSu"
-          width="120"
-          height="240"
-          style={{ border: "none" }} 
-          scrolling="no"
-          referrerPolicy="unsafe-url"
-        ></iframe>
-      </div>
-
-      <p style={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
-        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를
-        제공받습니다.
-      </p>
     </>
   );
 }
