@@ -1,10 +1,12 @@
 "use client";
+export const runtime = 'edge';
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { testDataList } from "../../../../TestData";
 import Link from "next/link";
 import styles from "./page.module.css";
+
 
 function TestResultPage() {
   const params = useParams();

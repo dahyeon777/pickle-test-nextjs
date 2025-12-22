@@ -1,4 +1,5 @@
 "use client";
+export const runtime = "edge";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -9,7 +10,7 @@ import styles from "./page.module.css";
 
 function TestReadyPage() {
   const params = useParams();
-  
+
   // 수정 포인트 1: <any>를 추가하여 어떤 데이터든 들어올 수 있게 허용합니다.
   const [selectedTestData, setSelectedTestData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,7 @@ function TestReadyPage() {
       const idToFind = Number(params.testId);
       if (testDataList) {
         const foundData = testDataList.find((item) => item.id === idToFind);
-        
+
         // 수정 포인트 2: foundData가 있을 때만 저장하거나, 강제로 타입을 맞춰줍니다.
         setSelectedTestData(foundData || null);
       }
