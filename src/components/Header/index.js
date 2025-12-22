@@ -22,9 +22,6 @@ function Header() {
               alt="아이콘"
             />
           </li>
-          <li>
-            <Link href="/">홈</Link>
-          </li>
         </ul>
       </nav>
     </header>

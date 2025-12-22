@@ -111,7 +111,7 @@
 
 .horrorButton:hover {
   background-color: #000;
-  border-color: #ff0000;
+  border-color: #2be800;
   transform: translateY(-2px);
 }
 
@@ -119,10 +119,10 @@
 .redLight {
   width: 10px;
   height: 10px;
-  background-color: #ff0000;
+  background-color: #2be800;
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 0 8px #ff0000;
+  box-shadow: 0 0 8px #2be800;
   animation: blinkRed 0.6s infinite alternate; /* 빠르게 깜빡임 */
 }
 
@@ -138,11 +138,11 @@
 @keyframes blinkRed {
   0% {
     opacity: 0.4;
-    box-shadow: 0 0 2px #ff0000;
+    box-shadow: 0 0 2px #2be800;
   }
   100% {
     opacity: 1;
-    box-shadow: 0 0 12px #ff0000, 0 0 20px #ff0000;
+    box-shadow: 0 0 12px #2be800, 0 0 20px #2be800;
   }
 }
 
