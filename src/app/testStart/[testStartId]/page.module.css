@@ -1,0 +1,34 @@
+/* src/app/testStart/[testStartId]/page.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: none;
+}
+
+.radio_frame {
+  margin: 30px 0px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.answer_title {
+  margin-top: 50px;
+  color: #365a26;
+  font-size: 1.2rem;
+}
+
+.question_text {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+}
+
+.options_container {
+  margin-top: 30px;
+  text-align: left; /* 라디오 옵션은 왼쪽 정렬이 보기 좋음 */
+}

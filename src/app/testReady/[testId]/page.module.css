@@ -1,0 +1,39 @@
+/* src/app/testReady/[testId]/page.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: none;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.title {
+  margin-top: 80px;
+  color: rgba(11, 31, 2, 0.7);
+  font-family: "Arial", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.img_test_main {
+  width: 480px;
+  height: 480px;
+  border-radius: 30px;
+  border: 8px;
+  border-color: #365a26;
+  border-style: double;
+  margin-bottom: 40px; /* 버튼과의 간격 추가 */
+  object-fit: cover;
+}
+
+/* 반응형 모바일 대응 */
+@media screen and (max-width: 600px) {
+  .img_test_main {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}

@@ -1,0 +1,115 @@
+/* src/app/testResult/[testId]/[mbti]/page.module.css */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.main_title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #354a33;
+}
+
+.result_title_section {
+  border: 2px solid #ffcc00;
+  padding: 40px 20px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  background-color: #fff7e6; /* 에스프레소 페이지의 연한 배경색 */
+}
+
+.mbti_text {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.result_title {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.result_title strong {
+  color: #000;
+}
+
+.result_image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  margin: 0 auto 25px auto;
+  display: block;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #1a3c1e;
+  word-break: keep-all;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* 버튼 가로 배치를 위한 그룹 */
+.button_group {
+  display: flex !important; /* flex 레이아웃 강제 */
+  justify-content: center;
+  gap: 12px; /* 버튼 사이 간격 */
+  width: 100%; /* 부모 너비를 따라감 */
+  max-width: 600px; /* 노란 박스 너비와 동일하게 설정 */
+  margin: 20px auto 0 auto; /* 위쪽 여백 20px, 중앙 정렬 */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. 각 버튼의 스타일 */
+.share_btn,
+.home_btn {
+  /* 핵심: flex-basis를 0으로 주고 grow를 1로 주어 정확히 1:1 비율 생성 */
+  flex: 1 1 0% !important;
+
+  height: 52px; /* 높이 고정 */
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  /* 글자가 길어도 버튼 크기가 변하지 않도록 설정 */
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.share_btn {
+  background-color: #5cb85c;
+}
+
+.home_btn {
+  background-color: #777;
+}
+
+/* 마우스 호버 효과 */
+.share_btn:hover {
+  background-color: #4cae4c;
+}
+.home_btn:hover {
+  background-color: #555;
+}
+
+.button_group > a {
+  flex: 1; /* Link 태그가 버튼을 감싸고 있을 때 필수 */
+  display: flex;
+}

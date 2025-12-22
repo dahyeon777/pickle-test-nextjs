@@ -1,0 +1,31 @@
+.radio_background {
+  /* background-color: #ffffff; */
+  width: auto;
+  height: 480px;
+  margin: 0px auto 0px auto;
+  padding: 10px;
+}
+
+.radio_option {
+  font-size: 1.3rem;
+  margin: 0px 0px 10px 0px;
+  display: flex;
+
+  flex-direction: row; /* 항목들을 수직으로 배치 */
+  justify-content: center;
+
+  /* 항목 사이에 10px 간격을 자동으로 적용 (최신 CSS 방식) */
+  gap: 10px;
+}
+
+.radio_option input[type="radio"] {
+  /* 라디오 버튼과 텍스트 사이의 간격 */
+  margin-right: 10px;
+
+  /* 중요: 라디오 버튼 자체에 불필요한 마진이 없도록 초기화 */
+  margin-top: 0;
+  margin-bottom: 0;
+
+  /* 라디오 버튼을 텍스트 기준으로 왼쪽 가장자리에 고정하고 싶을 때 사용 */
+  /* flex-shrink: 0; */
+}
