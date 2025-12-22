@@ -25,13 +25,6 @@ function Header() {
           <li>
             <Link href="/">홈</Link>
           </li>
-          <li>
-            {/* 임시 링크는 # 대신 / 로 처리하거나 그대로 둡니다 */}
-            <Link href="/">테스트 목록</Link>
-          </li>
-          <li>
-            <Link href="/login">로그인</Link>
-          </li>
         </ul>
       </nav>
     </header>

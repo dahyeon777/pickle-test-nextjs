@@ -1,7 +1,14 @@
 import "./globals.css";
-import Header from "../components/Header"; // Header 컴포넌트 경로에 맞게 수정
+import Header from "../components/Header";
 
-export default function RootLayout({ children }) {
+// ReactNode 타입을 사용하기 위해 상단에 import가 필요합니다.
+import React from "react";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko">
       <body>
