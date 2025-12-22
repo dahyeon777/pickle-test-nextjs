@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react"; // 추가
+import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { testDataList } from "../../../TestData";
@@ -9,25 +9,26 @@ import styles from "./page.module.css";
 
 function TestReadyPage() {
   const params = useParams();
-  const [selectedTestData, setSelectedTestData] = useState(null);
+  
+  // 수정 포인트 1: <any>를 추가하여 어떤 데이터든 들어올 수 있게 허용합니다.
+  const [selectedTestData, setSelectedTestData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (params && params.testId) {
       const idToFind = Number(params.testId);
-      // 데이터 리스트가 존재하는지 확인 후 찾기
       if (testDataList) {
         const foundData = testDataList.find((item) => item.id === idToFind);
-        setSelectedTestData(foundData);
+        
+        // 수정 포인트 2: foundData가 있을 때만 저장하거나, 강제로 타입을 맞춰줍니다.
+        setSelectedTestData(foundData || null);
       }
       setIsLoading(false);
     }
   }, [params]);
 
-  // 로딩 중일 때
   if (isLoading) return <div className={styles.container}>로딩 중...</div>;
 
-  // 데이터를 못 찾았을 때
   if (!selectedTestData) {
     return (
       <div className={styles.container}>
