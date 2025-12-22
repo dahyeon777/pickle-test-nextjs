@@ -7,6 +7,10 @@ import CoupangAd from "@/src/components/CoupangAd";
 
 // 메인페이지
 function FirstPage() {
+  const handleHorrorToggle = () => {
+    console.log("공포 테스트 데이터로 전환!");
+  };
+
   // 테스트 이미지 목록 설정
   const imageList = testDataList.map(({ path, id }, index) => (
     <div className={styles["grid-item"]} key={index}>
@@ -19,20 +23,27 @@ function FirstPage() {
 
   return (
     <>
-      {/* 이제 광고는 여기서 컴포넌트로 한 번만 딱 넣어주면 끝! */}
       <CoupangAd />
       <div className={styles.container}>
-        {/* 중요: public 폴더 안의 이미지는 import 없이 
-           아래처럼 문자열 경로 "/img/..." 로 바로 쓰면 됩니다.
-        */}
         <img
           src="/img/hero_text_img.png"
           alt="히어로 이미지"
           className={styles.image_center}
         />
       </div>
+
       <section className={styles.section}></section>
-      <main>
+
+      <main className={styles.mainArea}>
+        {/* [추가] 공포 테스트 전환 버튼 영역 */}
+        <div className={styles.horrorButtonWrapper}>
+          <button className={styles.horrorButton} onClick={handleHorrorToggle}>
+            <div className={styles.redLight}></div>
+            <span className={styles.horrorText}>잘못된 버튼입니다</span>
+          </button>
+        </div>
+
+        {/* 메인 그리드 */}
         <div className={styles["grid-container"]}>{imageList}</div>
       </main>
 
