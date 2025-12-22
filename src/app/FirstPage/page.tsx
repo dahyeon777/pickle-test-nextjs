@@ -33,6 +33,25 @@ function FirstPage() {
         <div className={styles["grid-container"]}>{imageList}</div>
       </main>
       <section className={styles.section}></section>
+
+      {/* 쿠팡 파트너스 배너 */}
+      <div
+        style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}
+      >
+        <iframe
+          src="https://coupa.ng/ck6CSu"
+          width="120"
+          height="240"
+          style={{ border: "none" }} 
+          scrolling="no"
+          referrerPolicy="unsafe-url"
+        ></iframe>
+      </div>
+
+      <p style={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를
+        제공받습니다.
+      </p>
     </>
   );
 }
