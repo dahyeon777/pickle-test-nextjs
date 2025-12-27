@@ -6,7 +6,7 @@ export default function CoupangAd() {
   return (
     <aside className={styles.adWrapper}>
       <iframe
-        src="https://coupa.ng/ck6CSu"
+        src="https://coupa.ng/ck9jIv"
         width="120"
         height="240"
         style={{ border: "none" }}
