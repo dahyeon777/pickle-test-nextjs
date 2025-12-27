@@ -3,29 +3,49 @@
 import { useState, useEffect } from "react";
 import styles from "./CoupangAd.module.css";
 
-export default function CoupangAd() {
+// 부모(Home)로부터 isNight 상태를 전달받습니다.
+export default function CoupangAd({ isNight }: { isNight: boolean }) {
   const [isMounted, setIsMounted] = useState(false);
 
-  // 컴포넌트가 브라우저에 나타난 후에 실행됩니다.
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const leftAds = [
-    "https://coupa.ng/ck9jIv",
-    "https://coupa.ng/ck9lmJ",
-    "https://coupa.ng/ck9jVA",
-    "https://coupa.ng/ck9jWA",
-  ];
+  // 낮 버전 광고 데이터
+  const dayAds = {
+    left: [
+      "https://coupa.ng/ck9jIv",
+      "https://coupa.ng/ck9lmJ",
+      "https://coupa.ng/ck9jVA",
+      "https://coupa.ng/ck9jWA",
+    ],
+    right: [
+      "https://coupa.ng/ck9lqV",
+      "https://coupa.ng/ck9jPB",
+      "https://coupa.ng/ck9lsv",
+      "https://coupa.ng/ck9loO",
+    ],
+  };
 
-  const rightAds = [
-    "https://coupa.ng/ck9lqV",
-    "https://coupa.ng/ck9jPB",
-    "https://coupa.ng/ck9lsv",
-    "https://coupa.ng/ck9loO",
-  ];
+  // 밤 버전 광고 데이터 (여기에 공포용 광고 URL을 넣으세요)
+  const nightAds = {
+    left: [
+      "https://coupa.ng/ck9mRm",
+      "https://coupa.ng/ck9mWr",
+      "https://coupa.ng/ck9mUb",
+      "https://coupa.ng/ck9mVb",
+    ],
+    right: [
+      "https://coupa.ng/ck9m3q",
+      "https://coupa.ng/ck9m2q",
+      "https://coupa.ng/ck9m0r",
+      "https://coupa.ng/ck9mZw",
+    ],
+  };
 
-  const renderAds = (urls) =>
+  const currentAds = isNight ? nightAds : dayAds;
+
+  const renderAds = (urls: string[]) =>
     urls.map((url, index) => (
       <div key={index} className={styles.adItem}>
         <iframe
@@ -43,19 +63,24 @@ export default function CoupangAd() {
       </div>
     ));
 
-  // 아직 브라우저가 준비되지 않았다면 아무것도 보여주지 않습니다 (에러 방지)
-  if (!isMounted) {
-    return null;
-  }
+  if (!isMounted) return null;
 
   return (
     <>
-      <aside className={`${styles.adWrapper} ${styles.leftSide}`}>
-        {renderAds(leftAds)}
+      <aside
+        className={`${styles.adWrapper} ${styles.leftSide} ${
+          isNight ? styles.nightMode : ""
+        }`}
+      >
+        {renderAds(currentAds.left)}
       </aside>
 
-      <aside className={`${styles.adWrapper} ${styles.rightSide}`}>
-        {renderAds(rightAds)}
+      <aside
+        className={`${styles.adWrapper} ${styles.rightSide} ${
+          isNight ? styles.nightMode : ""
+        }`}
+      >
+        {renderAds(currentAds.right)}
       </aside>
     </>
   );

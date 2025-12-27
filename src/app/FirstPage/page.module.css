@@ -14,8 +14,7 @@
 
 /* 밤 버전 배경색 */
 .nightMode {
-  background-color: #200909c8;
-  filter: contrast(1.5) brightness(0.7) saturate(1.2);
+  background-color:#100000;
 }
 .nightMode .image_center {
   animation: shake 0.5s infinite;
