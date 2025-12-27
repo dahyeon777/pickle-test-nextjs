@@ -1,4 +1,31 @@
-/* src/app/FirstPage/page.module.css */
+/* 전체 레이아웃 설정 */
+.pageWrapper {
+  width: 100%;
+  min-height: 100vh;
+  transition: background-color 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 낮 버전 배경색 */
+.dayMode {
+  background-color: #e8f5e9;
+}
+
+/* 밤 버전 배경색 */
+.nightMode {
+  background-color: #200909c8;
+  filter: contrast(1.5) brightness(0.7) saturate(1.2);
+}
+.nightMode .image_center {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+}
 
 .container {
   display: flex;
@@ -8,29 +35,38 @@
 }
 
 .image_center {
-  text-align: center;
-  max-width: 400px; /* 너무 크지 않게 고정 (기존 100vw에서 축소) */
-  width: 80%; /* 모바일에서도 적절한 비율 유지 */
+  max-width: 400px;
+  width: 80%;
   height: auto;
   margin: 0 auto;
 }
 
+/* 그리드 컨테이너 */
 .grid-container {
   background-color: #ffffff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px; /* 여백을 살짝 더 줘서 시원하게 */
+  gap: 10px;
   width: 85%;
   max-width: 800px;
   padding: 10px;
   margin: 0 auto;
   border-radius: 10px;
-  border: 4px solid #183709; /* 테두리 두께도 살짝 얇게(6px->4px) */
+  border: 4px solid #183709;
+  transition: all 0.5s ease;
 }
+
+/* 밤 모드일 때 그리드 박스 변경 */
+.nightMode .grid-container {
+  background-color: #111; /* 내부 검정색 */
+  border-color: #4a0000; /* 핏빛 테두리 */
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
 .grid-item {
   padding-top: 100%;
   position: relative;
-  transition: transform 0.2s; /* 부드러운 효과 추가 */
+  transition: transform 0.2s;
 }
 
 .grid-item:hover {
@@ -38,14 +74,8 @@
   cursor: pointer;
 }
 
-.grid-item:active {
-  transform: translateY(1px);
-}
-
 .grid-item img {
-  border-style: solid;
-  border-color: #4f63469e;
-  border-width: 2px;
+  border: 2px solid #4f63469e;
   border-radius: 8px;
   position: absolute;
   top: 0;
@@ -56,99 +86,93 @@
   display: block;
 }
 
+/* 밤 모드일 때 아이템 이미지 테두리 변경 */
+.nightMode .grid-item img {
+  border-color: #4a0000;
+}
+
 .section {
   height: 40px;
 }
 
-/* 반응형 */
-@media screen and (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    width: 90%;
-    max-width: 320px; /* 모바일에서도 너무 꽉 차지 않게 */
-  }
-}
-
-@media screen and (min-width: 601px) and (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    max-width: 600px; /* 태블릿 규격 축소 */
-  }
-}
-
-/*호러 부분 영역. 나중에 수정
-
-/* 부모 영역 설정 */
+/* 버튼 관련 */
 .mainArea {
-  position: relative; /* 버튼 배치를 위해 필요 */
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* 버튼 위치: 그리드 박스 우측 상단 모서리에 걸치기 */
 .horrorButtonWrapper {
   position: absolute;
-  /* 그리드 max-width가 800px이므로 그 끝에 맞춤 */
   top: -15px;
   right: calc(50% - 400px + 10px);
   z-index: 20;
 }
 
-/* 버튼 기본 모양 */
 .horrorButton {
   display: flex;
   align-items: center;
-  background-color: rgba(20, 20, 20, 0.85); /* 어두운 공포 느낌 */
+  background-color: rgba(20, 20, 20, 0.85);
   border: 2px solid #333;
   padding: 6px 14px;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.horrorButton:hover {
-  background-color: #000;
-  border-color: #2be800;
-  transform: translateY(-2px);
-}
-
-/* 빨간색 전조등 (깜빡이는 부분) */
+/* 빨간불 애니메이션 */
 .redLight {
   width: 10px;
   height: 10px;
-  background-color: #2be800;
+  background-color: #ff0000;
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 0 8px #2be800;
-  animation: blinkRed 0.6s infinite alternate; /* 빠르게 깜빡임 */
+  animation: blinkRed 0.6s infinite alternate;
 }
 
-/* 버튼 텍스트 */
+/* 밤 모드일 때 켜지는 초록불 */
+.greenLight {
+  width: 10px;
+  height: 10px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #00ff00;
+}
+
 .horrorText {
   color: #eee;
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: -0.5px;
 }
 
-/* 전조등 깜빡임 애니메이션 */
 @keyframes blinkRed {
   0% {
     opacity: 0.4;
-    box-shadow: 0 0 2px #2be800;
+    box-shadow: 0 0 2px #ff0000;
   }
   100% {
     opacity: 1;
-    box-shadow: 0 0 12px #2be800, 0 0 20px #2be800;
+    box-shadow: 0 0 12px #ff0000;
   }
 }
 
-/* 반응형: 화면 작아지면 위치 조정 */
+/* 반응형 조정 */
 @media screen and (max-width: 850px) {
   .horrorButtonWrapper {
-    right: 8%; /* 모바일에서는 끝부분에 적당히 배치 */
+    right: 8%;
+  }
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    max-width: 320px;
   }
 }

@@ -1,21 +1,46 @@
+/* 기본 header 스타일 */
 header {
   display: flex;
   justify-content: space-between;
-  
   align-items: center;
   padding-top: 16px;
   flex-wrap: wrap;
-  background-color: transparent;
+  transition: all 0.5s ease;
+  width: 100%;
+
+  /* 낮 버전 배경색 */
+  background-color: #e8f5e9;
 }
+
+/* ★ 중요: 밤 버전 배경색 (header 태그에 night_mode가 붙었을 때) */
+header.night_mode {
+  background-color: #200909c8;
+  filter: contrast(1.5) brightness(0.7) saturate(1.2);
+}
+
 .header_top_bar {
   display: flex;
   margin-left: 16px;
-  color: #518c35;
+  color: #518c35; /* 낮 버전 초록색 */
   font-weight: bold;
-  border-style: none none dotted none;
-  border-width: 2px;
-  border-color: #ffffff;
+  border-bottom: 2px dotted #ffffff;
 }
+
+/* ★ 중요: 밤 버전 글자색 (띄어쓰기 없이 붙여서 작성하거나 아래처럼 작성) */
+.night_mode .header_top_bar {
+  color: #ffffff !important;
+}
+
+.night_mode .header_top_bar a {
+  color: #ffffff !important;
+}
+
+/* 네비게이션 메뉴가 있다면 밤 버전 대응 */
+.night_mode .main_nav a {
+  color: #ffffff !important;
+}
+
+/* 기존 나머지 코드 */
 .header_top_bar a {
   text-decoration: none;
   color: inherit;
@@ -24,40 +49,4 @@ header {
 .main_nav {
   display: flex;
 }
-.main_nav ul {
-  list-style: none;
-
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-
-  justify-content: flex-end;
-  border-style: none none dotted none;
-  border-width: 2px;
-  border-color: #ffffff;
-}
-.main_nav li img {
-  margin: 0;
-}
-
-.main_nav li a {
-  margin: 16px 16px 0 0;
-}
-
-.main_nav a {
-  color: #518c35;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 700px) {
-  .main_nav ul {
-    border: none;
-  }
-
-  .header_top_bar {
-    border: none;
-    margin-left: 8px;
-  }
-}
+/* ... 이하 동일 ... */

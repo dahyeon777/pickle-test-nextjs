@@ -8,7 +8,6 @@
 /* 기존 body 스타일을 아래와 같이 수정하거나 대체하세요 */
 body {
   /* 배경 이미지를 CSS에서 직접 제어 */
-  background-color: #e8f5e9;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

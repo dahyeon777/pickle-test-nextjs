@@ -1,12 +1,13 @@
 import React from "react";
-import Link from "next/link"; // react-router-dom 대신 next/link 사용
+import Link from "next/link";
 import "./index.css";
 
-function Header() {
+// 1. { isNight }를 인자로 받아야 부모가 보내는 상태를 읽을 수 있습니다.
+function Header({ isNight }) {
   return (
-    <header>
+    // 2. isNight가 true이면 'night_mode'라는 클래스 이름을 추가합니다.
+    <header className={isNight ? "night_mode" : ""}>
       <div className="header_top_bar">
-        {/* Next.js에서는 외부 링크가 아니면 Link 태그 사용 권장 */}
         <Link href="/">
           당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~!
         </Link>
