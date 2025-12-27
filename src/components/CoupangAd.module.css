@@ -1,11 +1,30 @@
 .adWrapper {
   position: fixed;
-  /* 메인 컨텐츠 너비(1000px)의 절반인 500px만큼 중앙에서 왼쪽으로 밀고, 
-     거기에 광고 너비만큼 더 여유를 줍니다. */
   right: calc(50% - 500px - 140px);
-  top: 150px; /* 로고보다 약간 아래쪽 높이에 고정 */
-  width: 120px;
-  z-index: 100; /* 다른 요소보다 위에 보이게 */
+  top: 150px;
+  width: 130px;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 5px;
+
+  scrollbar-width: thin;
+}
+
+.adWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.adWrapper::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.adItem {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,9 +36,9 @@
   text-align: center;
   margin-top: 8px;
   word-break: keep-all;
+  line-height: 1.4;
 }
 
-/* 화면이 너무 좁아지면 광고가 컨텐츠를 가리므로 숨깁니다 */
 @media screen and (max-width: 1280px) {
   .adWrapper {
     display: none;
