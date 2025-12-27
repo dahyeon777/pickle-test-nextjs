@@ -13,16 +13,16 @@ export default function CoupangAd() {
 
   const leftAds = [
     "https://coupa.ng/ck9jIv",
-    "https://coupa.ng/ck9jPB",
+    "https://coupa.ng/ck9lmJ",
     "https://coupa.ng/ck9jVA",
     "https://coupa.ng/ck9jWA",
   ];
 
   const rightAds = [
-    "https://coupa.ng/ck9jIv",
+    "https://coupa.ng/ck9lqV",
     "https://coupa.ng/ck9jPB",
-    "https://coupa.ng/ck9jVA",
-    "https://coupa.ng/ck9jWA",
+    "https://coupa.ng/ck9lsv",
+    "https://coupa.ng/ck9loO",
   ];
 
   const renderAds = (urls) =>
