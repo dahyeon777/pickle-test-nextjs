@@ -1,19 +1,22 @@
 .adWrapper {
   position: fixed;
-  right: calc(50% - 500px - 140px);
   top: 150px;
-  width: 130px;
+  width: 140px;
   z-index: 100;
-
   display: flex;
   flex-direction: column;
   gap: 30px;
-
   max-height: calc(100vh - 200px);
   overflow-y: auto;
-  padding-right: 5px;
+}
 
-  scrollbar-width: thin;
+/* 위치만 다르게 지정 */
+.leftSide {
+  left: calc(50% - 500px - 140px);
+}
+
+.rightSide {
+  right: calc(50% - 500px - 140px);
 }
 
 .adWrapper::-webkit-scrollbar {
