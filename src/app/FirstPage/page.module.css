@@ -75,7 +75,11 @@
   transform: translateY(-2px);
   cursor: pointer;
 }
-
+.grid-item:hover img {
+  /* 이미지를 세피아 톤으로 만든 뒤, 색상을 회전시켜 연두색 지점을 찾습니다 */
+  filter: sepia(100%) hue-rotate(50deg) saturate(200%);
+  transition: filter 0.3s ease;
+}
 .grid-item img {
   border: 2px solid #6356469e;
   border-radius: 8px;
@@ -176,5 +180,8 @@
   .grid-container {
     grid-template-columns: 1fr;
     max-width: 320px;
+  }
+  .image_center {
+    max-width: 300px;
   }
 }
