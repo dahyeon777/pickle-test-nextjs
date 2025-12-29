@@ -169,7 +169,7 @@ export const horrorTestData1 = {
   results: {
     TYPE_R: {
       title: "① W-01 정상 대기 유지형",
-      result: "/img/horror_results/type_r.png", // 사진 경로가 있다면 유지
+      result: "", // 사진 경로가 있다면 유지
       description: `상태: 생존 / 특징: 호출 인식 유지
 
 ▪ 사례 기록: 

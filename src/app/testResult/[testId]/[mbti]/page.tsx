@@ -39,6 +39,23 @@ function TestResultPage() {
     }
   }, [params, isHorrorMode]);
 
+  // URL 복사 함수
+  const handleCopyLink = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        alert(
+          isHorrorMode
+            ? "실험 기록 링크가 복사되었습니다."
+            : "결과 링크가 복사되었습니다!"
+        );
+      })
+      .catch((err) => {
+        console.error("복사 실패:", err);
+      });
+  };
+
   if (isLoading)
     return <div className={styles.container}>데이터 분석 중...</div>;
   if (!resultData)
@@ -58,18 +75,13 @@ function TestResultPage() {
 
       <div className={styles.result_title_section}>
         {isHorrorMode ? (
-          /* --- 호러 모드 (상태/본문 중복 해결 버전) --- */
           <div className={styles.horror_report}>
             <h2 className={styles.horror_type_title}>{resultData.title}</h2>
-
-            {/* 1. 상단 상태 배지 (첫 줄만 추출) */}
             {resultData.description.includes("상태:") && (
               <div className={styles.status_badge}>
                 {resultData.description.split("\n")[0]}
               </div>
             )}
-
-            {/* 2. 사진이 있을 때만 이미지 영역 렌더링 */}
             {resultData.result && (
               <div className={styles.image_wrapper}>
                 <img
@@ -79,22 +91,21 @@ function TestResultPage() {
                 />
               </div>
             )}
-
-            {/* 3. 본문 (상태 줄을 제외한 나머지 텍스트만 출력하여 중복 방지) */}
             <div className={styles.case_record}>
-              <p className={styles.horror_description}>
-                {
-                  resultData.description.includes("\n")
-                    ? resultData.description.split("\n").slice(1).join("\n") // 첫 줄(상태) 제외하고 나머지 다 합침
-                    : resultData.description.startsWith("상태:")
-                    ? ""
-                    : resultData.description // 줄바꿈 없는데 상태로 시작하면 공백 처리
-                }
+              {/* white-space 설정을 위해 스타일 추가 */}
+              <p
+                className={styles.horror_description}
+                style={{ whiteSpace: "pre-wrap" }}
+              >
+                {resultData.description.includes("\n")
+                  ? resultData.description.split("\n").slice(1).join("\n")
+                  : resultData.description.startsWith("상태:")
+                  ? ""
+                  : resultData.description}
               </p>
             </div>
           </div>
         ) : (
-          /* --- 일반 모드 --- */
           <>
             <h3 className={styles.result_title}>
               당신은 <strong>"{resultData.title}"</strong> 입니다!
@@ -113,8 +124,15 @@ function TestResultPage() {
         )}
       </div>
 
-      {/* 하단 버튼 그룹 생략 (기존과 동일) */}
+      {/* --- 버튼 그룹: 다시하기와 공유 버튼 --- */}
       <div className={styles.button_group}>
+        <button
+          onClick={handleCopyLink}
+          className={isHorrorMode ? styles.horror_share_btn : styles.share_btn}
+        >
+          {isHorrorMode ? "🔗 기록 공유 (링크 복사)" : "🔗 결과 공유하기"}
+        </button>
+
         <Link href="/">
           <button
             className={isHorrorMode ? styles.horror_home_btn : styles.home_btn}
