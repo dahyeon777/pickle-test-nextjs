@@ -7,13 +7,12 @@ import styles from "./page.module.css";
 import CoupangAd from "@/src/components/CoupangAd";
 
 function FirstPage({ isNight, toggleMode }) {
-  // 현재 모드에 맞는 데이터 선택
   const currentDataList = isNight ? horrorTestDataList : testDataList;
 
-  // 테스트 이미지 목록 렌더링
   const imageList = currentDataList.map(({ path, id }, index) => (
     <div className={styles["grid-item"]} key={index}>
-      <Link href={`/testReady/${id}`}>
+      {/* mode 쿼리 파라미터를 추가합니다 */}
+      <Link href={`/testReady/${id}?mode=${isNight ? 'horror' : 'normal'}`}>
         <img src={path} alt="테스트이미지" />
       </Link>
     </div>

@@ -1,376 +1,298 @@
-// 상단에 있던 import 문들은 이제 모두 삭제하셔도 됩니다!
+// HorrorTestData.ts
 
-export const testData1 = {
+export const horrorTestData1 = {
   id: 1,
-  path: "/img/horror_test_main/horror1.png", // pic1 대신 직접 경로 입력
-  title: "당신은 아직 호출되지 않았습니다",
+  path: "/img/horror_test_main/horror1.png",
+  title: "「아직 당신의 이름은 불리지 않았습니다」",
   questions: [
-    // ... 질문 데이터는 동일 (생략) ...
     {
       questionId: 1,
-      text: "판타지 세계로 소환되었다. 당신이 가장 먼저 집중할 곳은?",
+      text: "당신은 어느 순간, 이미 대기표를 손에 쥐고 있다는 사실을 깨달았습니다.",
       options: [
+        { optionId: "A", text: "번호를 다시 확인한다", score: { R: 2 } },
         {
-          questionId: 1,
-          text: "판타지 세계로 소환되었다. 당신이 가장 먼저 집중할 곳은?",
-          options: [
-            {
-              optionId: "A",
-              text: "마을 광장이나 여관 등 사람이 모인 곳에서 정보를 얻는다.",
-              score: { E_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "소지품을 정리하고 주변 지도를 꼼꼼히 확인한다.",
-              score: { J_score: 1 },
-            },
-            {
-              optionId: "C",
-              text: "조용한 숲이나 도서관에서 상황을 분석하고 계획을 세운다.",
-              score: { I_score: 2 },
-            },
-            {
-              optionId: "D",
-              text: "주변의 건물, 사람들의 복장 등 구체적인 현실 정보를 살핀다.",
-              score: { S_score: 1 },
-            },
-          ],
+          optionId: "B",
+          text: "주변 사람들의 번호를 슬쩍 본다",
+          score: { B: 1 },
         },
         {
-          questionId: 2,
-          text: "마을에 낯선 마법 장치가 발견되었다. 당신의 태도는?",
-          options: [
-            {
-              optionId: "A",
-              text: "이 장치가 미래에 어떤 용도로 쓰일지 상상하고 이론을 세운다.",
-              score: { N_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "사람들의 반응과 장치에 대한 소문을 들으며 분위기를 파악한다.",
-              score: { E_score: 1 },
-            },
-            {
-              optionId: "C",
-              text: "장치의 작동 방식과 부품을 직접 만져보고 관찰하여 원리를 이해한다.",
-              score: { S_score: 2 },
-            },
-            {
-              optionId: "D",
-              text: "이 장치가 왜 여기에 있는지, 만든 사람의 의도를 추리한다.",
-              score: { I_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 3,
-          text: "길드에서 보수가 좋은 임무가 들어왔다. 단, 위험성이 매우 높다. 당신은?",
-          options: [
-            {
-              optionId: "A",
-              text: "보수가 좋으니 일단 몸으로 부딪쳐보며 방법을 찾는다.",
-              score: { P_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "위험 요소를 체계적으로 분석하고, 성공 확률이 높을 때만 수락한다.",
-              score: { J_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "위험을 감수할 만큼 가치가 있는지 냉정하게 손익을 계산한다.",
-              score: { T_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "마음이 불안하여 거절한다. 안전한 임무를 통해 사람들을 돕고 싶다.",
-              score: { F_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 4,
-          text: "힘든 전투 후 동료가 의기소침해 있다. 당신이 건넬 말은?",
-          options: [
-            {
-              optionId: "A",
-              text: "“이번 전투에서 네 검술 동작이 흔들렸어. 다음엔 이렇게 해봐.”",
-              score: { T_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "“다치지 않은 게 중요해. 너는 우리에게 꼭 필요한 존재야.”",
-              score: { F_score: 1 },
-            },
-            {
-              optionId: "C",
-              text: "“힘든 싸움이었지? 오늘 밤은 맛있는 술 마시면서 잊어버리자!”",
-              score: { E_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "묵묵히 옆에 있어주거나, 조용히 회복 물약을 건넨다.",
-              score: { I_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 5,
-          text: "당신에게 마법을 가르쳐줄 스승이 나타났다. 어떤 능력을 배우고 싶은가?",
-          options: [
-            {
-              optionId: "A",
-              text: "고대의 언어와 철학을 탐구하는 지식 마법",
-              score: { I_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "모두를 이롭게 하는 회복 마법이나 방어 마법",
-              score: { F_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "적의 방어를 뚫는 가장 강력하고 효율적인 공격 마법",
-              score: { T_score: 2 },
-            },
-            {
-              optionId: "D",
-              text: "공간을 넘나드는 이동 마법이나 변화 마법",
-              score: { P_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 6,
-          text: "당신이 맡은 마을에 전염병이 돌기 시작했다. 당신의 대응 방식은?",
-          options: [
-            {
-              optionId: "A",
-              text: "원인을 찾기 위해 고문서를 뒤지고, 숨겨진 의미를 파악한다.",
-              score: { N_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "즉시 마을 사람들을 조직해 격리하고 구호품을 분배하는 체계를 만든다.",
-              score: { J_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "직접 환자들을 돌보고 위로하며, 안정적인 분위기를 유지한다.",
-              score: { F_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "전염병의 구체적인 증상을 기록하고, 기존 치료법을 즉시 적용한다.",
-              score: { S_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 7,
-          text: "파티원 모집 시, 당신이 가장 중요하게 보는 자질은?",
-          options: [
-            {
-              optionId: "A",
-              text: "상황에 얽매이지 않고 유연하게 대처할 수 있는 순발력",
-              score: { P_score: 2 },
-            },
-            {
-              optionId: "B",
-              text: "정확한 임무 수행 능력과 약속을 철저히 지키는 책임감",
-              score: { J_score: 1 },
-            },
-            {
-              optionId: "C",
-              text: "팀의 분위기를 밝게 만들고 모두와 잘 어울리는 사교성",
-              score: { E_score: 2 },
-            },
-            {
-              optionId: "D",
-              text: "말이 많지 않아도 묵묵히 자신의 역할을 해내는 전문성",
-              score: { I_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 8,
-          text: "어둠의 세력이 마을을 습격했다. 당신이 가장 먼저 취할 행동은?",
-          options: [
-            {
-              optionId: "A",
-              text: "습격의 패턴을 파악하고 적의 근본적인 목적을 예측한다.",
-              score: { N_score: 1 },
-            },
-            {
-              optionId: "B",
-              text: "가장 취약한 민간인을 보호하며 방어선을 구축한다.",
-              score: { S_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "마을 사람들을 안심시키며 이성적으로 대피를 유도한다.",
-              score: { T_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "공포에 질린 사람들의 감정을 진정시키며 희망을 준다.",
-              score: { F_score: 2 },
-            },
-          ],
-        },
-        {
-          questionId: 9,
-          text: "당신이 맡은 직업의 업무가 반복적이고 지루하게 느껴질 때, 당신은?",
-          options: [
-            {
-              optionId: "A",
-              text: "지루함을 없애기 위해 업무 방식에 새로운 변화를 시도해 본다.",
-              score: { P_score: 1 },
-            },
-            {
-              optionId: "B",
-              text: "규칙적인 루틴에 만족하며, 묵묵히 꾸준히 업무를 처리한다.",
-              score: { J_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "동료들을 모아 게임이나 농담을 하며 분위기를 바꾼다.",
-              score: { E_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "이 업무의 근원적인 가치와 의미를 생각하며 스스로 다잡는다.",
-              score: { I_score: 1 },
-            },
-          ],
-        },
-        {
-          questionId: 10,
-          text: "당신이 얻은 강력한 힘이나 보물을 사용하는 방식은?",
-          options: [
-            {
-              optionId: "A",
-              text: "이 힘을 어떻게 써야 세상에 가장 이득이 될지 전략적으로 고민한다.",
-              score: { T_score: 1 },
-            },
-            {
-              optionId: "B",
-              text: "당장 눈앞의 문제를 해결하는 데 직관적으로 사용한다.",
-              score: { P_score: 2 },
-            },
-            {
-              optionId: "C",
-              text: "이 힘으로 어려운 사람들을 돕고, 정의를 실현하는 데 쓴다.",
-              score: { F_score: 1 },
-            },
-            {
-              optionId: "D",
-              text: "힘의 원리를 깊이 이해하기 위해 고립된 장소에서 연구한다.",
-              score: { N_score: 2 },
-            },
-          ],
+          optionId: "C",
+          text: "대기표를 접어 주머니에 넣는다",
+          score: { J: 2 },
         },
       ],
     },
-    // ... 나머지 질문들도 그대로 두시면 됩니다 ...
+    {
+      questionId: 2,
+      text: "대기실 스피커에서 이름이 아닌 번호만 불리기 시작합니다. 그러나 일어나는 사람은 아무도 없습니다.",
+      options: [
+        {
+          optionId: "A",
+          text: "아직 호출되지 않아서라고 생각한다",
+          score: { O: 2 },
+        },
+        { optionId: "B", text: "잘못된 호출이라 여긴다", score: { R: 1 } },
+        {
+          optionId: "C",
+          text: "호출 방식이 바뀐 것을 의심한다",
+          score: { B: 2 },
+        },
+      ],
+    },
+    {
+      questionId: 3,
+      text: "대기실 벽에는 시계가 하나 걸려 있지만, 초침은 움직이지 않고 있습니다.",
+      options: [
+        {
+          optionId: "A",
+          text: "원래 고장 난 시계라고 생각한다.",
+          score: { R: 2 },
+        },
+        {
+          optionId: "B",
+          text: "시간을 확인할 필요가 없다고 느낀다",
+          score: { J: 2 },
+        },
+        {
+          optionId: "C",
+          text: "다른 사람들도 시계를 보는지 확인한다",
+          score: { O: 1 },
+        },
+      ],
+    },
+    {
+      questionId: 4,
+      text: "잠시 후, 누군가 자리에서 사라집니다. 대기표는 의자 위에 그대로 놓여 있습니다.",
+      options: [
+        {
+          optionId: "A",
+          text: "호출되어 들어간 것이라 생각한다",
+          score: { R: 1 },
+        },
+        { optionId: "B", text: "그냥 나간 것이라 생각한다", score: { O: 2 } },
+        {
+          optionId: "C",
+          text: "언제부터 있었는지 기억을 더듬는다",
+          score: { B: 2 },
+        },
+      ],
+    },
+    {
+      questionId: 5,
+      text: "스피커에서 당신의 번호와 비슷한 숫자가 불립니다. 한 자리만 다릅니다.",
+      options: [
+        { optionId: "A", text: "아직 아니라고 판단한다", score: { R: 2 } },
+        { optionId: "B", text: "혹시 모르니 준비한다", score: { B: 2 } },
+        {
+          optionId: "C",
+          text: "이미 불린 것일지도 모른다고 생각한다",
+          score: { J: 2 },
+        },
+      ],
+    },
+    {
+      questionId: 6,
+      text: "대기표를 다시 보니, 번호 아래에 작게 이름이 적혀 있던 것 같기도 합니다.",
+      options: [
+        {
+          optionId: "A",
+          text: "지금까지 못 본 게 이상하다고 느낀다",
+          score: { O: 2 },
+        },
+        { optionId: "B", text: "원래 흐릿했을 거라 생각한다", score: { R: 2 } },
+        { optionId: "C", text: "굳이 확인하지 않는다", score: { J: 1 } },
+      ],
+    },
+    {
+      questionId: 7,
+      text: "대기실 문이 열렸다 닫힐 때마다 안쪽에서 아무 소리도 들리지 않습니다.",
+      options: [
+        {
+          optionId: "A",
+          text: "방음이 잘 된 공간이라 생각한다",
+          score: { R: 2 },
+        },
+        {
+          optionId: "B",
+          text: "아무도 없을 가능성을 떠올린다",
+          score: { O: 2 },
+        },
+        { optionId: "C", text: "굳이 상상하지 않으려 한다", score: { B: 1 } },
+      ],
+    },
+    {
+      questionId: 8,
+      text: "어느 순간부터 다른 사람들의 대기표가 잘 보이지 않습니다.",
+      options: [
+        { optionId: "A", text: "시선을 피하고 있다고 느낀다", score: { B: 2 } },
+        {
+          optionId: "B",
+          text: "내가 잘못 보고 있다고 생각한다",
+          score: { R: 2 },
+        },
+        {
+          optionId: "C",
+          text: "원래부터 관심 없었다고 여긴다",
+          score: { J: 1 },
+        },
+      ],
+    },
+    {
+      questionId: 9,
+      text: "스피커에서 다시 호출이 나옵니다. 이번엔 번호 없이, 짧은 침묵 후 멈춥니다.",
+      options: [
+        { optionId: "A", text: "다음 호출을 기다린다", score: { R: 1 } },
+        { optionId: "B", text: "지금이 내 차례일지 고민한다", score: { J: 2 } },
+        { optionId: "C", text: "누군가 불렸다고 가정한다", score: { B: 1 } },
+      ],
+    },
+    {
+      questionId: 10,
+      text: "대기실에 남아 있는 사람이 생각보다 적다는 것을 깨닫습니다.",
+      options: [
+        { optionId: "A", text: "오래 기다린 탓이라 생각한다", score: { R: 1 } },
+        {
+          optionId: "B",
+          text: "중간에 빠진 사람이 많았다고 여긴다",
+          score: { J: 1 },
+        },
+        {
+          optionId: "C",
+          text: "처음부터 이 인원이었을지도 모른다",
+          score: { C: 2 },
+        },
+      ],
+    },
   ],
+  // HorrorTestData.ts 내부의 results 객체 부분
 
   results: {
-    ENTP: {
-      result: "/img/f_job_test/01.png", // result1
-      title: "마법사",
-      description:
-        "기발한 아이디어와 예측 불가능한 마법으로 난관을 돌파하는 혁신가. 자유롭고 논쟁을 즐기는 마법사입니다.",
+    TYPE_R: {
+      title: "① W-01 정상 대기 유지형",
+      result: "/img/horror_results/type_r.png", // 사진 경로가 있다면 유지
+      description: `상태: 생존 / 특징: 호출 인식 유지
+
+▪ 사례 기록: 
+A는 끝까지 자리에 앉아 있었다.
+번호가 불릴 때마다 고개를 들었고,
+불리지 않으면 다시 시선을 내렸다.
+
+대기 시간이 얼마나 지났는지
+A는 정확히 알지 못했다.
+하지만 “아직이구나”라는 판단은
+항상 유지했다.
+
+A는 불렸다.
+그리고 일어났다.
+
+▪ 후대 분석
+이 유형은
+호출을 기다리는 것이 아니라 인식한다.
+기다림 속에서도
+자기 차례의 기준을 잃지 않는다.`,
     },
-    ISTJ: {
-      result: "/img/f_job_test/02.png", // result2
-      title: "성주",
-      description:
-        "전통과 질서를 수호하며, 주어진 임무를 완벽하게 이행하는 통치자 성주입니다.",
+    TYPE_B: {
+      title: "② L-02 호출 오인형",
+      result: "", // 사진이 없으면 빈 문자열
+      description: `상태: 생존 / 후유증: 경미한 기억 공백
+
+▪ 사례 기록: 
+B는 비슷한 숫자에 자주 반응했다.
+한 자리 차이,
+억양의 변화,
+잠깐의 침묵에도 몸이 굳었다.
+
+결국 B는
+정확히 불리지 않았음에도
+자리에서 일어났다.
+
+돌아온 B는 말했다.
+“분명 나였던 것 같아요.”
+
+그 이후
+B는 자신의 이름을
+잠시 떠올리지 못했다.
+
+▪ 후대 분석
+호출 오인형은
+기회보다 불안을 먼저 듣는다.
+살아 돌아오지만
+정체성 일부가 호출에 남는다.`,
     },
-    ENTJ: {
-      result: "/img/f_job_test/03.png", // result3
-      title: "기사단장",
-      description:
-        "명확한 목표와 체계적인 지휘력으로 조직을 이끌어 승리하는 리더. 뛰어난 전략가 기사단장입니다.",
+    TYPE_J: {
+      title: "③ S-03 무기한 잔류형",
+      result: "",
+      description: `상태: 불명 / 특징: 기록 지속 중
+
+▪ 사례 기록: 
+C는
+어느 순간부터 번호를 보지 않았다.
+
+불리는지 아닌지는
+중요하지 않다고 말했고,
+“여기 있으면 되는 거잖아요”라고 했다.
+
+C의 대기표는
+훼손되지 않은 채
+의자 위에 남아 있다.
+
+▪ 후대 분석
+이 유형은 사망으로 분류되지 않는다.
+다만 호출 개념을 상실한다.
+기록은 아직 종료되지 않았다.`,
     },
-    INTP: {
-      result: "/img/f_job_test/04.png", // result4
-      title: "학자",
-      description:
-        "끊임없이 새로운 지식을 탐구하고 이론을 정립하는 사색가. 진리를 찾아 현실을 뛰어넘는 학자입니다.",
+    TYPE_O: {
+      title: "④ E-04 조기 이탈형",
+      result: "",
+      description: `상태: 생존 / 후유증: 반복적인 불안
+
+▪ 사례 기록: 
+D는
+대기실이 비어 보이기 시작하자
+자리에서 일어났다.
+
+“이상하다”는 말만 남기고
+문을 열었다.
+
+D는 밖으로 나왔다.
+그러나 이후
+어떤 공간에서도
+자신의 순서를 기다리지 못했다.
+
+“언제 불릴지 모르겠어요.”
+
+▪ 후대 분석
+조기 이탈형은
+대기 자체를 위험으로 판단한다.
+생존은 했으나
+기다림이 필요한 상황에 적응 불가.`,
     },
-    ESTJ: {
-      result: "/img/f_job_test/05.png", // result5
-      title: "상인",
-      description:
-        "효율적인 계획과 확실한 이익 계산으로 비즈니스를 주도하며, 체계적인 리더십을 발휘하는 상인입니다.",
-    },
-    INFJ: {
-      result: "/img/f_job_test/06.png", // result6
-      title: "예언가",
-      description:
-        "깊은 통찰력과 이상으로 세상을 돕는 사려 깊은 조언자. 미래를 내다보고 대의를 실현하는 예언가입니다.",
-    },
-    ESTP: {
-      result: "/img/f_job_test/07.png", // result7
-      title: "격투가",
-      description:
-        "즉각적인 행동력과 현장 판단력으로 난관을 직접 부딪쳐 해결하며, 스릴을 즐기는 격투가입니다.",
-    },
-    ISTP: {
-      result: "/img/f_job_test/08.png", // result8
-      title: "대장장이",
-      description:
-        "도구나 기술을 능숙하게 다루며, 실용적인 결과물을 만들어내는 쿨하고 유능한 장인 대장장이입니다.",
-    },
-    ISFJ: {
-      result: "/img/f_job_test/09.png", // result9
-      title: "농부",
-      description:
-        "묵묵히 자신의 자리에서 현실적인 안정과 풍요를 책임지며, 공동체의 수호자가 되는 농부입니다.",
-    },
-    ENFP: {
-      result: "/img/f_job_test/10.png", // result10
-      title: "광대",
-      description:
-        "자유로운 영혼과 넘치는 에너지로 분위기를 활기차게 만드는, 모험과 재미를 사랑하는 광대입니다.",
-    },
-    ESFJ: {
-      result: "/img/f_job_test/11.png", // result11
-      title: "무희",
-      description:
-        "화려한 사교성과 밝은 에너지로 공동체에 즐거움을 선사하며, 친선 도모자 역할을 하는 무희입니다.",
-    },
-    INFP: {
-      result: "/img/f_job_test/12.png", // result12
-      title: "음유시인",
-      description:
-        "감성적인 노래와 이야기로 사람들의 마음을 치유하고 영감을 주는, 낭만적인 예술가 음유시인입니다.",
-    },
-    ENFJ: {
-      result: "/img/f_job_test/13.png", // result13
-      title: "힐러",
-      description:
-        "타인을 돕고 치유하는 데 헌신하며, 따뜻한 영향력으로 모두를 이끄는 지도자 힐러입니다.",
-    },
-    INTJ: {
-      result: "/img/f_job_test/14.png", // result14
-      title: "흑마법사",
-      description:
-        "고독한 탐구와 강력한 지식 기반으로 세상을 지배하는 전략가. 복잡한 문제를 완벽하게 해결하는 흑마법사입니다.",
-    },
-    ISFP: {
-      result: "/img/f_job_test/15.png", // result15
-      title: "궁수",
-      description:
-        "자연과 조화되며, 순간적인 감각과 정확한 판단으로 임무를 수행하는 자유로운 영혼의 궁수입니다.",
-    },
-    ESFP: {
-      result: "/img/f_job_test/16.png", // result16
-      title: "검사",
-      description:
-        "강한 추진력과 현란한 기술로 눈앞의 상황을 즐기며 해결하는, 무술계의 연예인 검사입니다.",
+    TYPE_C: {
+      title: "⑤ N-05 호출 미인지형",
+      result: "",
+      description: `상태: 사망 추정 / 특징: 기록 단절
+
+▪ 사례 기록: 
+E는 끝까지 앉아 있었다.
+
+문이 열렸고,
+누군가의 번호가 불렸으며,
+의자는 비어 있었다.
+
+E의 대기표는
+찢어지지 않았고,
+회수되지도 않았다.
+
+그 이후
+E에 대한 추가 호출 기록은 없다.
+
+▪ 후대 분석
+이 유형은
+불렸으나 인지하지 못한 사례로 분류된다.
+대기실은
+그를 기다리지 않는다.`,
     },
   },
 };
+
+export const AllHorrorQuestionsData = [horrorTestData1];

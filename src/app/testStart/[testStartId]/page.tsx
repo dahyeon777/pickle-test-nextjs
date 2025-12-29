@@ -1,44 +1,68 @@
 "use client";
-export const runtime = 'edge';
+export const runtime = "edge";
 
 import { useState } from "react";
-import { useParams, useRouter } from "next/navigation"; // Next.js 전용 훅
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import RadioOption from "../../../components/RadioOption";
 import ProgressBar from "../../../components/ProgressBar";
 import { AllTestQuestionsData } from "../../../TestData";
+import { AllHorrorQuestionsData } from "../../../HorrorTestData";
 import styles from "./page.module.css";
 
-// 결과 MBTI 계산 함수
-function calculateMbti(scores: any) {
-  const E_I = scores.E_score >= scores.I_score ? "E" : "I";
-  const S_N = scores.S_score >= scores.N_score ? "S" : "N";
-  const T_F = scores.T_score >= scores.F_score ? "T" : "F";
-  const J_P = scores.J_score >= scores.P_score ? "J" : "P";
+// --- 1. 로직 분리: 결과 계산 함수들 ---
 
+// 일반 모드: MBTI 계산 로직
+function calculateMbti(scores: any) {
+  const E_I = (scores.E_score || 0) >= (scores.I_score || 0) ? "E" : "I";
+  const S_N = (scores.S_score || 0) >= (scores.N_score || 0) ? "S" : "N";
+  const T_F = (scores.T_score || 0) >= (scores.F_score || 0) ? "T" : "F";
+  const J_P = (scores.J_score || 0) >= (scores.P_score || 0) ? "J" : "P";
   return E_I + S_N + T_F + J_P;
+}
+
+// 호러 모드: 가장 높은 가중치를 가진 타입을 TYPE_X 형태로 반환
+function calculateHorrorScore(scores: any) {
+  // scores에 담긴 키(R, B, J, O, C) 중 가장 값이 큰 키를 찾습니다.
+  const topType = Object.keys(scores).reduce((a, b) =>
+    (scores[a] || 0) > (scores[b] || 0) ? a : b
+  );
+
+  // 결과 페이지에서 HorrorTestData의 results 객체와 매칭하기 위해 TYPE_를 붙여줍니다.
+  return `TYPE_${topType}`;
 }
 
 function TestStartPage() {
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
 
-  const testStartId = params.testStartId;
-  const isToFind = Number(testStartId);
-  const nowTest = AllTestQuestionsData.find((test) => test.id === isToFind);
+  const mode = searchParams.get("mode") || "normal";
+  const isHorrorMode = mode === "horror";
+  const testStartId = Number(params.testStartId);
+
+  const currentQuestionsData = isHorrorMode
+    ? AllHorrorQuestionsData
+    : AllTestQuestionsData;
+  const nowTest = currentQuestionsData.find((test) => test.id === testStartId);
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  const [score, setScore] = useState({
-    E_score: 0,
-    I_score: 0,
-    S_score: 0,
-    N_score: 0,
-    T_score: 0,
-    F_score: 0,
-    J_score: 0,
-    P_score: 0,
-  });
+  // 초기 점수 상태 설정
+  const [score, setScore] = useState<any>(
+    isHorrorMode
+      ? { R: 0, B: 0, J: 0, O: 0, C: 0 } // 호러 가중치 키셋
+      : {
+          E_score: 0,
+          I_score: 0,
+          S_score: 0,
+          N_score: 0,
+          T_score: 0,
+          F_score: 0,
+          J_score: 0,
+          P_score: 0,
+        }
+  );
 
   const nowQuestion = nowTest ? nowTest.questions[questionIndex] : null;
 
@@ -52,14 +76,12 @@ function TestStartPage() {
     const selected = nowQuestion.options.find(
       (opt) => opt.optionId === selectedOption
     );
-
     if (!selected || !selected.score) return;
 
-    // 점수 업데이트 (함수형 업데이트 사용으로 최신 상태 유지)
+    // 점수 업데이트 (기존 score 객체를 복사하여 선택된 옵션의 score를 더함)
     const currentScore = { ...score };
-    for (const axis in selected.score) {
-      // @ts-ignore
-      currentScore[axis] += selected.score[axis];
+    for (const key in selected.score) {
+      currentScore[key] = (currentScore[key] || 0) + selected.score[key];
     }
     setScore(currentScore);
 
@@ -69,22 +91,28 @@ function TestStartPage() {
       setQuestionIndex(nextIndex);
       setSelectedOption(null);
     } else {
-      // 마지막 질문이면 MBTI 계산 후 결과 페이지로 이동
-      const finalMbti = calculateMbti(currentScore);
-      // 아까 만든 결과 페이지 주소 규칙: /testResult/[id]/[result]
-      router.push(`/testResult/${isToFind}/${finalMbti}`);
+      // 결과 산출
+      const finalResult = isHorrorMode
+        ? calculateHorrorScore(currentScore)
+        : calculateMbti(currentScore);
+
+      router.push(`/testResult/${testStartId}/${finalResult}?mode=${mode}`);
     }
   }
 
-  if (!nowTest) return <div>테스트를 찾을 수 없습니다.</div>;
-  if (!nowQuestion) return <div>결과를 계산 중입니다...</div>;
-
-  const totalQuestions = nowTest.questions.length;
-  const currentProgress = questionIndex + 1;
+  if (!nowTest)
+    return <div className={styles.container}>테스트를 찾을 수 없습니다.</div>;
+  if (!nowQuestion) return <div className={styles.container}>로딩 중...</div>;
 
   return (
-    <div className={styles.container}>
-      <ProgressBar current={currentProgress} total={totalQuestions} />
+    <div
+      className={`${styles.container} ${isHorrorMode ? styles.nightMode : ""}`}
+    >
+      <ProgressBar
+        current={questionIndex + 1}
+        total={nowTest.questions.length}
+        color={isHorrorMode ? "#ff0000" : "#4CAF50"}
+      />
 
       <div className={styles.radio_frame}>
         <h2 className={styles.answer_title}>{nowTest.title}</h2>
@@ -107,7 +135,10 @@ function TestStartPage() {
       </div>
 
       <button
-        style={buttonStyle}
+        style={{
+          ...buttonStyle,
+          backgroundColor: isHorrorMode ? "#8b0000" : "#4CAF50",
+        }}
         disabled={!selectedOption}
         onClick={nextquestion}
       >
@@ -126,7 +157,6 @@ const buttonStyle = {
   borderRadius: "6px",
   border: "none",
   width: "300px",
-  backgroundColor: "#4CAF50",
   color: "white",
   fontSize: "16px",
   fontWeight: "bold" as const,
