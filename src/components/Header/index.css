@@ -24,22 +24,9 @@ header.night_mode {
   font-weight: bold;
 }
 
-/* 1. 폰트 선언 (잘 작성하셨습니다) */
-@font-face {
-  font-family: "IyagiGGC";
-  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* 2. 실제 적용 (이 부분이 빠져있을 가능성이 큽니다) */
 .header_top_bar a {
   text-decoration: none;
   color: inherit;
-
-  /* ★ 여기에 선언했던 이름을 그대로 넣어줍니다 */
-  font-family: "IyagiGGC", sans-serif !important;
 }
 
 /* ★ 중요: 밤 버전 글자색 (띄어쓰기 없이 붙여서 작성하거나 아래처럼 작성) */

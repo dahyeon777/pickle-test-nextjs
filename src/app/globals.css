@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "IyagiGGC";
+  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* 폰트 로딩 중에도 텍스트가 보이도록 설정 */
+}
+
 :root {
   --background: none;
   --foreground: #171717;
@@ -14,5 +23,12 @@ body {
   background-repeat: no-repeat;
 
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "IyagiGGC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
