@@ -21,24 +21,32 @@ function FirstPage({ isNight, toggleMode }) {
 
   return (
     /* pageWrapper는 공통, nightMode/dayMode로 배경색 결정 */
-    <div className={`${styles.pageWrapper} ${isNight ? styles.nightMode : styles.dayMode}`}>
+    <div
+      className={`${styles.pageWrapper} ${
+        isNight ? styles.nightMode : styles.dayMode
+      }`}
+    >
       <CoupangAd isNight={isNight} />
-      
+
       <div className={styles.container}>
         <img
-          src={isNight ? "/img/hero_text_img_horror.png" : "/img/hero_text_img.png"}
+          src={
+            isNight ? "/img/hero_text_img_horror.png" : "/img/hero_text_img.png"
+          }
           alt="히어로 이미지"
           className={styles.image_center}
         />
       </div>
 
-      <section className={styles.section}></section>
+      {/* <section className={styles.section}></section> */}
 
       <main className={styles.mainArea}>
         <div className={styles.horrorButtonWrapper}>
           <button className={styles.horrorButton} onClick={toggleMode}>
             {/* 전조등 색상 변경: 밤엔 초록(Day로 돌아가기), 낮엔 빨강(Night로 가기) */}
-            <div className={isNight ? styles.greenLight : styles.redLight}></div>
+            <div
+              className={isNight ? styles.greenLight : styles.redLight}
+            ></div>
             <span className={styles.horrorText}>
               {isNight ? "Day" : "Night"}
             </span>

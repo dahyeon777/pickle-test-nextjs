@@ -3,7 +3,7 @@
 export const testData1 = {
   id: 1,
   path: "/img/horror_test_main/horror1.png", // pic1 대신 직접 경로 입력
-  title: "판타지 세계 직업 테스트",
+  title: "당신은 아직 호출되지 않았습니다",
   questions: [
     // ... 질문 데이터는 동일 (생략) ...
     {

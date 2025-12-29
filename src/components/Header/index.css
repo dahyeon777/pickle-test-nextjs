@@ -9,7 +9,7 @@ header {
   width: 100%;
 
   /* 낮 버전 배경색 */
-  background-color: #e8f5e9;
+  background-color: #ffffff;
 }
 
 /* ★ 중요: 밤 버전 배경색 (header 태그에 night_mode가 붙었을 때) */
@@ -22,21 +22,38 @@ header.night_mode {
   margin-left: 16px;
   color: #518c35; /* 낮 버전 초록색 */
   font-weight: bold;
-  border-bottom: 2px dotted #ffffff;
+}
+
+/* 1. 폰트 선언 (잘 작성하셨습니다) */
+@font-face {
+  font-family: "IyagiGGC";
+  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 2. 실제 적용 (이 부분이 빠져있을 가능성이 큽니다) */
+.header_top_bar a {
+  text-decoration: none;
+  color: inherit;
+
+  /* ★ 여기에 선언했던 이름을 그대로 넣어줍니다 */
+  font-family: "IyagiGGC", sans-serif !important;
 }
 
 /* ★ 중요: 밤 버전 글자색 (띄어쓰기 없이 붙여서 작성하거나 아래처럼 작성) */
 .night_mode .header_top_bar {
-  color: #ffffff !important;
+  color: #b4c5ba !important;
 }
 
 .night_mode .header_top_bar a {
-  color: #ffffff !important;
+  color: #b4c5ba !important;
 }
 
 /* 네비게이션 메뉴가 있다면 밤 버전 대응 */
 .night_mode .main_nav a {
-  color: #ffffff !important;
+  color: #b4c5ba !important;
 }
 
 /* 기존 나머지 코드 */
