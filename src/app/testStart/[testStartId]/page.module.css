@@ -90,9 +90,9 @@
 @media screen and (max-width: 768px) {
   .button1 {
     width: 90%;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 12px 10px;
   }
-  .question_text { font-size: 1.1rem; }
-  .answer_title { font-size: 1rem; }
+  .question_text { font-size: 1.2rem; }
+  .answer_title { font-size: 1.1rem; }
 }
