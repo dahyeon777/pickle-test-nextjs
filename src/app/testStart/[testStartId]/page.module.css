@@ -41,3 +41,10 @@
   max-width: 600px;
   width: fit-content; /* (선택사항) 내용물에 딱 맞게 너비를 줄이고 싶을 때 유용 */
 }
+
+@media (max-width: 768px) {
+  .question_text{
+    font-size: 1rem;
+    white-space: pre-wrap;
+  }
+}
