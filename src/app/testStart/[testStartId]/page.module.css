@@ -7,6 +7,7 @@
   padding: 20px;
   min-height: 100vh;
   background-color: none;
+  text-align: center;
 }
 
 .radio_frame {
@@ -14,21 +15,29 @@
   width: 100%;
   max-width: 800px;
   text-align: center;
+  justify-content: center;
 }
 
 .answer_title {
   margin-top: 50px;
   color: #365a26;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .question_text {
   margin-top: 20px;
   font-size: 1.4rem;
-  word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+  word-break: keep-all;
+  white-space: pre-wrap;
+  text-align: center;
 }
 
 .options_container {
   margin-top: 30px;
-  text-align: left; /* 라디오 옵션은 왼쪽 정렬이 보기 좋음 */
+  margin-left: auto;  /* 추가: 왼쪽 여백 자동 */
+  margin-right: auto; /* 추가: 오른쪽 여백 자동 */
+  text-align: left;   /* 텍스트는 왼쪽 정렬 유지 */
+  max-width: 600px;
+  width: fit-content; /* (선택사항) 내용물에 딱 맞게 너비를 줄이고 싶을 때 유용 */
 }

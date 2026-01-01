@@ -68,9 +68,13 @@ function TestResultPage() {
       }`}
     >
       <h1 className={styles.main_title}>
-        {isHorrorMode
-          ? `[ 실험 기록: ${testTitle} ]`
-          : `✨ ${testTitle} 결과 ✨`}
+        {isHorrorMode ? (
+          <>
+            실험 사례 기록<br /> {testTitle}
+          </>
+        ) : (
+          `✨ ${testTitle} 결과 ✨`
+        )}
       </h1>
 
       <div className={styles.result_title_section}>
