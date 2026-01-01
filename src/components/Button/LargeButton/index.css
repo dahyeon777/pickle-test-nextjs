@@ -62,7 +62,7 @@
 @media (max-width: 768px) {
   .button1 {
     width: 90%; /* 화면 너비의 90% */
-    max-width: 350px; /* 너무 커지지 않게 제한 */
+    max-width: 550px; /* 너무 커지지 않게 제한 */
     padding: 12px 20px; /* 모바일용 패딩 */
     font-size: 1rem; /* 모바일용 글자 크기 */
     display: block; /* 세로 정렬 보장 */
