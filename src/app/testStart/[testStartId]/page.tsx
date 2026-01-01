@@ -135,33 +135,16 @@ function TestStartPage() {
       </div>
 
       <button
-        style={{
-          ...buttonStyle,
-          backgroundColor: isHorrorMode ? "#8b0000" : "#4CAF50",
-        }}
+        className={`${styles.button1} ${isHorrorMode ? styles.horror_button : styles.normal_button}`}
         disabled={!selectedOption}
         onClick={nextquestion}
       >
-        {questionIndex === nowTest.questions.length - 1
-          ? "결과 확인하기"
-          : "다음 질문"}
+        {questionIndex === nowTest.questions.length - 1 ? "결과 확인하기" : "다음 질문"}
       </button>
     </div>
   );
 }
 
 export default TestStartPage;
-
-const buttonStyle = {
-  padding: "12px",
-  borderRadius: "6px",
-  border: "none",
-  width: "300px",
-  color: "white",
-  fontSize: "16px",
-  fontWeight: "bold" as const,
-  cursor: "pointer",
-  marginTop: "10px",
-};
 
 

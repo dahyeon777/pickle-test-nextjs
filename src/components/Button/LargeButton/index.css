@@ -1,55 +1,61 @@
 .button1 {
-  /* 1. 크기와 형태: 길쭉하고 통통한 느낌 */
-  display: inline-block;
-  padding: 15px 130px;
-  margin: 10px;
-  width: 480px;
+  /* 1. 크기와 형태 */
+  display: block; /* margin auto를 위해 block으로 변경 */
+  margin: 10px auto;
+  width: 100%;
+  max-width: 480px; /* PC 최대 너비 */
+  padding: 15px 20px; /* 좌우 패딩을 유연하게 수정 */
+  box-sizing: border-box; /* 패딩이 너비를 키우지 않게 설정 */
 
-  /* 2. 배경과 색상: 짙은 초록색 기반으로 변경 */
+  /* 2. 배경과 색상 */
   background: #ffffff;
-
   color: rgba(11, 31, 2, 0.7);
   border: none;
 
   /* 3. 곡선과 그림자 */
   border-radius: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
-    /* 그림자 진하게 */ 0 1px 18px rgba(81, 140, 53, 0.7); /* 짙은 초록색 네온 글로우 효과 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(81, 140, 53, 0.7);
 
   /* 4. 텍스트 스타일 */
-  font-family: "Arial", sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap; /* 글자 세로 꺾임 방지 */
 
-  /* 5. 애니메이션 및 상호작용 */
+  /* 5. 애니메이션 */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-/* 마우스 오버(Hover) 시 효과: 누르는 듯한 느낌 (색상 살짝 밝게) */
-.button1:hover {
+/* 호버 효과 */
+.button1:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 20px rgba(97, 154, 69, 0.8); /* 글로우 강조 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 20px rgba(97, 154, 69, 0.8);
 }
 
-/* 클릭(Active) 시 효과: 실제로 눌리는 듯한 느낌 (색상 유지) */
-.button1:active {
+/* 클릭 효과 */
+.button1:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 10px rgba(81, 140, 53, 0.5);
 }
 
-.button1[disabled] {
-  background-color: #e0e0e0; /* 회색 계열 */
-  color: black;
-  cursor: not-allowed; /* 커서를 금지 표시로 */
-  opacity: 0.7; /* 약간 투명하게 */
+/* 비활성화 상태 */
+.button1:disabled {
+  background-color: #e0e0e0;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
 }
 
+/* 📱 모바일 대응 (600px 이하) */
 @media screen and (max-width: 600px) {
-  .button1{
-    width: 300px;
+  .button1 {
+    width: 100%;
+    max-width: 600px; /* 모바일 폭에 맞게 제한 */
+    font-size: 1rem;
+    padding: 12px 40px;
   }
 }
-

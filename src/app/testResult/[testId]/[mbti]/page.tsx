@@ -39,7 +39,6 @@ function TestResultPage() {
     }
   }, [params, isHorrorMode]);
 
-  // URL 복사 함수
   const handleCopyLink = () => {
     const currentUrl = window.location.href;
     navigator.clipboard
@@ -62,65 +61,53 @@ function TestResultPage() {
     return <div className={styles.container}>기록을 찾을 수 없습니다.</div>;
 
   return (
-    <div
-      className={`${styles.container} ${
-        isHorrorMode ? styles.horror_theme : ""
-      }`}
-    >
+    <div className={`${styles.container} ${isHorrorMode ? styles.horror_theme : ""}`}>
+      {/* 1. 상단 타이틀 섹션 */}
       <h1 className={styles.main_title}>
         {isHorrorMode ? (
-          <>
-            실험 사례 기록<br /> {testTitle}
-          </>
+          <>실험 기록<br /> {testTitle}</>
         ) : (
           `✨ ${testTitle} 결과 ✨`
         )}
       </h1>
 
-      <div className={styles.result_title_section}>
+      {/* 2. 결과 카드 섹션: 모드에 따라 styles.horror_report 또는 styles.result_title_section 적용 */}
+      <div className={isHorrorMode ? styles.horror_report : styles.result_title_section}>
         {isHorrorMode ? (
-          <div className={styles.horror_report}>
+          /* --- 호러 모드 전용 레이아웃 --- */
+          <>
             <h2 className={styles.horror_type_title}>{resultData.title}</h2>
+            
             {resultData.description.includes("상태:") && (
               <div className={styles.status_badge}>
                 {resultData.description.split("\n")[0]}
               </div>
             )}
+
             {resultData.result && (
               <div className={styles.image_wrapper}>
-                <img
-                  src={resultData.result}
-                  alt="기록물"
-                  className={styles.result_image}
-                />
+                <img src={resultData.result} alt="기록물" className={styles.result_image} />
               </div>
             )}
+
             <div className={styles.case_record}>
-              {/* white-space 설정을 위해 스타일 추가 */}
-              <p
-                className={styles.horror_description}
-                style={{ whiteSpace: "pre-wrap" }}
-              >
+              <p className={styles.horror_description} style={{ whiteSpace: "pre-wrap" }}>
+                {/* 첫 줄(상태:)을 제외하고 출력하는 로직 */}
                 {resultData.description.includes("\n")
-                  ? resultData.description.split("\n").slice(1).join("\n")
-                  : resultData.description.startsWith("상태:")
-                  ? ""
-                  : resultData.description}
+                  ? resultData.description.split("\n").slice(1).join("\n").trim()
+                  : resultData.description.startsWith("상태:") ? "" : resultData.description}
               </p>
             </div>
-          </div>
+          </>
         ) : (
+          /* --- 일반 모드 전용 레이아웃 --- */
           <>
             <h3 className={styles.result_title}>
               당신은 <strong>"{resultData.title}"</strong> 입니다!
             </h3>
             {resultData.result && (
               <div className={styles.image_wrapper}>
-                <img
-                  src={resultData.result}
-                  alt={resultData.title}
-                  className={styles.result_image}
-                />
+                <img src={resultData.result} alt={resultData.title} className={styles.result_image} />
               </div>
             )}
             <p className={styles.description}>{resultData.description}</p>
@@ -128,20 +115,21 @@ function TestResultPage() {
         )}
       </div>
 
-      {/* --- 버튼 그룹: 다시하기와 공유 버튼 --- */}
+      {/* 3. 하단 버튼 그룹 */}
       <div className={styles.button_group}>
         <button
           onClick={handleCopyLink}
           className={isHorrorMode ? styles.horror_share_btn : styles.share_btn}
         >
-          {isHorrorMode ? "🔗 기록 공유 (링크 복사)" : "🔗 결과 공유하기"}
+          {isHorrorMode ? "🔗 기록 공유" : "🔗 결과 공유하기"}
         </button>
 
-        <Link href="/">
+        <Link href="/" style={{ flex: 1, display: 'flex' }}>
           <button
             className={isHorrorMode ? styles.horror_home_btn : styles.home_btn}
+            style={{ width: '100%' }}
           >
-            ↩ 다시 처음으로
+            ↩ 처음으로
           </button>
         </Link>
       </div>

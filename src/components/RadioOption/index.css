@@ -28,3 +28,9 @@
   /* 라디오 버튼을 텍스트 기준으로 왼쪽 가장자리에 고정하고 싶을 때 사용 */
   /* flex-shrink: 0; */
 }
+
+@media screen and (max-width: 600px) {
+  .radio_option {
+    font-size: 0.9rem;
+  }
+}

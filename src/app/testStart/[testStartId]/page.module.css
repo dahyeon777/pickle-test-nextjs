@@ -1,28 +1,28 @@
-/* src/app/testStart/[testStartId]/page.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   min-height: 100vh;
-  background-color: none;
   text-align: center;
+}
+
+/* 호러 모드 배경 (필요시 추가) */
+.nightMode {
+  background-color: #1a1a1a;
+  color: white;
 }
 
 .radio_frame {
   margin: 30px 0px;
   width: 100%;
   max-width: 800px;
-  text-align: center;
-  justify-content: center;
 }
 
 .answer_title {
   margin-top: 50px;
   color: #365a26;
   font-size: 1.2rem;
-  text-align: center;
 }
 
 .question_text {
@@ -30,25 +30,69 @@
   font-size: 1.4rem;
   word-break: keep-all;
   white-space: pre-wrap;
-  text-align: center;
 }
 
 .options_container {
   margin-top: 30px;
-  margin-left: auto;  /* 추가: 왼쪽 여백 자동 */
-  margin-right: auto; /* 추가: 오른쪽 여백 자동 */
-  text-align: left;   /* 텍스트는 왼쪽 정렬 유지 */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
   max-width: 600px;
-  width: fit-content; /* (선택사항) 내용물에 딱 맞게 너비를 줄이고 싶을 때 유용 */
+  width: fit-content;
 }
 
-@media (max-width: 768px) {
-  .question_text{
-    font-size: 0.9rem;
-    white-space: pre-wrap;
-  }
-  .answer_title{
+/* --- 버튼 공통 스타일 --- */
+.button1 {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 480px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap; /* 글자 세로 꺾임 절대 방지 */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 일반 모드 버튼 */
+.normal_button {
+  background: #ffffff;
+  color: rgba(11, 31, 2, 0.7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(81, 140, 53, 0.7);
+}
+
+/* 호러 모드 버튼 */
+.horror_button {
+  background: #8b0000;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.button1:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.button1:disabled {
+  background-color: #e0e0e0 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 📱 모바일 대응 */
+@media screen and (max-width: 768px) {
+  .button1 {
+    width: 90%;
     font-size: 1rem;
-    white-space: pre-wrap;
+    padding: 12px 10px;
   }
+  .question_text { font-size: 1.1rem; }
+  .answer_title { font-size: 1rem; }
 }
