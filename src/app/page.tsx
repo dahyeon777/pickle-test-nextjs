@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div>
       {/* 1. 이제 상태를 아는 헤더가 여기에 위치합니다 */}
-      {/* <Header isNight={isNight} /> */}
+      <Header isNight={isNight} />
 
       {/* 2. 메인 컨텐츠인 FirstPage에도 상태를 넘겨줍니다 */}
       <FirstPage isNight={isNight} toggleMode={toggleMode} />

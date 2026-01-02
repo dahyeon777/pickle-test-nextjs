@@ -3,7 +3,7 @@
 export const horrorTestData5 = {
   id: 5,
   path: "/img/horror_test_main/horror5.png",
-  title: "세차를 하면\n지워질 줄 알았다",
+  title: "「세차를 하면 지워질 줄 알았다」",
   questions: [
     {
       questionId: 1,

@@ -3,7 +3,7 @@
 export const horrorTestData2 = {
   id: 2,
   path: "/img/horror_test_main/horror2.png",
-  title: "저수지는 항상\n가득 차 있다",
+  title: "「저수지는 항상 가득 차 있다」",
   questions: [
     {
       questionId: 1,

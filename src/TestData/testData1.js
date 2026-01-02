@@ -2,8 +2,8 @@
 
 export const testData1 = {
   id: 1,
-  path: "/img/test_ready_img/f_job.png", 
-  title: "판타지 직업 테스트",
+  path: "/img/test_ready_img/f_job.png", // pic1 대신 직접 경로 입력
+  title: "판타지 세계 직업 테스트",
   questions: [
     // ... 질문 데이터는 동일 (생략) ...
     {

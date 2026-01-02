@@ -1,43 +1,12 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "JeonnamEducationYuna";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-1@1.0/JNE-Yuna-TTF-Regular.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GowoonDodum";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff")
-    format("woff");
-  font-weight: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "IyagiGGC";
   src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* 폰트 로딩 중에도 텍스트가 보이도록 설정 */
-}
-
-@font-face {
-  font-family: "ChosunIlboMyungjo";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff")
-    format("woff");
-  font-weight: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cafe24Gowoonbam";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
-    format("woff");
-  font-weight: normal;
-  font-display: swap;
 }
 
 :root {
@@ -54,8 +23,8 @@ body {
   background-repeat: no-repeat;
 
   color: var(--foreground);
-  font-family: "Cafe24Gowoonbam", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "IyagiGGC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 button,
 input,

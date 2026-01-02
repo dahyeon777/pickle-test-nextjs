@@ -3,7 +3,7 @@
 export const horrorTestData8 = {
   id: 8,
   path: "/img/horror_test_main/horror8.png",
-  title: "계절에\n초대받았습니다",
+  title: "「계절에 초대받았습니다」",
   questions: [
     {
       questionId: 1,
