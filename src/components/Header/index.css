@@ -14,7 +14,7 @@ header {
 
 /* ★ 중요: 밤 버전 배경색 (header 태그에 night_mode가 붙었을 때) */
 header.night_mode {
-  background-color: #100000;
+  background-color: #06080a;
 }
 
 .header_top_bar {
