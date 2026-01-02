@@ -58,4 +58,7 @@ header.night_mode {
   .header_top_bar a {
     font-size: small;
   }
+  header{
+    justify-content: center;
+  }
 }
