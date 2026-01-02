@@ -27,7 +27,7 @@
   max-width: 800px;
   width: 80%;
   height: auto;
-  margin: 40px auto 10px auto;
+  margin: 40px auto 8px auto;
 }
 
 /* ===== 필름 카메라 시계 ===== */
@@ -54,7 +54,6 @@
   text-shadow: 0 0 6px rgba(149, 248, 149, 0.6);
 }
 
-
 .filmClock:hover {
   opacity: 1;
 }
@@ -75,8 +74,7 @@
   width: 85%;
   max-width: 800px;
   margin: 0 auto;
-  border-top: 1px solid #181818;
-  border-left: 1px solid #181818;
+  border-top: 1px solid #18181874;
   background-color: #ffffff;
 }
 
@@ -89,8 +87,7 @@
 .gridItem {
   position: relative;
   padding-top: 100%;
-  border-right: 1px solid #181818;
-  border-bottom: 1px solid #181818;
+  border-bottom: 1px solid #18181874;
 }
 
 .nightMode .gridItem {
