@@ -3,7 +3,7 @@
 export const horrorTestData4 = {
   id: 4,
   path: "/img/horror_test_main/horror4.png",
-  title: "「귀환 절차가 설명된 날」",
+  title: "💭\n「여기는 대답이\n먼저 도착한다2」",
   questions: [
     {
       questionId: 1,

@@ -95,7 +95,7 @@
   color: #333;
   font-size: 1rem;
   font-weight: 800;
-  word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 */
+  white-space: pre-wrap;/* 단어 단위 줄바꿈으로 깔끔하게 */
   line-height: 1.4;
 }
 /* ---------------------------------- */

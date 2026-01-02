@@ -2,25 +2,24 @@
 
 @font-face {
   font-family: "IyagiGGC";
-  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
-    format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap; /* 폰트 로딩 중에도 텍스트가 보이도록 설정 */
+  font-display: swap;
 }
+
 @font-face {
   font-family: "ImHyeMin";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2")
-    format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2") format("woff2");
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Paperozi";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2")
-    format("woff2");
-  font-weight: 800; /* 두께를 800으로 지정 */
+  /* 가독성 좋은 8ExtraBold 버전 */
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2") format("woff2");
+  font-weight: 800;
   font-display: swap;
 }
 
@@ -29,19 +28,20 @@
   --foreground: #171717;
 }
 
-/* 기존 body 스타일을 아래와 같이 수정하거나 대체하세요 */
 body {
-  /* 배경 이미지를 CSS에서 직접 제어 */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-
   color: var(--foreground);
-  font-family: "Paperozi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-weight: bold;
+
+  /* ✅ 이모지 폰트 설정: 텍스트는 Paperozi, 이모지는 시스템 기본 폰트로 출력 */
+  font-family: "Paperozi", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  
+  font-weight: 800;
 }
+
+/* 버튼이나 입력창에서도 폰트와 이모지가 잘 나오게 설정 */
 button,
 input,
 select,

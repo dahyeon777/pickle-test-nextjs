@@ -3,7 +3,7 @@ const pic5 = "/img/test_ready_img/pre_life.png";
 export const testData5 = {
   id: 5,
   path: pic5,
-  title: "전생 테스트",
+  title: "🎎\n전생\n테스트",
   questions: [
     // 질문 1 (Question 1)
     {

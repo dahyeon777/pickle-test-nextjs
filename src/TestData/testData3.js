@@ -3,7 +3,7 @@
 export const testData3 = {
   id: 3,
   path: "/img/test_ready_img/dessert.png", // pic3 대신 직접 경로
-  title: "달콤한 디저트 테스트",
+  title: "🍨\n달콤한\n디저트 테스트",
   questions: [
     {
       questionId: 1,

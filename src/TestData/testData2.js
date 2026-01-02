@@ -3,7 +3,7 @@ const pic2 = "img/test_ready_img/fortune_today.png";
 export const testData2 = {
   id: 2,
   path: pic2,
-  title: "오늘의 운세 테스트",
+  title: "🔮\n오늘의 운세\n테스트",
   questions: [
     // 질문 1 (Question 1)
     {
