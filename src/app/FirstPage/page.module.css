@@ -172,6 +172,10 @@
 
 @media screen and (max-width: 600px) {
   .grid-container {
-    grid-template-columns: 1fr;
+    width: 300px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .image_center {
+    width: 300px;
   }
 }
