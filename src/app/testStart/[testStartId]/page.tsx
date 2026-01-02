@@ -8,6 +8,7 @@ import ProgressBar from "../../../components/ProgressBar";
 import { AllTestQuestionsData } from "../../../TestData";
 import { AllHorrorQuestionsData } from "../../../HorrorTestData";
 import styles from "./page.module.css";
+import CoupangAd from "@/src/components/CoupangAd";
 
 // --- 1. 로직 분리: 결과 계산 함수들 ---
 
@@ -113,7 +114,7 @@ function TestStartPage() {
         total={nowTest.questions.length}
         color={isHorrorMode ? "#ff0000" : "#4CAF50"}
       />
-
+      <CoupangAd isNight={isHorrorMode} />
       <div className={styles.radio_frame}>
         <h2 className={styles.answer_title}>{nowTest.title}</h2>
         <h3 className={styles.question_text}>
@@ -135,16 +136,18 @@ function TestStartPage() {
       </div>
 
       <button
-        className={`${styles.button1} ${isHorrorMode ? styles.horror_button : styles.normal_button}`}
+        className={`${styles.button1} ${
+          isHorrorMode ? styles.horror_button : styles.normal_button
+        }`}
         disabled={!selectedOption}
         onClick={nextquestion}
       >
-        {questionIndex === nowTest.questions.length - 1 ? "결과 확인하기" : "다음 질문"}
+        {questionIndex === nowTest.questions.length - 1
+          ? "결과 확인하기"
+          : "다음 질문"}
       </button>
     </div>
   );
 }
 
 export default TestStartPage;
-
-

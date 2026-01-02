@@ -9,17 +9,18 @@ import CoupangAd from "@/src/components/CoupangAd";
 function FirstPage({ isNight, toggleMode }) {
   const currentDataList = isNight ? horrorTestDataList : testDataList;
 
-  const imageList = currentDataList.map(({ path, id }, index) => (
+  const imageList = currentDataList.map(({ id, title }, index) => (
     <div className={styles["grid-item"]} key={index}>
-      {/* mode 쿼리 파라미터를 추가합니다 */}
       <Link href={`/testReady/${id}?mode=${isNight ? 'horror' : 'normal'}`}>
-        <img src={path} alt="테스트이미지" />
+        {/* 이미지 대신 텍스트 박스 사용 */}
+        <div className={styles.testTitleBox}>
+          <span className={styles.testTitleText}>{title}</span>
+        </div>
       </Link>
     </div>
   ));
 
   return (
-    /* pageWrapper는 공통, nightMode/dayMode로 배경색 결정 */
     <div
       className={`${styles.pageWrapper} ${
         isNight ? styles.nightMode : styles.dayMode
@@ -37,12 +38,9 @@ function FirstPage({ isNight, toggleMode }) {
         />
       </div>
 
-      {/* <section className={styles.section}></section> */}
-
       <main className={styles.mainArea}>
         <div className={styles.horrorButtonWrapper}>
           <button className={styles.horrorButton} onClick={toggleMode}>
-            {/* 전조등 색상 변경: 밤엔 초록(Day로 돌아가기), 낮엔 빨강(Night로 가기) */}
             <div
               className={isNight ? styles.greenLight : styles.redLight}
             ></div>

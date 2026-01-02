@@ -8,6 +8,7 @@ import { testDataList } from "../../../TestData";
 import { horrorTestDataList } from "../../../HorrorTestData"; // 호러 데이터 임포트
 import LargeButton from "../../../components/Button/LargeButton";
 import styles from "./page.module.css";
+import CoupangAd from "@/src/components/CoupangAd";
 
 function TestReadyPage() {
   const params = useParams();
@@ -51,6 +52,7 @@ function TestReadyPage() {
   return (
     /* 호러 모드일 경우 배경색 등을 제어하기 위해 클래스를 동적으로 부여합니다 */
     <div className={`${styles.container} ${isHorrorMode ? styles.nightMode : styles.dayMode}`}>
+      <CoupangAd isNight={isHorrorMode} />
       <h1 className={styles.title}>{testTitle}</h1>
       <img
         className={styles.img_test_main}

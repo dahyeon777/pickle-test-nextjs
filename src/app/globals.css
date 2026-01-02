@@ -8,6 +8,21 @@
   font-style: normal;
   font-display: swap; /* 폰트 로딩 중에도 텍스트가 보이도록 설정 */
 }
+@font-face {
+  font-family: "ImHyeMin";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperozi";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2")
+    format("woff2");
+  font-weight: 800; /* 두께를 800으로 지정 */
+  font-display: swap;
+}
 
 :root {
   --background: none;
@@ -23,8 +38,9 @@ body {
   background-repeat: no-repeat;
 
   color: var(--foreground);
-  font-family: "IyagiGGC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: "Paperozi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
 }
 button,
 input,

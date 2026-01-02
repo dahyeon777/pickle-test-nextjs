@@ -7,6 +7,7 @@ import { AllTestQuestionsData } from "../../../../TestData";
 import { AllHorrorQuestionsData } from "../../../../HorrorTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
+import CoupangAd from "@/src/components/CoupangAd";
 
 function TestResultPage() {
   const params = useParams();

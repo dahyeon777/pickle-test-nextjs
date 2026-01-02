@@ -20,9 +20,7 @@
 
 /* 밤 모드 스타일 - 블랙 배경과 어두운 테두리 */
 .nightMode {
-  background-color: #1a1a1a;
-  border: 2px solid #4a0000; /* 핏빛 테두리 */
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.15); /* 은은한 레드광 */
+  background-color: #ffffff7f;
 }
 
 .rightSide {
@@ -38,13 +36,13 @@
   width: 5px;
 }
 .adWrapper::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  background-color: #83b284;
   border-radius: 10px;
 }
 
 /* 밤 모드용 스크롤바 */
 .nightMode::-webkit-scrollbar-thumb {
-  background-color: #444;
+  background-color: #561111ed;
 }
 
 .adItem {
