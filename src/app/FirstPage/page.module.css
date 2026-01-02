@@ -1,37 +1,77 @@
 .pageWrapper {
   width: 100%;
   min-height: 100vh;
-  transition: background-color 0.5s ease;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.5s ease;
 }
 
 .dayMode {
   background-color: #ffffff;
 }
+
 .nightMode {
   background-color: #181818;
 }
 
+/* ===== 메인 이미지 ===== */
+
 .container {
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
-.image_center {
+.imageCenter {
   max-width: 800px;
   width: 80%;
   height: auto;
-  margin: 20px auto 0 auto;
+  margin: 40px auto 10px auto;
 }
 
-/* 그리드 컨테이너: 상단/좌측 보더로 마감 */
-.grid-container {
+/* ===== 필름 카메라 시계 ===== */
+
+.filmClock {
+  position: absolute;
+  top: 50px;
+  right: 50%;
+  transform: translateX(390px);
+
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+
+  color: #ffea82; /* 오래된 필름 노랑 */
+  opacity: 0.9;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nightMode .filmClock {
+  color: #a1f8a1;
+  text-shadow: 0 0 6px rgba(149, 248, 149, 0.6);
+}
+
+
+.filmClock:hover {
+  opacity: 1;
+}
+
+/* ===== 메인 영역 ===== */
+
+.mainArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== 그리드 ===== */
+
+.gridContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0; /* 간격을 없애야 깔끔합니다 */
+  grid-template-columns: repeat(4, 1fr);
   width: 85%;
   max-width: 800px;
   margin: 0 auto;
@@ -40,46 +80,40 @@
   background-color: #ffffff;
 }
 
-.nightMode .grid-container {
+.nightMode .gridContainer {
   background-color: #1a1a1a;
-  border-color: #000000;
+  border-color: #6f8e7567;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-/* 그리드 아이템: 우측/하단 보더로 격자 완성 */
-.grid-item {
-  padding-top: 100%;
+.gridItem {
   position: relative;
+  padding-top: 100%;
   border-right: 1px solid #181818;
   border-bottom: 1px solid #181818;
-  transition: background-color 0.3s ease;
 }
 
-.nightMode .grid-item {
-  border-color: #000000;
+.nightMode .gridItem {
+  border-color: #6f8e7567;
 }
 
-.grid-item:hover {
+.gridItem:hover {
   background-color: #f8f8f8;
-  cursor: pointer;
 }
 
-.nightMode .grid-item:hover {
+.nightMode .gridItem:hover {
   background-color: #222;
 }
 
-/* 텍스트 컨테이너 */
+/* ===== 텍스트 ===== */
+
 .textWrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 15px;
-  box-sizing: border-box;
+  justify-content: center;
+  padding: 14px;
 }
 
 .testTitle {
@@ -87,95 +121,35 @@
   font-weight: 600;
   color: #181818;
   text-align: center;
-  word-break: keep-all;
   line-height: 1.6;
-  letter-spacing: -0.02em; /* 자간을 살짝 좁히면 더 세련돼 보임 */
-  transition: transform 0.3s ease;
-  white-space: pre-wrap;
+  letter-spacing: -0.02em;
 }
 
 .nightMode .testTitle {
-  color: #00ff00;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+  color: #95f595;
+  text-shadow: 0 0 5px rgba(113, 238, 113, 0.4);
 }
 
-.grid-item:hover .testTitle {
-  transform: scale(1.03); /* 아주 살짝만 커지게 */
-}
-
-/* 메인 영역 및 버튼 */
-.mainArea {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.horrorButtonWrapper {
-  position: absolute;
-  top: -15px;
-  right: calc(50% - 400px + 10px);
-  z-index: 20;
-}
-
-.horrorButton {
-  display: flex;
-  align-items: center;
-  background-color: #181818;
-  border: 1px solid #333;
-  padding: 5px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.redLight {
-  width: 8px;
-  height: 8px;
-  background-color: #ff0000;
-  border-radius: 50%;
-  margin-right: 6px;
-  animation: blinkRed 0.8s infinite alternate;
-}
-.greenLight {
-  width: 8px;
-  height: 8px;
-  background-color: #00ff00;
-  border-radius: 50%;
-  margin-right: 6px;
-  box-shadow: 0 0 5px #00ff00;
-}
-.horrorText {
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-@keyframes blinkRed {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-    box-shadow: 0 0 8px #ff0000;
-  }
-}
+/* ===== 반응형 ===== */
 
 @media screen and (max-width: 850px) {
-  .horrorButtonWrapper {
-    right: 7%;
-  }
-  .grid-container {
+  .gridContainer {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .filmClock {
+    right: 6%;
+    top: 18px;
+    font-size: 12px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .grid-container {
+  .gridContainer {
     width: 300px;
-    grid-template-columns: 1fr 1fr;
   }
-  .image_center {
+
+  .imageCenter {
     width: 300px;
   }
 }
