@@ -12,7 +12,6 @@ function FirstPage({ isNight, toggleMode }) {
   const imageList = currentDataList.map(({ id, title }, index) => (
     <div className={styles["grid-item"]} key={index}>
       <Link href={`/testReady/${id}?mode=${isNight ? 'horror' : 'normal'}`}>
-        {/* 이미지 대신 텍스트 박스 사용 */}
         <div className={styles.testTitleBox}>
           <span className={styles.testTitleText}>{title}</span>
         </div>
@@ -21,18 +20,17 @@ function FirstPage({ isNight, toggleMode }) {
   ));
 
   return (
-    <div
-      className={`${styles.pageWrapper} ${
-        isNight ? styles.nightMode : styles.dayMode
-      }`}
-    >
+    <div className={`${styles.pageWrapper} ${isNight ? styles.nightMode : styles.dayMode}`}>
+      {/* --- 피클 아이콘들 추가 --- */}
+      <img src="/img/pickle_icon.png" className={`${styles.floatingPickle} ${styles.pickle1}`} alt="pickle" />
+      <img src="/img/pickle_icon.png" className={`${styles.floatingPickle} ${styles.pickle2}`} alt="pickle" />
+      {/* ----------------------- */}
+
       <CoupangAd isNight={isNight} />
 
       <div className={styles.container}>
         <img
-          src={
-            isNight ? "/img/hero_text_img_horror.png" : "/img/hero_text_img.png"
-          }
+          src={isNight ? "/img/hero_text_img_horror.png" : "/img/hero_text_img.png"}
           alt="히어로 이미지"
           className={styles.image_center}
         />
@@ -41,15 +39,10 @@ function FirstPage({ isNight, toggleMode }) {
       <main className={styles.mainArea}>
         <div className={styles.horrorButtonWrapper}>
           <button className={styles.horrorButton} onClick={toggleMode}>
-            <div
-              className={isNight ? styles.greenLight : styles.redLight}
-            ></div>
-            <span className={styles.horrorText}>
-              {isNight ? "Day" : "Night"}
-            </span>
+            <div className={isNight ? styles.greenLight : styles.redLight}></div>
+            <span className={styles.horrorText}>{isNight ? "Day" : "Night"}</span>
           </button>
         </div>
-
         <div className={styles["grid-container"]}>{imageList}</div>
       </main>
 
