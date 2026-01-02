@@ -112,8 +112,8 @@
 
 .horrorButtonWrapper {
   position: absolute;
-  top: -15px;
-  right: calc(50% - 400px + 10px);
+  top: -45px;
+  right: calc(50% - 350px + 10px);
   z-index: 20;
 }
 
