@@ -3,7 +3,7 @@
 export const horrorTestData7 = {
   id: 7,
   path: "/img/horror_test_main/horror7.png",
-  title: "「인수인계」",
+  title: "인수인계",
   questions: [
     {
       questionId: 1,

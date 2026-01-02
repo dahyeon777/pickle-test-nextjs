@@ -20,7 +20,7 @@ header.night_mode {
 .header_top_bar {
   display: flex;
   margin-left: 16px;
-  color: #518c35; /* 낮 버전 초록색 */
+  color: #59714c; /* 낮 버전 초록색 */
   font-weight: bold;
 }
 

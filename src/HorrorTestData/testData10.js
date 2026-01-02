@@ -3,7 +3,7 @@
 export const horrorTestData10 = {
   id: 10,
   path: "/img/horror_test_main/horror10.png",
-  title: "「창귀(倀鬼)」",
+  title: "야생동물",
   questions: [
     {
       questionId: 1,

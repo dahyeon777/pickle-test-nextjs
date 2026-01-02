@@ -3,7 +3,7 @@
 export const horrorTestData9 = {
   id: 9,
   path: "/img/horror_test_main/horror9.png",
-  title: "「등대 근무 지침서」",
+  title: "등대 근무\n지침서",
   questions: [
     {
       questionId: 1,

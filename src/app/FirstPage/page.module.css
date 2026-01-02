@@ -1,4 +1,3 @@
-/* 전체 레이아웃 설정 */
 .pageWrapper {
   width: 100%;
   min-height: 100vh;
@@ -7,26 +6,11 @@
   flex-direction: column;
 }
 
-/* 낮 버전 배경색 */
 .dayMode {
   background-color: #ffffff;
 }
-
-/* 밤 버전 배경색 */
 .nightMode {
   background-color: #181818;
-}
-
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-1deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(1deg);
-  }
 }
 
 .container {
@@ -37,71 +21,89 @@
 }
 
 .image_center {
-  max-width: 600px;
+  max-width: 800px;
   width: 80%;
   height: auto;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
 }
 
-/* 그리드 컨테이너 */
+/* 그리드 컨테이너: 상단/좌측 보더로 마감 */
 .grid-container {
-  background-color: #ebba92;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 0; /* 간격을 없애야 깔끔합니다 */
   width: 85%;
-  max-width: 900px;
-  padding: 10px;
+  max-width: 800px;
   margin: 0 auto;
-  border-radius: 10px;
-  border: 2px solid #504135;
-  transition: all 0.5s ease;
+  border-top: 1px solid #181818;
+  border-left: 1px solid #181818;
+  background-color: #ffffff;
 }
 
-/* 밤 모드일 때 그리드 박스 변경 */
 .nightMode .grid-container {
-  background-color: #2c3f1e; /* 내부 검정색 */
-  border-color: #000000; /* 핏빛 테두리 */
-  box-shadow: 0 0 20px rgba(43, 255, 0, 0.2);
+  background-color: #1a1a1a;
+  border-color: #000000;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
+/* 그리드 아이템: 우측/하단 보더로 격자 완성 */
 .grid-item {
   padding-top: 100%;
   position: relative;
-  transition: transform 0.2s;
+  border-right: 1px solid #181818;
+  border-bottom: 1px solid #181818;
+  transition: background-color 0.3s ease;
+}
+
+.nightMode .grid-item {
+  border-color: #000000;
 }
 
 .grid-item:hover {
-  transform: translateY(-2px);
+  background-color: #f8f8f8;
   cursor: pointer;
 }
-.grid-item:hover img {
-  /* 이미지를 세피아 톤으로 만든 뒤, 색상을 회전시켜 연두색 지점을 찾습니다 */
-  filter: sepia(100%) hue-rotate(50deg) saturate(200%);
-  transition: filter 0.3s ease;
+
+.nightMode .grid-item:hover {
+  background-color: #222;
 }
-.grid-item img {
-  border: 2px solid #6356469e;
-  border-radius: 8px;
+
+/* 텍스트 컨테이너 */
+.textWrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
-/* 밤 모드일 때 아이템 이미지 테두리 변경 */
-.nightMode .grid-item img {
-  border-color: #024a00;
+.testTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #181818;
+  text-align: center;
+  word-break: keep-all;
+  line-height: 1.6;
+  letter-spacing: -0.02em; /* 자간을 살짝 좁히면 더 세련돼 보임 */
+  transition: transform 0.3s ease;
+  white-space: pre-wrap;
 }
 
-.section {
-  height: 40px;
+.nightMode .testTitle {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
 }
 
-/* 버튼 관련 */
+.grid-item:hover .testTitle {
+  transform: scale(1.03); /* 아주 살짝만 커지게 */
+}
+
+/* 메인 영역 및 버튼 */
 .mainArea {
   position: relative;
   width: 100%;
@@ -120,68 +122,56 @@
 .horrorButton {
   display: flex;
   align-items: center;
-  background-color: rgba(20, 20, 20, 0.85);
-  border: 2px solid #333;
-  padding: 6px 14px;
-  border-radius: 25px;
+  background-color: #181818;
+  border: 1px solid #333;
+  padding: 5px 12px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-/* 빨간불 애니메이션 */
 .redLight {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #ff0000;
   border-radius: 50%;
-  margin-right: 8px;
-  animation: blinkRed 0.6s infinite alternate;
+  margin-right: 6px;
+  animation: blinkRed 0.8s infinite alternate;
 }
-
-/* 밤 모드일 때 켜지는 초록불 */
 .greenLight {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #00ff00;
   border-radius: 50%;
-  margin-right: 8px;
-  box-shadow: 0 0 8px #00ff00;
+  margin-right: 6px;
+  box-shadow: 0 0 5px #00ff00;
 }
-
 .horrorText {
-  color: #eee;
-  font-size: 12px;
-  font-weight: 800;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 @keyframes blinkRed {
-  0% {
-    opacity: 0.4;
-    box-shadow: 0 0 2px #ff0000;
+  from {
+    opacity: 0.5;
   }
-  100% {
+  to {
     opacity: 1;
-    box-shadow: 0 0 12px #ff0000;
+    box-shadow: 0 0 8px #ff0000;
   }
 }
 
-/* 반응형 조정 */
 @media screen and (max-width: 850px) {
   .horrorButtonWrapper {
-    right: 8%;
+    right: 7%;
   }
   .grid-container {
     grid-template-columns: 1fr 1fr;
-    max-width: 600px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .grid-container {
     grid-template-columns: 1fr;
-    max-width: 320px;
-  }
-  .image_center {
-    max-width: 300px;
   }
 }

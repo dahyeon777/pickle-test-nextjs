@@ -4,29 +4,26 @@ import { testDataList } from "../../TestData";
 import { horrorTestDataList } from "../../HorrorTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
-import CoupangAd from "@/src/components/CoupangAd";
 
 function FirstPage({ isNight, toggleMode }) {
   const currentDataList = isNight ? horrorTestDataList : testDataList;
 
-  const imageList = currentDataList.map(({ path, id }, index) => (
+  const titleList = currentDataList.map(({ title, id }, index) => (
     <div className={styles["grid-item"]} key={index}>
-      {/* mode 쿼리 파라미터를 추가합니다 */}
-      <Link href={`/testReady/${id}?mode=${isNight ? 'horror' : 'normal'}`}>
-        <img src={path} alt="테스트이미지" />
+      <Link href={`/testReady/${id}?mode=${isNight ? "horror" : "normal"}`}>
+        <div className={styles.textWrapper}>
+          <span className={styles.testTitle}>{title}</span>
+        </div>
       </Link>
     </div>
   ));
 
   return (
-    /* pageWrapper는 공통, nightMode/dayMode로 배경색 결정 */
     <div
       className={`${styles.pageWrapper} ${
         isNight ? styles.nightMode : styles.dayMode
       }`}
     >
-      <CoupangAd isNight={isNight} />
-
       <div className={styles.container}>
         <img
           src={
@@ -37,12 +34,9 @@ function FirstPage({ isNight, toggleMode }) {
         />
       </div>
 
-      {/* <section className={styles.section}></section> */}
-
       <main className={styles.mainArea}>
         <div className={styles.horrorButtonWrapper}>
           <button className={styles.horrorButton} onClick={toggleMode}>
-            {/* 전조등 색상 변경: 밤엔 초록(Day로 돌아가기), 낮엔 빨강(Night로 가기) */}
             <div
               className={isNight ? styles.greenLight : styles.redLight}
             ></div>
@@ -52,10 +46,9 @@ function FirstPage({ isNight, toggleMode }) {
           </button>
         </div>
 
-        <div className={styles["grid-container"]}>{imageList}</div>
+        <div className={styles["grid-container"]}>{titleList}</div>
       </main>
-
-      <section className={styles.section}></section>
+      <section style={{ height: "40px" }}></section>
     </div>
   );
 }

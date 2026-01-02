@@ -3,7 +3,7 @@
 export const horrorTestData1 = {
   id: 1,
   path: "/img/horror_test_main/horror1.png",
-  title: "「아직 당신의 이름은 불리지 않았습니다」",
+  title: "아직 당신의 이름은\n불리지 않았습니다",
   questions: [
     {
       questionId: 1,
