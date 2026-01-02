@@ -25,7 +25,7 @@
   10% {
     margin-top: -1px;
     margin-left: 332px; /* PC 기준 위치에서 살짝 틀어짐 */
-    text-shadow: 2px 0 #ffea82, -2px 0 #ff6b6b;
+    text-shadow: 2px 0 #9d00ff, -3px 0 #ff0000;
   }
   15% {
     margin-top: 1px;
@@ -48,7 +48,7 @@
   }
   10% {
     right: 10.5%;
-    text-shadow: 1px 0 #ffea82, -1px 0 #ff6b6b;
+    text-shadow: 1px 0 #9d00ff, -2px 0 #ff0000;
   }
   20% {
     right: 9.5%;
