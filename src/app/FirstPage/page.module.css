@@ -14,6 +14,72 @@
   background-color: #06080a;
 }
 
+/* ===== 애니메이션 정의 (Keyframes) ===== */
+
+/* 1. 시계 전용: 위치값을 유지하며 지지직거리는 효과 */
+@keyframes clockGlitch {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  10% {
+    margin-top: -1px;
+    margin-left: 332px; /* PC 기준 위치에서 살짝 틀어짐 */
+    text-shadow: 2px 0 #ffea82, -2px 0 #ff6b6b;
+  }
+  15% {
+    margin-top: 1px;
+    margin-left: 328px;
+    opacity: 0.7;
+  }
+  20% {
+    margin-top: 0;
+    margin-left: 330px;
+    filter: blur(0.5px);
+  }
+}
+
+/* 2. 모바일 시계 전용: right 기준 지지직 효과 */
+@keyframes clockGlitchMobile {
+  0%,
+  100% {
+    right: 10%;
+    opacity: 0.9;
+  }
+  10% {
+    right: 10.5%;
+    text-shadow: 1px 0 #ffea82, -1px 0 #ff6b6b;
+  }
+  20% {
+    right: 9.5%;
+    opacity: 0.7;
+  }
+}
+
+/* 3. 타이틀/범용: 제자리에서 지지직거리는 효과 */
+@keyframes textGlitch {
+  0%,
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(2px, -1px);
+    text-shadow: 1px 0 #ff6b6b, -1px 0 #77be99;
+  }
+  60% {
+    transform: translate(-1px, -1px);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+}
+
 /* ===== 메인 이미지 ===== */
 
 .container {
@@ -31,36 +97,12 @@
 }
 
 /* ===== 필름 카메라 시계 ===== */
-@keyframes glitch {
-  0%,
-  100% {
-    opacity: 0.9;
-    filter: blur(0);
-  }
-  10% {
-    /* translate 대신 skew나 약간의 여백 이동 사용 */
-    margin-top: -1px;
-    margin-left: 332px; /* 살짝 옆으로 튐 */
-    text-shadow: 2px 0 #ffea82, -2px 0 #ff6b6b;
-  }
-  15% {
-    margin-top: 1px;
-    margin-left: 328px;
-    opacity: 0.7;
-  }
-  20% {
-    margin-top: 0;
-    margin-left: 330px; /* 제자리 */
-    filter: blur(0.5px);
-  }
-}
 
 .filmClock {
   position: absolute;
   top: 50px;
-  /* transform: translateX(390px); 대신 아래 방식을 권장합니다 */
   left: 50%;
-  margin-left: 330px; /* 중앙에서 오른쪽으로 330px 밀기 (이미지 크기에 맞춰 조절) */
+  margin-left: 330px; /* 중앙 기준 오른쪽 배치 */
 
   font-family: "Courier New", monospace;
   font-size: 16px;
@@ -70,30 +112,31 @@
   opacity: 0.9;
   cursor: pointer;
   user-select: none;
+  z-index: 10;
 
-  /* 애니메이션 적용 */
-  animation: glitch 3s infinite;
+  /* 평상시 지지직 효과 */
+  animation: clockGlitch 3s infinite;
 }
 
 .nightMode .filmClock {
   color: #77bea9;
   text-shadow: 0 0 6px #a9be77;
-  animation: glitch 2.5s infinite;
+  animation: clockGlitch 2.5s infinite;
 }
 
 .filmClock:hover {
   opacity: 1;
+  /* 호버 시 더 빠르게 지지직 */
+  animation: textGlitch 0.1s infinite;
 }
 
-/* ===== 메인 영역 ===== */
+/* ===== 메인 영역 & 그리드 ===== */
 
 .mainArea {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-
-/* ===== 그리드 ===== */
 
 .gridContainer {
   display: grid;
@@ -115,6 +158,8 @@
   position: relative;
   padding-top: 100%;
   border-bottom: 1px solid #18181874;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .nightMode .gridItem {
@@ -129,7 +174,7 @@
   background-color: #06080a;
 }
 
-/* ===== 텍스트 ===== */
+/* ===== 텍스트 & 호버 효과 ===== */
 
 .textWrapper {
   position: absolute;
@@ -147,6 +192,12 @@
   text-align: center;
   line-height: 1.6;
   letter-spacing: -0.02em;
+  transition: color 0.2s;
+}
+
+/* 그리드 아이템 호버 시 타이틀 흔들림 */
+.gridItem:hover .testTitle {
+  animation: textGlitch 0.8s infinite;
 }
 
 .nightMode .testTitle {
@@ -154,52 +205,115 @@
   text-shadow: 0 0 5px #77be99;
 }
 
-/* ===== 반응형 ===== */
+.nightMode .gridItem:hover .testTitle {
+  color: #fff;
+}
+/* ===== 모달 스타일 ===== */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85); /* 배경 어둡게 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px); /* 배경 살짝 흐리게 */
+}
+
+.modalBox {
+  background-color: #06080a;
+  border: 1px solid #77be8f67;
+  padding: 30px;
+  text-align: center;
+  max-width: 320px;
+  width: 85%;
+  box-shadow: 0 0 20px rgba(119, 190, 143, 0.2);
+}
+
+.modalWarning {
+  color: #ff6b6b;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  margin-bottom: 15px;
+  /* 시계처럼 미세하게 지지직거리게 재사용 가능 */
+  animation: textGlitch 0.5s infinite;
+}
+
+.modalText {
+  color: #77be8f;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modalSubText {
+  color: #cfcfcf;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirmBtn,
+.cancelBtn {
+  background: none;
+  border: 1px solid #77be8f67;
+  color: #77be8f;
+  padding: 8px 25px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.confirmBtn:hover {
+  background-color: #77be8f;
+  color: #06080a;
+}
+
+.cancelBtn {
+  border-color: #444;
+  color: #444;
+}
+
+.cancelBtn:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+/* ===== 반응형 (모바일 최적화) ===== */
 
 @media screen and (max-width: 850px) {
   .gridContainer {
-    grid-template-columns: repeat(2, 1fr); /* 2열로 변경 */
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  /* 시계가 이미지 영역 안으로 들어오도록 조정 */
   .filmClock {
     left: auto;
     right: 10%;
-    margin-left: 0; /* PC용 마진 제거 */
-    animation: glitchMobile 3s infinite;
+    margin-left: 0;
+    animation: clockGlitchMobile 3s infinite;
   }
 }
 
 @media screen and (max-width: 600px) {
   .gridContainer {
-    width: 90%; /* 고정 300px보다는 유연한 % 추천 */
+    width: 90%;
   }
 
   .imageCenter {
     width: 90%;
   }
 
-  /* 모바일에서 시계 가독성을 위해 위치 재조정 */
   .filmClock {
-    left: auto;
-    right: 10%;
-    margin-left: 0; /* PC용 마진 제거 */
-    animation: glitchMobile 3s infinite;
-  }
-}
-
-@keyframes glitchMobile {
-  0%,
-  100% {
-    right: 10%;
-    opacity: 0.9;
-  }
-  10% {
-    right: 10.5%;
-    text-shadow: 1px 0 #ffea82, -1px 0 #ff6b6b;
-  }
-  20% {
-    right: 9.5%;
-    opacity: 0.7;
+    top: 45px;
+    right: 8%;
+    font-size: 14px;
   }
 }
