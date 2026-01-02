@@ -31,27 +31,54 @@
 }
 
 /* ===== 필름 카메라 시계 ===== */
+@keyframes glitch {
+  0%,
+  100% {
+    opacity: 0.9;
+    filter: blur(0);
+  }
+  10% {
+    /* translate 대신 skew나 약간의 여백 이동 사용 */
+    margin-top: -1px;
+    margin-left: 332px; /* 살짝 옆으로 튐 */
+    text-shadow: 2px 0 #ffea82, -2px 0 #ff6b6b;
+  }
+  15% {
+    margin-top: 1px;
+    margin-left: 328px;
+    opacity: 0.7;
+  }
+  20% {
+    margin-top: 0;
+    margin-left: 330px; /* 제자리 */
+    filter: blur(0.5px);
+  }
+}
 
 .filmClock {
   position: absolute;
   top: 50px;
-  right: 50%;
-  transform: translateX(390px);
+  /* transform: translateX(390px); 대신 아래 방식을 권장합니다 */
+  left: 50%;
+  margin-left: 330px; /* 중앙에서 오른쪽으로 330px 밀기 (이미지 크기에 맞춰 조절) */
 
   font-family: "Courier New", monospace;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.22em;
-
-  color: #ffea82; /* 오래된 필름 노랑 */
+  color: #ffea82;
   opacity: 0.9;
   cursor: pointer;
   user-select: none;
+
+  /* 애니메이션 적용 */
+  animation: glitch 3s infinite;
 }
 
 .nightMode .filmClock {
   color: #77bea9;
   text-shadow: 0 0 6px #a9be77;
+  animation: glitch 2.5s infinite;
 }
 
 .filmClock:hover {
@@ -136,9 +163,10 @@
 
   /* 시계가 이미지 영역 안으로 들어오도록 조정 */
   .filmClock {
-    right: 10%; /* 오른쪽 여백 기준 */
-    transform: none; /* 고정 픽셀 이동 해제 */
-    top: 45px;
+    left: auto;
+    right: 10%;
+    margin-left: 0; /* PC용 마진 제거 */
+    animation: glitchMobile 3s infinite;
   }
 }
 
@@ -153,9 +181,25 @@
 
   /* 모바일에서 시계 가독성을 위해 위치 재조정 */
   .filmClock {
-    right: 7%;
-    top: 42px;
-    font-size: 14px; /* 글자 크기 살짝 축소 */
-    letter-spacing: 0.1em;
+    left: auto;
+    right: 10%;
+    margin-left: 0; /* PC용 마진 제거 */
+    animation: glitchMobile 3s infinite;
+  }
+}
+
+@keyframes glitchMobile {
+  0%,
+  100% {
+    right: 10%;
+    opacity: 0.9;
+  }
+  10% {
+    right: 10.5%;
+    text-shadow: 1px 0 #ffea82, -1px 0 #ff6b6b;
+  }
+  20% {
+    right: 9.5%;
+    opacity: 0.7;
   }
 }
