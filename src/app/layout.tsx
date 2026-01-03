@@ -2,6 +2,7 @@
 import "./globals.css";
 import React from "react";
 import { Metadata } from "next";
+import Script from "next/script"; // 1. Script 컴포넌트 추가
 
 export const metadata: Metadata = {
   title: "피클테스트",
@@ -21,13 +22,6 @@ export const metadata: Metadata = {
     description: "당신은 어떤 피클일까요?",
     url: "https://pickletest.com",
     siteName: "Pickle Test",
-    // images: [
-    //   {
-    //     url: "/og-image.png", // public 폴더에 넣은 이미지 경로
-    //     width: 1200,
-    //     height: 630,
-    //   },
-    // ],
     locale: "ko_KR",
     type: "website",
   },
@@ -40,6 +34,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        {/* 2. 구글 애드센스 스크립트 삽입 */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6955061481766922"
+          crossOrigin="anonymous"
+          strategy="afterInteractive" // 페이지 로드 후 부드럽게 실행
+        />
+      </head>
       <body>
         <main>{children}</main>
       </body>
