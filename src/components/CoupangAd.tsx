@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import styles from "./CoupangAd.module.css";
+import { useThemeStore } from "@/src/store/useThemeStore"; // 1. 스토어 임포트
 
-// 부모(Home)로부터 isNight 상태를 전달받습니다.
-export default function CoupangAd({ isNight }: { isNight: boolean }) {
+export default function CoupangAd() {
   const [isMounted, setIsMounted] = useState(false);
+  
+  // 2. Zustand 스토어에서 isHorror 상태 가져오기
+  const { isHorror } = useThemeStore();
 
   useEffect(() => {
     setIsMounted(true);
@@ -27,7 +30,7 @@ export default function CoupangAd({ isNight }: { isNight: boolean }) {
     ],
   };
 
-  // 밤 버전 광고 데이터 (여기에 공포용 광고 URL을 넣으세요)
+  // 밤 버전 광고 데이터
   const nightAds = {
     left: [
       "https://coupa.ng/ck9mRm",
@@ -43,7 +46,8 @@ export default function CoupangAd({ isNight }: { isNight: boolean }) {
     ],
   };
 
-  const currentAds = isNight ? nightAds : dayAds;
+  // 3. isHorror 상태에 따라 광고셋 결정
+  const currentAds = isHorror ? nightAds : dayAds;
 
   const renderAds = (urls: string[]) =>
     urls.map((url, index) => (
@@ -69,7 +73,7 @@ export default function CoupangAd({ isNight }: { isNight: boolean }) {
     <>
       <aside
         className={`${styles.adWrapper} ${styles.leftSide} ${
-          isNight ? styles.nightMode : ""
+          isHorror ? styles.nightMode : ""
         }`}
       >
         {renderAds(currentAds.left)}
@@ -77,7 +81,7 @@ export default function CoupangAd({ isNight }: { isNight: boolean }) {
 
       <aside
         className={`${styles.adWrapper} ${styles.rightSide} ${
-          isNight ? styles.nightMode : ""
+          isHorror ? styles.nightMode : ""
         }`}
       >
         {renderAds(currentAds.right)}

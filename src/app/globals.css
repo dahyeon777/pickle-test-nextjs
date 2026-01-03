@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: "IyagiGGC";
-  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff") format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/JuwanPark/IyagiGGC@latest/IyagiGGC.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: "ImHyeMin";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2")
+    format("woff2");
   font-weight: normal;
   font-display: swap;
 }
@@ -18,7 +20,8 @@
 @font-face {
   font-family: "Paperozi";
   /* 가독성 좋은 8ExtraBold 버전 */
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2")
+    format("woff2");
   font-weight: 800;
   font-display: swap;
 }
@@ -29,15 +32,15 @@
 }
 
 body {
-  background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: var(--foreground);
 
   /* ✅ 이모지 폰트 설정: 텍스트는 Paperozi, 이모지는 시스템 기본 폰트로 출력 */
-  font-family: "Paperozi", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-  
+  font-family: "Paperozi", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+
   font-weight: 800;
 }
 

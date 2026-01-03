@@ -1,17 +1,16 @@
 "use client";
 export const runtime = "edge";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import RadioOption from "../../../components/RadioOption";
 import ProgressBar from "../../../components/ProgressBar";
 import { AllTestQuestionsData } from "../../../TestData";
 import { AllHorrorQuestionsData } from "../../../HorrorTestData";
+import { useThemeStore } from "@/src/store/useThemeStore"; // 1. 스토어 임포트
 import styles from "./page.module.css";
 
-// --- 1. 로직 분리: 결과 계산 함수들 ---
-
-// 일반 모드: MBTI 계산 로직
+// --- 로직 분리: 결과 계산 함수들 (동일) ---
 function calculateMbti(scores: any) {
   const E_I = (scores.E_score || 0) >= (scores.I_score || 0) ? "E" : "I";
   const S_N = (scores.S_score || 0) >= (scores.N_score || 0) ? "S" : "N";
@@ -20,14 +19,10 @@ function calculateMbti(scores: any) {
   return E_I + S_N + T_F + J_P;
 }
 
-// 호러 모드: 가장 높은 가중치를 가진 타입을 TYPE_X 형태로 반환
 function calculateHorrorScore(scores: any) {
-  // scores에 담긴 키(R, B, J, O, C) 중 가장 값이 큰 키를 찾습니다.
   const topType = Object.keys(scores).reduce((a, b) =>
     (scores[a] || 0) > (scores[b] || 0) ? a : b
   );
-
-  // 결과 페이지에서 HorrorTestData의 results 객체와 매칭하기 위해 TYPE_를 붙여줍니다.
   return `TYPE_${topType}`;
 }
 
@@ -36,11 +31,13 @@ function TestStartPage() {
   const params = useParams();
   const searchParams = useSearchParams();
 
-  const mode = searchParams.get("mode") || "normal";
-  const isHorrorMode = mode === "horror";
+  // 2. 스토어 상태 및 테마 설정 함수 가져오기
+  const { isHorror, setTheme } = useThemeStore();
+
   const testStartId = Number(params.testStartId);
 
-  const currentQuestionsData = isHorrorMode
+  // 3. 스토어 상태에 따른 질문 데이터 선택
+  const currentQuestionsData = isHorror
     ? AllHorrorQuestionsData
     : AllTestQuestionsData;
   const nowTest = currentQuestionsData.find((test) => test.id === testStartId);
@@ -48,10 +45,10 @@ function TestStartPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  // 초기 점수 상태 설정
-  const [score, setScore] = useState<any>(
-    isHorrorMode
-      ? { R: 0, B: 0, J: 0, O: 0, C: 0 } // 호러 가중치 키셋
+  // 4. 초기 점수 상태 설정 (isHorror 기준)
+  const [score, setScore] = useState<any>(() =>
+    isHorror
+      ? { R: 0, B: 0, J: 0, O: 0, C: 0 }
       : {
           E_score: 0,
           I_score: 0,
@@ -63,6 +60,13 @@ function TestStartPage() {
           P_score: 0,
         }
   );
+
+  // URL 파라미터와 스토어 강제 동기화 (직접 링크 유입 대비)
+  useEffect(() => {
+    const modeParam = searchParams.get("mode");
+    if (modeParam === "horror" && !isHorror) setTheme("horror");
+    if (modeParam === "normal" && isHorror) setTheme("normal");
+  }, [searchParams, isHorror, setTheme]);
 
   const nowQuestion = nowTest ? nowTest.questions[questionIndex] : null;
 
@@ -78,7 +82,6 @@ function TestStartPage() {
     );
     if (!selected || !selected.score) return;
 
-    // 점수 업데이트 (기존 score 객체를 복사하여 선택된 옵션의 score를 더함)
     const currentScore = { ...score };
     for (const key in selected.score) {
       currentScore[key] = (currentScore[key] || 0) + selected.score[key];
@@ -91,12 +94,15 @@ function TestStartPage() {
       setQuestionIndex(nextIndex);
       setSelectedOption(null);
     } else {
-      // 결과 산출
-      const finalResult = isHorrorMode
+      const finalResult = isHorror
         ? calculateHorrorScore(currentScore)
         : calculateMbti(currentScore);
-
-      router.push(`/testResult/${testStartId}/${finalResult}?mode=${mode}`);
+      // 결과 페이지로 이동 시에도 현재 스토어 상태 전달
+      router.push(
+        `/testResult/${testStartId}/${finalResult}?mode=${
+          isHorror ? "horror" : "normal"
+        }`
+      );
     }
   }
 
@@ -105,13 +111,11 @@ function TestStartPage() {
   if (!nowQuestion) return <div className={styles.container}>로딩 중...</div>;
 
   return (
-    <div
-      className={`${styles.container} ${isHorrorMode ? styles.nightMode : ""}`}
-    >
+    <div className={`${styles.container} ${isHorror ? styles.nightMode : ""}`}>
       <ProgressBar
         current={questionIndex + 1}
         total={nowTest.questions.length}
-        color={isHorrorMode ? "#ff0000" : "#4CAF50"}
+        color={isHorror ? "#ff0000" : "#4CAF50"}
       />
       <div className={styles.radio_frame}>
         <h2 className={styles.answer_title}>{nowTest.title}</h2>
@@ -135,7 +139,7 @@ function TestStartPage() {
 
       <button
         className={`${styles.button1} ${
-          isHorrorMode ? styles.horror_button : styles.normal_button
+          isHorror ? styles.horror_button : styles.normal_button
         }`}
         disabled={!selectedOption}
         onClick={nextquestion}

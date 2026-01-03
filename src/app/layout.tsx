@@ -3,6 +3,7 @@ import "./globals.css";
 import React from "react";
 import { Metadata } from "next";
 import Script from "next/script"; // 1. Script 컴포넌트 추가
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
   title: "피클테스트",
@@ -48,6 +49,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Header />
         <main>{children}</main>
       </body>
     </html>
