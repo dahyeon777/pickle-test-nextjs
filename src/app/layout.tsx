@@ -6,11 +6,15 @@ import Script from "next/script"; // 1. Script 컴포넌트 추가
 
 export const metadata: Metadata = {
   title: "피클테스트",
-  description: "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~!",
+  description:
+    "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
   keywords: [
     "심리테스트",
     "피클테스트",
+    "심리분석",
+    "성격 테스트",
     "나폴리탄",
+    "나폴리탄 괴담",
     "mbti",
     "테스트",
     "공포테스트",
