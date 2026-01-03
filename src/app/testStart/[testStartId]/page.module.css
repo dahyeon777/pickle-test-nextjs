@@ -7,10 +7,14 @@
   text-align: center;
 }
 
+.dayMode {
+  background-color: #cde3c6a9;
+}
+
+
 /* 호러 모드 배경 (필요시 추가) */
 .nightMode {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #bbbbbb;
 }
 
 .radio_frame {

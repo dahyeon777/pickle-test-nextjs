@@ -7,10 +7,10 @@ import RadioOption from "../../../components/RadioOption";
 import ProgressBar from "../../../components/ProgressBar";
 import { AllTestQuestionsData } from "../../../TestData";
 import { AllHorrorQuestionsData } from "../../../HorrorTestData";
-import { useThemeStore } from "@/src/store/useThemeStore"; // 1. 스토어 임포트
+import { useThemeStore } from "@/src/store/useThemeStore";
 import styles from "./page.module.css";
 
-// --- 로직 분리: 결과 계산 함수들 (동일) ---
+// --- 로직 분리: 결과 계산 함수들 ---
 function calculateMbti(scores: any) {
   const E_I = (scores.E_score || 0) >= (scores.I_score || 0) ? "E" : "I";
   const S_N = (scores.S_score || 0) >= (scores.N_score || 0) ? "S" : "N";
@@ -31,12 +31,12 @@ function TestStartPage() {
   const params = useParams();
   const searchParams = useSearchParams();
 
-  // 2. 스토어 상태 및 테마 설정 함수 가져오기
+  // Zustand 스토어 상태 및 테마 설정 함수
   const { isHorror, setTheme } = useThemeStore();
 
   const testStartId = Number(params.testStartId);
 
-  // 3. 스토어 상태에 따른 질문 데이터 선택
+  // 스토어 상태에 따른 질문 데이터 선택
   const currentQuestionsData = isHorror
     ? AllHorrorQuestionsData
     : AllTestQuestionsData;
@@ -45,7 +45,7 @@ function TestStartPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  // 4. 초기 점수 상태 설정 (isHorror 기준)
+  // 초기 점수 상태 설정 (isHorror 기준)
   const [score, setScore] = useState<any>(() =>
     isHorror
       ? { R: 0, B: 0, J: 0, O: 0, C: 0 }
@@ -61,7 +61,7 @@ function TestStartPage() {
         }
   );
 
-  // URL 파라미터와 스토어 강제 동기화 (직접 링크 유입 대비)
+  // URL 파라미터와 스토어 강제 동기화
   useEffect(() => {
     const modeParam = searchParams.get("mode");
     if (modeParam === "horror" && !isHorror) setTheme("horror");
@@ -97,7 +97,7 @@ function TestStartPage() {
       const finalResult = isHorror
         ? calculateHorrorScore(currentScore)
         : calculateMbti(currentScore);
-      // 결과 페이지로 이동 시에도 현재 스토어 상태 전달
+
       router.push(
         `/testResult/${testStartId}/${finalResult}?mode=${
           isHorror ? "horror" : "normal"
@@ -111,7 +111,12 @@ function TestStartPage() {
   if (!nowQuestion) return <div className={styles.container}>로딩 중...</div>;
 
   return (
-    <div className={`${styles.container} ${isHorror ? styles.nightMode : ""}`}>
+    /* 핵심 수정 부분: 낮(styles.dayMode)과 밤(styles.nightMode) 클래스를 교대로 적용 */
+    <div
+      className={`${styles.container} ${
+        isHorror ? styles.nightMode : styles.dayMode
+      }`}
+    >
       <ProgressBar
         current={questionIndex + 1}
         total={nowTest.questions.length}

@@ -15,7 +15,7 @@ function Header() {
       <div className="header_top_bar">
         <Link href="/">
           {isHorror
-            ? "당신은 어떤 피클일까요? 기괴한 진실을 마주할 준비가 되셨나요?" // 호러용 문구 (선택사항)
+            ? "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test!" // 호러용 문구 (선택사항)
             : "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~!"}
         </Link>
       </div>

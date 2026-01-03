@@ -17,6 +17,15 @@
   font-weight: bold;
 }
 
+.dayMode {
+  background-color: #cde3c6a9;
+}
+
+.nightMode {
+  background-color: #bbbbbb;
+  color: white;
+}
+
 .img_test_main {
   width: 400px;
   height: 400px;
