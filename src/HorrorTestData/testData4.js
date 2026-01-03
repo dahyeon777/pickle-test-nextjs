@@ -9,90 +9,210 @@ export const horrorTestData4 = {
       questionId: 1,
       text: "존재가 말합니다.\n“귀환은 항상 가능했습니다.”\n다만, 이미 대부분의 절차가 끝난 뒤였습니다.",
       options: [
-        { optionId: "A", text: "왜 이제야 말해주는지 따져 묻는다", score: { R: 2, F: 1 } },
-        { optionId: "B", text: "가능했지만 내가 선택하지 않았던 것이라 느낀다", score: { S: 1, D: 2 } },
-        { optionId: "C", text: "‘항상’이라는 단어에서 형언할 수 없는 불길함을 느낀다", score: { X: 2 } },
+        {
+          optionId: "A",
+          text: "왜 이제야 말해주는지 따져 묻는다",
+          score: { R: 2, F: 1 },
+        },
+        {
+          optionId: "B",
+          text: "가능했지만 내가 선택하지 않았던 것이라 느낀다",
+          score: { S: 1, D: 2 },
+        },
+        {
+          optionId: "C",
+          text: "‘항상’이라는 단어에서 형언할 수 없는 불길함을 느낀다",
+          score: { X: 2 },
+        },
       ],
     },
     {
       questionId: 2,
       text: "귀환 조건이 표시됩니다. 하지만 정보가 파편화되어 완전하지 않습니다.",
       options: [
-        { optionId: "A", text: "불완전한 정보라도 필사적으로 받아들인다", score: { R: 2, F: 1 } },
-        { optionId: "B", text: "그들이 의도적으로 정보를 숨겼다고 생각한다", score: { S: 2 } },
-        { optionId: "C", text: "이 조건 자체가 그저 형식적인 절차일 뿐이라고 느낀다", score: { D: 1, X: 2 } },
+        {
+          optionId: "A",
+          text: "불완전한 정보라도 필사적으로 받아들인다",
+          score: { R: 2, F: 1 },
+        },
+        {
+          optionId: "B",
+          text: "그들이 의도적으로 정보를 숨겼다고 생각한다",
+          score: { S: 2 },
+        },
+        {
+          optionId: "C",
+          text: "이 조건 자체가 그저 형식적인 절차일 뿐이라고 느낀다",
+          score: { D: 1, X: 2 },
+        },
       ],
     },
     {
       questionId: 3,
       text: "귀환자는 “원래 상태로 돌아간다”고 명시되어 있습니다.",
       options: [
-        { optionId: "A", text: "내가 가지고 있던 물리적인 육체를 떠올린다", score: { R: 2, F: 2 } },
-        { optionId: "B", text: "나의 기억과 정신은 어떻게 보존되는지 신경 쓰인다", score: { S: 2 } },
-        { optionId: "C", text: "‘원래’라는 기준이 무엇인지 모호하다고 느낀다", score: { D: 2, X: 1 } },
+        {
+          optionId: "A",
+          text: "내가 가지고 있던 물리적인 육체를 떠올린다",
+          score: { R: 2, F: 2 },
+        },
+        {
+          optionId: "B",
+          text: "나의 기억과 정신은 어떻게 보존되는지 신경 쓰인다",
+          score: { S: 2 },
+        },
+        {
+          optionId: "C",
+          text: "‘원래’라는 기준이 무엇인지 모호하다고 느낀다",
+          score: { D: 2, X: 1 },
+        },
       ],
     },
     {
       questionId: 4,
       text: "존재가 당신을 응시하며 말합니다.\n“이미 절반은 처리되었습니다.”",
       options: [
-        { optionId: "A", text: "나의 무엇이 처리되었는지 구체적으로 묻는다", score: { R: 1, S: 1 } },
-        { optionId: "B", text: "아직 처리되지 않은 나머지에 집중하며 불안해한다", score: { F: 2 } },
-        { optionId: "C", text: "‘처리’라는 비인간적인 단어에 거부감을 느낀다", score: { D: 2, X: 1 } },
+        {
+          optionId: "A",
+          text: "나의 무엇이 처리되었는지 구체적으로 묻는다",
+          score: { R: 1, S: 1 },
+        },
+        {
+          optionId: "B",
+          text: "아직 처리되지 않은 나머지에 집중하며 불안해한다",
+          score: { F: 2 },
+        },
+        {
+          optionId: "C",
+          text: "‘처리’라는 비인간적인 단어에 거부감을 느낀다",
+          score: { D: 2, X: 1 },
+        },
       ],
     },
     {
       questionId: 5,
       text: "대기 공간의 거울 같은 면에 비친 당신의 모습이\n당신의 움직임을 조금 늦게 따라옵니다.",
       options: [
-        { optionId: "A", text: "단순한 시차나 물리적 오류라고 생각한다", score: { R: 2, F: 1 } },
-        { optionId: "B", text: "비친 모습과 내가 서로 다른 단계에 있다고 느낀다", score: { S: 2, X: 1 } },
-        { optionId: "C", text: "이질감이 두려워 면을 끝까지 보지 않으려 한다", score: { D: 2 } },
+        {
+          optionId: "A",
+          text: "단순한 시차나 물리적 오류라고 생각한다",
+          score: { R: 2, F: 1 },
+        },
+        {
+          optionId: "B",
+          text: "비친 모습과 내가 서로 다른 단계에 있다고 느낀다",
+          score: { S: 2, X: 1 },
+        },
+        {
+          optionId: "C",
+          text: "이질감이 두려워 면을 끝까지 보지 않으려 한다",
+          score: { D: 2 },
+        },
       ],
     },
     {
       questionId: 6,
       text: "귀환자는 '질문'을 단 하나만 가져갈 수 있다는 규칙을 듣게 됩니다.",
       options: [
-        { optionId: "A", text: "가져갈 수 있는 최선의 질문을 고르려 애쓴다", score: { R: 1, S: 2 } },
-        { optionId: "B", text: "내게 아직 가져갈 질문이 남아 있는지 자문한다", score: { F: 1, X: 1 } },
-        { optionId: "C", text: "질문을 소유물처럼 가져간다는 개념 자체가 낯설다", score: { D: 2 } },
+        {
+          optionId: "A",
+          text: "가져갈 수 있는 최선의 질문을 고르려 애쓴다",
+          score: { R: 1, S: 2 },
+        },
+        {
+          optionId: "B",
+          text: "내게 아직 가져갈 질문이 남아 있는지 자문한다",
+          score: { F: 1, X: 1 },
+        },
+        {
+          optionId: "C",
+          text: "질문을 소유물처럼 가져간다는 개념 자체가 낯설다",
+          score: { D: 2 },
+        },
       ],
     },
     {
       questionId: 7,
       text: "말을 하려 하자 존재가 당신을 제지합니다.\n“그 질문은 여기의 것입니다.”",
       options: [
-        { optionId: "A", text: "포기하고 다른 질문을 찾아보려 한다", score: { R: 2 } },
-        { optionId: "B", text: "왜 질문의 소유권이 나뉘는지 의문을 갖는다", score: { F: 2, S: 1 } },
-        { optionId: "C", text: "질문이 누군가의 소유라는 개념에 극심한 혼란을 느낀다", score: { D: 1, X: 2 } },
+        {
+          optionId: "A",
+          text: "포기하고 다른 질문을 찾아보려 한다",
+          score: { R: 2 },
+        },
+        {
+          optionId: "B",
+          text: "왜 질문의 소유권이 나뉘는지 의문을 갖는다",
+          score: { F: 2, S: 1 },
+        },
+        {
+          optionId: "C",
+          text: "질문이 누군가의 소유라는 개념에 극심한 혼란을 느낀다",
+          score: { D: 1, X: 2 },
+        },
       ],
     },
     {
       questionId: 8,
       text: "귀환 시 당신의 “번역 안정도”가 기록된다는 사실을 알게 됩니다.",
       options: [
-        { optionId: "A", text: "안정도 수치가 귀환에 결정적인지 묻는다", score: { R: 2, F: 1 } },
-        { optionId: "B", text: "안정되지 않았을 때 벌어질 일을 걱정한다", score: { S: 2 } },
-        { optionId: "C", text: "이미 내 모든 것이 안정화되었을 거라 직감한다", score: { D: 1, X: 3 } },
+        {
+          optionId: "A",
+          text: "안정도 수치가 귀환에 결정적인지 묻는다",
+          score: { R: 2, F: 1 },
+        },
+        {
+          optionId: "B",
+          text: "안정되지 않았을 때 벌어질 일을 걱정한다",
+          score: { S: 2 },
+        },
+        {
+          optionId: "C",
+          text: "이미 내 모든 것이 안정화되었을 거라 직감한다",
+          score: { D: 1, X: 3 },
+        },
       ],
     },
     {
       questionId: 9,
       text: "존재가 마지막 사실을 고지합니다.\n“완전히 돌아간 사례는 없습니다.”",
       options: [
-        { optionId: "A", text: "그렇다면 귀환하는 것이 무슨 의미가 있는지 묻는다", score: { R: 2, F: 1 } },
-        { optionId: "B", text: "존재의 일부만 돌아가는 시스템이라고 이해한다", score: { S: 2 } },
-        { optionId: "C", text: "처음부터 돌아갈 생각이 없었음을 깨닫는다", score: { D: 3, X: 1 } },
+        {
+          optionId: "A",
+          text: "그렇다면 귀환하는 것이 무슨 의미가 있는지 묻는다",
+          score: { R: 2, F: 1 },
+        },
+        {
+          optionId: "B",
+          text: "존재의 일부만 돌아가는 시스템이라고 이해한다",
+          score: { S: 2 },
+        },
+        {
+          optionId: "C",
+          text: "처음부터 돌아갈 생각이 없었음을 깨닫는다",
+          score: { D: 3, X: 1 },
+        },
       ],
     },
     {
       questionId: 10,
       text: "귀환 직전, 보이지 않는 질문을\n가져가겠느냐는 최종 선택을 요구받습니다.",
       options: [
-        { optionId: "A", text: "무엇인지 모르지만 일단 가져간다", score: { S: 3, R: 1 } },
-        { optionId: "B", text: "위험을 방지하기 위해 두고 간다", score: { X: 3, F: 1 } },
-        { optionId: "C", text: "질문이 무엇인지 끝까지 확인하려 든다", score: { D: 2, R: 1 } },
+        {
+          optionId: "A",
+          text: "무엇인지 모르지만 일단 가져간다",
+          score: { S: 3, R: 1 },
+        },
+        {
+          optionId: "B",
+          text: "위험을 방지하기 위해 두고 간다",
+          score: { X: 3, F: 1 },
+        },
+        {
+          optionId: "C",
+          text: "질문이 무엇인지 끝까지 확인하려 든다",
+          score: { D: 2, R: 1 },
+        },
       ],
     },
   ],

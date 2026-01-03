@@ -1,12 +1,12 @@
 .adWrapper {
   position: fixed;
-  top: 150px;
+  top: 120px;
   width: 140px;
   z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 170px);
   overflow-y: auto;
   padding: 15px 5px;
   transition: all 0.5s ease; /* 전환 효과 추가 */
