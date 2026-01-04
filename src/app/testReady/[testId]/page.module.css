@@ -3,50 +3,57 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: transparent;;
+  justify-content: center; /* 수직 중앙 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
   width: 100%;
   min-height: 100vh;
-  overflow: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
+/* 타이틀 스타일 */
 .title {
-  margin-top: 80px;
-  color: rgba(11, 31, 2, 0.7);
-  font-size: 1.8rem;
+  color: rgba(11, 31, 2, 0.7); /* 낮 모드 기본 색상 */
+  font-size: 2.2rem;
   font-weight: bold;
+  line-height: 1.4;
+  margin: 0 0 50px 0;
+  /* ✨ 중요: \n 줄바꿈을 화면에 그대로 보여주는 속성 */
+  white-space: pre-wrap;
+  word-break: keep-all;
 }
 
+/* ☀️ 낮 모드 배경 */
 .dayMode {
-  background-color: #cde3c6a9;
+  background-color: #cde3c6a9; /* 흰색에 가까운 아주 연한 녹색빛 */
 }
 
+/* 💀 밤 모드 스타일 */
 .nightMode {
-  background-color: #bbbbbb;
-  color: white;
+  background-color: #bbbbbb; /* 완전 검정 */
 }
 
-.img_test_main {
-  width: 400px;
-  height: 400px;
-  border-radius: 30px;
-  border: 8px;
-  border-color: #365a26;
-  border-style: double;
-  margin-bottom: 40px; /* 버튼과의 간격 추가 */
-  object-fit: cover;
+.nightMode .title {
+  color: #2d0709 !important; /* 의장님 픽 다크 레드 */
+  text-shadow: 0 0 8px rgba(45, 7, 9, 0.4); /* 미세한 광채 */
 }
 
-/* 반응형 모바일 대응 */
+/* 버튼 주변 여백 */
+.buttonWrapper {
+  margin-top: 60px; /* 타이틀과 버튼 사이 간격 */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* 📱 모바일 대응 */
 @media screen and (max-width: 600px) {
-  .img_test_main {
-    width: 80%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 10px;
+  .title {
+    font-size: 1.6rem;
+    padding: 0 10px;
   }
-  .title{
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+  .buttonWrapper {
+    margin-top: 40px;
   }
 }

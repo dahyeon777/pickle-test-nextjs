@@ -63,12 +63,17 @@ function TestReadyPage() {
         isHorror ? styles.nightMode : styles.dayMode
       }`}
     >
-      <h1 className={styles.title}>{testTitle}</h1>
+      {/* 1. 타이틀 영역: 중앙에 배치됨 */}
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>{testTitle}</h1>
+      </div>
 
-      {/* 5. 다음 단계로 갈 때도 현재 스토어 상태를 쿼리로 유지 (새로고침 대비) */}
-      <Link href={`/testStart/${id}?mode=${isHorror ? "horror" : "normal"}`}>
-        <LargeButton />
-      </Link>
+      {/* 2. 하단 버튼 영역 */}
+      <div className={styles.buttonWrapper}>
+        <Link href={`/testStart/${id}?mode=${isHorror ? "horror" : "normal"}`}>
+          <LargeButton text={isHorror ? "실험 시작" : "테스트 시작하기"} />
+        </Link>
+      </div>
     </div>
   );
 }

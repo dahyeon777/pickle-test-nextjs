@@ -28,6 +28,10 @@
   font-size: 1.2rem;
 }
 
+.nightMode .answer_title {
+  color: #2d0709 !important; /* 의장님이 픽하신 밤 모드 전용 다크 레드 */
+}
+
 .question_text {
   display: block;
   margin-top: 20px;

@@ -1,47 +1,54 @@
+/* 공통 구조 스타일 */
 .button1 {
-  /* 1. 크기와 형태 */
-  display: block; /* margin auto를 위해 block으로 변경 */
+  display: block;
   margin: 10px auto;
-  width: 100%;
-  max-width: 480px; /* PC 최대 너비 */
-  padding: 15px 20px; /* 좌우 패딩을 유연하게 수정 */
-  box-sizing: border-box; /* 패딩이 너비를 키우지 않게 설정 */
-
-  /* 2. 배경과 색상 */
-  background: #ffffff;
-  color: rgba(11, 31, 2, 0.7);
+  width: 380px;
+  padding: 15px 20px;
+  box-sizing: border-box;
   border: none;
-
-  /* 3. 곡선과 그림자 */
   border-radius: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(81, 140, 53, 0.7);
-
-  /* 4. 텍스트 스타일 */
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  white-space: nowrap; /* 글자 세로 꺾임 방지 */
-
-  /* 5. 애니메이션 */
+  white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: all 0.3s ease; /* 애니메이션 부드럽게 */
 }
 
-/* 호버 효과 */
-.button1:hover:not(:disabled) {
+/* ☀️ 낮 버전: 화이트 배경 + 연두색 광채 */
+.day_btn {
+  background: #ffffff;
+  color: #354a33;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 18px rgba(81, 140, 53, 0.5);
+}
+
+.day_btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 20px rgba(97, 154, 69, 0.8);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 25px rgba(97, 154, 69, 0.7);
 }
 
-/* 클릭 효과 */
+/* 💀 밤 버전: 다크 배경 + 버건디(핏빛) 광채 */
+.horror_btn {
+  background: #ffffff; /* 어두운 배경 */
+  color: #2d0709; /* 붉은 글씨 */
+  border: 1px solid #f7bcbc65;
+  box-shadow: 0 4px 10px rgba(255, 182, 182, 0.5), 0 0 15px rgba(139, 0, 0, 0.8);
+}
+
+.horror_btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 182, 182, 0.805),
+    0 0 25px rgba(113, 3, 3, 0.867);
+  color: #2d0709;
+}
+
+/* 클릭/비활성화 공통 */
 .button1:active:not(:disabled) {
   transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 10px rgba(81, 140, 53, 0.5);
 }
 
-/* 비활성화 상태 */
 .button1:disabled {
   background-color: #e0e0e0;
   color: #888;
@@ -50,12 +57,12 @@
   box-shadow: none;
 }
 
-/* 📱 모바일 대응 (600px 이하) */
 @media screen and (max-width: 600px) {
   .button1 {
     width: 100%;
-    max-width: 600px; /* 모바일 폭에 맞게 제한 */
-    font-size: 1rem;
+    max-width: 100%; /* 모바일 에서 좌우 여백 살짝 줌 */
+    font-size: 1.1rem;
     padding: 12px 40px;
+    text-align: center;
   }
 }
