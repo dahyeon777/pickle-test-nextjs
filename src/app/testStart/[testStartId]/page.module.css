@@ -11,7 +11,6 @@
   background-color: #cde3c6a9;
 }
 
-
 /* 호러 모드 배경 (필요시 추가) */
 .nightMode {
   background-color: #bbbbbb;
@@ -30,18 +29,22 @@
 }
 
 .question_text {
+  display: block;
   margin-top: 20px;
+  min-height: 50px;
   font-size: 1.4rem;
   word-break: keep-all;
   white-space: pre-wrap;
+  letter-spacing: 0.08em !important;
 }
 
 .options_container {
-  margin-top: 30px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-  max-width: 600px;
+  max-width: auto;
+  min-height: 100px;
   width: fit-content;
 }
 
@@ -97,6 +100,10 @@
     font-size: 1.1rem;
     padding: 12px 10px;
   }
-  .question_text { font-size: 1.2rem; }
-  .answer_title { font-size: 1.1rem; }
+  .question_text {
+    font-size: 1.2rem;
+  }
+  .answer_title {
+    font-size: 1.1rem;
+  }
 }

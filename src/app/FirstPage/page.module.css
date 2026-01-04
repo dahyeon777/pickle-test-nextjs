@@ -93,8 +93,8 @@
 
 .testTitleText {
   color: #333;
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 400;
   white-space: pre-wrap;/* 단어 단위 줄바꿈으로 깔끔하게 */
   line-height: 1.4;
 }
