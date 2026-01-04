@@ -171,12 +171,11 @@
   font-size: 0.6rem;
 }
 
-.copyright{
-  background-color: #4669401d;
+.copyright {
+  background-color: #5959591d;
   padding: 20px 300px;
   color: #5c5c5c;
   font-size: 0.6rem;
-
 }
 
 @media screen and (max-width: 850px) {
@@ -186,6 +185,12 @@
   .grid-container {
     grid-template-columns: 1fr 1fr;
     max-width: 600px;
+  }
+  .footer {
+    display: none;
+  }
+  .copyright {
+    display: none;
   }
 }
 
@@ -199,6 +204,12 @@
   }
   .testTitleText {
     font-size: 0.9rem;
+  }
+  .footer {
+    display: none;
+  }
+  .copyright {
+    display: none;
   }
 }
 
