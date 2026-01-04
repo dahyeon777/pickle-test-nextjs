@@ -25,7 +25,7 @@
 }
 
 .image_center {
-  z-index: 2; 
+  z-index: 2;
   max-width: 380px;
   width: 80%;
   height: auto;
@@ -34,7 +34,7 @@
 
 /* 그리드 컨테이너 */
 .grid-container {
-  z-index: 2; 
+  z-index: 2;
   background-color: rgba(93, 157, 65, 0.541);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -95,13 +95,13 @@
   color: #333;
   font-size: 1.1rem;
   font-weight: 400;
-  white-space: pre-wrap;/* 단어 단위 줄바꿈으로 깔끔하게 */
+  white-space: pre-wrap; /* 단어 단위 줄바꿈으로 깔끔하게 */
   line-height: 1.4;
 }
 /* ---------------------------------- */
 
 .section {
-  height: 40px;
+  height: 100px;
 }
 
 .mainArea {
@@ -164,6 +164,21 @@
   }
 }
 
+.footer {
+  background-color: #4669401d;
+  padding: 20px 300px 0 300px;
+  color: #ffffff;
+  font-size: 0.6rem;
+}
+
+.copyright{
+  background-color: #4669401d;
+  padding: 20px 300px;
+  color: #5c5c5c;
+  font-size: 0.6rem;
+
+}
+
 @media screen and (max-width: 850px) {
   .horrorButtonWrapper {
     right: 11%;
@@ -190,13 +205,13 @@
 /* 피클 아이콘 스타일 */
 .floatingPickle {
   position: fixed;
-  width: 120px; 
+  width: 120px;
   height: 120px;
   /* z-index를 -1로 설정하여 모든 요소 뒤로 보냅니다 */
-  z-index: 1; 
-  pointer-events: none; 
+  z-index: 1;
+  pointer-events: none;
   /* 배경처럼 느껴지도록 투명도를 살짝 더 낮추는 것을 추천합니다 (0.3~0.4) */
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
 }
 
 .nightMode .floatingPickle {
@@ -207,12 +222,37 @@
 
 /* 애니메이션은 그대로 유지 */
 @keyframes wander {
-  0% { top: 10%; left: 10%; transform: rotate(0deg); }
-  25% { top: 80%; left: 20%; transform: rotate(90deg); }
-  50% { top: 50%; left: 80%; transform: rotate(180deg); }
-  75% { top: 10%; left: 70%; transform: rotate(270deg); }
-  100% { top: 10%; left: 10%; transform: rotate(360deg); }
+  0% {
+    top: 10%;
+    left: 10%;
+    transform: rotate(0deg);
+  }
+  25% {
+    top: 80%;
+    left: 20%;
+    transform: rotate(90deg);
+  }
+  50% {
+    top: 50%;
+    left: 80%;
+    transform: rotate(180deg);
+  }
+  75% {
+    top: 10%;
+    left: 70%;
+    transform: rotate(270deg);
+  }
+  100% {
+    top: 10%;
+    left: 10%;
+    transform: rotate(360deg);
+  }
 }
 
-.pickle1 { animation: wander 20s linear infinite; }
-.pickle2 { animation: wander 25s linear infinite reverse; animation-delay: -5s; }
+.pickle1 {
+  animation: wander 20s linear infinite;
+}
+.pickle2 {
+  animation: wander 25s linear infinite reverse;
+  animation-delay: -5s;
+}
