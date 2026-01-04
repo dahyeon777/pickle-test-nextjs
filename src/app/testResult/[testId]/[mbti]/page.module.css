@@ -1,27 +1,25 @@
-/* 전체 화면 배경을 담당하는 최상위 컨테이너 */
+/* src/app/testResult/[testId]/[mbti]/page.module.css */
+
 .container {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 내부 content_wrapper를 가로 중앙 정렬 */
+  align-items: center;
   margin: 0;
   padding: 30px 20px;
   box-sizing: border-box;
 }
 
-/* 낮 버전 배경색 (여백 없이 꽉 참) */
 .dayMode {
   background-color: #cde3c6a9;
 }
 
-/* 호러 모드 전체 배경색 */
 .horror_theme {
   background-color: #bbbbbb;
   color: #e0e0e0;
 }
 
-/* 실제 컨텐츠의 너비를 제한하는 박스 */
 .content_wrapper {
   width: 100%;
   max-width: 500px;
@@ -37,12 +35,14 @@
   width: 100%;
   color: #354a33;
   text-align: center;
+  white-space: pre-wrap; /* \n 대응 */
 }
 
 .horror_theme .main_title {
   color: #d93838;
 }
 
+/* --- 카드 디자인 (원본 유지) --- */
 .result_title_section {
   border: 2px solid #ffcc00;
   padding: 30px 15px;
@@ -67,34 +67,27 @@
   align-items: center;
 }
 
-.case_record {
-  width: 100%;
-  text-align: left;
-}
-
 .horror_type_title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #ff0000;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   text-align: center;
-}
-
-.status_badge {
-  display: inline-block;
-  color: #47d65f;
-  padding: 0 12px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  margin-bottom: 40px;
   font-weight: bold;
 }
 
+/* --- 텍스트 줄바꿈 핵심 --- */
+.description,
 .horror_description {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: #ccc;
   text-align: left;
+  white-space: pre-wrap; /* 줄바꿈 적용 */
+  word-break: break-all; /* 단어 끊김 방지 */
+  width: 100%;
 }
+
+.description { color: #333; }
+.horror_description { color: #ccc; }
 
 .result_image {
   width: 100%;
@@ -114,58 +107,17 @@
   margin-top: 10px;
 }
 
-.share_btn,
-.home_btn,
-.horror_share_btn,
-.horror_home_btn {
-  flex: 1;
-  height: 48px;
-  border-radius: 8px;
-  border: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+.share_btn, .home_btn, .horror_share_btn, .horror_home_btn {
+  flex: 1; height: 48px; border-radius: 8px; border: none; font-size: 0.9rem; font-weight: bold; cursor: pointer;
+  display: flex; justify-content: center; align-items: center; color: white;
 }
 
-.share_btn {
-  background-color: #5cb85c;
-}
-.home_btn {
-  background-color: #777;
-  padding: 10px;
-}
-
-.horror_share_btn {
-  background-color: #8b0000;
-  border: 1px solid #ff4d4d;
-}
-.horror_home_btn {
-  background-color: #333;
-  border: 1px solid #666;
-  padding: 10px;
-}
+.share_btn { background-color: #5cb85c; }
+.home_btn { background-color: #777; padding: 10px; }
+.horror_share_btn { background-color: #8b0000; border: 1px solid #ff4d4d; }
+.horror_home_btn { background-color: #333; border: 1px solid #666; padding: 10px; }
 
 @media screen and (max-width: 600px) {
-  .main_title {
-    font-size: 1rem;
-  }
-  .description,
-  .horror_description {
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-  .status_badge {
-    font-size: 0.8rem;
-  }
-  .share_btn,
-  .home_btn,
-  .horror_share_btn,
-  .horror_home_btn {
-    font-size: 0.8rem;
-    height: 45px;
-  }
+  .main_title { font-size: 1rem; }
+  .description, .horror_description { font-size: 0.85rem; line-height: 1.6; }
 }

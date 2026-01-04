@@ -26,7 +26,6 @@ function TestResultPage() {
     if (params?.testId && params?.mbti) {
       const tId = Number(params.testId);
       const resultKey = String(params.mbti).toUpperCase();
-
       const dataList = isHorror ? AllHorrorQuestionsData : AllTestQuestionsData;
       const selectedTest = dataList?.find((test) => Number(test.id) === tId);
 
@@ -42,133 +41,43 @@ function TestResultPage() {
 
   const handleCopyLink = () => {
     const currentUrl = window.location.href;
-    navigator.clipboard
-      .writeText(currentUrl)
-      .then(() => {
-        alert(
-          isHorror
-            ? "실험 기록 링크가 복사되었습니다."
-            : "결과 링크가 복사되었습니다!"
-        );
-      })
-      .catch((err) => {
-        console.error("복사 실패:", err);
-      });
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      alert(isHorror ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
+    });
   };
 
-  if (isLoading)
-    return (
-      <div
-        className={`${styles.container} ${
-          isHorror ? styles.horror_theme : styles.dayMode
-        }`}
-      >
-        데이터 분석 중...
-      </div>
-    );
-  if (!resultData)
-    return (
-      <div
-        className={`${styles.container} ${
-          isHorror ? styles.horror_theme : styles.dayMode
-        }`}
-      >
-        기록을 찾을 수 없습니다.
-      </div>
-    );
+  if (isLoading) return <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>데이터 분석 중...</div>;
+  if (!resultData) return <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>기록을 찾을 수 없습니다.</div>;
 
   return (
-    <div
-      className={`${styles.container} ${
-        isHorror ? styles.horror_theme : styles.dayMode
-      }`}
-    >
-      {/* 가로 너비를 제한하는 wrapper 추가 */}
+    <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>
       <div className={styles.content_wrapper}>
-        {/* 1. 상단 타이틀 섹션 */}
+        
         <h1 className={styles.main_title}>
-          {isHorror ? (
-            <>
-              실험 기록
-              <br /> {testTitle}
-            </>
-          ) : (
-            `✨ ${testTitle} 결과 ✨`
-          )}
+          {isHorror ? <>실험 기록<br /> {testTitle}</> : `✨ ${testTitle} 결과 ✨`}
         </h1>
 
-        {/* 2. 결과 카드 섹션 */}
-        <div
-          className={
-            isHorror ? styles.horror_report : styles.result_title_section
-          }
-        >
-          {isHorror ? (
-            <>
-              <h2 className={styles.horror_type_title}>{resultData.title}</h2>
-              {resultData.description.includes("상태:") && (
-                <div className={styles.status_badge}>
-                  {resultData.description.split("\n")[0]}
-                </div>
-              )}
-              {resultData.result && (
-                <div className={styles.image_wrapper}>
-                  <img
-                    src={resultData.result}
-                    alt="기록물"
-                    className={styles.result_image}
-                  />
-                </div>
-              )}
-              <div className={styles.case_record}>
-                <p
-                  className={styles.horror_description}
-                  style={{ whiteSpace: "pre-wrap" }}
-                >
-                  {resultData.description.includes("\n")
-                    ? resultData.description
-                        .split("\n")
-                        .slice(1)
-                        .join("\n")
-                        .trim()
-                    : resultData.description.startsWith("상태:")
-                    ? ""
-                    : resultData.description}
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <h3 className={styles.result_title}>
-                당신은 <strong>"{resultData.title}"</strong> 입니다!
-              </h3>
-              {resultData.result && (
-                <div className={styles.image_wrapper}>
-                  <img
-                    src={resultData.result}
-                    alt={resultData.title}
-                    className={styles.result_image}
-                  />
-                </div>
-              )}
-              <p className={styles.description}>{resultData.description}</p>
-            </>
+        <div className={isHorror ? styles.horror_report : styles.result_title_section}>
+          <h2 className={isHorror ? styles.horror_type_title : styles.result_title}>
+            {isHorror ? resultData.title : `당신은 "${resultData.title}" 입니다!`}
+          </h2>
+
+          {resultData.result && (
+            <img src={resultData.result} alt="결과" className={styles.result_image} />
           )}
+
+          {/* 💡 .trim() 하나로 첫 문장 실종 해결 */}
+          <p className={isHorror ? styles.horror_description : styles.description}>
+            {resultData.description?.trim()}
+          </p>
         </div>
 
-        {/* 3. 하단 버튼 그룹 */}
         <div className={styles.button_group}>
-          <button
-            onClick={handleCopyLink}
-            className={isHorror ? styles.horror_share_btn : styles.share_btn}
-          >
-            {isHorror ? "🔗 기록 공유" : "🔗 결과 공유하기"}
+          <button onClick={handleCopyLink} className={isHorror ? styles.horror_share_btn : styles.share_btn}>
+            {isHorror ? "🔗 기록 공유" : "🔗 결과 공유"}
           </button>
           <Link href="/" style={{ flex: 1, display: "flex" }}>
-            <button
-              className={isHorror ? styles.horror_home_btn : styles.home_btn}
-              style={{ width: "100%" }}
-            >
+            <button className={isHorror ? styles.horror_home_btn : styles.home_btn} style={{ width: "100%" }}>
               ↩ 처음으로
             </button>
           </Link>
