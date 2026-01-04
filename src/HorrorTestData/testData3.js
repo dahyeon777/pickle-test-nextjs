@@ -3,7 +3,7 @@
 export const horrorTestData3 = {
   id: 3,
   path: "/img/horror_test_main/horror3.png",
-  title: "💬\n「여기는 대답이\n먼저 도착한다」",
+  title: "💬\n「이곳은 대답이\n먼저 도착한다」",
   questions: [
     {
       questionId: 1,

@@ -3,7 +3,7 @@
 export const horrorTestData6 = {
   id: 6,
   path: "/img/horror_test_main/horror6.png",
-  title: "👩🏼‍🤝‍🧑🏽\n「이곳은 반대로\n반사됩니다」",
+  title: "👩🏼‍🤝‍🧑🏽\n「반사」",
   questions: [
     {
       questionId: 1,
