@@ -71,7 +71,7 @@ function TestReadyPage() {
       {/* 2. 하단 버튼 영역 */}
       <div className={styles.buttonWrapper}>
         <Link href={`/testStart/${id}?mode=${isHorror ? "horror" : "normal"}`}>
-          <LargeButton text={isHorror ? "실험 시작" : "테스트 시작하기"} />
+          <LargeButton text={isHorror ? "시작하기" : "시작하기"} />
         </Link>
       </div>
     </div>
