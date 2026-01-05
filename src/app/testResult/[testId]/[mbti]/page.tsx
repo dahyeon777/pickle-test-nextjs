@@ -139,7 +139,7 @@ function TestResultPage() {
             description={resultData.description?.slice(0, 45) + "..."}
             imageUrl={resultData.result}
             buttonText={
-              isHorror ? "💬 실험 기록 전송" : "💬 카카오톡 결과 공유"
+              isHorror ? "💬 카카오톡 결과 공유" : "💬 카카오톡 결과 공유"
             }
           />
 

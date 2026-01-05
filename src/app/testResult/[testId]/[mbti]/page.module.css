@@ -133,19 +133,19 @@
 }
 
 .share_btn {
-  background-color: #77777773;
+  background-color: #777;
 }
 .home_btn {
   background-color: #5cb85c;
   padding: 10px;
 }
 .horror_share_btn {
-  background-color: #8b0000;
-  border: 1px solid #ff4d4d;
+  background-color: #3333336f;
+  border: 1px solid #666;
 }
 .horror_home_btn {
-  background-color: #333;
-  border: 1px solid #666;
+  background-color: #8b0000;
+  border: 1px solid #ff4d4d;
   padding: 10px;
 }
 
