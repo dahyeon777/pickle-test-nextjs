@@ -27,8 +27,6 @@ export const AllTestQuestionsData = [
   testData5, //직업
   testData6, //강아지
   testData7, //휴양지
-  testData8, //아이돌
-  testData9, //전생 직업
   testData10, //패션
   testData13, //향기
 ];
