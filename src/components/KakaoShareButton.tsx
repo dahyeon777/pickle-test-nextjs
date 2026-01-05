@@ -17,16 +17,12 @@ const KakaoShareButton = ({
   buttonText,
 }: KakaoShareProps) => {
   useEffect(() => {
-    // 환경변수에서 키 가져오기
     const KAKAO_KEY = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
 
     if (typeof window !== "undefined" && window.Kakao) {
       if (!window.Kakao.isInitialized()) {
         if (KAKAO_KEY) {
           window.Kakao.init(KAKAO_KEY);
-          console.log("Kakao SDK Initialized");
-        } else {
-          console.warn("Kakao JS Key가 없습니다. .env 파일을 확인해주세요.");
         }
       }
     }
@@ -39,23 +35,31 @@ const KakaoShareButton = ({
     }
 
     const currentUrl = window.location.href;
-    const origin = window.location.origin;
+    // 💡 도메인을 직접 명시하여 카카오 서버가 헷갈리지 않게 합니다.
+    const siteDomain = "https://pickletest.com";
 
-    // 이미지가 상대 경로일 경우 절대 경로로 변환
-    const absoluteImageUrl = imageUrl.startsWith("http")
+    // 💡 이미지가 상대 경로(/img/...)라면 전체 주소로 합쳐줍니다.
+    // 만약 이미지가 http로 시작하면 그대로 쓰고, 아니면 사이트 주소를 붙입니다.
+    const finalImageUrl = imageUrl.startsWith("http")
       ? imageUrl
-      : `${origin}${imageUrl}`;
+      : `${siteDomain}${imageUrl.startsWith("/") ? imageUrl : `/${imageUrl}`}`;
 
     window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
         title: title,
         description: description,
-        imageUrl: absoluteImageUrl,
+        imageUrl: finalImageUrl,
         link: {
           mobileWebUrl: currentUrl,
           webUrl: currentUrl,
         },
+      },
+      // 💡 소셜 정보(공유 이미지 하단 아이콘 옆 텍스트)를 추가하면 더 공식적으로 보입니다.
+      social: {
+        likeCount: 777,
+        commentCount: 77,
+        sharedCount: 777,
       },
       buttons: [
         {
@@ -68,8 +72,8 @@ const KakaoShareButton = ({
         {
           title: "나도 테스트하기",
           link: {
-            mobileWebUrl: origin,
-            webUrl: origin,
+            mobileWebUrl: siteDomain,
+            webUrl: siteDomain,
           },
         },
       ],

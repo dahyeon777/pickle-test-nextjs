@@ -6,11 +6,12 @@ import Script from "next/script"; // 1. Script 컴포넌트 추가
 import Header from "../components/Header";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pickletest.com"),
   title: "피클테스트",
   description:
     "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
   icons: {
-    icon: "/img/favicon.png", // 파비콘 경로
+    icon: "https://pickletest.com/img/facivon.png", // 파비콘 경로
   },
 
   keywords: [
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: 'https://pickletest.com/img/og-image.png', // public 폴더에 있는 이미지 경로
+        url: "https://pickletest.com/img/og-image.png", // public 폴더에 있는 이미지 경로
         width: 1200,
         height: 630,
       },
