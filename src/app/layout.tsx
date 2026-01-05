@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: "피클테스트",
   description:
     "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
+  icons: {
+    icon: '/img/favicon.ico', // 파비콘 경로
+  }, 
+  
   keywords: [
     "심리테스트",
     "피클테스트",
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
     title: "피클테스트 pickletest.com",
     description: "당신은 어떤 피클일까요?",
     url: "https://pickletest.com",
-    siteName: "Pickle Test",
+    siteName: "PickleTest",
     locale: "ko_KR",
     type: "website",
   },
