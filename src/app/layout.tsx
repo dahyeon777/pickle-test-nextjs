@@ -34,13 +34,7 @@ export const metadata: Metadata = {
     siteName: "PickleTest",
     locale: "ko_KR",
     type: "website",
-    images: [
-      {
-        url: "https://pickletest.com/img/og-image.png", // public 폴더에 있는 이미지 경로
-        width: 1200,
-        height: 630,
-      },
-    ],
+    images: "https://pickletest.com/img/og-image.png",
   },
 };
 
