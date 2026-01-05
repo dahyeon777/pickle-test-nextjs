@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description:
     "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
   icons: {
-    icon: '/img/favicon.ico', // 파비콘 경로
-  }, 
-  
+    icon: "/img/favicon.png", // 파비콘 경로
+  },
+
   keywords: [
     "심리테스트",
     "피클테스트",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: '/img/og-image.png', // public 폴더에 있는 이미지 경로
+        url: "/img/og-image.png", // public 폴더에 있는 이미지 경로
         width: 1200,
         height: 630,
       },
