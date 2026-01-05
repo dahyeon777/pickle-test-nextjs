@@ -8,7 +8,6 @@ import { AllHorrorQuestionsData } from "../../../../HorrorTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
-// 1. 방금 만든 카카오 공유 컴포넌트 임포트
 import KakaoShareButton from "@/src/components/KakaoShareButton";
 
 function TestResultPage() {
@@ -19,6 +18,10 @@ function TestResultPage() {
   const [resultData, setResultData] = useState<any>(null);
   const [testTitle, setTestTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  // 현재 모드 확인 (다시하기 링크에 사용)
+  const currentMode =
+    searchParams.get("mode") || (isHorror ? "horror" : "normal");
 
   useEffect(() => {
     const modeParam = searchParams.get("mode");
@@ -123,12 +126,10 @@ function TestResultPage() {
           </p>
         </div>
 
-        {/* 버튼 그룹 섹션 */}
         <div
           className={styles.button_group}
           style={{ flexDirection: "column", gap: "10px" }}
         >
-          {/* 2. 카카오톡 공유 버튼 (가로 꽉 차게) */}
           <KakaoShareButton
             title={
               isHorror
@@ -142,21 +143,25 @@ function TestResultPage() {
             }
           />
 
-          {/* 하단 2개 버튼 세트 */}
           <div style={{ display: "flex", width: "100%", gap: "10px" }}>
             <button
               onClick={handleCopyLink}
               className={isHorror ? styles.horror_share_btn : styles.share_btn}
               style={{ flex: 1 }}
             >
-              {isHorror ? "🔗 링크 복사" : "🔗 링크 복사"}
+              🔗 링크 복사
             </button>
-            <Link href="/" style={{ flex: 1, display: "flex" }}>
+
+            {/* 💡 수정된 부분: 처음으로 -> 다시하기 / 경로를 testIntro로 변경 */}
+            <Link
+              href={`/testReady/${params.testId}?mode=${currentMode}`}
+              style={{ flex: 1, display: "flex" }}
+            >
               <button
                 className={isHorror ? styles.horror_home_btn : styles.home_btn}
                 style={{ width: "100%" }}
               >
-                ↩ 처음으로
+                ↩ 다시하기
               </button>
             </Link>
           </div>
