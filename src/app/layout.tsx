@@ -40,12 +40,19 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        {/* 2. 구글 애드센스 스크립트 삽입 */}
+        {/* 구글 애드센스 */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6955061481766922"
           crossOrigin="anonymous"
-          strategy="afterInteractive" // 페이지 로드 후 부드럽게 실행
+          strategy="afterInteractive"
+        />
+
+        {/* 3. 카카오 SDK 스크립트 추가 */}
+        <Script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
       </head>
       <body>

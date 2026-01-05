@@ -8,6 +8,8 @@ import { AllHorrorQuestionsData } from "../../../../HorrorTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
+// 1. 방금 만든 카카오 공유 컴포넌트 임포트
+import KakaoShareButton from "@/src/components/KakaoShareButton";
 
 function TestResultPage() {
   const params = useParams();
@@ -42,45 +44,122 @@ function TestResultPage() {
   const handleCopyLink = () => {
     const currentUrl = window.location.href;
     navigator.clipboard.writeText(currentUrl).then(() => {
-      alert(isHorror ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
+      alert(
+        isHorror
+          ? "실험 기록 링크가 복사되었습니다."
+          : "결과 링크가 복사되었습니다!"
+      );
     });
   };
 
-  if (isLoading) return <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>데이터 분석 중...</div>;
-  if (!resultData) return <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>기록을 찾을 수 없습니다.</div>;
+  if (isLoading)
+    return (
+      <div
+        className={`${styles.container} ${
+          isHorror ? styles.horror_theme : styles.dayMode
+        }`}
+      >
+        데이터 분석 중...
+      </div>
+    );
+  if (!resultData)
+    return (
+      <div
+        className={`${styles.container} ${
+          isHorror ? styles.horror_theme : styles.dayMode
+        }`}
+      >
+        기록을 찾을 수 없습니다.
+      </div>
+    );
 
   return (
-    <div className={`${styles.container} ${isHorror ? styles.horror_theme : styles.dayMode}`}>
+    <div
+      className={`${styles.container} ${
+        isHorror ? styles.horror_theme : styles.dayMode
+      }`}
+    >
       <div className={styles.content_wrapper}>
-        
         <h1 className={styles.main_title}>
-          {isHorror ? <>실험 기록<br /> {testTitle}</> : `${testTitle} 결과`}
+          {isHorror ? (
+            <>
+              실험 기록
+              <br /> {testTitle}
+            </>
+          ) : (
+            `${testTitle} 결과`
+          )}
         </h1>
 
-        <div className={isHorror ? styles.horror_report : styles.result_title_section}>
-          <h2 className={isHorror ? styles.horror_type_title : styles.result_title}>
-            {isHorror ? resultData.title : `당신은 "${resultData.title}" 입니다!`}
+        <div
+          className={
+            isHorror ? styles.horror_report : styles.result_title_section
+          }
+        >
+          <h2
+            className={
+              isHorror ? styles.horror_type_title : styles.result_title
+            }
+          >
+            {isHorror
+              ? resultData.title
+              : `당신은 "${resultData.title}" 입니다!`}
           </h2>
 
           {resultData.result && (
-            <img src={resultData.result} alt="결과" className={styles.result_image} />
+            <img
+              src={resultData.result}
+              alt="결과"
+              className={styles.result_image}
+            />
           )}
 
-          {/* 💡 .trim() 하나로 첫 문장 실종 해결 */}
-          <p className={isHorror ? styles.horror_description : styles.description}>
+          <p
+            className={
+              isHorror ? styles.horror_description : styles.description
+            }
+          >
             {resultData.description?.trim()}
           </p>
         </div>
 
-        <div className={styles.button_group}>
-          <button onClick={handleCopyLink} className={isHorror ? styles.horror_share_btn : styles.share_btn}>
-            {isHorror ? "🔗 기록 공유" : "🔗 결과 공유"}
-          </button>
-          <Link href="/" style={{ flex: 1, display: "flex" }}>
-            <button className={isHorror ? styles.horror_home_btn : styles.home_btn} style={{ width: "100%" }}>
-              ↩ 처음으로
+        {/* 버튼 그룹 섹션 */}
+        <div
+          className={styles.button_group}
+          style={{ flexDirection: "column", gap: "10px" }}
+        >
+          {/* 2. 카카오톡 공유 버튼 (가로 꽉 차게) */}
+          <KakaoShareButton
+            title={
+              isHorror
+                ? `[실험기록] ${resultData.title}`
+                : `[테스트결과] ${resultData.title}`
+            }
+            description={resultData.description?.slice(0, 45) + "..."}
+            imageUrl={resultData.result}
+            buttonText={
+              isHorror ? "💬 실험 기록 전송" : "💬 카카오톡 결과 공유"
+            }
+          />
+
+          {/* 하단 2개 버튼 세트 */}
+          <div style={{ display: "flex", width: "100%", gap: "10px" }}>
+            <button
+              onClick={handleCopyLink}
+              className={isHorror ? styles.horror_share_btn : styles.share_btn}
+              style={{ flex: 1 }}
+            >
+              {isHorror ? "🔗 링크 복사" : "🔗 링크 복사"}
             </button>
-          </Link>
+            <Link href="/" style={{ flex: 1, display: "flex" }}>
+              <button
+                className={isHorror ? styles.horror_home_btn : styles.home_btn}
+                style={{ width: "100%" }}
+              >
+                ↩ 처음으로
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

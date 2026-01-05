@@ -1,0 +1,36 @@
+/* 기본 카카오 버튼 스타일 */
+.kakao_btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fee500; /* 카카오 공식 브랜드 컬러 */
+  color: #3c1e1e; /* 카카오 공식 폰트 컬러 */
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 마우스 올렸을 때 살짝 어둡게 */
+.kakao_btn:hover {
+  background-color: #fada00;
+}
+
+/* 클릭했을 때 살짝 눌리는 효과 */
+.kakao_btn:active {
+  transform: scale(0.98);
+}
+
+/* 폰트가 너무 크면 모바일에서 깨질 수 있으니 조절 */
+@media (max-width: 480px) {
+  .kakao_btn {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
