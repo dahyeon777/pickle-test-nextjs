@@ -1,8 +1,7 @@
-
 export const testData1 = {
   id: 1,
   path: "/img/test_ready_img/f_job.png",
-  title: "판타지 세계 직업 테스트",
+  title: "👸\n판타지 세계\n직업 테스트",
   questions: [
     {
       questionId: 1,

@@ -54,7 +54,7 @@ function TestResultPage() {
       <div className={styles.content_wrapper}>
         
         <h1 className={styles.main_title}>
-          {isHorror ? <>실험 기록<br /> {testTitle}</> : `✨ ${testTitle} 결과 ✨`}
+          {isHorror ? <>실험 기록<br /> {testTitle}</> : `${testTitle} 결과`}
         </h1>
 
         <div className={isHorror ? styles.horror_report : styles.result_title_section}>

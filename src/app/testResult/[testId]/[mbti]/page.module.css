@@ -35,7 +35,6 @@
   width: 100%;
   color: #354a33;
   text-align: center;
-  white-space: pre-wrap; /* \n 대응 */
 }
 
 .horror_theme .main_title {
