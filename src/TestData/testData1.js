@@ -1,366 +1,366 @@
 export const testData1 = {
   id: 1,
-  path: "/img/test_ready_img/f_job.png",
-  title: "👸\n판타지 세계\n직업 테스트",
+  path: "/img/test_ready_img/dessert.png", // pic3 대신 직접 경로
+  title: "🍨\n달콤한\n디저트 테스트",
   questions: [
     {
       questionId: 1,
-      text: "판타지 세계로 소환되었다. 당신이 가장 먼저 집중할 곳은?",
+      text: "카페에 들어서자마자, 당신의 시선은 어디로 향하는가?",
       options: [
         {
           optionId: "A",
-          text: "마을 광장이나 여관 등 사람이 모인 곳에서 정보를 얻는다.",
+          text: "테이블에 앉아있는 사람들의 대화나 분위기",
           score: { E_score: 2 },
         },
         {
           optionId: "B",
-          text: "소지품을 정리하고 주변 지도를 꼼꼼히 확인한다.",
+          text: "주문할 때 쓸 수 있는 메뉴판 또는 키오스크",
           score: { J_score: 1 },
         },
         {
           optionId: "C",
-          text: "조용한 숲이나 도서관에서 상황을 분석하고 계획을 세운다.",
+          text: "자신이 앉을 구석진 자리나 창가 자리",
           score: { I_score: 2 },
         },
         {
           optionId: "D",
-          text: "주변의 건물, 사람들의 복장 등 구체적인 현실 정보를 살핀다.",
+          text: "진열대 위의 디저트 실물이나 샘플",
           score: { S_score: 1 },
         },
       ],
     },
     {
       questionId: 2,
-      text: "마을에 낯선 마법 장치가 발견되었다. 당신의 태도는?",
+      text: "디저트를 고를 때 가장 먼저 생각하는 것은?",
       options: [
         {
           optionId: "A",
-          text: "이 장치가 미래에 어떤 용도로 쓰일지 상상하고 이론을 세운다.",
+          text: "새롭고 독특한 시즈널 메뉴나 이색적인 조합",
           score: { N_score: 2 },
         },
         {
           optionId: "B",
-          text: "사람들의 반응과 장치에 대한 소문을 들으며 분위기를 파악한다.",
+          text: "가장 인기 있거나 베스트셀러 표시가 있는 메뉴",
           score: { E_score: 1 },
         },
         {
           optionId: "C",
-          text: "장치의 작동 방식과 부품을 직접 만져보고 관찰하여 원리를 이해한다.",
+          text: "내가 전에 먹어보고 맛있었던 안전한 메뉴",
           score: { S_score: 2 },
         },
         {
           optionId: "D",
-          text: "이 장치가 왜 여기에 있는지, 만든 사람의 의도를 추리한다.",
+          text: "이 메뉴가 왜 만들어졌을지, 재료의 궁합은 어떨지",
           score: { I_score: 1 },
         },
       ],
     },
     {
       questionId: 3,
-      text: "길드에서 보수가 좋은 임무가 들어왔다. 단, 위험성이 매우 높다. 당신은?",
+      text: "친구가 맛없다고 악평한 디저트가 눈에 들어왔다. 당신은?",
       options: [
         {
           optionId: "A",
-          text: "보수가 좋으니 일단 몸으로 부딪쳐보며 방법을 찾는다.",
+          text: "혹시 나한테는 맛있을까? 직접 경험해보고 평가한다.",
           score: { P_score: 2 },
         },
         {
           optionId: "B",
-          text: "위험 요소를 체계적으로 분석하고, 성공 확률이 높을 때만 수락한다.",
+          text: "친구 말을 믿고 바로 제외. 검증된 메뉴를 고른다.",
           score: { J_score: 2 },
         },
         {
           optionId: "C",
-          text: "위험을 감수할 만큼 가치가 있는지 냉정하게 손익을 계산한다.",
+          text: "맛없다고? 왜 그런지 논리적으로 분석하며 맛본다.",
           score: { T_score: 1 },
         },
         {
           optionId: "D",
-          text: "마음이 불안하여 거절한다. 안전한 임무를 통해 사람들을 돕고 싶다.",
+          text: "친구의 기분이나 취향을 배려하며 다른 메뉴를 추천한다.",
           score: { F_score: 1 },
         },
       ],
     },
     {
       questionId: 4,
-      text: "힘든 전투 후 동료가 의기소침해 있다. 당신이 건넬 말은?",
+      text: "디저트가 나왔을 때, 가장 먼저 하는 행동은?",
       options: [
         {
           optionId: "A",
-          text: "“이번 전투에서 네 검술 동작이 흔들렸어. 다음엔 이렇게 해봐.”",
-          score: { T_score: 2 },
+          text: "먹기 전에 완벽한 각도로 사진 10장 이상을 찍는다.",
+          score: { S_score: 1 },
         },
         {
           optionId: "B",
-          text: "“다치지 않은 게 중요해. 너는 우리에게 꼭 필요한 존재야.”",
-          score: { F_score: 1 },
+          text: "바로 한 입 베어 물고 맛의 분석을 시작한다.",
+          score: { T_score: 2 },
         },
         {
           optionId: "C",
-          text: "“힘든 싸움이었지? 오늘 밤은 맛있는 술 마시면서 잊어버리자!”",
+          text: "같이 온 사람들에게 먼저 맛보라고 권유하며 반응을 살핀다.",
           score: { E_score: 1 },
         },
         {
           optionId: "D",
-          text: "묵묵히 옆에 있어주거나, 조용히 회복 물약을 건넨다.",
-          score: { I_score: 1 },
+          text: "사진은 간단히 찍고, 맛을 천천히 음미하며 감상에 빠진다.",
+          score: { F_score: 1 },
         },
       ],
     },
     {
       questionId: 5,
-      text: "당신에게 마법을 가르쳐줄 스승이 나타났다. 어떤 능력을 배우고 싶은가?",
+      text: "디저트 만들기에 도전했다. 계획대로 되지 않았을 때 당신은?",
       options: [
         {
           optionId: "A",
-          text: "고대의 언어와 철학을 탐구하는 지식 마법",
-          score: { I_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "모두를 이롭게 하는 회복 마법이나 방어 마법",
-          score: { F_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "적의 방어를 뚫는 가장 강력하고 효율적인 공격 마법",
+          text: "실패 원인을 논리적으로 분석하고, 다음 시도를 계획한다.",
           score: { T_score: 2 },
         },
         {
-          optionId: "D",
-          text: "공간을 넘나드는 이동 마법이나 변화 마법",
+          optionId: "B",
+          text: "의외의 새로운 맛이 났다면, 즉흥적으로 '신메뉴'로 포장한다.",
           score: { P_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "결과물에 실망하여 자책하며 기분이 상한다.",
+          score: { F_score: 2 },
+        },
+        {
+          optionId: "D",
+          text: "정석 레시피로 돌아가 처음부터 다시 정확히 시작한다.",
+          score: { J_score: 1 },
         },
       ],
     },
     {
       questionId: 6,
-      text: "당신이 맡은 마을에 전염병이 돌기 시작했다. 당신의 대응 방식은?",
+      text: "디저트 맛집 정보를 얻는 방식은?",
       options: [
         {
           optionId: "A",
-          text: "원인을 찾기 위해 고문서를 뒤지고, 숨겨진 의미를 파악한다.",
-          score: { N_score: 2 },
+          text: "블로그나 인스타그램 후기, 리뷰를 꼼꼼히 찾아보고 신중하게 결정한다.",
+          score: { I_score: 1 },
         },
         {
           optionId: "B",
-          text: "즉시 마을 사람들을 조직해 격리하고 구호품을 분배하는 체계를 만든다.",
-          score: { J_score: 2 },
+          text: "유명 셰프나 파티시에의 깊이 있는 철학을 먼저 탐독한다.",
+          score: { N_score: 2 },
         },
         {
           optionId: "C",
-          text: "직접 환자들을 돌보고 위로하며, 안정적인 분위기를 유지한다.",
-          score: { F_score: 1 },
+          text: "친구들이 '가봤다'는 즉각적인 추천이나 바이럴에 따른다.",
+          score: { E_score: 2 },
         },
         {
           optionId: "D",
-          text: "전염병의 구체적인 증상을 기록하고, 기존 치료법을 즉시 적용한다.",
+          text: "가장 많은 사람이 간 곳, 현재 줄이 긴 곳을 직관적으로 따라간다.",
           score: { S_score: 1 },
         },
       ],
     },
     {
       questionId: 7,
-      text: "파티원 모집 시, 당신이 가장 중요하게 보는 자질은?",
+      text: "함께 간 사람이 디저트를 주문하지 않고 커피만 마시겠다고 한다면?",
       options: [
         {
           optionId: "A",
-          text: "상황에 얽매이지 않고 유연하게 대처할 수 있는 순발력",
-          score: { P_score: 2 },
+          text: "혼자 먹어도 괜찮지만, 혹시 먹고 싶어질까 봐 나눠먹을 준비를 한다.",
+          score: { F_score: 2 },
         },
         {
           optionId: "B",
-          text: "정확한 임무 수행 능력과 약속을 철저히 지키는 책임감",
-          score: { J_score: 1 },
+          text: "왜 디저트를 먹지 않는지 이유를 분석하고, 합리적인 조언을 한다.",
+          score: { T_score: 1 },
         },
         {
           optionId: "C",
-          text: "팀의 분위기를 밝게 만들고 모두와 잘 어울리는 사교성",
-          score: { E_score: 2 },
+          text: "각자의 취향이니 상관없다. 내 것만 완벽하게 즐긴다.",
+          score: { I_score: 2 },
         },
         {
           optionId: "D",
-          text: "말이 많지 않아도 묵묵히 자신의 역할을 해내는 전문성",
-          score: { I_score: 1 },
+          text: "다 같이 먹는 재미가 없어서 아쉽다. 다음에 올 곳을 제안한다.",
+          score: { E_score: 1 },
         },
       ],
     },
     {
       questionId: 8,
-      text: "어둠의 세력이 마을을 습격했다. 당신이 가장 먼저 취할 행동은?",
+      text: "새로운 디저트를 맛보았을 때, 당신이 느끼는 만족감의 기준은?",
       options: [
         {
           optionId: "A",
-          text: "습격의 패턴을 파악하고 적의 근본적인 목적을 예측한다.",
+          text: "내가 생각했던 맛의 이상향과 얼마나 일치하는지",
           score: { N_score: 1 },
         },
         {
           optionId: "B",
-          text: "가장 취약한 민간인을 보호하며 방어선을 구축한다.",
+          text: "맛과 식감, 눈으로 보는 비주얼이 얼마나 조화로운지",
           score: { S_score: 2 },
         },
         {
           optionId: "C",
-          text: "마을 사람들을 안심시키며 이성적으로 대피를 유도한다.",
-          score: { T_score: 1 },
+          text: "내가 이 디저트를 먹고 기분이 얼마나 좋아졌는지",
+          score: { F_score: 1 },
         },
         {
           optionId: "D",
-          text: "공포에 질린 사람들의 감정을 진정시키며 희망을 준다.",
-          score: { F_score: 2 },
+          text: "가격 대비 양이나 재료의 품질이 합리적인지",
+          score: { T_score: 2 },
         },
       ],
     },
     {
       questionId: 9,
-      text: "당신이 맡은 직업의 업무가 반복적이고 지루하게 느껴질 때, 당신은?",
+      text: "디저트를 사서 집으로 돌아가는 길, 당신의 발걸음은?",
       options: [
         {
           optionId: "A",
-          text: "지루함을 없애기 위해 업무 방식에 새로운 변화를 시도해 본다.",
-          score: { P_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "규칙적인 루틴에 만족하며, 묵묵히 꾸준히 업무를 처리한다.",
+          text: "집에 가서 뭘 하면서 먹을지 벌써 계획이 서 있다.",
           score: { J_score: 2 },
         },
         {
+          optionId: "B",
+          text: "집에 가서 포장 뜯자마자 바로 먹을 수 있다.",
+          score: { P_score: 1 },
+        },
+        {
           optionId: "C",
-          text: "동료들을 모아 게임이나 농담을 하며 분위기를 바꾼다.",
+          text: "가는 길에 디저트 사진을 찍어 SNS에 자랑한다.",
           score: { E_score: 1 },
         },
         {
           optionId: "D",
-          text: "이 업무의 근원적인 가치와 의미를 생각하며 스스로 다잡는다.",
+          text: "디저트 상자가 망가지지 않게 조심스럽게 들고 간다.",
           score: { I_score: 1 },
         },
       ],
     },
     {
       questionId: 10,
-      text: "당신이 얻은 강력한 힘이나 보물을 사용하는 방식은?",
+      text: "디저트를 남겨야 할 상황이다. 당신의 행동은?",
       options: [
         {
           optionId: "A",
-          text: "이 힘을 어떻게 써야 세상에 가장 이득이 될지 전략적으로 고민한다.",
-          score: { T_score: 1 },
+          text: "포장해서 가져간다. 내일 아침에 먹을 계획을 세운다.",
+          score: { J_score: 1 },
         },
         {
           optionId: "B",
-          text: "당장 눈앞의 문제를 해결하는 데 직관적으로 사용한다.",
+          text: "남긴 걸 보며 아쉬워하지만, 일단 지금은 포기한다.",
           score: { P_score: 2 },
         },
         {
           optionId: "C",
-          text: "이 힘으로 어려운 사람들을 돕고, 정의를 실현하는 데 쓴다.",
+          text: "남겨진 조각을 보며, 나중에 생각날 것 같은 아련한 감정에 빠진다.",
           score: { F_score: 1 },
         },
         {
           optionId: "D",
-          text: "힘의 원리를 깊이 이해하기 위해 고립된 장소에서 연구한다.",
-          score: { N_score: 2 },
+          text: "남기는 것이 가장 합리적인 선택이었는지 이성적으로 검토한다.",
+          score: { T_score: 1 },
         },
       ],
     },
   ],
-  // 결과 데이터도 여기에 추가할 수 있습니다.
+
   results: {
-    INTJ: {
-      result: "/img/f_job_test/14.png",
-      title: "흑마법사",
+    ESFJ: {
+      result: "/img/dessert_test/01.png", // result1
+      title: "대용량 파티 브라우니",
       description:
-        "고독한 탐구와 강력한 지식 기반으로 세상을 지배하는 전략가. 복잡한 문제를 완벽하게 해결하는 흑마법사입니다.",
-    },
-    INTP: {
-      result: "/img/f_job_test/04.png",
-      title: "학자",
-      description:
-        "끊임없이 새로운 지식을 탐구하고 이론을 정립하는 사색가. 진리를 찾아 현실을 뛰어넘는 학자입니다.",
-    },
-    ENTJ: {
-      result: "/img/f_job_test/03.png",
-      title: "기사단장",
-      description:
-        "명확한 목표와 체계적인 지휘력으로 조직을 이끌어 승리하는 리더. 뛰어난 전략가 기사단장입니다.",
+        "사교성이 뛰어나고, 모두에게 기쁨을 주기 위해 노력하는 당신. 주변 사람들과의 조화를 최우선으로 생각하는 친선 도모자 디저트입니다.",
     },
     ENTP: {
-      result: "/img/f_job_test/01.png",
-      title: "마법사",
+      result: "/img/dessert_test/02.png", // result2
+      title: "수제 막걸리 푸딩",
       description:
-        "기발한 아이디어와 예측 불가능한 마법으로 난관을 돌파하는 혁신가. 자유롭고 논쟁을 즐기는 마법사입니다.",
-    },
-    INFJ: {
-      result: "/img/f_job_test/06.png",
-      title: "예언가",
-      description:
-        "깊은 통찰력과 이상으로 세상을 돕는 사려 깊은 조언자. 미래를 내다보고 대의를 실현하는 예언가입니다.",
-    },
-    INFP: {
-      result: "/img/f_job_test/12.png",
-      title: "음유시인",
-      description:
-        "감성적인 노래와 이야기로 사람들의 마음을 치유하고 영감을 주는, 낭만적인 예술가 음유시인입니다.",
-    },
-    ENFJ: {
-      result: "/img/f_job_test/13.png",
-      title: "힐러",
-      description:
-        "타인을 돕고 치유하는 데 헌신하며, 따뜻한 영향력으로 모두를 이끄는 지도자 힐러입니다.",
+        "예측 불가능하고 기발한 아이디어의 소유자. 평범함을 거부하고 독창적인 조합을 시도하며, 세상에 없는 새로운 맛을 창조하는 변론가 디저트입니다.",
     },
     ENFP: {
-      result: "/img/f_job_test/10.png",
-      title: "광대",
+      result: "/img/dessert_test/03.png", // result3
+      title: "토핑 가득한 와플",
       description:
-        "자유로운 영혼과 넘치는 에너지로 분위기를 활기차게 만드는, 모험과 재미를 사랑하는 광대입니다.",
-    },
-    ISTJ: {
-      result: "/img/f_job_test/02.png",
-      title: "성주",
-      description:
-        "전통과 질서를 수호하며, 주어진 임무를 완벽하게 이행하는 통치자 성주입니다.",
-    },
-    ISFJ: {
-      result: "/img/f_job_test/09.png",
-      title: "농부",
-      description:
-        "묵묵히 자신의 자리에서 현실적인 안정과 풍요를 책임지며, 공동체의 수호자가 되는 농부입니다.",
-    },
-    ESTJ: {
-      result: "/img/f_job_test/05.png",
-      title: "상인",
-      description:
-        "효율적인 계획과 확실한 이익 계산으로 비즈니스를 주도하며, 체계적인 리더십을 발휘하는 상인입니다.",
-    },
-    ESFJ: {
-      result: "/img/f_job_test/11.png",
-      title: "무희",
-      description:
-        "화려한 사교성과 밝은 에너지로 공동체에 즐거움을 선사하며, 친선 도모자 역할을 하는 무희입니다.",
-    },
-    ISTP: {
-      result: "/img/f_job_test/08.png",
-      title: "대장장이",
-      description:
-        "도구나 기술을 능숙하게 다루며, 실용적인 결과물을 만들어내는 쿨하고 유능한 장인 대장장이입니다.",
-    },
-    ISFP: {
-      result: "/img/f_job_test/15.png",
-      title: "궁수",
-      description:
-        "자연과 조화되며, 순간적인 감각과 정확한 판단으로 임무를 수행하는 자유로운 영혼의 궁수입니다.",
-    },
-    ESTP: {
-      result: "/img/f_job_test/07.png",
-      title: "격투가",
-      description:
-        "즉각적인 행동력과 현장 판단력으로 난관을 직접 부딪쳐 해결하며, 스릴을 즐기는 격투가입니다.",
+        "다채로운 매력과 호기심으로 가득 찬 당신. 자유롭고 즉흥적으로 삶의 재미를 찾아다니며, 예측 불가한 즐거움을 선사하는 활동가 디저트입니다.",
     },
     ESFP: {
-      result: "/img/f_job_test/16.png",
-      title: "검사",
+      result: "/img/dessert_test/04.png", // result4
+      title: "새콤한 맛의 젤리푸딩",
       description:
-        "강한 추진력과 현란한 기술로 눈앞의 상황을 즐기며 해결하는, 무술계의 연예인 검사입니다.",
+        "밝고 긍정적이며, 주변에 즐거움을 선사하는 당신. 순간을 즐기고 파티를 주도하는 자유로운 영혼의 연예인 디저트입니다.",
+    },
+    ESTP: {
+      result: "/img/dessert_test/05.png", // result5
+      title: "팡팡 터지는 팝콘",
+      description:
+        "즉흥적이고 에너지가 넘치며, 늘 새로운 트렌드의 중심에 있는 당신. 현장에서 행동하고 스릴을 즐기는 사업가 디저트입니다.",
+    },
+    ISFP: {
+      result: "/img/dessert_test/06.png", // result6
+      title: "예술적인 앙금 플라워 떡케이크",
+      description:
+        "섬세한 감각과 미적 재능으로 자신의 감정을 아름답게 표현하는 당신. 유연하고 자유로운 영혼의 모험가 디저트입니다.",
+    },
+    ISTP: {
+      result: "/img/dessert_test/07.png", // result7
+      title: "쌀과자",
+      description:
+        "단순하고 직관적이며, 복잡한 감정보다는 실용적인 결과와 과정을 중시하는 당신. 쿨하고 능숙하게 상황을 다루는 장인 디저트입니다.",
+    },
+    ENFJ: {
+      result: "/img/dessert_test/08.png", // result8
+      title: "따뜻한 컵케이크",
+      description:
+        "친근하고 다정하며, 주변 사람들에게 안정과 활력을 주는 당신. 모두가 행복하길 바라며 따뜻한 온기를 나누는 선지자 디저트입니다.",
+    },
+    ESTJ: {
+      result: "/img/dessert_test/09.png", // result9
+      title: "깔끔한 에스프레소",
+      description:
+        "복잡한 장식 없이 명료하고 효율성을 추구하는 당신. 목표 달성을 위해 체계적으로 움직이며, 결과를 중시하는 경영자 디저트입니다.",
+    },
+    ISFJ: {
+      result: "/img/dessert_test/10.png", // result10
+      title: "오리지널 플레인 스콘",
+      description:
+        "자극적이지 않고 편안함을 주는 당신. 주변을 조용히 돌보며 안정적인 환경을 만드는 데 헌신하는 수호자 디저트입니다.",
+    },
+    ISTJ: {
+      result: "/img/dessert_test/11.png", // result11
+      title: "단단한 정통 초콜릿",
+      description:
+        "변치 않는 신뢰와 책임감을 상징하는 당신. 원칙을 중시하고 묵묵히 자신의 임무를 수행하며, 믿음을 주는 현실주의자 디저트입니다.",
+    },
+    INFP: {
+      result: "/img/dessert_test/12.png", // result12
+      title: "오래된 레시피의 마들렌",
+      description:
+        "소박한 외관 속에 깊은 감성과 가치를 지닌 당신. 자신의 내면의 기준을 중요시하며, 잔잔한 감동을 주는 소중한 중재자 디저트입니다.",
+    },
+    INFJ: {
+      result: "/img/dessert_test/13.png", // result13
+      title: "마카롱",
+      description:
+        "겉은 화려하지 않아도 속은 깊은 공감과 이상을 담고 있는 당신. 타인에게 긍정적인 영향을 주고, 섬세한 감정의 조화를 중요시하는 옹호자 디저트입니다.",
+    },
+    ENTJ: {
+      result: "/img/dessert_test/14.png", // result14
+      title: "화려한 3단 케이크",
+      description:
+        "시선을 압도하는 존재감과 확실한 목표 의식을 가진 당신. 모든 일을 주도하며 강력한 리더십으로 목표를 실현하는 지휘관 디저트입니다.",
+    },
+    INTP: {
+      result: "/img/dessert_test/15.png", // result15
+      title: "무설탕/비건 대체 아이스크림",
+      description:
+        "일반적이지 않은 조합과 깊은 탐구를 즐기는 당신. 논리적이지만 새로운 아이디어에 열려 있으며, 건강과 원리를 모두 따지는 사색가 디저트입니다.",
+    },
+    INTJ: {
+      result: "/img/dessert_test/16.png", // result16
+      title: "완벽한 클래식 타르트",
+      description:
+        "깊이 있는 맛과 완벽한 구조를 추구하는 당신. 빈틈없는 계획과 논리로 삶을 설계하며, 오차 없는 만족감을 추구하는 분석가 디저트입니다.",
     },
   },
 };

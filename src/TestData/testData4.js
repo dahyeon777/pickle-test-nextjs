@@ -1,369 +1,194 @@
-// 상단에 있던 import pic4, result1~16은 모두 삭제하세요!
-
 export const testData4 = {
   id: 4,
-  path: "/img/test_ready_img/gemstone.png", // pic4 대신 직접 경로
-  title: "💎\n원석\n테스트",
+  path: "",
+  title: "✈️\n여행 스타일\n테스트",
   questions: [
     {
       questionId: 1,
-      text: "당신에게 가장 끌리는 '빛'은 무엇입니까?",
+      text: "여행지로 떠나기 전, 짐을 싸는 당신의 스타일은?",
       options: [
         {
           optionId: "A",
-          text: "밝고 화려해서 사람들의 시선을 끄는 빛",
-          score: { E_score: 2 },
+          text: "리스트를 작성해 카테고리별로 완벽하게 정리한다.",
+          score: { J_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "어둠 속에서 길을 알려주는 실용적인 빛",
-          score: { S_score: 1 },
+          text: "필요한 것만 대충 던져 넣고 현지에서 조달한다.",
+          score: { P_score: 2, E_score: 1 },
         },
         {
           optionId: "C",
-          text: "은은하고 신비로워서 혼자서만 알고 싶은 빛",
-          score: { I_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "미래의 가능성을 암시하는 희미한 환상의 빛",
-          score: { N_score: 1 },
+          text: "혹시 모를 상황을 대비해 감성 소품까지 꼼꼼히 챙긴다.",
+          score: { N_score: 1, F_score: 1, I_score: 1 },
         },
       ],
     },
     {
       questionId: 2,
-      text: "새로운 문제를 맞닥뜨렸을 때, 당신의 접근 방식은?",
+      text: "비행기 안에서 당신은 주로 무엇을 하나요?",
       options: [
         {
           optionId: "A",
-          text: "문제가 왜 발생했는지 논리적인 원인을 분석한다.",
-          score: { T_score: 2 },
+          text: "도착해서 먹을 맛집과 동선을 다시 확인한다.",
+          score: { J_score: 2, T_score: 1 },
         },
         {
           optionId: "B",
-          text: "주변 사람들의 의견과 감정을 고려하여 모두에게 좋은 해결책을 찾는다.",
-          score: { F_score: 2 },
+          text: "창밖 풍경을 보며 이번 여행의 설렘을 메모한다.",
+          score: { N_score: 2, F_score: 1 },
         },
         {
           optionId: "C",
-          text: "경험했던 유사 사례를 떠올려 현실적인 해결책을 적용한다.",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "문제가 앞으로 가져올 파장과 더 나은 미래를 상상하며 해결한다.",
-          score: { N_score: 1 },
+          text: "안대 쓰고 푹 자면서 컨디션 관리에 집중한다.",
+          score: { S_score: 1, I_score: 2 },
         },
       ],
     },
     {
       questionId: 3,
-      text: "당신이 중요하게 생각하는 삶의 원동력은?",
+      text: "낯선 여행지에 도착하자마자 느껴지는 감정은?",
       options: [
         {
           optionId: "A",
-          text: "외부 활동과 다양한 사람들과의 적극적인 교류",
-          score: { E_score: 1 },
+          text: "북적이는 사람들과 공기! 에너지가 솟구친다.",
+          score: { E_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "철저하게 세운 계획을 완수했을 때의 성취감",
-          score: { J_score: 2 },
+          text: "미지의 세계에 던져진 듯한 묘한 상상에 빠진다.",
+          score: { N_score: 2, I_score: 1 },
         },
         {
           optionId: "C",
-          text: "내면의 평화와 깊은 통찰을 통한 자아 성장",
-          score: { I_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "상황에 따라 유연하게 대처하는 자유로움",
-          score: { P_score: 2 },
+          text: "일단 안전하게 숙소까지 가는 것에만 집중한다.",
+          score: { J_score: 1, T_score: 1, I_score: 1 },
         },
       ],
     },
     {
       questionId: 4,
-      text: "친구가 고민을 털어놓았을 때, 당신의 반응은?",
+      text: "예약한 식당이 문을 닫았다면 당신의 대처는?",
       options: [
         {
           optionId: "A",
-          text: "가장 효율적이고 논리적인 해결 방안을 제시한다.",
-          score: { T_score: 1 },
+          text: "당황하지 않고 미리 준비한 '플랜 B' 맛집으로 간다.",
+          score: { J_score: 2, T_score: 1 },
         },
         {
           optionId: "B",
-          text: "친구가 괜찮아질 때까지 감정을 공유하며 위로해 준다.",
-          score: { F_score: 1 },
+          text: "오히려 좋아! 근처에 사람 많아 보이는 곳에 들어간다.",
+          score: { P_score: 2, E_score: 1 },
         },
         {
           optionId: "C",
-          text: "비슷한 경험담을 공유하며 상황에 공감한다.",
-          score: { S_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "고민의 근본적인 의미를 파악하며 앞으로 나아갈 방향을 제시한다.",
-          score: { N_score: 2 },
+          text: "속상하지만 근처 조용한 곳을 찾아 대충 끼니를 때운다.",
+          score: { F_score: 1, I_score: 2 },
         },
       ],
     },
     {
       questionId: 5,
-      text: "새로운 장소에 도착했다. 당신의 행동은?",
+      text: "여행 중 가장 행복한 순간은 언제인가요?",
       options: [
         {
           optionId: "A",
-          text: "가장 사람이 많고 활기찬 곳으로 가서 분위기를 즐긴다.",
-          score: { E_score: 2 },
+          text: "유명한 랜드마크에서 완벽한 인증샷을 남길 때.",
+          score: { S_score: 2, E_score: 1 },
         },
         {
           optionId: "B",
-          text: "구석진 곳이나 창가에 앉아 조용히 주변을 관찰한다.",
-          score: { I_score: 2 },
+          text: "길을 걷다 우연히 발견한 골목이 너무 예쁠 때.",
+          score: { P_score: 1, N_score: 2 },
         },
         {
           optionId: "C",
-          text: "이 장소의 규칙이나 운영 방식을 먼저 파악한다.",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "발길이 닿는 대로, 직감에 따라 탐험을 시작한다.",
-          score: { P_score: 1 },
+          text: "숙소에서 좋아하는 음악을 들으며 혼자 쉴 때.",
+          score: { I_score: 2, F_score: 1 },
         },
       ],
     },
     {
       questionId: 6,
-      text: "당신이 중요하게 생각하는 '약속'은?",
+      text: "현지인이 말을 걸어온다면 당신은?",
       options: [
         {
           optionId: "A",
-          text: "정해진 시간과 절차를 지키는 엄격한 약속",
-          score: { J_score: 2 },
+          text: "번역기를 돌려서라도 신나게 대화를 이어간다.",
+          score: { E_score: 2, F_score: 1 },
         },
         {
           optionId: "B",
-          text: "지킬 수 있는 한 유연하게 조정 가능한 약속",
-          score: { P_score: 2 },
+          text: "필요한 정보만 예의 바르게 묻고 짧게 대답한다.",
+          score: { T_score: 2, I_score: 1 },
         },
         {
           optionId: "C",
-          text: "타인과의 감정적 교류와 신뢰를 중요시하는 약속",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "합리적인 근거와 타당성이 있는 이성적인 약속",
-          score: { T_score: 1 },
+          text: "당황해서 웃으며 자리를 피하거나 친구 뒤에 숨는다.",
+          score: { I_score: 2, S_score: 1 },
         },
       ],
     },
     {
       questionId: 7,
-      text: "당신에게 닥친 위기에 대한 대처 방식은?",
+      text: "여행 예산이 생각보다 많이 남았다면?",
       options: [
         {
           optionId: "A",
-          text: "과거 경험을 바탕으로 현실적인 해결책을 즉시 실행한다.",
-          score: { S_score: 2 },
+          text: "마지막 날 가장 비싸고 화려한 저녁을 먹는다.",
+          score: { E_score: 1, S_score: 1, P_score: 1 },
         },
         {
           optionId: "B",
-          text: "위기를 통해 얻을 수 있는 장기적인 교훈을 생각한다.",
-          score: { N_score: 2 },
+          text: "가족이나 지인들에게 줄 선물을 더 정성껏 산다.",
+          score: { F_score: 2, J_score: 1 },
         },
         {
           optionId: "C",
-          text: "주변 사람들과 논의하며 사회적 해결책을 찾는다.",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "혼자 깊이 파고들어 가장 본질적이고 완벽한 탈출구를 찾는다.",
-          score: { I_score: 1 },
+          text: "나중을 위해 저축하거나 꼭 필요했던 고가품을 산다.",
+          score: { T_score: 2, J_score: 1 },
         },
       ],
     },
     {
       questionId: 8,
-      text: "당신이 가장 싫어하는 행동은?",
+      text: "여행을 마치고 집으로 돌아와서 가장 먼저 하는 일은?",
       options: [
         {
           optionId: "A",
-          text: "감정적으로 행동하며 논리나 근거 없이 주장하는 것",
-          score: { T_score: 2 },
+          text: "짐을 바로 정리하고 세탁기를 돌린 뒤 쉰다.",
+          score: { J_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "타인의 감정을 무시하고 상처 주는 무심한 행동",
-          score: { F_score: 2 },
+          text: "찍은 사진들을 SNS에 올리며 추억을 공유한다.",
+          score: { E_score: 2, N_score: 1 },
         },
         {
           optionId: "C",
-          text: "자신이 세운 목표나 약속을 어기는 무책임한 행동",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "사소한 일에 얽매여 융통성 없이 행동하는 것",
-          score: { P_score: 1 },
+          text: "일단 침대에 쓰러져 여행의 여운을 혼자 즐긴다.",
+          score: { I_score: 2, P_score: 1 },
         },
       ],
     },
-    {
-      questionId: 9,
-      text: "당신이 느끼는 '만족감'이란?",
-      options: [
-        {
-          optionId: "A",
-          text: "새로운 지식과 깨달음을 얻었을 때의 지적인 기쁨",
-          score: { N_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "주변 사람들과 함께 웃고 즐기는 사회적인 행복",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "내가 만든 결과물이 눈앞에 명확하게 보일 때의 충족감",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "복잡한 환경에서 벗어나 혼자 평화로울 때 느끼는 안정감",
-          score: { I_score: 1 },
-        },
-      ],
-    },
-    {
-      questionId: 10,
-      text: "당신이 추구하는 원석의 이상적인 특성은?",
-      options: [
-        {
-          optionId: "A",
-          text: "어떤 상황에서도 변치 않는 단단함과 견고함",
-          score: { S_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "빛에 따라 다채롭게 변하며 신비한 힘을 내포함",
-          score: { N_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "손에 쥐었을 때 느껴지는 따뜻하고 안정적인 에너지",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "열을 가하거나 압력을 주어도 변하지 않는 강인한 구조",
-          score: { T_score: 1 },
-        },
-      ],
-    },
-    // ... 질문 2~10번은 로직이 동일하므로 그대로 유지하시면 됩니다 ...
   ],
 
   results: {
-    ESFJ: {
-      result: "/img/gemstone_test/01.png", // result1
-      title: "아벤츄린 (Aventurine)",
-      description:
-        "당신은 행운과 기회를 부르고 감정적 안정과 성장을 돕는 아벤츄린입니다. 사교적이고 긍정적인 에너지로 주변과의 관계를 발전시키며, 모두에게 이로운 방향으로 기회를 만들어냅니다. 사람들과의 조화를 최우선으로 생각하는 친선 도모자의 원석입니다.",
-    },
-    ESFP: {
-      result: "/img/gemstone_test/02.png", // result2
-      title: "카넬리언 (Carnelian)",
-      description:
-        "당신은 생명력, 기쁨, 매력, 그리고 현장의 즉흥성을 상징하는 카넬리언입니다. 순간을 즐기고 자신의 매력을 마음껏 발산합니다. 긍정적인 에너지로 주변을 밝히는 활력의 원석입니다.",
-    },
-    ESTP: {
-      result: "/img/gemstone_test/03.png", // result3
-      title: "혈석 (Bloodstone)",
-      description:
-        "당신은 용기, 즉각적인 행동, 그리고 도전에 맞설 힘을 상징하는 혈석입니다. 현장 판단력이 뛰어나며, 머뭇거림 없이 행동하여 위기를 기회로 만듭니다. 스릴과 현실적 성과를 추구하는 사업가의 원석입니다.",
-    },
-    ISFP: {
-      result: "/img/gemstone_test/04.png", // result4
-      title: "터키석 (Turquoise)",
-      description:
-        "당신은 치유, 보호, 그리고 예술적 감각을 상징하는 터키석입니다. 자신의 감정과 아름다움을 섬세하게 표현하며, 자유로운 영혼을 추구합니다. 자연과의 조화를 중요시하는 모험가에게 어울립니다.",
-    },
-    ISTP: {
-      result: "/img/gemstone_test/05.png", // result5
-      title: "석류석 (Garnet)",
-      description:
-        "당신은 행동력, 집중, 그리고 실용적인 힘을 상징하는 석류석입니다. 복잡한 이론보다 눈앞의 문제를 능숙하게 해결하며, 자신의 기술과 열정을 통해 결과물을 만들어냅니다. 숙련된 장인의 원석입니다.",
-    },
-    ESTJ: {
-      result: "/img/gemstone_test/06.png", // result6
-      title: "백수정 (Clear Quartz)",
-      description:
-        "당신은 명료함, 에너지 증폭, 그리고 목표 집중을 상징하는 백수정입니다. 효율적인 계획과 깔끔한 실행력으로 모든 일을 처리합니다. 당신의 투명한 리더십이 조직을 성공으로 이끌 것입니다.",
-    },
-    ISFJ: {
-      result: "/img/gemstone_test/07.png", // result7
-      title: "호박 (Amber)",
-      description:
-        "당신은 보호, 인내, 그리고 따뜻한 위로를 상징하는 호박입니다. 묵묵히 자신의 자리를 지키며, 주변에 안정감과 편안함을 제공합니다. 세심한 배려로 타인을 지지하는 수호자의 원석입니다.",
-    },
-    ISTJ: {
-      result: "/img/gemstone_test/08.png", // result8
-      title: "오닉스 (Onyx)",
-      description:
-        "당신은 안정, 자기 통제, 그리고 현실적 기반을 상징하는 오닉스입니다. 흔들리지 않는 원칙과 규율로 자신의 영역을 확고히 지킵니다. 신뢰를 바탕으로 임무를 완수하는 현실주의자에게 어울립니다.",
-    },
-    ENFP: {
-      result: "/img/gemstone_test/09.png", // result9
-      title: "무지개 수정 (Rainbow Quartz)",
-      description:
-        "당신은 희망과 다채로운 에너지, 영감을 상징하는 무지개 수정입니다. 활기차고 긍정적인 태도로 삶의 모든 가능성을 탐험합니다. 당신의 존재만으로도 주변에 기쁨을 가져다줍니다.",
-    },
-    ENFJ: {
-      result: "/img/gemstone_test/10.png", // result10
-      title: "청금석 (Lapis Lazuli)",
-      description:
-        "당신은 진실, 지혜, 그리고 명확한 소통 능력을 상징하는 청금석입니다. 타인과의 관계를 중요시하며, 모두의 성장을 돕는 리더입니다. 공동체에 긍정적인 메시지를 전달하는 데 능숙합니다.",
-    },
-    INFP: {
-      result: "/img/gemstone_test/11.png", // result11
-      title: "로즈 쿼츠 (Rose Quartz)",
-      description:
-        "당신은 무조건적인 사랑, 공감, 그리고 평화를 상징하는 로즈 쿼츠입니다. 세상의 아름다움과 선한 가치를 추구하며, 따뜻한 마음으로 주변을 치유합니다. 낭만적이고 순수한 영혼의 원석입니다.",
-    },
-    INFJ: {
-      result: "/img/gemstone_test/12.png", // result12
-      title: "월장석 (Moonstone)",
-      description:
-        "당신은 직관과 감정 조화, 내면의 빛을 상징하는 월장석입니다. 타인의 마음을 이해하는 깊은 공감 능력과 이상을 향한 부드러운 힘을 가졌습니다. 조용하지만 강한 영향력을 발휘합니다.",
-    },
-    ENTP: {
-      result: "/img/gemstone_test/13.png", // result13
-      title: "벽옥 (Jasper)",
-      description:
-        "당신은 활력과 지구력, 그리고 창의적 영감을 주는 벽옥입니다. 끊임없이 새로운 문제와 도전에 맞서며, 기발한 아이디어로 난관을 돌파합니다. 현명하고 끈기 있는 혁신가에게 완벽합니다.",
-    },
-    ENTJ: {
-      result: "/img/gemstone_test/14.png", // result14
-      title: "황수정 (Citrine)",
-      description:
-        "당신은 풍요, 성공, 그리고 강력한 자신감을 상징하는 황수정입니다. 목표를 향해 나아가는 리더십과 긍정적인 추진력을 가지고 있습니다. 당신의 에너지는 주변까지 활력으로 채웁니다.",
-    },
-    INTP: {
-      result: "/img/gemstone_test/15.png", // result15
-      title: "자수정 (Amethyst)",
-      description:
-        "당신은 정신적 명료함과 고차원적 사고를 상징하는 자수정입니다. 복잡한 이론과 지식을 탐구하며, 명확한 논리로 혼란을 정리합니다. 영적인 평화와 지혜를 탐닉하는 사색가에게 어울립니다.",
-    },
-    INTJ: {
-      result: "/img/gemstone_test/16.png", // result16
-      title: "흑요석 (Obsidian)",
-      description:
-        "당신은 깊은 통찰력과 보호 능력을 지닌 흑요석입니다. 진실을 꿰뚫어 보고, 불필요한 에너지를 차단하여 스스로를 보호합니다. 냉철한 분석과 전략적 사고로 목표를 달성하는 데 완벽한 원석입니다.",
-    },
+    ESFJ: { result: "", title: "친절한 가이드", description: "모두가 행복한 여행을 위해 헌신하는 당신은 최고의 동행자입니다." },
+    ENTP: { result: "", title: "기발한 탐험가", description: "지루한 코스는 거부한다! 어디서든 새로운 재미를 찾아내는 모험가입니다." },
+    ENFP: { result: "", title: "낭만 여행자", description: "가는 곳마다 축제 분위기로 만드는 당신은 여행지의 주인공입니다." },
+    ESFP: { result: "", title: "분위기 메이커", description: "현지의 즐거움을 온몸으로 만끽하는 당신은 자유로운 영혼입니다." },
+    ESTP: { result: "", title: "실전 근육맨", description: "생각보다는 행동! 짜릿한 액티비티를 즐기는 에너자이저입니다." },
+    ISFP: { result: "", title: "감성 산책러", description: "아름다운 풍경 속에 녹아들어 나만의 시간을 즐기는 예술가입니다." },
+    ISTP: { result: "", title: "쿨한 해결사", description: "복잡한 건 질색! 가장 효율적이고 담백하게 여행을 즐깁니다." },
+    ENFJ: { result: "", title: "따뜻한 리더", description: "일행을 배려하면서도 완벽한 코스를 이끄는 든든한 등대입니다." },
+    ESTJ: { result: "", title: "정석 경영자", description: "시간 낭비는 금물! 체계적인 계획으로 알찬 여행을 완성합니다." },
+    ISFJ: { result: "", title: "섬세한 배려왕", description: "조용히 뒤에서 모두를 챙기며 편안한 안식처를 제공합니다." },
+    ISTJ: { result: "", title: "기록 장인", description: "약속과 원칙을 지키며 여행의 모든 순간을 정교하게 기록합니다." },
+    INFP: { result: "", title: "꿈꾸는 방랑자", description: "여행지의 사소한 것에도 의미를 부여하며 깊은 감동을 느낍니다." },
+    INFJ: { result: "", title: "통찰하는 여행자", description: "단순 관광보다는 그 장소의 정신과 깊이를 이해하려 노력합니다." },
+    ENTJ: { result: "", title: "카리스마 대장", description: "최고의 효율과 퀄리티를 위해 여행 전체를 지휘하는 지휘관입니다." },
+    INTP: { result: "", title: "독립적 사색가", description: "남들의 시선은 신경 쓰지 않고 본인만의 지적 호기심을 충족합니다." },
+    INTJ: { result: "", title: "완벽한 전략가", description: "오차 없는 계획과 분석으로 여행의 정수를 경험하는 지략가입니다." },
   },
 };
