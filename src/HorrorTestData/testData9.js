@@ -140,7 +140,7 @@ export const horrorTestData9 = {
         {
           optionId: "B",
           text: "즉시 하부 배전반으로 내려가 원인을 점검한다",
-          score: { D: 5 },
+          score: { D: 1 },
         },
         {
           optionId: "C",

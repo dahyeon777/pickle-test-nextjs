@@ -67,6 +67,11 @@
   align-items: center;
 }
 
+.result_title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .horror_type_title {
   font-size: 1.2rem;
   color: #ff0000;
@@ -86,8 +91,12 @@
   width: 100%;
 }
 
-.description { color: #333; }
-.horror_description { color: #ccc; }
+.description {
+  color: #333;
+}
+.horror_description {
+  color: #ccc;
+}
 
 .result_image {
   width: 100%;
@@ -107,17 +116,47 @@
   margin-top: 10px;
 }
 
-.share_btn, .home_btn, .horror_share_btn, .horror_home_btn {
-  flex: 1; height: 48px; border-radius: 8px; border: none; font-size: 0.9rem; font-weight: bold; cursor: pointer;
-  display: flex; justify-content: center; align-items: center; color: white;
+.share_btn,
+.home_btn,
+.horror_share_btn,
+.horror_home_btn {
+  flex: 1;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-.share_btn { background-color: #5cb85c; }
-.home_btn { background-color: #777; padding: 10px; }
-.horror_share_btn { background-color: #8b0000; border: 1px solid #ff4d4d; }
-.horror_home_btn { background-color: #333; border: 1px solid #666; padding: 10px; }
+.share_btn {
+  background-color: #5cb85c;
+}
+.home_btn {
+  background-color: #777;
+  padding: 10px;
+}
+.horror_share_btn {
+  background-color: #8b0000;
+  border: 1px solid #ff4d4d;
+}
+.horror_home_btn {
+  background-color: #333;
+  border: 1px solid #666;
+  padding: 10px;
+}
 
 @media screen and (max-width: 600px) {
-  .main_title { font-size: 1rem; }
-  .description, .horror_description { font-size: 0.85rem; line-height: 1.6; }
+  .main_title {
+    font-size: 1rem;
+  }
+  .description,
+  .horror_description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
 }

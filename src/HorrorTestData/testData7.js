@@ -7,7 +7,7 @@ export const horrorTestData7 = {
   questions: [
     {
       questionId: 1,
-      text: "어느 날 당신은 상사에게 따로 불려갔습니다.\n이유는 설명되지 않았습니다.",
+      text: "어느 날 당신은 상사에게 불려간다.\n이유는 모른다.",
       options: [
         {
           optionId: "A",
@@ -28,7 +28,7 @@ export const horrorTestData7 = {
     },
     {
       questionId: 2,
-      text: "상사는 사람이 들어갈 법한 크기의 상자를 건넵니다.\n“이제 네가 관리해.”",
+      text: "상사는 사람이 들어갈 법한 크기의 상자를 건넨다.\n“이제 네가 관리해.”",
       options: [
         {
           optionId: "A",
@@ -37,7 +37,7 @@ export const horrorTestData7 = {
         },
         {
           optionId: "B",
-          text: "황당한 농담이나 테스트라고 생각하며 웃어넘긴다",
+          text: "황당한 농담이라 생각하며 웃어넘긴다",
           score: { B: 2 },
         },
         {
@@ -49,11 +49,11 @@ export const horrorTestData7 = {
     },
     {
       questionId: 3,
-      text: "상자는 말이 없지만, 안에서 무언가 움직이는 소리가 들립니다.",
+      text: "상자 안에서 무언가\n움직이는 소리가 들린다.",
       options: [
         {
           optionId: "A",
-          text: "내용물이 궁금해 살짝 열어본다",
+          text: "살짝 열어본다",
           score: { A: 1, B: 2 },
         },
         {
@@ -63,18 +63,18 @@ export const horrorTestData7 = {
         },
         {
           optionId: "C",
-          text: "어차피 물건일 뿐이니 소음은 신경 쓰지 않는다",
+          text: "신경 쓰지 않는다",
           score: { D: 3 },
         },
       ],
     },
     {
       questionId: 4,
-      text: "상자에는 '취급 주의 - 파손 시 책임'이라는 라벨이 붙어 있습니다.",
+      text: "상자에는 '취급 주의 - 파손 시 책임'이라는 라벨이 붙어 있다.",
       options: [
         {
           optionId: "A",
-          text: "사람에게나 쓸 법한 경고 문구가 의아하다",
+          text: "도대체 무엇이 들어있는지 궁금해한다",
           score: { B: 2 },
         },
         {
@@ -91,32 +91,32 @@ export const horrorTestData7 = {
     },
     {
       questionId: 5,
-      text: "상자를 사무실 어디에 둘지 정해야 합니다.",
+      text: "상자를 사무실 어디에 둘지 정한다.",
       options: [
         {
           optionId: "A",
-          text: "최대한 시야에 닿지 않는 구석에 둔다",
+          text: "최대한 시야에 닿지 않는 구석",
           score: { A: 2, B: 1 },
         },
         {
           optionId: "B",
-          text: "관리가 용이하도록 내 바로 옆자리에 둔다",
+          text: "관리가 용이하도록 내 바로 옆자리",
           score: { D: 2 },
         },
         {
           optionId: "C",
-          text: "상사가 지시한 정확한 위치에 놓는다",
+          text: "상사가 지시한 정확한 위치",
           score: { C: 1, E: 2 },
         },
       ],
     },
     {
       questionId: 6,
-      text: "업무 중 상자에서 작은 소리가 들립니다. “죄송합니다.”",
+      text: "업무 중 상자에서 작은 소리가 들린다.\n“죄송합니다.”",
       options: [
         {
           optionId: "A",
-          text: "피곤해서 잘못 들은 환청이라고 치부한다",
+          text: "환청이다",
           score: { B: 3 },
         },
         {
@@ -133,7 +133,7 @@ export const horrorTestData7 = {
     },
     {
       questionId: 7,
-      text: "상사에게 연락이 옵니다. “상태는 어때?”",
+      text: "상사에게 연락이 온다.\n“상태는 어때?”",
       options: [
         {
           optionId: "A",
@@ -154,11 +154,11 @@ export const horrorTestData7 = {
     },
     {
       questionId: 8,
-      text: "상자를 옮기려는데, 처음보다 훨씬 무거워진 느낌입니다.",
+      text: "상자를 옮기려는데,\n처음보다 훨씬 무거워진 느낌이다.",
       options: [
         {
           optionId: "A",
-          text: "오래 들고 있어서 근육이 피로해진 탓이라 생각한다",
+          text: "착각이다",
           score: { A: 2, B: 1 },
         },
         {
@@ -168,14 +168,14 @@ export const horrorTestData7 = {
         },
         {
           optionId: "C",
-          text: "내 어깨의 책임감이 실질적인 무게로 변한 것 같다",
+          text: "마음이 불편해져서 그렇게 느낀다",
           score: { C: 2, E: 2 },
         },
       ],
     },
     {
       questionId: 9,
-      text: "라벨 아래 '자기 물건처럼 다룰 것'이라는 작은 글씨가 보입니다.",
+      text: "라벨 아래 '자기 물건처럼 다룰 것'\n이라는 작은 글씨가 보인다.",
       options: [
         {
           optionId: "A",
@@ -196,7 +196,7 @@ export const horrorTestData7 = {
     },
     {
       questionId: 10,
-      text: "퇴근 시간입니다. 상사는 말합니다. “두고 가도 돼. 내일도 쓸 거야.”",
+      text: "퇴근 시간입니다. 상사는 말합니다.\n“두고 가도 돼. 내일도 쓸 거야.”",
       options: [
         {
           optionId: "A",
