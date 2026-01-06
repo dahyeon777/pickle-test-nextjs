@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "게임",
   ],
   openGraph: {
-    title: "피클테스트 pickletest.com",
+    title: "피클테스트",
     description: "당신은 어떤 피클일까요?",
     url: "https://pickletest.com",
     siteName: "PickleTest",

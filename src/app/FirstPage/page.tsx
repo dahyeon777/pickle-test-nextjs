@@ -95,9 +95,15 @@ function FirstPage() {
         이해하고 타인과 재미있게 소통할 수 있는 매개체가 되고자 합니다. 모든
         콘텐츠는 최신 트렌드를 반영하여 지속적으로 업데이트되며, 브라우저 환경에
         최적화된 인터페이스를 통해 언제 어디서나 쾌적하게 이용하실 수 있습니다.
-        
       </p>
-      <p className={styles.copyright}>Copyright ⓒ 2026 Pickle Test. All rights reserved.</p>
+      <div className={styles.footerContainer}>
+        <p>e-mail: contact.pickletest@gmail.com</p>
+        <p>Copyright ⓒ 2026 Pickle Test. All rights reserved.</p>
+        <p><Link href="/privacy">
+          개인정보 처리방침
+        </Link></p>
+        
+      </div>
     </div>
   );
 }
