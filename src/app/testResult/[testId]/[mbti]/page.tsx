@@ -9,6 +9,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import KakaoShareButton from "@/src/components/KakaoShareButton";
+import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
 
 function TestResultPage() {
   const params = useParams();
@@ -82,6 +83,7 @@ function TestResultPage() {
         isHorror ? styles.horror_theme : styles.dayMode
       }`}
     >
+     
       <div className={styles.content_wrapper}>
         <h1 className={styles.main_title}>
           {isHorror ? (
@@ -167,6 +169,7 @@ function TestResultPage() {
           </div>
         </div>
       </div>
+      <DynamicCoupangAds />
     </div>
   );
 }
