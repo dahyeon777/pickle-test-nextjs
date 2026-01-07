@@ -73,13 +73,15 @@
 }
 
 /* 로딩 및 에러 텍스트 */
-.loadingText, .errorWrapper p {
+.loadingText,
+.errorWrapper p {
   font-size: 1.1rem;
   font-weight: 600;
   color: #47753a;
 }
 
-.nightMode .loadingText, .nightMode .errorWrapper p {
+.nightMode .loadingText,
+.nightMode .errorWrapper p {
   color: #2d0709;
 }
 
@@ -95,6 +97,45 @@
   color: #2d0709;
 }
 
+/* --- 버튼 및 경고문구 컨테이너 --- */
+.buttonWrapper {
+  display: flex;
+  flex-direction: column; /* ❗ 수직으로 쌓이게 변경 */
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* 버튼과 경고창의 최대 너비 제한 */
+  margin: 40px auto;
+  gap: 15px; /* 경고창과 버튼 사이 간격 */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 링크 태그가 버튼의 너비를 꽉 채우도록 설정 */
+.startLink {
+  width: 100%;
+  text-decoration: none;
+}
+
+/* --- 경고 문구 박스 --- */
+.warningBox {
+  width: 100%; /* 부모 너비에 맞춤 */
+  padding: 15px 10px;
+  background-color: rgba(0, 0, 0, 0.05); /* 회색 배경에 자연스럽게 녹아들게 */
+  border: 1px dashed #8b0000;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.warningText {
+  color: #2d0709; /* 밤 모드 메인 텍스트색과 통일 */
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 2px 0;
+  word-break: keep-all;
+}
+
 /* 📱 모바일 대응 */
 @media screen and (max-width: 600px) {
   .title {
@@ -106,5 +147,8 @@
   }
   .container {
     padding: 20px;
+  }
+  .warningText {
+    font-size: 0.75rem;
   }
 }

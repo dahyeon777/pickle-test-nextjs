@@ -12,39 +12,30 @@ import { useThemeStore } from "@/src/store/useThemeStore";
 
 /**
  * 테스트 준비 페이지 (Ready)
- * - URL의 mode(theme)와 type(contentType)을 기반으로 데이터를 로드합니다.
  */
 function TestReadyPage() {
   const params = useParams();
   const searchParams = useSearchParams();
 
-  // Zustand 스토어 상태 및 함수
   const { theme, contentType, setMode } = useThemeStore();
 
   const [selectedTestData, setSelectedTestData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 시스템 상태 변수명 통일 (isNight)
   const isNight = theme === "night";
 
   useEffect(() => {
-    // 1. URL 쿼리 파라미터에서 정보 추출
     const themeParam = searchParams.get("mode") as "day" | "night";
     const typeParam = searchParams.get("type") as "test" | "taro";
 
-    // 2. URL로 직접 접속했을 경우를 대비해 스토어 상태 동기화
     if (themeParam && typeParam) {
       if (themeParam !== theme || typeParam !== contentType) {
         setMode(themeParam, typeParam);
       }
     }
 
-    // 3. 데이터 로딩 로직
     if (params && params.testId) {
       const idToFind = Number(params.testId);
-      
-      // 현재 테마와 타입에 맞는 데이터 리스트 결정
-      // 예: TotalDataStore["day"]["test"]
       const targetTheme = themeParam || theme;
       const targetType = typeParam || contentType;
       
@@ -64,7 +55,6 @@ function TestReadyPage() {
     );
   }
 
-  // 데이터를 찾지 못했을 경우
   if (!selectedTestData) {
     return (
       <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
@@ -90,8 +80,19 @@ function TestReadyPage() {
 
       {/* 2. 하단 버튼 영역 */}
       <div className={styles.buttonWrapper}>
-        {/* 다음 페이지로 현재 상태(mode, type)를 그대로 전달 */}
-        <Link href={`/testStart/${id}?mode=${theme}&type=${contentType}`}>
+        {/* Night 버전(밤)일 때만 경고 문구 표시 */}
+        {isNight && (
+          <div className={styles.warningBox}>
+            <p className={styles.warningText}>
+              ※ 본 콘텐츠는 공포 및 미스터리 요소를 포함하고 있습니다.
+            </p>
+            <p className={styles.warningText}>
+              노약자, 임산부, 심약자는 이용에 주의해 주시기 바랍니다.
+            </p>
+          </div>
+        )}
+
+        <Link href={`/testStart/${id}?mode=${theme}&type=${contentType}`} className={styles.startLink}>
           <LargeButton text="시작하기" />
         </Link>
       </div>
