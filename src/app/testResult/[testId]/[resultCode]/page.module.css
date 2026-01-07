@@ -9,7 +9,7 @@
   margin: 0;
   padding: 30px 20px;
   box-sizing: border-box;
-  transition: background-color 0.3s ease; /* 배경 전환 효과 */
+  transition: background-color 0.3s ease;
 }
 
 /* 낮 모드 배경 */
@@ -17,9 +17,9 @@
   background-color: #cde3c6a9;
 }
 
-/* 밤 모드 배경 (기존 horror_theme 통합) */
+/* 밤 모드 배경 (회색으로 수정) */
 .nightMode {
-  background-color: #1a1a1a; /* 배경을 좀 더 어둡게 보정 */
+  background-color: #bbbbbb; 
   color: #e0e0e0;
 }
 
@@ -57,15 +57,15 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* --- 밤 버전: 호러 실험 기록지 디자인 --- */
+/* --- 밤 버전: 호러 실험 기록지 디자인 (검정색 복구) --- */
 .horror_report {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #444;
-  background-color: #262626;
+  background-color: #262626; /* 검정색 카드 배경 복구 */
   padding: 25px 15px;
   border-radius: 10px;
-  color: #ddd;
+  color: #ddd; /* 글자색 밝게 유지 */
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -78,6 +78,11 @@
   margin-bottom: 10px;
   font-weight: bold;
   color: #333;
+}
+
+/* 밤 버전 카드 내 제목 색상 */
+.nightMode .result_title {
+  color: #ffffff;
 }
 
 .horror_type_title {
@@ -95,8 +100,8 @@
   font-size: 0.95rem;
   line-height: 1.8;
   text-align: left;
-  white-space: pre-wrap; /* 줄바꿈 적용 */
-  word-break: break-all; /* 단어 끊김 방지 */
+  white-space: pre-wrap;
+  word-break: break-all;
   width: 100%;
 }
 
@@ -157,12 +162,8 @@
 }
 
 /* 낮 모드 버튼 컬러 */
-.share_btn {
-  background-color: #777;
-}
-.home_btn {
-  background-color: #5cb85c;
-}
+.share_btn { background-color: #777; }
+.home_btn { background-color: #5cb85c; }
 
 /* 밤 모드 버튼 컬러 */
 .horror_share_btn {
