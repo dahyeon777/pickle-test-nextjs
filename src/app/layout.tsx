@@ -4,6 +4,7 @@ import React from "react";
 import { Metadata } from "next";
 import Script from "next/script"; // 1. Script 컴포넌트 추가
 import Header from "../components/Header";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pickletest.com"),
@@ -64,6 +65,8 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+        {/*구글 애널리틱스*/}
+        <GoogleAnalytics gaId="G-WH9M5JGCTW" />
       </body>
     </html>
   );

@@ -166,7 +166,7 @@
 
 .footer {
   background-color: #4669401d;
-  padding: 20px 300px 0 300px;
+  padding: 20px 300px;
   color: #ffffff;
   font-size: 0.6rem;
 }
@@ -193,7 +193,7 @@
     grid-template-columns: 1fr 1fr;
     max-width: 600px;
   }
-  .footer{
+  .footer {
     padding: 5px;
   }
 }
@@ -209,7 +209,7 @@
   .testTitleText {
     font-size: 0.9rem;
   }
-   .footer{
+  .footer {
     padding: 5px;
   }
 }
