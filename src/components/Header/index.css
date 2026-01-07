@@ -1,18 +1,14 @@
 /* 기본 header 스타일 */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* 양 끝 정렬 */
   align-items: center;
-  padding-top: 16px;
-  flex-wrap: wrap;
+  padding: 16px 0; /* 상하 패딩 */
   transition: all 0.5s ease;
   width: 100%;
-
-  /* 낮 버전 배경색 */
   background-color: #cde3c6a9;
 }
 
-/* 밤 버전 배경색 (제공해주신 기존 색상 유지) */
 header.night_mode {
   background-color: #bbbbbb;
 }
@@ -20,7 +16,7 @@ header.night_mode {
 .header_top_bar {
   display: flex;
   margin-left: 16px;
-  color: #518c35; /* 낮 버전 초록색 */
+  color: #518c35;
   font-weight: bold;
 }
 
@@ -29,29 +25,46 @@ header.night_mode {
   color: inherit;
 }
 
-/* 밤 버전 글자색 (제공해주신 기존 색상 유지) */
-header.night_mode .header_top_bar {
-  color: #2d0709 !important;
-}
-
+/* 밤 버전 글자색 */
+header.night_mode .header_top_bar,
 header.night_mode .header_top_bar a {
   color: #2d0709 !important;
 }
 
-/* 네비게이션 메뉴 밤 버전 대응 */
-header.night_mode .main_nav a {
-  color: #2d0709 !important;
+/* 앱 다운로드 버튼 스타일 */
+.install_btn {
+  margin-right: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #47753a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.main_nav {
-  display: flex;
+.install_btn:hover {
+  background-color: #385d2e;
+}
+
+/* 밤 버전 버튼 스타일 */
+header.night_mode .install_btn {
+  background-color: #2d0709;
+  color: #bbbbbb;
 }
 
 @media screen and (max-width: 600px) {
   .header_top_bar a {
-    font-size: small;
+    font-size: 11px; /* 모바일에서 글자가 너무 길면 줄임 */
   }
-  header {
-    justify-content: center;
+  .install_btn {
+    font-size: 11px;
+    padding: 4px 10px;
+    margin-right: 8px;
+  }
+  .header_top_bar {
+    margin-left: 8px;
   }
 }

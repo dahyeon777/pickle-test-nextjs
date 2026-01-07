@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# PWA 파일 제외
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+public/sw.js.map

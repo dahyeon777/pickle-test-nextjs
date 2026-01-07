@@ -2,18 +2,25 @@
 import "./globals.css";
 import React from "react";
 import { Metadata } from "next";
-import Script from "next/script"; // 1. Script 컴포넌트 추가
+import Script from "next/script";
 import Header from "../components/Header";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pickletest.com"),
   title: "피클테스트",
-  description:
-    "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
+  description: "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
+  
+  // --- PWA 및 아이콘 설정 ---
+  manifest: "/manifest.json", // PWA를 위한 신분증 파일 연결
   icons: {
     icon: "/img/favicon.png", // 파비콘 경로
+    apple: "/icons/icon-192x192.png", // 아이폰 홈화면 아이콘
   },
+  
+  // --- 모바일 및 테마 설정 ---
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+  themeColor: "#47753a", // 브라우저 상단 바 색상 (낮 모드 기준)
 
   keywords: [
     "심리테스트",
@@ -55,7 +62,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* 3. 카카오 SDK 스크립트 추가 */}
+        {/* 카카오 SDK 스크립트 추가 */}
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
           crossOrigin="anonymous"

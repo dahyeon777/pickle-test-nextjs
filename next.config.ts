@@ -1,14 +1,19 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+// @ts-ignore
+import withPWAInit from "next-pwa";
+
+const withPWA = withPWAInit({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
+
+const nextConfig: NextConfig = {
   typescript: {
-    // !! 주의 !!
-    // 상업용이라도 빌드가 안 되면 의미가 없으므로 일단 끕니다.
     ignoreBuildErrors: true,
   },
-  eslint: {
-    // 빌드 시 ESLint 검사도 무시합니다.
-    ignoreDuringBuilds: true,
-  },
+  // eslint 속성은 이미 eslint.config.mjs에 있으므로 여기선 생략합니다.
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);
