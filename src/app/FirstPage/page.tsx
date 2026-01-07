@@ -45,7 +45,7 @@ function FirstPage() {
       {/* ------------------- */}
 
       {/* 4. 광고 컴포넌트에도 상태 전달 */}
-      <CoupangAd isNight={isHorror} />
+      {/* <CoupangAd isNight={isHorror} /> */}
 
       <div className={styles.container}>
         <img

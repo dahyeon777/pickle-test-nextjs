@@ -193,11 +193,8 @@
     grid-template-columns: 1fr 1fr;
     max-width: 600px;
   }
-  .footer {
-    display: none;
-  }
-  .copyright {
-    display: none;
+  .footer{
+    padding: 5px;
   }
 }
 
@@ -212,11 +209,8 @@
   .testTitleText {
     font-size: 0.9rem;
   }
-  .footer {
-    display: none;
-  }
-  .copyright {
-    display: none;
+   .footer{
+    padding: 5px;
   }
 }
 
