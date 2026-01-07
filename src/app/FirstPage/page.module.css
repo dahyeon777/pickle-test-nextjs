@@ -35,7 +35,7 @@
 /* --- 섹션 제목 설정 --- */
 .rowTitle {
   width: 95%;
-  margin: 10px auto 10px auto;
+  margin: 5px auto 5px auto;
   color: #47753a; /* 낮 모드 진한 초록색 */
   font-size: 1.1rem;
   font-weight: 800;
@@ -71,18 +71,6 @@
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
 }
 
-/* ⭐ 테스트 섹션: 가로 2행 슬라이딩 (Grid 적용) */
-.testRow {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr); /* 2행 고정 */
-  grid-auto-flow: column; /* 아이템을 가로 방향으로 우선 배치 */
-  gap: 12px;
-  width: 100%;
-  overflow-x: auto;
-  padding-bottom: 15px;
-  -webkit-overflow-scrolling: touch;
-}
-
 /* ⭐ 타로 섹션: 가로 1행 슬라이딩 (Flex 적용) */
 .taroRow {
   display: flex;
@@ -93,6 +81,20 @@
   padding-bottom: 15px;
   -webkit-overflow-scrolling: touch;
 }
+
+/* ⭐ 테스트 섹션: 가로 2행 슬라이딩 (Grid 적용) */
+.testRow {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr); /* 2행 고정 */
+  grid-auto-flow: column; /* 아이템을 가로 방향으로 우선 배치 */
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  -webkit-overflow-scrolling: touch;
+}
+
+
 
 /* 슬라이딩 바(스크롤바) 공통 스타일링 */
 .testRow::-webkit-scrollbar,
@@ -124,6 +126,7 @@
   aspect-ratio: 1 / 1;
   position: relative;
   transition: transform 0.2s;
+  white-space: pre-wrap;
 }
 
 .grid-item:hover {

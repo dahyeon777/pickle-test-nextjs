@@ -97,28 +97,29 @@ function FirstPage() {
               <div className={styles.testRow}>
                 {renderGridItems(TotalDataStore.night.test, "test")}
               </div>
-              
+
               {/* 밤 버전 타로 데이터가 있을 경우에만 렌더링 */}
-              {TotalDataStore.night.taro && TotalDataStore.night.taro.length > 0 && (
-                <>
-                  <h3 className={styles.rowTitle}>타로</h3>
-                  <div className={styles.taroRow}>
-                    {renderGridItems(TotalDataStore.night.taro, "taro")}
-                  </div>
-                </>
-              )}
+              {TotalDataStore.night.taro &&
+                TotalDataStore.night.taro.length > 0 && (
+                  <>
+                    <h3 className={styles.rowTitle}>타로</h3>
+                    <div className={styles.taroRow}>
+                      {renderGridItems(TotalDataStore.night.taro, "taro")}
+                    </div>
+                  </>
+                )}
             </>
           ) : (
             /* [Day 버전] - 테스트(2행)와 타로(1행) */
             <>
-              <h3 className={styles.rowTitle}>테스트</h3>
-              <div className={styles.testRow}>
-                {renderGridItems(TotalDataStore.day.test, "test")}
-              </div>
-
               <h3 className={styles.rowTitle}>타로</h3>
               <div className={styles.taroRow}>
                 {renderGridItems(TotalDataStore.day.taro, "taro")}
+              </div>
+
+              <h3 className={styles.rowTitle}>테스트</h3>
+              <div className={styles.testRow}>
+                {renderGridItems(TotalDataStore.day.test, "test")}
               </div>
             </>
           )}
@@ -128,18 +129,20 @@ function FirstPage() {
       {/* 푸터 설명 영역 */}
       <div className={styles.footerSection}>
         <p className={styles.footerDescription}>
-          피클테스트(Pickle Test)는 일상 속에서 즐기는 가벼운 스낵처럼, 간편하지만
-          톡 쏘는 즐거움을 선사하는 글로벌 심리 테스트 플랫폼입니다. 서구권에서
-          식탁의 감초 역할을 하는 '피클'의 이미지에서 영감을 받아, 짧은 시간 안에
-          사용자의 내면을 날카롭고 흥미롭게 분석하는 독창적인 콘텐츠를 제공합니다.
+          피클테스트(Pickle Test)는 일상 속에서 즐기는 가벼운 스낵처럼,
+          간편하지만 톡 쏘는 즐거움을 선사하는 글로벌 심리 테스트 플랫폼입니다.
+          서구권에서 식탁의 감초 역할을 하는 '피클'의 이미지에서 영감을 받아,
+          짧은 시간 안에 사용자의 내면을 날카롭고 흥미롭게 분석하는 독창적인
+          콘텐츠를 제공합니다.
           <br />
           <br />
-          Day Mode (낮 버전): 일상의 고민과 성격 유형을 부드럽게 분석해 주는 심리
-          테스트 모드입니다. MBTI 기반의 성향 분석과 자아 탐색을 돕는 밝고 경쾌한
-          콘텐츠들로 구성되어 있습니다.
+          Day Mode (낮 버전): 일상의 고민과 성격 유형을 부드럽게 분석해 주는
+          심리 테스트 모드입니다. MBTI 기반의 성향 분석과 자아 탐색을 돕는 밝고
+          경쾌한 콘텐츠들로 구성되어 있습니다.
           <br />
-          Night Mode (밤 버전): 어두운 밤의 분위기에 맞춰 긴장감과 스릴을 제공하는
-          공포·미스터리 테스트 모드입니다. 낮과는 전혀 다른 반전의 재미를 경험할 수 있습니다.
+          Night Mode (밤 버전): 어두운 밤의 분위기에 맞춰 긴장감과 스릴을
+          제공하는 공포·미스터리 테스트 모드입니다. 낮과는 전혀 다른 반전의
+          재미를 경험할 수 있습니다.
         </p>
 
         <div className={styles.footerInfo}>
