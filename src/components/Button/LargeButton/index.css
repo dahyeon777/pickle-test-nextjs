@@ -31,7 +31,7 @@
 
 /* 💀 밤 버전: 다크 배경 + 버건디(핏빛) 광채 */
 .horror_btn {
-  background: #ffffff; /* 어두운 배경 */
+  background: #ffffff; /* 기존 디자인 유지 */
   color: #2d0709; /* 붉은 글씨 */
   border: 1px solid #f7bcbc65;
   box-shadow: 0 4px 10px rgba(255, 182, 182, 0.5), 0 0 15px rgba(139, 0, 0, 0.8);

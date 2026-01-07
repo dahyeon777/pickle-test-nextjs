@@ -5,17 +5,36 @@
   padding: 0 20px 20px 20px;
   min-height: 100vh;
   text-align: center;
+  transition: background-color 0.5s ease;
 }
 
 .dayMode {
   background-color: #cde3c6a9;
 }
 
-/* 호러 모드 배경 (필요시 추가) */
 .nightMode {
   background-color: #bbbbbb;
 }
 
+/* --- 프로그레스 바 (TSX 로직 대응 추가) --- */
+/* 만약 별도의 ProgressBar 컴포넌트를 쓰신다면 그 컴포넌트용 CSS에 넣으셔도 되지만, 
+   일단 페이지 컨테이너 내에서 관리할 수 있도록 추가합니다. */
+.progressContainer {
+  width: 100%;
+  max-width: 600px;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* --- 라디오 프레임 및 타이틀 --- */
 .radio_frame {
   margin: 30px 0px;
   width: 100%;
@@ -26,10 +45,11 @@
   margin-top: 30px;
   color: #365a26;
   font-size: 1.2rem;
+  font-weight: 800;
 }
 
 .nightMode .answer_title {
-  color: #2d0709 !important; /* 의장님이 픽하신 밤 모드 전용 다크 레드 */
+  color: #2d0709 !important; /* 다크 레드 */
 }
 
 .question_text {
@@ -40,6 +60,11 @@
   word-break: keep-all;
   white-space: pre-wrap;
   letter-spacing: 0.08em !important;
+  line-height: 1.4;
+}
+
+.nightMode .question_text {
+  color: #1a1a1a; /* 배경 bbbbbb 위에서 잘 보이도록 */
 }
 
 .options_container {
@@ -67,9 +92,9 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  white-space: nowrap; /* 글자 세로 꺾임 절대 방지 */
+  white-space: nowrap; /* 글자 세로 꺾임 방지 */
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 /* 일반 모드 버튼 */
@@ -109,5 +134,9 @@
   }
   .answer_title {
     font-size: 1.1rem;
+  }
+  .options_container {
+    width: 100%;
+    padding: 0 10px;
   }
 }

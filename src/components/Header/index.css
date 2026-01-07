@@ -12,7 +12,7 @@ header {
   background-color: #cde3c6a9;
 }
 
-/* ★ 중요: 밤 버전 배경색 (header 태그에 night_mode가 붙었을 때) */
+/* 밤 버전 배경색 (제공해주신 기존 색상 유지) */
 header.night_mode {
   background-color: #bbbbbb;
 }
@@ -29,36 +29,29 @@ header.night_mode {
   color: inherit;
 }
 
-/* ★ 중요: 밤 버전 글자색 (띄어쓰기 없이 붙여서 작성하거나 아래처럼 작성) */
-.night_mode .header_top_bar {
+/* 밤 버전 글자색 (제공해주신 기존 색상 유지) */
+header.night_mode .header_top_bar {
   color: #2d0709 !important;
 }
 
-.night_mode .header_top_bar a {
+header.night_mode .header_top_bar a {
   color: #2d0709 !important;
 }
 
-/* 네비게이션 메뉴가 있다면 밤 버전 대응 */
-.night_mode .main_nav a {
+/* 네비게이션 메뉴 밤 버전 대응 */
+header.night_mode .main_nav a {
   color: #2d0709 !important;
-}
-
-/* 기존 나머지 코드 */
-.header_top_bar a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .main_nav {
   display: flex;
 }
-/* ... 이하 동일 ... */
 
 @media screen and (max-width: 600px) {
   .header_top_bar a {
     font-size: small;
   }
-  header{
+  header {
     justify-content: center;
   }
 }

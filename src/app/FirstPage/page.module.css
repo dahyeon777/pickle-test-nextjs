@@ -32,78 +32,122 @@
   margin: 20px auto 60px auto;
 }
 
+/* --- 섹션 제목 설정 --- */
+.rowTitle {
+  width: 95%;
+  margin: 10px auto 10px auto;
+  color: #47753a; /* 낮 모드 진한 초록색 */
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: left;
+  padding-left: 5px;
+}
+
+/* 밤 모드일 때 제목 색상을 흰색(아이보리)으로 변경하여 가독성 확보 */
+.nightMode .rowTitle {
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* 어두운 배경에서 더 잘 보이게 그림자 추가 */
+}
+
 /* 그리드 컨테이너 */
 .grid-container {
   z-index: 2;
   background-color: rgba(93, 157, 65, 0.541);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px; /* 간격을 조금 더 넓혔습니다 */
-  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
   max-width: 700px;
-  padding: 10px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 255, 64, 0.2);
+  padding: 15px 10px;
+  margin: 0 auto 100px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
+  overflow: hidden;
 }
 
 .nightMode .grid-container {
   background-color: #561111ed;
-  border-color: #4f0000;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
 }
 
+/* 가로 슬라이딩 행 및 스크롤바 설정 */
+.testRow,
+.taroRow {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  padding-bottom: 15px; /* 스크롤바와 아이템 사이 간격 */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 슬라이딩 바(스크롤바) 스타일링 */
+.testRow::-webkit-scrollbar,
+.taroRow::-webkit-scrollbar {
+  height: 6px; /* 스크롤바 두께 */
+}
+
+.testRow::-webkit-scrollbar-track,
+.taroRow::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05); /* 스크롤바 뒷 배경 */
+  border-radius: 10px;
+}
+
+.testRow::-webkit-scrollbar-thumb,
+.taroRow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5); /* 스크롤바 막대 색상 */
+  border-radius: 10px;
+}
+
+.nightMode .testRow::-webkit-scrollbar-thumb,
+.nightMode .taroRow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3); /* 밤 모드 스크롤바 막대 */
+}
+
+/* 리스트 아이템 크기 고정 */
 .grid-item {
-  padding-top: 100%; /* 1:1 정사각형 비율 유지 */
+  flex: 0 0 140px;
+  aspect-ratio: 1 / 1;
   position: relative;
   transition: transform 0.2s;
 }
 
 .grid-item:hover {
   transform: translateY(-5px);
-  cursor: pointer;
 }
 
-/* --- 이미지 대신 들어가는 텍스트 박스 --- */
 .testTitleBox {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff; /* 흰색 배경 */
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
   box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .nightMode .testTitleBox {
-  background-color: rgb(
-    229,
-    227,
-    227
-  ); /* 밤 모드에도 흰색 유지 혹은 #f0f0f0로 변경 가능 */
-  border-color: #a13c3c;
+  background-color: #e5e3e3;
+  border: 1px solid #a13c3c;
 }
 
 .testTitleText {
   color: #333;
-  font-size: 1.1rem;
-  font-weight: 400;
-  white-space: pre-wrap; /* 단어 단위 줄바꿈으로 깔끔하게 */
+  font-size: 0.95rem;
+  font-weight: 600;
   line-height: 1.4;
 }
-/* ---------------------------------- */
 
-.section {
-  height: 100px;
-}
-
+/* --- 버튼 및 기타 레이아웃 (기존 유지) --- */
 .mainArea {
   position: relative;
   width: 100%;
@@ -126,12 +170,12 @@
   padding: 6px 14px;
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border: none;
 }
 
 .redLight {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #ff0000;
   border-radius: 50%;
   margin-right: 8px;
@@ -139,8 +183,8 @@
 }
 
 .greenLight {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #00ff00;
   border-radius: 50%;
   margin-right: 8px;
@@ -149,7 +193,7 @@
 
 .horrorText {
   color: #eee;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 }
 
@@ -165,94 +209,53 @@
 }
 
 .footer {
-  background-color: #4669401d;
-  padding: 20px 300px;
-  color: #ffffff;
-  font-size: 0.6rem;
+  background-color: rgba(70, 105, 64, 0.1);
+  padding: 30px 10%;
+  color: #666;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.footerContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .footerContainer p,
 .footerContainer a {
-  flex: 1;
-  margin: 0;
-  color: #5c5c5c;
-  font-size: 0.6rem;
+  color: #888;
+  font-size: 0.65rem;
   text-align: center;
+  text-decoration: none;
 }
 
-.footerContainer a:hover {
-  text-decoration: underline;
-  color: #333333;
-}
-
-@media screen and (max-width: 850px) {
-  .horrorButtonWrapper {
-    right: 11%;
-  }
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    max-width: 600px;
-  }
-  .footer {
-    padding: 5px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    max-width: 320px;
-  }
-  .image_center {
-    max-width: 300px;
-  }
-  .testTitleText {
-    font-size: 0.9rem;
-  }
-  .footer {
-    padding: 5px;
-  }
-}
-
-/* 피클 아이콘 스타일 */
+/* 피클 아이콘 */
 .floatingPickle {
   position: fixed;
-  width: 120px;
-  height: 120px;
-  /* z-index를 -1로 설정하여 모든 요소 뒤로 보냅니다 */
+  width: 100px;
   z-index: 1;
   pointer-events: none;
-  /* 배경처럼 느껴지도록 투명도를 살짝 더 낮추는 것을 추천합니다 (0.3~0.4) */
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+  opacity: 0.6;
 }
 
 .nightMode .floatingPickle {
-  /* 밤 모드일 때 피클을 약간 어둡거나 붉게 변경 */
-  filter: brightness(0.5) sepia(1) hue-rotate(-50deg) saturate(5);
+  filter: brightness(0.4) sepia(1) hue-rotate(-50deg);
   opacity: 0.3;
 }
 
-/* 애니메이션은 그대로 유지 */
 @keyframes wander {
   0% {
     top: 10%;
     left: 10%;
     transform: rotate(0deg);
   }
-  25% {
-    top: 80%;
-    left: 20%;
-    transform: rotate(90deg);
-  }
   50% {
     top: 50%;
     left: 80%;
     transform: rotate(180deg);
-  }
-  75% {
-    top: 10%;
-    left: 70%;
-    transform: rotate(270deg);
   }
   100% {
     top: 10%;
@@ -262,9 +265,22 @@
 }
 
 .pickle1 {
-  animation: wander 20s linear infinite;
+  animation: wander 25s linear infinite;
 }
 .pickle2 {
-  animation: wander 25s linear infinite reverse;
+  animation: wander 30s linear infinite reverse;
   animation-delay: -5s;
+}
+
+/* 반응형 모바일 */
+@media screen and (max-width: 850px) {
+  .horrorButtonWrapper {
+    right: 5%;
+  }
+  .grid-container {
+    width: 92%;
+  }
+  .footer {
+    padding: 20px 5%;
+  }
 }

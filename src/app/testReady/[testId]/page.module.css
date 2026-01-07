@@ -1,5 +1,4 @@
-/* src/app/testReady/[testId]/page.module.css */
-
+/* 전체 컨테이너 설정 */
 .container {
   display: flex;
   flex-direction: column;
@@ -10,6 +9,31 @@
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
+  transition: background-color 0.5s ease;
+}
+
+/* ☀️ 낮 모드 배경 */
+.dayMode {
+  background-color: #cde3c6a9;
+}
+
+/* 💀 밤 모드 배경 */
+.nightMode {
+  background-color: #bbbbbb;
+}
+
+/* 카테고리 배지 (타로/심리테스트 구분용) */
+.categoryBadge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #47753a;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.nightMode .categoryBadge {
+  color: #2d0709;
 }
 
 /* 타이틀 스타일 */
@@ -18,26 +42,26 @@
   font-size: 2.2rem;
   font-weight: bold;
   line-height: 1.4;
-  margin: 0 0 50px 0;
+  margin: 0;
   /* ✨ 중요: \n 줄바꿈을 화면에 그대로 보여주는 속성 */
   white-space: pre-wrap;
   word-break: keep-all;
   text-shadow: 0 0 8px rgba(7, 45, 18, 0.4);
 }
 
-/* ☀️ 낮 모드 배경 */
-.dayMode {
-  background-color: #cde3c6a9; /* 흰색에 가까운 아주 연한 녹색빛 */
-}
-
-/* 💀 밤 모드 스타일 */
-.nightMode {
-  background-color: #bbbbbb; /* 완전 검정 */
-}
-
+/* 밤 모드 타이틀 스타일 */
 .nightMode .title {
-  color: #2d0709 !important; /* 의장님 픽 다크 레드 */
-  text-shadow: 0 0 8px rgba(45, 7, 9, 0.4); /* 미세한 광채 */
+  color: #2d0709 !important; /* 다크 레드 */
+  text-shadow: 0 0 8px rgba(45, 7, 9, 0.4);
+}
+
+/* 타이틀을 감싸는 영역 */
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 /* 버튼 주변 여백 */
@@ -48,6 +72,29 @@
   justify-content: center;
 }
 
+/* 로딩 및 에러 텍스트 */
+.loadingText, .errorWrapper p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #47753a;
+}
+
+.nightMode .loadingText, .nightMode .errorWrapper p {
+  color: #2d0709;
+}
+
+.homeLink {
+  margin-top: 20px;
+  display: inline-block;
+  color: #47753a;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.nightMode .homeLink {
+  color: #2d0709;
+}
+
 /* 📱 모바일 대응 */
 @media screen and (max-width: 600px) {
   .title {
@@ -56,5 +103,8 @@
   }
   .buttonWrapper {
     margin-top: 40px;
+  }
+  .container {
+    padding: 20px;
   }
 }
