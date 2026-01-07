@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build",
+    "build": "next build --webpack",
     "cf-build": "npx @cloudflare/next-on-pages@1",
     "start": "next start",
     "lint": "eslint",
-    "pages:build": "npx @cloudflare/next-on-pages --webpack"
+    "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.1",
