@@ -304,9 +304,26 @@
     right: 5%;
   }
   .grid-container {
-    width: 92%;
+    width: 90%;
+    padding: 10px 15px;
   }
   .footerSection {
     padding: 20px 5%;
+  }
+  .image_center {
+    width: 50%;
+    margin: 0 auto 30px auto;
+  }
+  .grid-item {
+    flex: 0 0 120px;
+    width: 120px;
+    aspect-ratio: 3 / 4;
+  }
+  .rowTitle {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .testTitleText {
+    font-size: 0.7rem;
   }
 }
