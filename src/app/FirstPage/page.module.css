@@ -26,16 +26,11 @@
 }
 
 .image_center {
-  filter: blur(0.25px) drop-shadow(0 0 20px rgba(162, 248, 57, 0.3));
-  opacity: 0.82;
   z-index: 2;
   max-width: 340px;
   width: 80%;
   height: auto;
-  margin: 34px auto 70px auto;
-}
-.nightMode .image_center {
-  filter: blur(0.25px) drop-shadow(0 0 20px rgba(248, 57, 57, 0.3));
+  margin: 40px auto 70px auto;
 }
 
 /* --- 섹션 제목 설정 --- */
@@ -195,13 +190,12 @@
 .themeButton {
   display: flex;
   align-items: center;
+  /* 배경을 더 투명하고 밝게 변경 */
   background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
-
+  /* 테두리를 살짝 주어 선명하게 */
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -292,12 +286,11 @@
   z-index: 1;
   pointer-events: none;
   opacity: 0.15;
-  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));  */
   filter: blur(2px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.05));
 }
 
 .nightMode .floatingPickle {
-  filter: blur(3px) brightness(0.3) sepia(1) hue-rotate(-50deg) saturate(3);
+  filter: brightness(0.3) sepia(1) hue-rotate(-50deg) saturate(3);
   opacity: 0.1;
 }
 
