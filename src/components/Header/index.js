@@ -15,6 +15,18 @@ function Header() {
   const [isInstallable, setIsInstallable] = useState(false);
 
   useEffect(() => {
+    // 1. iOS 여부 확인
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    // 2. 이미 설치된 상태(PWA 실행 중)인지 확인
+    const isStandalone = window.matchMedia(
+      "(display-mode: standalone)"
+    ).matches;
+
+    // 아이폰(iOS)인데 아직 설치 안 된 경우, 버튼을 보여주어 안내 창을 띄울 수 있게 함
+    if (isIOS && !isStandalone) {
+      setIsInstallable(true);
+    }
+
     const handleBeforeInstallPrompt = (e) => {
       // 브라우저 기본 팝업 방지
       e.preventDefault();
@@ -34,6 +46,18 @@ function Header() {
   }, []);
 
   const handleInstallClick = async () => {
+    // 클릭 시점에 다시 한번 iOS 확인
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    // iOS인 경우 알림창으로 설치 방법 안내
+    if (isIOS) {
+      alert(
+        "아이폰(iOS)은 Safari 브라우저 하단의 [공유] 버튼을 누른 뒤 '홈 화면에 추가'를 선택해 주세요!"
+      );
+      return;
+    }
+
+    // 안드로이드 및 PC 설치 로직
     if (!deferredPrompt) return;
 
     // 설치 팝업 표시
@@ -52,7 +76,6 @@ function Header() {
   };
 
   return (
-    // theme 값에 따라 night_mode 클래스를 동적으로 부여합니다.
     <header className={isNight ? "night_mode" : ""}>
       <div className="header_top_bar">
         <Link href="/">
@@ -62,7 +85,7 @@ function Header() {
         </Link>
       </div>
 
-      {/* 설치 가능할 때만 버튼 표시 */}
+      {/* 설치 가능하거나 iOS 안내가 필요할 때 버튼 표시 */}
       {isInstallable && (
         <button className="install_btn" onClick={handleInstallClick}>
           앱 다운로드
