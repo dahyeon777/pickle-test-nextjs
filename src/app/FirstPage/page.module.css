@@ -26,7 +26,7 @@
 }
 
 .image_center {
-  opacity: 0.87;
+  opacity: 0.8;
   z-index: 2;
   max-width: 340px;
   width: 80%;
@@ -162,7 +162,7 @@
 
 .nightMode .testTitleBox {
   background-color: #e5e3e3;
-  border: 1px solid #a13c3c;
+  border: 1px solid #a13c3cd2;
 }
 
 .testTitleText {
