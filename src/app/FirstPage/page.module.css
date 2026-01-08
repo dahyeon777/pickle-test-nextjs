@@ -259,18 +259,18 @@
 /* --- ⭐ 애니메이션 피클 아이콘 (완전 복구) --- */
 .floatingPickle {
   position: fixed;
-  width: 160px; /* ❗ 120px 복구 */
-  height: 160px; /* ❗ 120px 복구 */
+  width: 400px;
+  height: 400px;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.4; /* 가독성을 위해 살짝 조절 */
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1)); /* ❗ 드롭쉐도우 복구 */
+  opacity: 0.15;
+  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));  */
+  filter: blur(2px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.05));
 }
 
 .nightMode .floatingPickle {
-  /* ❗ 밤 모드 전용 필터 복구 */
-  filter: brightness(0.5) sepia(1) hue-rotate(-50deg) saturate(5);
-  opacity: 0.3;
+  filter: blur(3px) brightness(0.3) sepia(1) hue-rotate(-50deg) saturate(3);
+  opacity: 0.1;
 }
 
 /* ❗ 역동적인 5단계 애니메이션 복구 */
