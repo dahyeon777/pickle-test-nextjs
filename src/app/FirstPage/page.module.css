@@ -315,15 +315,14 @@
     margin: 0 auto 30px auto;
   }
   .grid-item {
-    flex: 0 0 120px;
-    width: 120px;
-    aspect-ratio: 3 / 4;
+    flex: 0 0 110px;
+    width: 110px;
   }
   .rowTitle {
     font-size: 0.9rem;
     margin: 0;
   }
   .testTitleText {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
