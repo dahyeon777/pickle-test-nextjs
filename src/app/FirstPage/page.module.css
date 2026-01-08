@@ -26,12 +26,16 @@
 }
 
 .image_center {
-  opacity: 0.8;
+  filter: blur(0.25px) drop-shadow(0 0 20px rgba(162, 248, 57, 0.3));
+  opacity: 0.82;
   z-index: 2;
   max-width: 340px;
   width: 80%;
   height: auto;
-  margin: 30px auto 60px auto;
+  margin: 40px auto 70px auto;
+}
+.nightMode .image_center{
+  filter: blur(0.25px) drop-shadow(0 0 20px rgba(248, 57, 57, 0.3));
 }
 
 /* --- 섹션 제목 설정 --- */
@@ -191,43 +195,68 @@
 .themeButton {
   display: flex;
   align-items: center;
-  background-color: rgba(71, 117, 58, 0.85);
-  padding: 6px 14px;
-  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 30px;
   cursor: pointer;
-  border: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.themeButton:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .themeButtonText {
-  color: #eee;
-  font-size: 11px;
+  /* 텍스트 색상을 더 진하게 변경 */
+  color: #2d4d24; 
+  font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* 밤 모드일 때 버튼 스타일 반전 */
+.nightMode .themeButton {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+}
+
+
+.nightMode .themeButtonText {
+  color: #ff3e3e; /* 텍스트도 레드 톤으로 맞춤 */
+}
+
+.greenLight {
+  width: 10px; /* 크기 살짝 키움 */
+  height: 10px;
+  background-color: #00ff00b5;
+  border-radius: 50%;
+  margin-right: 8px;
+  /* 네온 느낌 극대화 */
+  box-shadow: 0 0 10px #00ff00, 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
 .redLight {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background-color: #ff0000;
   border-radius: 50%;
   margin-right: 8px;
-  animation: blinkRed 0.6s infinite alternate;
-}
-.greenLight {
-  width: 8px;
-  height: 8px;
-  background-color: #00ff00;
-  border-radius: 50%;
-  margin-right: 8px;
-  box-shadow: 0 0 8px #00ff00;
+  animation: blinkRed 0.8s infinite alternate;
 }
 @keyframes blinkRed {
   0% {
-    opacity: 0.4;
-    box-shadow: 0 0 2px #ff0000;
+    opacity: 0.5;
+    box-shadow: 0 0 5px #ff0000;
   }
   100% {
     opacity: 1;
-    box-shadow: 0 0 12px #ff0000;
+    box-shadow: 0 0 15px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6);
   }
 }
 
