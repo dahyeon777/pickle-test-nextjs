@@ -20,12 +20,11 @@ body {
   color: var(--foreground);
 
   font-family: "Paperozi", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji", sans-serif ;
+    "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 
   font-weight: 600;
   letter-spacing: 0.02em !important;
 }
-
 
 button,
 input,

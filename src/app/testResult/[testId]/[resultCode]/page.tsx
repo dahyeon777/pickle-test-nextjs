@@ -3,7 +3,7 @@
 export const runtime = "edge";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { TotalDataStore } from "../../../../allTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -44,12 +44,13 @@ const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
 function TestResultPage() {
   const params = useParams();
   const searchParams = useSearchParams();
+  const router = useRouter(); // 이동 처리를 위해 추가
   const { theme, contentType, setMode } = useThemeStore();
 
   const [resultData, setResultData] = useState<any>(null);
   const [testTitle, setTestTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [shareUrl, setShareUrl] = useState(""); // 공유용 최종 URL 상태
+  const [shareUrl, setShareUrl] = useState("");
 
   const currentMode = (searchParams.get("mode") as "day" | "night") || theme;
   const currentType =
@@ -57,7 +58,6 @@ function TestResultPage() {
   const isNight = currentMode === "night";
 
   useEffect(() => {
-    // 1. 스토어 테마 동기화
     if (searchParams.get("mode") && searchParams.get("type")) {
       setMode(currentMode, currentType);
     }
@@ -67,12 +67,11 @@ function TestResultPage() {
       const rCode = params?.resultCode ? String(params.resultCode) : null;
 
       if (tId && rCode) {
-        // 2. 입력값이 암호인지 확인하여 원본 키값 도출 (p01 -> ENFP)
         const lookupKey = REVERSE_MASK_MAP[rCode] || rCode.toUpperCase();
-
         const categoryData = (TotalDataStore as any)[currentMode]?.[
           currentType
         ];
+
         if (categoryData) {
           const selectedTest = categoryData.find(
             (test: any) => Number(test.id) === tId
@@ -83,15 +82,9 @@ function TestResultPage() {
 
             if (finalResult) {
               setResultData(finalResult);
-
-              // 3. 주소창 마스킹 처리 (ENFP -> p01)
               const maskCode = MASK_MAP[lookupKey] || rCode;
               const maskedPath = `/testResult/${tId}/${maskCode}?mode=${currentMode}&type=${currentType}`;
-
-              // 브라우저 주소창만 변경
               window.history.replaceState(null, "", maskedPath);
-
-              // 4. 공유용 URL 업데이트 (도메인 포함)
               const fullUrl = `${window.location.origin}${maskedPath}`;
               setShareUrl(fullUrl);
             }
@@ -105,7 +98,6 @@ function TestResultPage() {
   }, [params, searchParams, currentMode, currentType, setMode]);
 
   const handleCopyLink = () => {
-    // 이미 암호화된 현재 주소를 복사
     navigator.clipboard.writeText(window.location.href).then(() => {
       alert(
         isNight
@@ -113,6 +105,19 @@ function TestResultPage() {
           : "결과 링크가 복사되었습니다!"
       );
     });
+  };
+
+  // --- 다시하기 확인 로직 추가 ---
+  const handleRetry = () => {
+    const message = isNight
+      ? "기록을 파기하고 다시 실험하시겠습니까?"
+      : "다시 테스트하시겠습니까?";
+
+    if (window.confirm(message)) {
+      router.push(
+        `/testReady/${params.testId}?mode=${currentMode}&type=${currentType}`
+      );
+    }
   };
 
   if (isLoading) {
@@ -205,7 +210,6 @@ function TestResultPage() {
         {renderResultSection()}
 
         <div className={styles.button_group}>
-          {/* 암호화된 shareUrl이 생성된 후 버튼에 전달 */}
           <KakaoShareButton
             url={shareUrl}
             title={
@@ -230,17 +234,14 @@ function TestResultPage() {
               🔗 링크 복사
             </button>
 
-            <Link
-              href={`/testReady/${params.testId}?mode=${currentMode}&type=${currentType}`}
+            {/* Link 대신 button에 handleRetry 함수를 연결했습니다 */}
+            <button
+              onClick={handleRetry}
+              className={isNight ? styles.horror_home_btn : styles.home_btn}
               style={{ flex: 1 }}
             >
-              <button
-                className={isNight ? styles.horror_home_btn : styles.home_btn}
-                style={{ width: "100%" }}
-              >
-                ↩ 다시하기
-              </button>
-            </Link>
+              ↩ 다시하기
+            </button>
           </div>
         </div>
       </div>

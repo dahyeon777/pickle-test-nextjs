@@ -1,7 +1,7 @@
 export const taroData1 = {
   id: 1,
   path: "",
-  title: "✨2026년✨\n신년 운세",
+  title: "🥒2026년🥒\n신년 운세",
   questions: [
     {
       questionId: 1,
