@@ -56,10 +56,8 @@
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* iOS 필수 속성 */
-  /* 3. 테두리를 아주 살짝 주면 더 선명해 보입니다 */
   border: 1px solid rgba(255, 255, 255, 0.3);
 
-  /* 4. 그림자를 연하게 깔아 입체감 부여 */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 
   display: flex;
@@ -75,9 +73,7 @@
 }
 
 .nightMode .grid-container {
-  background-color: rgba(86, 17, 17, 0.7); /* 레드 톤 유지하며 투명도 */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(86, 17, 17, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
@@ -290,8 +286,7 @@
 }
 
 .nightMode .floatingPickle {
-  filter: brightness(0.3) sepia(1) hue-rotate(-50deg) saturate(3);
-  opacity: 0.1;
+  filter: sepia(1) hue-rotate(-50deg) saturate(3);
 }
 
 /* ❗ 역동적인 5단계 애니메이션 복구 */
@@ -345,7 +340,7 @@
   }
   .image_center {
     width: 50%;
-    margin: 0 auto 30px auto;
+    margin: 10px auto 40px auto;
   }
   .grid-item {
     flex: 0 0 110px;
