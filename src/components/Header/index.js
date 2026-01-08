@@ -15,24 +15,25 @@ function Header() {
   const [isInstallable, setIsInstallable] = useState(false);
 
   useEffect(() => {
-    // 1. iOS 여부 확인
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    // 2. 이미 설치된 상태(PWA 실행 중)인지 확인
+    // 1. 장치 확인 (대소문자 구분 없이 체크)
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test(userAgent);
+
+    // 2. 이미 PWA 앱으로 접속 중인지 확인
     const isStandalone = window.matchMedia(
       "(display-mode: standalone)"
     ).matches;
 
-    // 아이폰(iOS)인데 아직 설치 안 된 경우, 버튼을 보여주어 안내 창을 띄울 수 있게 함
+    // [핵심] iOS는 이벤트를 지원하지 않으므로, 설치 안 된 상태라면 무조건 버튼 활성화
     if (isIOS && !isStandalone) {
       setIsInstallable(true);
     }
 
+    // 안드로이드 및 PC용 설치 유도 이벤트
     const handleBeforeInstallPrompt = (e) => {
-      // 브라우저 기본 팝업 방지
       e.preventDefault();
-      // 이벤트를 상태에 저장
       setDeferredPrompt(e);
-      setIsInstallable(true);
+      setIsInstallable(true); // 이벤트가 발생하면 버튼 활성화
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -46,31 +47,28 @@ function Header() {
   }, []);
 
   const handleInstallClick = async () => {
-    // 클릭 시점에 다시 한번 iOS 확인
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test(userAgent);
 
-    // iOS인 경우 알림창으로 설치 방법 안내
+    // iOS 대응: 버튼 클릭 시 안내 창 표시
     if (isIOS) {
       alert(
-        "아이폰(iOS)은 Safari 브라우저 하단의 [공유] 버튼을 누른 뒤 '홈 화면에 추가'를 선택해 주세요!"
+        "아이폰(iOS)은 Safari 브라우저 하단의 [공유] 버튼(네모에 화살표)을 누른 뒤, 리스트를 아래로 내려 '홈 화면에 추가'를 선택해 주세요!"
       );
       return;
     }
 
-    // 안드로이드 및 PC 설치 로직
+    // 안드로이드 및 PC 대응
     if (!deferredPrompt) return;
 
-    // 설치 팝업 표시
     deferredPrompt.prompt();
 
-    // 사용자의 선택 기다리기
     const { outcome } = await deferredPrompt.userChoice;
 
     if (outcome === "accepted") {
       console.log("사용자가 앱 설치를 수락했습니다.");
     }
 
-    // 설치 유도 후 초기화
     setDeferredPrompt(null);
     setIsInstallable(false);
   };
@@ -85,7 +83,7 @@ function Header() {
         </Link>
       </div>
 
-      {/* 설치 가능하거나 iOS 안내가 필요할 때 버튼 표시 */}
+      {/* 이제 iOS에서도 이 버튼이 당당하게 뜹니다 */}
       {isInstallable && (
         <button className="install_btn" onClick={handleInstallClick}>
           앱 다운로드
