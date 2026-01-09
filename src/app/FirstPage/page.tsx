@@ -1,9 +1,11 @@
 "use client";
 
+import React, { useState } from "react"; // 검색 상태 관리를 위해 useState 추가
 import { TotalDataStore } from "../../allTestData";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import Link from "next/link";
 import styles from "./page.module.css";
+import SearchBar from "@/src/components/SearchBar";
 
 /**
  * 피클 테스트 메인 페이지
@@ -12,6 +14,7 @@ import styles from "./page.module.css";
  */
 function FirstPage() {
   const { theme, setMode } = useThemeStore();
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
 
   const isNight = theme === "night";
 
@@ -32,7 +35,17 @@ function FirstPage() {
   const renderGridItems = (dataList: any[], type: "test" | "taro") => {
     if (!dataList || dataList.length === 0) return null;
 
-    return dataList.map(({ id, title }, index) => (
+    // 검색어 필터링 로직 추가
+    const filteredList = dataList.filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // 검색 결과가 없을 경우
+    if (filteredList.length === 0 && searchQuery !== "") {
+      return null;
+    }
+
+    return filteredList.map(({ id, title }, index) => (
       <div className={styles["grid-item"]} key={`${type}-${id}-${index}`}>
         <Link
           href={`/testReady/${id}?mode=${theme}&type=${type}`}
@@ -76,16 +89,25 @@ function FirstPage() {
       </div>
 
       <main className={styles.mainArea}>
-        {/* 테마 스위치 버튼 (변수명 일원화) */}
-        <div className={styles.themeButtonWrapper}>
-          <button className={styles.themeButton} onClick={handleToggleTheme}>
-            <div
-              className={isNight ? styles.greenLight : styles.redLight}
-            ></div>
-            <span className={styles.themeButtonText}>
-              {isNight ? "Day" : "Night"}
-            </span>
-          </button>
+        {/* 상단 검색바 + 테마 버튼 한 줄 배치 */}
+        <div className={styles.topControlBar}>
+          {/* SearchBar에 상태 전달 */}
+          <SearchBar
+            isNight={isNight}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+
+          <div className={styles.themeButtonWrapper}>
+            <button className={styles.themeButton} onClick={handleToggleTheme}>
+              <div
+                className={isNight ? styles.greenLight : styles.redLight}
+              ></div>
+              <span className={styles.themeButtonText}>
+                {isNight ? "Day" : "Night"}
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* 데이터 리스트 영역 */}

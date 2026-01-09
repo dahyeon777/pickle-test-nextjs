@@ -1,0 +1,52 @@
+.searchContainer {
+  flex: 1; /* 왼쪽 공간을 꽉 채움 */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 15px;
+  padding-right: 45px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 밤 모드 스타일 */
+.night .searchInput {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.night .searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 18px;
+  font-size: 1.1rem;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.night .searchIcon {
+  filter: invert(1);
+}
+
+/* 반응형 */
+@media screen and (max-width: 850px) {
+  .searchInput {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
