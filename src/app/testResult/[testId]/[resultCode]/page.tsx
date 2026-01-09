@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import KakaoShareButton from "@/src/components/KakaoShareButton";
 import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
-// import { toPng } from "html-to-image"; -> 초기 로딩 속도를 위해 여기서 제거합니다.
+// import { toPng } from "html-to-image"; -> 다이내믹 임포트 유지
 
 // --- 결과 숨김을 위한 매핑 테이블 ---
 const MASK_MAP: { [key: string]: string } = {
@@ -45,9 +45,9 @@ const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
 function TestResultPage() {
   const params = useParams();
   const searchParams = useSearchParams();
-  const router = useRouter(); // 이동 처리를 위해 추가
+  const router = useRouter(); 
   const { theme, contentType, setMode } = useThemeStore();
-  const resultRef = useRef<HTMLDivElement>(null); // 이미지 캡처를 위한 ref 추가
+  const resultRef = useRef<HTMLDivElement>(null); 
 
   const [resultData, setResultData] = useState<any>(null);
   const [testTitle, setTestTitle] = useState("");
@@ -109,31 +109,26 @@ function TestResultPage() {
     });
   };
 
-  // --- 이미지 저장 기능 (최적화 버전) ---
   const handleSaveImage = async () => {
     if (resultRef.current === null) return;
 
     try {
-      // 버튼을 누르는 시점에 라이브러리를 동적으로 불러옵니다. (코드 스플리팅)
       const { toPng } = await import("html-to-image");
-
-      const dataUrl = await toPng(resultRef.current, {
-        cacheBust: true,
+      const dataUrl = await toPng(resultRef.current, { 
+        cacheBust: true, 
         backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-        pixelRatio: 2, // 화질을 높이고 싶다면 추가, 너무 무거우면 삭제
+        pixelRatio: 2 
       });
-
       const link = document.createElement("a");
       link.download = `${testTitle}_결과.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
       console.error("이미지 저장 실패:", err);
-      alert("이미지 저장에 실패했습니다. 잠시 후 다시 시도해주세요.");
+      alert("이미지 저장에 실패했습니다.");
     }
   };
 
-  // --- 다시하기 확인 로직 추가 ---
   const handleRetry = () => {
     const message = isNight
       ? "기록을 파기하고 다시 실험하시겠습니까?"
@@ -222,7 +217,6 @@ function TestResultPage() {
       }`}
     >
       <div className={styles.content_wrapper}>
-        {/* 이미지 저장 시 이 영역만 캡처되도록 ref를 이 div로 옮겼습니다. */}
         <div ref={resultRef} style={{ width: "100%", paddingBottom: "10px" }}>
           <h1 className={styles.main_title}>
             {isNight ? (
@@ -234,58 +228,44 @@ function TestResultPage() {
               `${testTitle} 결과`
             )}
           </h1>
-
           {renderResultSection()}
         </div>
 
         <div className={styles.button_group}>
-          <KakaoShareButton
-            url={shareUrl}
-            title={
-              isNight
-                ? `[실험기록] ${resultData.title}`
-                : `[테스트결과] ${resultData.title}`
-            }
-            description={resultData.description?.slice(0, 45) + "..."}
-            imageUrl={resultData.result}
-            buttonText="💬 카카오톡 결과 공유"
-          />
-
-          <div
-            className={styles.sub_button_row}
-            style={{
-              display: "flex",
-              gap: "10px",
-              width: "100%",
-              marginBottom: "10px",
-            }}
-          >
+          <div className={styles.share_row}>
+            <div style={{ flex: 8.5 }}>
+              <KakaoShareButton
+                url={shareUrl}
+                title={
+                  isNight
+                    ? `[실험기록] ${resultData.title}`
+                    : `[테스트결과] ${resultData.title}`
+                }
+                description={resultData.description?.slice(0, 45) + "..."}
+                imageUrl={resultData.result}
+                buttonText="💬 카카오톡 결과 공유"
+              />
+            </div>
             <button
               onClick={handleSaveImage}
-              className={isNight ? styles.horror_share_btn : styles.share_btn}
-              style={{ flex: 1, backgroundColor: "#4CAF50", color: "white" }}
+              className={styles.save_btn}
+              title="이미지 저장"
+              style={{ flex: 1.5 }}
             >
-              📸 이미지 저장
+              💾
             </button>
           </div>
 
-          <div
-            className={styles.sub_button_row}
-            style={{ display: "flex", gap: "10px", width: "100%" }}
-          >
+          <div className={styles.sub_button_row}>
             <button
               onClick={handleCopyLink}
               className={isNight ? styles.horror_share_btn : styles.share_btn}
-              style={{ flex: 1 }}
             >
               🔗 링크 복사
             </button>
-
-            {/* Link 대신 button에 handleRetry 함수를 연결했습니다 */}
             <button
               onClick={handleRetry}
               className={isNight ? styles.horror_home_btn : styles.home_btn}
-              style={{ flex: 1 }}
             >
               ↩ 다시하기
             </button>

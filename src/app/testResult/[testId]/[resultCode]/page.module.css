@@ -17,7 +17,7 @@
   background-color: #cde3c6a9;
 }
 
-/* 밤 모드 배경 (회색으로 수정) */
+/* 밤 모드 배경 (회색) */
 .nightMode {
   background-color: #bbbbbb; 
   color: #e0e0e0;
@@ -57,15 +57,15 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* --- 밤 버전: 호러 실험 기록지 디자인 (검정색 복구) --- */
+/* --- 밤 버전: 호러 실험 기록지 디자인 --- */
 .horror_report {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #444;
-  background-color: #262626; /* 검정색 카드 배경 복구 */
+  background-color: #262626;
   padding: 25px 15px;
   border-radius: 10px;
-  color: #ddd; /* 글자색 밝게 유지 */
+  color: #ddd;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -132,6 +132,28 @@
   margin-top: 10px;
 }
 
+/* 카톡 버튼과 저장 버튼을 수평 배치하고 높이를 맞춤 */
+.share_row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: stretch; /* 자식 요소들의 높이를 동일하게 강제 */
+}
+
+/* 외부 라이브러리 버튼 높이 강제 조정을 위한 컨테이너 */
+.kakao_btn_container {
+  flex: 8.5;
+  display: flex;
+}
+
+/* 카카오 버튼 내부의 모든 요소가 부모 높이를 따르도록 설정 */
+.kakao_btn_container > div,
+.kakao_btn_container button {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 48px;
+}
+
 .sub_button_row {
   display: flex;
   gap: 10px;
@@ -141,9 +163,10 @@
 .share_btn,
 .home_btn,
 .horror_share_btn,
-.horror_home_btn {
+.horror_home_btn,
+.save_btn {
   flex: 1;
-  height: 48px;
+  min-height: 48px; 
   border-radius: 8px;
   border: none;
   font-size: 0.9rem;
@@ -154,10 +177,25 @@
   align-items: center;
   color: white;
   transition: opacity 0.2s;
+  box-sizing: border-box;
+}
+
+/* 이미지 저장 버튼 전용 스타일 */
+.save_btn {
+  flex: 1.5;
+  background-color: #888;
+  padding: 0;
+}
+
+/* 밤 모드 저장 버튼 */
+.nightMode .save_btn {
+  background-color: #444;
+  border: 1px solid #666;
 }
 
 .share_btn:active,
-.home_btn:active {
+.home_btn:active,
+.save_btn:active {
   opacity: 0.8;
 }
 
