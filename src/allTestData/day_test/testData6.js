@@ -2,6 +2,11 @@ export const testData6 = {
   id: 6,
   path: "",
   title: "🐶\n내가\n강아지라면?",
+  tags: [
+    "강아지", "멍멍이", "반려견", "동물", "MBTI", 
+    "성격", "심리", "귀여운", "비유", "댕댕이", 
+    "견종", "성향", "매력", "멍팔", "찰떡"
+  ],
   questions: [
     {
       questionId: 1,

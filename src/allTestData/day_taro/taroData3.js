@@ -1,7 +1,7 @@
 export const taroData3 = {
   id: 3,
   path: "",
-  title: "🔮\n오늘 나의 운세는?\n지금 나의 기분 테스트",
+  title: "🔮\n오늘 나의\n운세는?",
   questions: [
     {
       questionId: 1,

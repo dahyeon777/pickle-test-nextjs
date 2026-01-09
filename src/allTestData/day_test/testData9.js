@@ -2,6 +2,11 @@ export const testData9 = {
   id: 9,
   path: "",
   title: "🎑\n전생 직업\n테스트",
+  tags: [
+    "전생", "과거", "직업", "운명", "인연", 
+    "역사", "조선", "왕실", "미스터리", "영혼", 
+    "MBTI", "성격", "전생체험", "사주", "환생"
+  ],
   questions: [
     {
       questionId: 1,

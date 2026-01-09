@@ -2,6 +2,11 @@ export const testData10 = {
   id: 10,
   path: "",
   title: "👗\n패션 스타일\n 테스트",
+  tags: [
+    "패션", "스타일", "코디", "데일리룩", "옷", 
+    "OOTD", "쇼핑", "취향", "MBTI", "성격", 
+    "첫인상", "분위기", "트렌드", "퍼스널컬러", "룩북"
+  ],
   questions: [
     {
       questionId: 1,

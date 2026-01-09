@@ -2,6 +2,11 @@ export const testData8 = {
   id: 8,
   path: "",
   title: "🎤\n아이돌\n포지션 테스트",
+  tags: [
+    "아이돌", "KPOP", "데뷔", "포지션", "메인보컬", 
+    "메인댄서", "래퍼", "센터", "비주얼", "연습생", 
+    "아이돌테스트", "MBTI", "능력치", "무대", "재능"
+  ],
   questions: [
     {
       questionId: 1,

@@ -2,6 +2,11 @@ export const testData5 = {
   id: 5,
   path: "",
   title: "💼\n천직\n테스트",
+  tags: [
+    "직업", "진로", "적성", "꿈", "MBTI", 
+    "성격", "재능", "직장", "커리어", "성공", 
+    "미래", "취업", "능력", "돈", "천직"
+  ],
   questions: [
     {
       questionId: 1,

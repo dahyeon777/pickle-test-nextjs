@@ -2,6 +2,11 @@ export const testData4 = {
   id: 4,
   path: "",
   title: "✈️\n여행 스타일\n테스트",
+  tags: [
+    "여행", "휴가", "관광", "계획", "MBTI", 
+    "성격", "취향", "비행기", "숙소", "P", 
+    "J", "동행", "여름휴가", "해외여행", "자유여행"
+  ],
   questions: [
     {
       questionId: 1,

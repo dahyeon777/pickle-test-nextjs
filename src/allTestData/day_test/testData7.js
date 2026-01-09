@@ -2,6 +2,11 @@ export const testData7 = {
   id: 7,
   path: "",
   title: "🏝️\n휴양지\n테스트",
+  tags: [
+    "휴양지", "여름", "바다", "여행", "MBTI", 
+    "성격", "취향", "휴식", "힐링", "바캉스", 
+    "해변", "제주도", "동남아", "관광", "스노클링"
+  ],
   questions: [
     {
       questionId: 1,

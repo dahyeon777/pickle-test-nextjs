@@ -2,6 +2,11 @@ export const testData3 = {
   id: 3,
   path: "/img/test_ready_img/f_job.png",
   title: "👸\n판타지 세계\n직업 테스트",
+  tags: [
+    "판타지", "이세계", "직업", "RPG", "게임", 
+    "공주", "왕국", "모험", "전투", "능력", 
+    "MBTI", "성격", "잠재력", "유형"
+  ],
   questions: [
     {
       questionId: 1,

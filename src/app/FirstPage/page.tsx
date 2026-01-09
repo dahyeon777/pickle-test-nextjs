@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react"; // 검색 상태 관리를 위해 useState 추가
+import React, { useState } from "react";
 import { TotalDataStore } from "../../allTestData";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import Link from "next/link";
@@ -14,7 +14,7 @@ import SearchBar from "@/src/components/SearchBar";
  */
 function FirstPage() {
   const { theme, setMode } = useThemeStore();
-  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 관리
 
   const isNight = theme === "night";
 
@@ -35,12 +35,28 @@ function FirstPage() {
   const renderGridItems = (dataList: any[], type: "test" | "taro") => {
     if (!dataList || dataList.length === 0) return null;
 
-    // 검색어 필터링 로직 추가
-    const filteredList = dataList.filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    // --- 제목 및 태그 통합 검색 필터링 로직 ---
+    const filteredList = dataList.filter((item) => {
+      // 검색어가 없으면 전체 표시
+      if (!searchQuery.trim()) return true;
 
-    // 검색 결과가 없을 경우
+      const query = searchQuery.toLowerCase().trim();
+
+      // 1. 제목 검색 (줄바꿈 제거 후 비교)
+      const titleMatch = item.title
+        .replace(/\n/g, " ")
+        .toLowerCase()
+        .includes(query);
+
+      // 2. 태그 검색 (item.tags 배열 내 키워드 매칭)
+      const tagMatch = item.tags?.some((tag: string) =>
+        tag.toLowerCase().includes(query)
+      );
+
+      return titleMatch || tagMatch;
+    });
+
+    // 검색 결과가 없을 경우 해당 섹션 렌더링 안함
     if (filteredList.length === 0 && searchQuery !== "") {
       return null;
     }
@@ -91,7 +107,7 @@ function FirstPage() {
       <main className={styles.mainArea}>
         {/* 상단 검색바 + 테마 버튼 한 줄 배치 */}
         <div className={styles.topControlBar}>
-          {/* SearchBar에 상태 전달 */}
+          {/* SearchBar 컴포넌트와 상태 연동 */}
           <SearchBar
             isNight={isNight}
             searchQuery={searchQuery}
@@ -132,7 +148,7 @@ function FirstPage() {
                 )}
             </>
           ) : (
-            /* [Day 버전] - 테스트(2행)와 타로(1행) */
+            /* [Day 버전] - 타로(1행)와 테스트(2행) */
             <>
               <h3 className={styles.rowTitle}>타로</h3>
               <div className={styles.taroRow}>

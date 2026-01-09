@@ -2,6 +2,11 @@ export const testData1 = {
   id: 1,
   path: "/img/test_ready_img/dessert.png",
   title: "🍨\n달콤한\n디저트 테스트",
+  tags: [
+    "음식", "디저트", "카페", "간식", "MBTI", 
+    "성격", "심리", "취향", "달콤한", "힐링",
+    "당충전", 
+  ],
   questions: [
     {
       questionId: 1,

@@ -2,6 +2,11 @@ export const testData2 = {
   id: 2,
   path: "/img/test_ready_img/gemstone.png", // pic4 대신 직접 경로
   title: "💎\n원석\n테스트",
+   tags: [
+    "원석", "보석", "광물", "주얼리", "탄생석", 
+    "성격", "심리", "MBTI", "본질", "가치", 
+    "내면", "성향", "악세사리",
+  ],
   questions: [
     {
       questionId: 1,
