@@ -4,6 +4,11 @@ export const horrorTestData8 = {
   id: 8,
   path: "/img/horror_test_main/horror8.png",
   title: "🔅\n「계절에\n초대받았습니다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "사이비", "미드소마", "마을", "축제", "광기", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

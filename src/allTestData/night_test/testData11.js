@@ -2,6 +2,11 @@ export const horrorTestData11 = {
   id: 11,
   path: "/img/horror_test_main/elevator.png",
   title: "🏢\n「이 엘리베이터에는\n4층이 없습니다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "엘리베이터", "도시괴담", "빌딩", "폐쇄공포", "숫자4"
+  ],
   questions: [
     {
       questionId: 1,

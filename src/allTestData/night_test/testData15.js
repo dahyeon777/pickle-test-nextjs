@@ -2,6 +2,11 @@ export const horrorTestData15 = {
   id: 15,
   path: "/img/horror_test_main/sister_horror.png",
   title: "👩\n「어느 날 언니가\n사라졌다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "장화홍련", "전래동화", "가족", "실종", "잔혹동화"
+  ],
   questions: [
     {
       questionId: 1,

@@ -2,6 +2,11 @@ export const horrorTestData13 = {
   id: 13,
   path: "/img/horror_test_main/school_horror.png",
   title: "🏫\n「야간 자율학습\n잔류 학생 지침서」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "학교", "야간자율학습", "학생", "지침서", "교실"
+  ],
   questions: [
     {
       questionId: 1,

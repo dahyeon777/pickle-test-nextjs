@@ -2,6 +2,11 @@ export const horrorTestData12 = {
   id: 12,
   path: "/img/horror_test_main/convenience_store.png",
   title: "🏪\n「편의점 근무자\n교대 수칙」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "편의점", "아르바이트", "야간", "수칙", "업무"
+  ],
   questions: [
     {
       questionId: 1,

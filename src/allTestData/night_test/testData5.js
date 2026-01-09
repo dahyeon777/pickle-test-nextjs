@@ -4,6 +4,11 @@ export const horrorTestData5 = {
   id: 5,
   path: "/img/horror_test_main/horror5.png",
   title: "🚘\n「세차를 하면\n지워질 줄 알았다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "자동차", "세차", "흔적", "저주", "죄책감", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

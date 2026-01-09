@@ -4,6 +4,11 @@ export const horrorTestData9 = {
   id: 9,
   path: "/img/horror_test_main/horror9.png",
   title: "🗼\n「등대 근무\n지침서」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "등대", "바다", "파도", "고립", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

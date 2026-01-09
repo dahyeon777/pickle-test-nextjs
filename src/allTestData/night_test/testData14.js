@@ -2,6 +2,11 @@ export const horrorTestData14 = {
   id: 14,
   path: "/img/horror_test_main/hospital_horror.png",
   title: "🏥\n「야간 병동\n준수 수칙」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "병원", "야간병동", "수칙", "간호사", "환자"
+  ],
   questions: [
     {
       questionId: 1,

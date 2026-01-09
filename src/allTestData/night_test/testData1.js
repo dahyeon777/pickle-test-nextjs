@@ -4,6 +4,11 @@ export const horrorTestData1 = {
   id: 1,
   path: "/img/horror_test_main/horror1.png",
   title: "📢\n「아직 당신의 이름은\n불리지 않았습니다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "이름", 
+    "대기실", "호출", "쪽지", "경고", "괴담", 
+    "심리", "MBTI", "생존", "미지의존재", "서늘한","무서운", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

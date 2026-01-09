@@ -4,6 +4,11 @@ export const horrorTestData4 = {
   id: 4,
   path: "/img/horror_test_main/horror4.png",
   title: "💭\n「이곳은 대답이\n먼저 도착한다2」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "괴이", "다른세계", "이계", "메시지", "기괴한", "탈출", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

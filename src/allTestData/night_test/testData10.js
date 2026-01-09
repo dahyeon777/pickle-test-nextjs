@@ -4,6 +4,11 @@ export const horrorTestData10 = {
   id: 10,
   path: "/img/horror_test_main/horror10.png",
   title: "😼\n「 야생동물」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "호랑이", "창귀", "민담", "산", "전설", "전래동화"
+  ],
   questions: [
     {
       questionId: 1,

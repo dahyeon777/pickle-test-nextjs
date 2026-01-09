@@ -2,6 +2,11 @@ export const horrorTestData17 = {
   id: 17,
   path: "/img/horror_test_main/forest_house.png",
   title: "🍪\n「숲속의\n하얀 집」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "헨젤과그레텔", "잔혹동화", "식인", "마녀", "유혹"
+  ],
   questions: [
     {
       questionId: 1,

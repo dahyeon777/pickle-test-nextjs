@@ -2,6 +2,11 @@ export const taroData2 = {
   id: 2,
   path: "",
   title: "🗨️\n지금 그 사람의\n속마음 테스트",
+  tags: [
+    "속마음", "연애", "심리", "짝사랑", "썸", 
+    "재회", "인간관계", "고백", "감정", "MBTI", 
+    "성격", "심리테스트", "관심", "미련", "인연"
+  ],
   questions: [
     {
       questionId: 1,

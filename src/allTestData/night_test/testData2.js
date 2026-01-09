@@ -4,6 +4,11 @@ export const horrorTestData2 = {
   id: 2,
   path: "/img/horror_test_main/horror2.png",
   title: "🟦\n「저수지는 항상\n가득 차 있다」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "저수지", "물귀신", "수중", "익사", "축축한", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

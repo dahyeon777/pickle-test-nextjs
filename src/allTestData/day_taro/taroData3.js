@@ -2,6 +2,11 @@ export const taroData3 = {
   id: 3,
   path: "",
   title: "🔮\n오늘 나의\n운세는?",
+  tags: [
+    "오늘의운세", "운세", "일일운세", "행운", "사주", 
+    "데일리", "조언", "점성술", "오늘의조언", "복권", 
+    "럭키", "기운", "심리", "MBTI", "일상"
+  ],
   questions: [
     {
       questionId: 1,

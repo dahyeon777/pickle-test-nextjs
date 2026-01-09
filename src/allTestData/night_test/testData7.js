@@ -4,6 +4,11 @@ export const horrorTestData7 = {
   id: 7,
   path: "/img/horror_test_main/horror7.png",
   title: "📦\n「인수인계」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운",
+    "회사", "직장인", "압박감", "스트레스", "오피스", "나폴리탄"
+  ],
   questions: [
     {
       questionId: 1,

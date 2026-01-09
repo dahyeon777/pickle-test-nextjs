@@ -2,6 +2,11 @@ export const horrorTestData16 = {
   id: 16,
   path: "/img/horror_test_main/simcheong_horror.png",
   title: "🌊\n「효심」",
+  tags: [
+    "공포", "미스테리", "호러", "스릴러", "괴담", 
+    "심리", "생존", "미지의존재", "서늘한", "무서운", "나폴리탄",
+    "심청이", "용왕", "전래동화", "인신공양", "제물"
+  ],
   questions: [
     {
       questionId: 1,
