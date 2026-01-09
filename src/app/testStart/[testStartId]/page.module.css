@@ -207,11 +207,13 @@
     padding: 0;
   }
   .options_container.taro_grid {
-    justify-content: flex-start;
+    flex-wrap: wrap; /* 모바일에서 카드 많으면 다음 줄로 개행 */
+    justify-content: center;
     padding: 20px 10px;
+    overflow-x: hidden; /* 가로 스크롤 대신 세로로 배치 */
   }
   .taro_card_wrapper {
-    width: 70px;
+    width: 75px; /* 모바일에서 4개 배치를 위해 살짝 조정 */
     min-height: 110px;
   }
   .taro_card_wrapper :global(label) {
