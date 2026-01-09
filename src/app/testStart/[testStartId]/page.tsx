@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import RadioOption from "../../../components/RadioOption";
 import ProgressBar from "../../../components/ProgressBar";
-import { TotalDataStore } from "../../../allTestData"; // 정확한 경로 확인 필요
+import { TotalDataStore } from "../../../allTestData";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import styles from "./page.module.css";
 
-// --- 로직 분리: 낮 버전 일반 테스트 (MBTI) ---
+//낮 | 테스트
 function calculateDayTestResult(scores: any) {
   const E_I = (scores.E_score || 0) >= (scores.I_score || 0) ? "E" : "I";
   const S_N = (scores.S_score || 0) >= (scores.N_score || 0) ? "S" : "N";
@@ -19,16 +19,15 @@ function calculateDayTestResult(scores: any) {
   return E_I + S_N + T_F + J_P;
 }
 
-// --- 로직 분리: 낮 버전 타로 테스트 (수정된 부분) ---
+//낮 | 타로
 function calculateDayTaroResult(nowQuestion: any, selectedOptionId: string) {
-  // 타로는 점수 합산이 아니라 선택한 옵션의 resultKey를 그대로 사용함
   const selected = nowQuestion.options.find(
     (opt: any) => opt.optionId === selectedOptionId
   );
   return selected?.resultKey || "TARO_RESULT_1";
 }
 
-// --- 로직 분리: 밤 버전 호러 테스트 ---
+//밤 | 테스트
 function calculateNightHorrorResult(scores: any) {
   const topType = Object.keys(scores).reduce((a, b) =>
     (scores[a] || 0) > (scores[b] || 0) ? a : b
@@ -43,6 +42,7 @@ function TestStartPage() {
 
   const { theme, contentType, setMode } = useThemeStore();
   const isNight = theme === "night";
+  const isTaro = contentType === "taro";
   const testStartId = Number(params.testStartId);
 
   const nowTest = (TotalDataStore as any)[theme][contentType]?.find(
@@ -84,13 +84,18 @@ function TestStartPage() {
     setSelectedOption(event.target.value);
   };
 
-  // 최종 결과 도출 메인 함수 (매개변수 구조 유지)
+  const handleCardClick = (optionId: string) => {
+    if (isTaro) {
+      setSelectedOption(optionId);
+    }
+  };
+
   const getResultKey = (finalScore: any) => {
     if (isNight) {
       return calculateNightHorrorResult(finalScore);
     }
-    return contentType === "taro"
-      ? calculateDayTaroResult(nowQuestion, selectedOption!) // 타로일 때 현재 질문과 선택값 전달
+    return isTaro
+      ? calculateDayTaroResult(nowQuestion, selectedOption!)
       : calculateDayTestResult(finalScore);
   };
 
@@ -102,7 +107,6 @@ function TestStartPage() {
     );
     if (!selected) return;
 
-    // 점수 누적 로직
     const updatedScore = { ...score };
     if (selected.score) {
       for (const key in selected.score) {
@@ -140,22 +144,35 @@ function TestStartPage() {
         color={isNight ? "#ff0000" : "#4CAF50"}
       />
 
-      <div className={styles.radio_frame}>
+      <div
+        className={`${styles.radio_frame} ${
+          isTaro ? styles.taro_frame_width : ""
+        }`}
+      >
         <h2 className={styles.answer_title}>{nowTest.title}</h2>
         <h3 className={styles.question_text}>
           Q{nowQuestion.questionId}. {nowQuestion.text}
         </h3>
 
-        <div className={styles.options_container}>
+        <div
+          className={`${styles.options_container} ${
+            isTaro ? styles.taro_grid : ""
+          }`}
+        >
           {nowQuestion.options.map((option: any) => (
-            <RadioOption
+            <div
               key={option.optionId}
-              optionId={option.optionId}
-              text={option.text}
-              name={`question-${nowQuestion.questionId}`}
-              onChange={handleOptionChange}
-              checked={selectedOption === option.optionId}
-            />
+              className={isTaro ? styles.taro_card_wrapper : ""}
+              onClick={() => handleCardClick(option.optionId)}
+            >
+              <RadioOption
+                optionId={option.optionId}
+                text={option.text}
+                name={`question-${nowQuestion.questionId}`}
+                onChange={handleOptionChange}
+                checked={selectedOption === option.optionId}
+              />
+            </div>
           ))}
         </div>
       </div>
