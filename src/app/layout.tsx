@@ -8,8 +8,8 @@ import IOSInstallGuide from "../components/IOSInstallGuide"; // 안내 컴포넌
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pickletest.com"),
-  title: "피클테스트",
-  description: "당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
+  title: "[심리테스트/공포테스트] 피클테스트",
+  description: "[심리테스트/공포테스트] 당신은 어떤 피클일까요? 개성을 톡 쏘게, 지금 바로 Test~! 심리테스트/공포테스트",
   
   // --- PWA 및 아이콘 설정 ---
   manifest: "/manifest.json", 
