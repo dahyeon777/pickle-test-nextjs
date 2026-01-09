@@ -42,17 +42,29 @@ const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
   Object.entries(MASK_MAP).map(([k, v]) => [v, k])
 );
 
+// --- 이모티콘 제거를 위한 정규식 함수 ---
+const removeEmojis = (str: string) => {
+  if (!str) return "";
+  return str
+    .replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    )
+    .trim();
+};
+
 function TestResultPage() {
   const params = useParams();
   const searchParams = useSearchParams();
-  const router = useRouter(); 
+  const router = useRouter();
   const { theme, contentType, setMode } = useThemeStore();
-  const resultRef = useRef<HTMLDivElement>(null); 
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const [resultData, setResultData] = useState<any>(null);
   const [testTitle, setTestTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [shareUrl, setShareUrl] = useState("");
+  const [isCapturing, setIsCapturing] = useState(false); // 캡처 상태 추가
 
   const currentMode = (searchParams.get("mode") as "day" | "night") || theme;
   const currentType =
@@ -113,19 +125,27 @@ function TestResultPage() {
     if (resultRef.current === null) return;
 
     try {
+      setIsCapturing(true); // 캡처 시작: 이모티콘 숨김 활성화
+
+      // 상태 업데이트 반영을 위해 아주 짧은 지연시간 부여
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       const { toPng } = await import("html-to-image");
-      const dataUrl = await toPng(resultRef.current, { 
-        cacheBust: true, 
+      const dataUrl = await toPng(resultRef.current, {
+        cacheBust: true,
         backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-        pixelRatio: 2 
+        pixelRatio: 2,
       });
+
       const link = document.createElement("a");
-      link.download = `${testTitle}_결과.png`;
+      link.download = `${removeEmojis(testTitle)}_결과.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
       console.error("이미지 저장 실패:", err);
       alert("이미지 저장에 실패했습니다.");
+    } finally {
+      setIsCapturing(false); // 캡처 종료: 이모티콘 다시 표시
     }
   };
 
@@ -173,10 +193,18 @@ function TestResultPage() {
   }
 
   const renderResultSection = () => {
+    // 캡처 중일 때는 이모티콘 제거된 텍스트 사용
+    const displayTitle = isCapturing
+      ? removeEmojis(resultData.title)
+      : resultData.title;
+    const displayDesc = isCapturing
+      ? removeEmojis(resultData.description)
+      : resultData.description;
+
     if (isNight) {
       return (
         <div className={styles.horror_report}>
-          <h2 className={styles.horror_type_title}>{resultData.title}</h2>
+          <h2 className={styles.horror_type_title}>{displayTitle}</h2>
           {resultData.result && (
             <img
               src={resultData.result}
@@ -184,19 +212,13 @@ function TestResultPage() {
               className={styles.result_image}
             />
           )}
-          <p className={styles.horror_description}>
-            {resultData.description?.trim()}
-          </p>
+          <p className={styles.horror_description}>{displayDesc?.trim()}</p>
         </div>
       );
     } else {
       return (
         <div className={styles.result_title_section}>
-          <h2 className={styles.result_title}>
-            {currentType === "taro"
-              ? `"${resultData.title}"`
-              : `"${resultData.title}"`}
-          </h2>
+          <h2 className={styles.result_title}>{`"${displayTitle}"`}</h2>
           {resultData.result && (
             <img
               src={resultData.result}
@@ -204,7 +226,7 @@ function TestResultPage() {
               className={styles.result_image}
             />
           )}
-          <p className={styles.description}>{resultData.description?.trim()}</p>
+          <p className={styles.description}>{displayDesc?.trim()}</p>
         </div>
       );
     }
@@ -221,11 +243,11 @@ function TestResultPage() {
           <h1 className={styles.main_title}>
             {isNight ? (
               <>
-                실험 기록
-                <br /> {testTitle}
+                {isCapturing ? removeEmojis("실험 기록") : "실험 기록"}
+                <br /> {isCapturing ? removeEmojis(testTitle) : testTitle}
               </>
             ) : (
-              `${testTitle} 결과`
+              `${isCapturing ? removeEmojis(testTitle) : testTitle} 결과`
             )}
           </h1>
           {renderResultSection()}
