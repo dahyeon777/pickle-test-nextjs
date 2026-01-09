@@ -173,8 +173,8 @@ function TestResultPage() {
         <div className={styles.result_title_section}>
           <h2 className={styles.result_title}>
             {currentType === "taro"
-              ? `당신의 운명은 "${resultData.title}"`
-              : `당신은 "${resultData.title}" 입니다!`}
+              ? `"${resultData.title}"`
+              : `"${resultData.title}"`}
           </h2>
           {resultData.result && (
             <img
