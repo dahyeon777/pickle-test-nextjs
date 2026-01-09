@@ -15,6 +15,7 @@ import { testData12 } from "./day_test/testData12";
 // 2. 낮/타로
 import { taroData1 } from "./day_taro/taroData1";
 import { taroData2 } from "./day_taro/taroData2";
+import { taroData3 } from "./day_taro/taroData3";
 
 // 3. 밤/테스트
 import { horrorTestData1 } from "./night_test/testData1";
@@ -54,6 +55,7 @@ export const TotalDataStore = {
     taro: [
       taroData1, //2026 총운
       taroData2, //그 사람 속마음
+      taroData3, //지금 내 마음
     ],
   },
   night: {

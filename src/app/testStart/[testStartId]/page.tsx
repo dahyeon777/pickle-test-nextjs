@@ -19,14 +19,13 @@ function calculateDayTestResult(scores: any) {
   return E_I + S_N + T_F + J_P;
 }
 
-// --- 로직 분리: 낮 버전 타로 테스트 (현재는 MBTI와 동일하게 유지) ---
-function calculateDayTaroResult(scores: any) {
-  // 타로만의 특수 로직이 필요할 경우 여기서 수정하세요.
-  const E_I = (scores.E_score || 0) >= (scores.I_score || 0) ? "E" : "I";
-  const S_N = (scores.S_score || 0) >= (scores.N_score || 0) ? "S" : "N";
-  const T_F = (scores.T_score || 0) >= (scores.F_score || 0) ? "T" : "F";
-  const J_P = (scores.J_score || 0) >= (scores.P_score || 0) ? "J" : "P";
-  return E_I + S_N + T_F + J_P;
+// --- 로직 분리: 낮 버전 타로 테스트 (수정된 부분) ---
+function calculateDayTaroResult(nowQuestion: any, selectedOptionId: string) {
+  // 타로는 점수 합산이 아니라 선택한 옵션의 resultKey를 그대로 사용함
+  const selected = nowQuestion.options.find(
+    (opt: any) => opt.optionId === selectedOptionId
+  );
+  return selected?.resultKey || "TARO_RESULT_1";
 }
 
 // --- 로직 분리: 밤 버전 호러 테스트 ---
@@ -42,14 +41,10 @@ function TestStartPage() {
   const params = useParams();
   const searchParams = useSearchParams();
 
-  // Zustand 스토어 상태
   const { theme, contentType, setMode } = useThemeStore();
   const isNight = theme === "night";
-
-  // URL 파라미터 testStartId
   const testStartId = Number(params.testStartId);
 
-  // 통합 데이터에서 현재 설정에 맞는 테스트 데이터 추출
   const nowTest = (TotalDataStore as any)[theme][contentType]?.find(
     (test: any) => test.id === testStartId
   );
@@ -57,7 +52,6 @@ function TestStartPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  // 초기 점수 상태 설정
   const [score, setScore] = useState<any>(() =>
     isNight
       ? { R: 0, B: 0, J: 0, O: 0, C: 0 }
@@ -73,7 +67,6 @@ function TestStartPage() {
         }
   );
 
-  // URL 쿼리 파라미터와 Zustand 스토어 동기화
   useEffect(() => {
     const modeParam = searchParams.get("mode") as "day" | "night";
     const typeParam = searchParams.get("type") as "test" | "taro";
@@ -91,13 +84,13 @@ function TestStartPage() {
     setSelectedOption(event.target.value);
   };
 
-  // 최종 결과 도출 메인 함수
+  // 최종 결과 도출 메인 함수 (매개변수 구조 유지)
   const getResultKey = (finalScore: any) => {
     if (isNight) {
       return calculateNightHorrorResult(finalScore);
     }
     return contentType === "taro"
-      ? calculateDayTaroResult(finalScore)
+      ? calculateDayTaroResult(nowQuestion, selectedOption!) // 타로일 때 현재 질문과 선택값 전달
       : calculateDayTestResult(finalScore);
   };
 
@@ -107,23 +100,23 @@ function TestStartPage() {
     const selected = nowQuestion.options.find(
       (opt: any) => opt.optionId === selectedOption
     );
-    if (!selected || !selected.score) return;
+    if (!selected) return;
 
-    // 점수 누적
+    // 점수 누적 로직
     const updatedScore = { ...score };
-    for (const key in selected.score) {
-      updatedScore[key] = (updatedScore[key] || 0) + selected.score[key];
+    if (selected.score) {
+      for (const key in selected.score) {
+        updatedScore[key] = (updatedScore[key] || 0) + selected.score[key];
+      }
     }
     setScore(updatedScore);
 
     const nextIndex = questionIndex + 1;
 
     if (nowTest && nextIndex < nowTest.questions.length) {
-      // 다음 문제로 이동
       setQuestionIndex(nextIndex);
       setSelectedOption(null);
     } else {
-      // 모든 문제 완료 시 결과 페이지로 이동 (암호화 없이 원본 키값 전달)
       const resultKey = getResultKey(updatedScore);
       router.push(
         `/testResult/${testStartId}/${resultKey}?mode=${theme}&type=${contentType}`
