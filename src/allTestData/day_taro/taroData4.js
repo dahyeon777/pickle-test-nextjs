@@ -1,7 +1,7 @@
 export const taroData4 = {
   id: 4,
   path: "",
-  title: "🍀\n오늘 나를 지켜줄\n행운의 아이템",
+  title: "🍀\n오늘 행운의\n아이템",
   tags: [
     "행운아이템",
     "럭키템",
