@@ -5,7 +5,7 @@ import { TotalDataStore } from "../../allTestData";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import Link from "next/link";
 import styles from "./page.module.css";
-import SearchBar from "@/src/components/SearchBar";
+import SearchBar from "@/src/components/SearchBar/page";
 
 /**
  * 피클 테스트 메인 페이지

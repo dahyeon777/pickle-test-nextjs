@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./SearchBar.module.css"; // CSS 파일 연결
+import styles from "./page.module.css"; // CSS 파일 연결
 
 interface SearchBarProps {
   isNight: boolean;
@@ -9,7 +9,11 @@ interface SearchBarProps {
   setSearchQuery: (val: string) => void;
 }
 
-const SearchBar = ({ isNight, searchQuery, setSearchQuery }: SearchBarProps) => {
+const SearchBar = ({
+  isNight,
+  searchQuery,
+  setSearchQuery,
+}: SearchBarProps) => {
   return (
     <div className={`${styles.searchContainer} ${isNight ? styles.night : ""}`}>
       <input
