@@ -22,7 +22,7 @@ export const taroData8 = {
   questions: [
     {
       questionId: 1,
-      text: "서로 다른 두 세계가 만나 하나의 궤도를 그리는 일은 기적과도 같습니다.\n두 사람의 관계를 관통하는 가장 깊은 상징은 무엇일까요?\n마음을 가라앉히고, 두 사람의 인연이 닿아있는 문양을 선택해 보세요.",
+      text: "서로 다른 두 세계가 만나는 일은 기적과도 같습니다.\n마음을 가라앉히고, 카드를 선택해 보세요.",
       options: [
         { optionId: "A", text: "🌹", resultKey: "BOND_RESULT_1" },
         { optionId: "B", text: "🌊", resultKey: "BOND_RESULT_2" },

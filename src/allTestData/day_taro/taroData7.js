@@ -10,7 +10,7 @@ export const taroData7 = {
   questions: [
     {
       questionId: 1,
-      text: "돈은 단순한 숫자가 아니라 흐르는 에너지와 같습니다.\n오늘 당신의 주머니로 들어올 기운과 나갈 기운은 어떤 조화를 이루고 있을까요?\n가장 묵직한 무게감이 느껴지는 황금빛 카드를 선택해 보세요.",
+      text: "돈은 단순한 숫자가 아니라 흐르는 에너지와 같습니다.\n가장 묵직한 황금빛 카드를 선택해 보세요.",
       options: [
         { optionId: "A", text: "🪙", resultKey: "MONEY_RESULT_1" },
         { optionId: "B", text: "💳", resultKey: "MONEY_RESULT_2" },

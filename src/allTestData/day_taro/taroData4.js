@@ -22,7 +22,7 @@ export const taroData4 = {
   questions: [
     {
       questionId: 1,
-      text: "당신의 곁에서 긍정적인 에너지를 증폭시킬 '럭키 아이템'을 찾고 있나요?\n마음을 차분히 가라앉히고, 오늘 당신의 눈길을 가장 강렬하게 사로잡는\n타로 카드의 뒷면을 선택해 보세요.",
+      text: "마음을 차분히 가라앉히고,\n오늘 당신에게 필요한 행운을 선택해보세요.",
       options: [
         { optionId: "A", text: "💠", resultKey: "TARO_ITEM_1" },
         { optionId: "B", text: "🔱", resultKey: "TARO_ITEM_2" },

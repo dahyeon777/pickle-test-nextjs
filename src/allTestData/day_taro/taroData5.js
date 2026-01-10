@@ -10,7 +10,7 @@ export const taroData5 = {
   questions: [
     {
       questionId: 1,
-      text: "어떤 공간은 그 자체로 거대한 부적이 되기도 합니다.\n오늘 당신의 기운과 완벽하게 공명하여 행운을 불러올 장소는 어디일까요?\n아무 생각 없이 마음이 끌리는 풍경의 아이콘을 선택해 보세요.",
+      text: "어떤 공간은 그 자체로 거대한 부적이 되기도 합니다.\n편하게 마음이 끌리는 카드를 선택해 보세요.",
       options: [
         { optionId: "A", text: "🏙️", resultKey: "PLACE_RESULT_1" },
         { optionId: "B", text: "🌳", resultKey: "PLACE_RESULT_2" },

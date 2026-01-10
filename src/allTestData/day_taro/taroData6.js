@@ -10,7 +10,7 @@ export const taroData6 = {
   questions: [
     {
       questionId: 1,
-      text: "머릿속이 복잡할 때, 때로는 단 한 문장이 모든 실타래를 풀어주기도 합니다.\n지금 당신의 영혼이 갈구하는 메시지는 무엇일까요?\n눈을 감고 잠시 호흡한 뒤, 가장 온기가 느껴지는 봉투를 열어보세요.",
+      text: "때로는 단 한 문장이 모든 실타래를 풀어주기도 합니다.\n가장 온기가 느껴지는 카드를 선택하세요.",
       options: [
         { optionId: "A", text: "✉️", resultKey: "MSG_RESULT_1" },
         { optionId: "B", text: "💌", resultKey: "MSG_RESULT_2" },
