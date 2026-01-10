@@ -167,7 +167,7 @@ function FirstPage() {
               {TotalDataStore.night.taro &&
                 TotalDataStore.night.taro.length > 0 && (
                   <>
-                    <h3 className={styles.rowTitle}>타로</h3>
+                    <h3 className={styles.rowTitle}>피클 타로</h3>
                     <div className={styles.taroRow}>
                       {renderGridItems(TotalDataStore.night.taro, "taro")}
                     </div>
@@ -176,12 +176,12 @@ function FirstPage() {
             </>
           ) : (
             <>
-              <h3 className={styles.rowTitle}>타로</h3>
+              <h3 className={styles.rowTitle}>피클 타로</h3>
               <div className={styles.taroRow}>
                 {renderGridItems(TotalDataStore.day.taro, "taro")}
               </div>
 
-              <h3 className={styles.rowTitle}>테스트</h3>
+              <h3 className={styles.rowTitle}>피클 테스트</h3>
               <div className={styles.testRow}>
                 {renderGridItems(TotalDataStore.day.test, "test")}
               </div>
