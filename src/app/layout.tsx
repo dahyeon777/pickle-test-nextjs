@@ -4,7 +4,8 @@ import { Metadata } from "next";
 import Script from "next/script";
 import Header from "../components/Header";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import IOSInstallGuide from "../components/IOSInstallGuide"; // 안내 컴포넌트 추가
+import IOSInstallGuide from "../components/IOSInstallGuide"; 
+import ThemeTimeInitializer from "../components/ThemeTimeInitializer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pickletest.com"),
@@ -74,6 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ThemeTimeInitializer />
         <Header />
         <main>{children}</main>
         
