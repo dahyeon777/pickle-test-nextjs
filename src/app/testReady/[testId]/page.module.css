@@ -136,6 +136,25 @@
   word-break: keep-all;
 }
 
+.infoBox {
+  width: 100%; /* 부모 너비에 맞춤 */
+  padding: 15px 10px;
+  background-color: rgba(0, 0, 0, 0.05); /* 회색 배경에 자연스럽게 녹아들게 */
+  border: 1px dashed #208b00;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.infoText {
+  color: #2d0709; /* 밤 모드 메인 텍스트색과 통일 */
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 2px 0;
+  word-break: keep-all;
+}
+
 /* 📱 모바일 대응 */
 @media screen and (max-width: 600px) {
   .title {

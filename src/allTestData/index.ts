@@ -34,7 +34,6 @@ import { horrorTestData13 } from "./night_test/testData13";
 import { horrorTestData14 } from "./night_test/testData14";
 import { horrorTestData15 } from "./night_test/testData15";
 import { horrorTestData16 } from "./night_test/testData16";
-import { horrorTestData17 } from "./night_test/testData17";
 
 export const TotalDataStore = {
   day: {
@@ -76,7 +75,6 @@ export const TotalDataStore = {
       horrorTestData8, // 계절 사이비
       horrorTestData9, // 등대
       horrorTestData6, // 반사
-      horrorTestData17, // 헨젤과 그레텔
     ],
     // --- 밤 버전의 타로 테스트 리스트 (추후 확장용) ---
     taro: [
