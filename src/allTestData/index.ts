@@ -23,9 +23,6 @@ import { taroData7 } from "./day_taro/taroData7";
 import { taroData8 } from "./day_taro/taroData8";
 import { taroData9 } from "./day_taro/taroData9";
 import { taroData10 } from "./day_taro/taroData10";
-import { taroData11 } from "./day_taro/taroData11";
-import { taroData12 } from "./day_taro/taroData12";
-import { taroData13 } from "./day_taro/taroData13";
 
 // 3. 밤/테스트
 import { horrorTestData1 } from "./night_test/testData1";
@@ -63,8 +60,6 @@ export const TotalDataStore = {
     ],
     taro: [
       taroData1, //2026 총운
-      taroData11, //2026 상반기 놀라운 일
-      taroData13, //2026 상반기 인연
       taroData2, //그 사람 속마음
       taroData3, //오늘 운세
       taroData7, //오늘 금전운
@@ -74,7 +69,6 @@ export const TotalDataStore = {
       taroData8, //운명 궁합
       taroData9, //질문 명쾌 대답
       taroData10, //타인이 보는 내 모습
-      taroData12, //미래 운명적 인연
     ],
   },
   night: {
