@@ -31,24 +31,26 @@ function FirstPage() {
    * 리스트 아이템 렌더링 함수
    * @param dataList 출력할 데이터 배열
    * @param type 'test' | 'taro'
+   * @param forcedTheme 검색 모드일 때 시각적 구분을 위한 강제 테마 설정
    */
-  const renderGridItems = (dataList: any[], type: "test" | "taro") => {
+  const renderGridItems = (
+    dataList: any[],
+    type: "test" | "taro",
+    forcedTheme?: "day" | "night"
+  ) => {
     if (!dataList || dataList.length === 0) return null;
 
     // --- 제목 및 태그 통합 검색 필터링 로직 ---
     const filteredList = dataList.filter((item) => {
-      // 검색어가 없으면 전체 표시
       if (!searchQuery.trim()) return true;
 
       const query = searchQuery.toLowerCase().trim();
 
-      // 1. 제목 검색 (줄바꿈 제거 후 비교)
       const titleMatch = item.title
         .replace(/\n/g, " ")
         .toLowerCase()
         .includes(query);
 
-      // 2. 태그 검색 (item.tags 배열 내 키워드 매칭)
       const tagMatch = item.tags?.some((tag: string) =>
         tag.toLowerCase().includes(query)
       );
@@ -56,23 +58,35 @@ function FirstPage() {
       return titleMatch || tagMatch;
     });
 
-    // 검색 결과가 없을 경우 해당 섹션 렌더링 안함
     if (filteredList.length === 0 && searchQuery !== "") {
       return null;
     }
 
-    return filteredList.map(({ id, title }, index) => (
-      <div className={styles["grid-item"]} key={`${type}-${id}-${index}`}>
-        <Link
-          href={`/testReady/${id}?mode=${theme}&type=${type}`}
-          onClick={() => setMode(theme, type)}
-        >
-          <div className={styles.testTitleBox}>
-            <span className={styles.testTitleText}>{title}</span>
-          </div>
-        </Link>
-      </div>
-    ));
+    return filteredList.map(({ id, title }, index) => {
+      // 검색 중일 때는 데이터가 속한 원래 테마(forcedTheme)를 우선 사용
+      const itemTheme = forcedTheme || theme;
+      const isSearching = searchQuery.trim() !== "";
+
+      // 검색 결과일 때 시각적 구분 클래스 적용
+      const itemCustomClass = isSearching
+        ? itemTheme === "night"
+          ? styles.nightItemBox
+          : styles.dayItemBox
+        : "";
+
+      return (
+        <div className={styles["grid-item"]} key={`${type}-${id}-${index}`}>
+          <Link
+            href={`/testReady/${id}?mode=${itemTheme}&type=${type}`}
+            onClick={() => setMode(itemTheme, type)}
+          >
+            <div className={`${styles.testTitleBox} ${itemCustomClass}`}>
+              <span className={styles.testTitleText}>{title}</span>
+            </div>
+          </Link>
+        </div>
+      );
+    });
   };
 
   return (
@@ -107,7 +121,6 @@ function FirstPage() {
       <main className={styles.mainArea}>
         {/* 상단 검색바 + 테마 버튼 한 줄 배치 */}
         <div className={styles.topControlBar}>
-          {/* SearchBar 컴포넌트와 상태 연동 */}
           <SearchBar
             isNight={isNight}
             searchQuery={searchQuery}
@@ -128,15 +141,29 @@ function FirstPage() {
 
         {/* 데이터 리스트 영역 */}
         <div className={styles["grid-container"]}>
-          {isNight ? (
-            /* [Night 버전] - 테스트(2행)와 타로(1행) */
+          {searchQuery.trim() !== "" ? (
+            /* [통합 검색 결과 모드] */
+            <>
+              <h3 className={styles.rowTitle}>"{searchQuery}" 검색 결과</h3>
+              <div className={styles.testRow}>
+                {renderGridItems(TotalDataStore.day.test, "test", "day")}
+                {renderGridItems(TotalDataStore.night.test, "test", "night")}
+                {renderGridItems(TotalDataStore.day.taro, "taro", "day")}
+                {renderGridItems(
+                  TotalDataStore.night.taro || [],
+                  "taro",
+                  "night"
+                )}
+              </div>
+            </>
+          ) : /* [일반 모드 - 원본 구조 동일] */
+          isNight ? (
             <>
               <h3 className={styles.rowTitle}>테스트</h3>
               <div className={styles.testRow}>
                 {renderGridItems(TotalDataStore.night.test, "test")}
               </div>
 
-              {/* 밤 버전 타로 데이터가 있을 경우에만 렌더링 */}
               {TotalDataStore.night.taro &&
                 TotalDataStore.night.taro.length > 0 && (
                   <>
@@ -148,7 +175,6 @@ function FirstPage() {
                 )}
             </>
           ) : (
-            /* [Day 버전] - 타로(1행)와 테스트(2행) */
             <>
               <h3 className={styles.rowTitle}>타로</h3>
               <div className={styles.taroRow}>
@@ -164,14 +190,15 @@ function FirstPage() {
         </div>
       </main>
 
-      {/* 푸터 설명 영역 */}
+      {/* 푸터 설명 영역 (원본 텍스트 그대로 유지) */}
       <div className={styles.footerSection}>
         <p className={styles.footerDescription}>
           피클테스트(Pickle Test)는 일상 속에서 즐기는 가벼운 스낵처럼,
           간편하지만 톡 쏘는 즐거움을 선사하는 글로벌 심리 테스트 플랫폼입니다.
-          서구권에서 식탁의 감초 역할을 하는 '피클'의 이미지에서 영감을 받아,
-          짧은 시간 안에 사용자의 내면을 날카롭고 흥미롭게 분석하는 독창적인
-          콘텐츠를 제공합니다.
+          <br />
+          일상생활 속에서 메인 음식에 곁들여 먹거나 간식으로 즐겨 먹는 '피클'의
+          이미지에서 영감을 받아, 짧은 시간 안에 사용자의 내면을 날카롭고
+          흥미롭게 분석하는 독창적인 콘텐츠를 제공합니다.
           <br />
           <br />
           Day Mode (낮 버전): 일상의 고민과 성격 유형을 부드럽게 분석해 주는

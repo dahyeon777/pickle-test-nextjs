@@ -226,18 +226,64 @@
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
 }
 
 .nightMode .testTitleBox {
   background-color: #e5e3e3;
   border: 1px solid #a13c3cd2;
 }
+
+/* --- 검색 결과 전용 시각적 구분 추가 --- */
+.dayItemBox {
+  border: 2px solid #5d8b52 !important;
+  background-color: #ffffff !important;
+}
+
+.nightItemBox {
+  border: 2px solid #ff3e3e !important;
+  background-color: #bbbbbb !important;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2) !important;
+}
+
+.nightItemBox .testTitleText {
+  color: #ff3e3e !important;
+}
+
 .testTitleText {
   color: #333;
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.4;
   white-space: pre-wrap;
+}
+
+/* --- 경고/안내 문구 영역 --- */
+.warningBox {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid #ff3e3e;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.warningText {
+  color: #ff3e3e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 2px 0;
+}
+
+.infoBox {
+  background-color: rgba(45, 77, 36, 0.1);
+  border-left: 4px solid #2d4d24;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.infoText {
+  color: #2d4d24;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 /* --- 푸터 설명 영역 --- */
@@ -313,49 +359,38 @@
   animation-delay: -5s;
 }
 
-/* --- 반응형 미디어 쿼리 (완전한 복구) --- */
+/* --- 반응형 미디어 쿼리 --- */
 @media screen and (max-width: 850px) {
   .topControlBar {
     width: 92%;
     margin-bottom: 10px;
   }
-
-  /* 서치바 관련 스타일은 SearchBar.module.css에서 관리 or
-     여기서 topControlBar 하위로 제어. */
-
   .themeButton {
     padding: 6px 12px;
     height: 38px;
   }
-
   .themeButtonText {
     font-size: 11px;
   }
-
   .grid-container {
     width: 92%;
     padding: 15px 10px;
     margin-bottom: 60px;
   }
-
   .image_center {
     width: 60%;
     margin: 30px auto 25px auto;
   }
-
   .grid-item {
     flex: 0 0 120px;
     width: 120px;
   }
-
   .rowTitle {
     font-size: 0.95rem;
   }
-
   .testTitleText {
     font-size: 0.85rem;
   }
-
   .footerSection {
     padding: 20px 5%;
   }
@@ -365,15 +400,9 @@
   .topControlBar {
     gap: 8px;
   }
-
   .themeButton {
     padding: 4px 10px;
   }
-
-  .themeButtonText {
-    display: block; /* 텍스트 유지 */
-  }
-
   .grid-item {
     flex: 0 0 110px;
     width: 110px;
