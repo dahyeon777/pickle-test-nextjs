@@ -5,6 +5,7 @@
   transition: background-color 0.5s ease;
   display: flex;
   flex-direction: column;
+  /* 주의: 여기에 transform, filter, perspective 속성을 추가하면 피클 아이콘(fixed)이 갇힐 수 있습니다. */
 }
 
 /* 낮 버전 배경색 */
@@ -33,7 +34,7 @@
   margin: 40px auto 80px auto;
 }
 
-/* --- 상단 컨트롤 바 (검색창 + 버튼 한 줄 배치 핵심) --- */
+/* --- 상단 컨트롤 바 (검색창 + 버튼 한 줄 배치) --- */
 .mainArea {
   position: relative;
   width: 100%;
@@ -45,18 +46,18 @@
 .topControlBar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 양 끝 정렬: 왼쪽 서치바, 오른쪽 버튼 */
+  justify-content: space-between;
   width: 90%;
   max-width: 700px;
   margin: 0 auto 20px auto;
-  gap: 10px; /* 검색창과 버튼 사이 간격 */
+  gap: 10px;
   z-index: 20;
 }
 
 /* 테마 버튼 영역 */
 .themeButtonWrapper {
   position: relative;
-  flex-shrink: 0; /* 버튼 형태가 찌그러지지 않게 고정 */
+  flex-shrink: 0;
 }
 
 .themeButton {
@@ -70,7 +71,7 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  height: 44px; /* 검색창과 높이 균형 유지 */
+  height: 44px;
 }
 
 .themeButton:hover {
@@ -234,7 +235,7 @@
   border: 1px solid #a13c3cd2;
 }
 
-/* --- 검색 결과 전용 시각적 구분 추가 --- */
+/* --- 검색 결과 전용 시각적 구분 --- */
 .dayItemBox {
   border: 2px solid #5d8b52 !important;
   background-color: #ffffff !important;
@@ -242,8 +243,11 @@
 
 .nightItemBox {
   border: 2px solid #ff3e3e !important;
-  background-color: #bbbbbb !important;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2) !important;
+  background-color: #e5e3e3 !important;
+}
+
+.nightItemBox .testTitleText {
+  color: #ff3e3e !important;
 }
 
 .testTitleText {
@@ -252,34 +256,6 @@
   font-weight: 600;
   line-height: 1.4;
   white-space: pre-wrap;
-}
-
-/* --- 경고/안내 문구 영역 --- */
-.warningBox {
-  background-color: rgba(255, 0, 0, 0.1);
-  border-left: 4px solid #ff3e3e;
-  padding: 10px 15px;
-  border-radius: 8px;
-}
-
-.warningText {
-  color: #ff3e3e;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin: 2px 0;
-}
-
-.infoBox {
-  background-color: rgba(45, 77, 36, 0.1);
-  border-left: 4px solid #2d4d24;
-  padding: 10px 15px;
-  border-radius: 8px;
-}
-
-.infoText {
-  color: #2d4d24;
-  font-size: 0.8rem;
-  font-weight: 700;
 }
 
 /* --- 푸터 설명 영역 --- */
@@ -307,56 +283,66 @@
   text-decoration: none;
 }
 
-/* --- 애니메이션 피클 아이콘 --- */
+/* --- 애니메이션 피클 아이콘 (수정됨) --- */
 .floatingPickle {
-  position: fixed;
+  position: fixed; /* 브라우저 창 기준 고정 */
   width: 400px;
   height: 400px;
   z-index: 1;
   pointer-events: none;
   opacity: 0.15;
+  top: 0;
+  left: 0;
+  will-change: top, left, transform;
 }
+
 .nightMode .floatingPickle {
   filter: sepia(1) hue-rotate(-50deg) saturate(3);
 }
 
 @keyframes wander {
   0% {
-    top: 10%;
-    left: 10%;
+    top: -10%;
+    left: -10%;
     transform: rotate(0deg);
   }
   25% {
-    top: 80%;
-    left: 20%;
+    top: 70%;
+    left: 80%;
     transform: rotate(90deg);
   }
   50% {
-    top: 50%;
-    left: 80%;
+    top: 80%;
+    left: 10%;
     transform: rotate(180deg);
   }
   75% {
-    top: 10%;
-    left: 70%;
+    top: 20%;
+    left: 90%;
     transform: rotate(270deg);
   }
   100% {
-    top: 10%;
-    left: 10%;
+    top: -10%;
+    left: -10%;
     transform: rotate(360deg);
   }
 }
+
 .pickle1 {
-  animation: wander 30s linear infinite;
+  animation: wander 40s linear infinite;
 }
+
 .pickle2 {
-  animation: wander 35s linear infinite reverse;
-  animation-delay: -5s;
+  animation: wander 45s linear infinite reverse;
+  animation-delay: -15s;
 }
 
 /* --- 반응형 미디어 쿼리 --- */
 @media screen and (max-width: 850px) {
+  .floatingPickle {
+    width: 250px;
+    height: 250px;
+  }
   .topControlBar {
     width: 92%;
     margin-bottom: 10px;
