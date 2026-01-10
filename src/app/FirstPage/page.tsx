@@ -7,18 +7,12 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import SearchBar from "@/src/components/SearchBar/page";
 
-/**
- * 피클 테스트 메인 페이지
- * - Theme: day (낮), night (밤)
- * - ContentType: test (심리테스트), taro (타로)
- */
 function FirstPage() {
   const { theme, setMode } = useThemeStore();
-  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 관리
+  const [searchQuery, setSearchQuery] = useState("");
 
   const isNight = theme === "night";
 
-  // 테마 전환 함수 (Night <-> Day)
   const handleToggleTheme = () => {
     if (isNight) {
       setMode("day", "test");
@@ -29,50 +23,42 @@ function FirstPage() {
 
   /**
    * 리스트 아이템 렌더링 함수
-   * @param dataList 출력할 데이터 배열
-   * @param type 'test' | 'taro'
-   * @param forcedTheme 검색 모드일 때 시각적 구분을 위한 강제 테마 설정
+   * type에 'book'을 추가하여 대응합니다.
    */
   const renderGridItems = (
     dataList: any[],
-    type: "test" | "taro",
+    type: "test" | "taro" | "book",
     forcedTheme?: "day" | "night"
   ) => {
     if (!dataList || dataList.length === 0) return null;
 
-    // --- 제목 및 태그 통합 검색 필터링 로직 ---
     const filteredList = dataList.filter((item) => {
       if (!searchQuery.trim()) return true;
-
       const query = searchQuery.toLowerCase().trim();
-
       const titleMatch = item.title
         .replace(/\n/g, " ")
         .toLowerCase()
         .includes(query);
-
       const tagMatch = item.tags?.some((tag: string) =>
         tag.toLowerCase().includes(query)
       );
-
       return titleMatch || tagMatch;
     });
 
-    if (filteredList.length === 0 && searchQuery !== "") {
-      return null;
-    }
+    if (filteredList.length === 0 && searchQuery !== "") return null;
 
     return filteredList.map(({ id, title }, index) => {
-      // 검색 중일 때는 데이터가 속한 원래 테마(forcedTheme)를 우선 사용
       const itemTheme = forcedTheme || theme;
       const isSearching = searchQuery.trim() !== "";
 
-      // 검색 결과일 때 시각적 구분 클래스 적용
       const itemCustomClass = isSearching
         ? itemTheme === "night"
           ? styles.nightItemBox
           : styles.dayItemBox
         : "";
+
+      // 북 모드일 경우 추가 스타일링을 적용할 수 있도록 클래스 분기 가능
+      const bookClass = type === "book" ? styles.bookItemBox : "";
 
       return (
         <div className={styles["grid-item"]} key={`${type}-${id}-${index}`}>
@@ -80,7 +66,9 @@ function FirstPage() {
             href={`/testReady/${id}?mode=${itemTheme}&type=${type}`}
             onClick={() => setMode(itemTheme, type)}
           >
-            <div className={`${styles.testTitleBox} ${itemCustomClass}`}>
+            <div
+              className={`${styles.testTitleBox} ${itemCustomClass} ${bookClass}`}
+            >
               <span className={styles.testTitleText}>{title}</span>
             </div>
           </Link>
@@ -107,7 +95,6 @@ function FirstPage() {
         alt="pickle"
       />
 
-      {/* 상단 히어로 이미지 영역 */}
       <div className={styles.container}>
         <img
           src={
@@ -119,14 +106,12 @@ function FirstPage() {
       </div>
 
       <main className={styles.mainArea}>
-        {/* 상단 검색바 + 테마 버튼 한 줄 배치 */}
         <div className={styles.topControlBar}>
           <SearchBar
             isNight={isNight}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
           />
-
           <div className={styles.themeButtonWrapper}>
             <button className={styles.themeButton} onClick={handleToggleTheme}>
               <div
@@ -139,7 +124,6 @@ function FirstPage() {
           </div>
         </div>
 
-        {/* 데이터 리스트 영역 */}
         <div className={styles["grid-container"]}>
           {searchQuery.trim() !== "" ? (
             /* [통합 검색 결과 모드] */
@@ -150,16 +134,32 @@ function FirstPage() {
                 {renderGridItems(TotalDataStore.night.test, "test", "night")}
                 {renderGridItems(TotalDataStore.day.taro, "taro", "day")}
                 {renderGridItems(
+                  TotalDataStore.night.book || [],
+                  "book",
+                  "night"
+                )}
+                {renderGridItems(
                   TotalDataStore.night.taro || [],
                   "taro",
                   "night"
                 )}
               </div>
             </>
-          ) : /* [일반 모드 - 원본 구조 동일] */
+          ) : /* [일반 모드] */
           isNight ? (
             <>
-              <h3 className={styles.rowTitle}>테스트</h3>
+              {/* 밤 모드 전용: 피클 썰북 (가장 상단) */}
+              {TotalDataStore.night.book &&
+                TotalDataStore.night.book.length > 0 && (
+                  <>
+                    <h3 className={styles.rowTitle}>피클 썰북 (Story)</h3>
+                    <div className={styles.bookRow}>
+                      {renderGridItems(TotalDataStore.night.book, "book")}
+                    </div>
+                  </>
+                )}
+
+              <h3 className={styles.rowTitle}>공포 테스트</h3>
               <div className={styles.testRow}>
                 {renderGridItems(TotalDataStore.night.test, "test")}
               </div>
@@ -190,7 +190,6 @@ function FirstPage() {
         </div>
       </main>
 
-      {/* 푸터 설명 영역 (원본 텍스트 그대로 유지) */}
       <div className={styles.footerSection}>
         <p className={styles.footerDescription}>
           피클테스트(Pickle Test)는 일상 속에서 즐기는 가벼운 스낵처럼,
@@ -202,12 +201,10 @@ function FirstPage() {
           <br />
           <br />
           Day Mode (낮 버전): 일상의 고민과 성격 유형을 부드럽게 분석해 주는
-          심리 테스트 모드입니다. MBTI 기반의 성향 분석과 자아 탐색을 돕는 밝고
-          경쾌한 콘텐츠들로 구성되어 있습니다.
+          심리 테스트 모드입니다.
           <br />
           Night Mode (밤 버전): 어두운 밤의 분위기에 맞춰 긴장감과 스릴을
-          제공하는 공포·미스터리 테스트 모드입니다. 낮과는 전혀 다른 반전의
-          재미를 경험할 수 있습니다.
+          제공하는 공포·미스터리 및 썰북 콘텐츠들로 구성되어 있습니다.
         </p>
 
         <div className={styles.footerInfo}>

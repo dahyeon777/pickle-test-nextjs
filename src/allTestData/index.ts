@@ -86,13 +86,12 @@ export const TotalDataStore = {
       horrorTestData9, // 등대
       horrorTestData6, // 반사
     ],
-    // --- 밤 버전의 타로 테스트 리스트 (추후 확장용) ---
-    taro: [
-      // 밤에도 타로가 생기면 여기에 추가하세요!
+    book: [
+      horrorTestData15, // 장화홍련 (스토리 포함)
     ],
   },
 };
 
 // 하위 호환을 위한 타입 정의 (선택사항)
 export type ThemeType = "day" | "night";
-export type ContentType = "test" | "taro";
+export type ContentType = "test" | "taro" | "book";

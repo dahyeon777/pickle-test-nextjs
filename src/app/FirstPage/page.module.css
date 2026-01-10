@@ -203,6 +203,25 @@
   background: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
+/* 스크롤바 커스텀에 bookRow 추가 */
+.testRow::-webkit-scrollbar,
+.taroRow::-webkit-scrollbar,
+.bookRow::-webkit-scrollbar {
+  height: 6px;
+}
+
+.testRow::-webkit-scrollbar-thumb,
+.taroRow::-webkit-scrollbar-thumb,
+.bookRow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+/* 썰북 아이템 박스에 약간의 포인트를 주고 싶다면 추가 (선택사항) */
+.bookItemBox {
+  border: 1.5px solid #a13c3cd2 !important;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0) !important;
+}
 
 .grid-item {
   flex: 0 0 160px;

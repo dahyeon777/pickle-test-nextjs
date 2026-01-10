@@ -43,6 +43,7 @@ function TestStartPage() {
   const { theme, contentType, setMode } = useThemeStore();
   const isNight = theme === "night";
   const isTaro = contentType === "taro";
+  const isBookMode = contentType === "book"; // 썰북 모드 확인
   const testStartId = Number(params.testStartId);
 
   const nowTest = (TotalDataStore as any)[theme][contentType]?.find(
@@ -52,9 +53,14 @@ function TestStartPage() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
+  // --- [썰북 전용 상태 추가] ---
+  const [storyPageIndex, setStoryPageIndex] = useState(0); // 도입부 썰 페이지 번호
+  const [showIntro, setShowIntro] = useState(isBookMode); // 도입부를 보여줄지 여부
+  const [showBridge, setShowBridge] = useState(false); // 브릿지 스토리를 보여줄지 여부
+
   const [score, setScore] = useState<any>(() =>
     isNight
-      ? { R: 0, B: 0, J: 0, O: 0, C: 0 }
+      ? { R: 0, B: 0, J: 0, O: 0, C: 0, A: 0, E: 0, D: 0 } // 확장된 스코어 키 대응
       : {
           E_score: 0,
           I_score: 0,
@@ -69,11 +75,12 @@ function TestStartPage() {
 
   useEffect(() => {
     const modeParam = searchParams.get("mode") as "day" | "night";
-    const typeParam = searchParams.get("type") as "test" | "taro";
+    const typeParam = searchParams.get("type") as "test" | "taro" | "book";
 
     if (modeParam && typeParam) {
       if (modeParam !== theme || typeParam !== contentType) {
         setMode(modeParam, typeParam);
+        if (typeParam === "book") setShowIntro(true);
       }
     }
   }, [searchParams, theme, contentType, setMode]);
@@ -99,6 +106,18 @@ function TestStartPage() {
       : calculateDayTestResult(finalScore);
   };
 
+  // --- [썰북 전용 핸들러] ---
+  const handleNextStoryPage = () => {
+    if (
+      nowTest?.storyBook &&
+      storyPageIndex < nowTest.storyBook.pages.length - 1
+    ) {
+      setStoryPageIndex(storyPageIndex + 1);
+    } else {
+      setShowIntro(false); // 도입부 종료 -> 첫 질문으로
+    }
+  };
+
   function handleNextQuestion() {
     if (!selectedOption || !nowQuestion) return;
 
@@ -120,6 +139,11 @@ function TestStartPage() {
     if (nowTest && nextIndex < nowTest.questions.length) {
       setQuestionIndex(nextIndex);
       setSelectedOption(null);
+
+      // 다음 질문에 브릿지 스토리가 있다면 브릿지 화면 켜기
+      if (isBookMode && nowTest.questions[nextIndex].bridgeStory) {
+        setShowBridge(true);
+      }
     } else {
       const resultKey = getResultKey(updatedScore);
       router.push(
@@ -130,6 +154,57 @@ function TestStartPage() {
 
   if (!nowTest)
     return <div className={styles.container}>테스트를 찾을 수 없습니다.</div>;
+
+  // --- [1. 도입부 썰북 렌더링] ---
+  if (showIntro && nowTest.storyBook) {
+    const currentPage = nowTest.storyBook.pages[storyPageIndex];
+    return (
+      <div
+        className={`${styles.container} ${
+          isNight ? styles.nightMode : styles.dayMode
+        }`}
+      >
+        <div className={styles.story_frame}>
+          <h2 className={styles.answer_title}>{nowTest.title}</h2>
+          <div className={styles.story_content}>
+            <p className={styles.story_text}>{currentPage.content}</p>
+          </div>
+          <button
+            className={`${styles.button1} ${styles.horror_button}`}
+            onClick={handleNextStoryPage}
+          >
+            {storyPageIndex === nowTest.storyBook.pages.length - 1
+              ? "이야기 속으로"
+              : "다음으로"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // --- [2. 중간 브릿지 스토리 렌더링] ---
+  if (showBridge && nowQuestion?.bridgeStory) {
+    return (
+      <div
+        className={`${styles.container} ${
+          isNight ? styles.nightMode : styles.dayMode
+        }`}
+      >
+        <div className={styles.story_frame}>
+          <div className={styles.bridge_content}>
+            <p className={styles.bridge_text}>{nowQuestion.bridgeStory}</p>
+          </div>
+          <button
+            className={`${styles.button1} ${styles.horror_button}`}
+            onClick={() => setShowBridge(false)}
+          >
+            계속하기
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!nowQuestion) return <div className={styles.container}>로딩 중...</div>;
 
   return (
