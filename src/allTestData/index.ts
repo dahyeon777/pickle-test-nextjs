@@ -21,8 +21,6 @@ import { taroData5 } from "./day_taro/taroData5";
 import { taroData6 } from "./day_taro/taroData6";
 import { taroData7 } from "./day_taro/taroData7";
 import { taroData8 } from "./day_taro/taroData8";
-import { taroData9 } from "./day_taro/taroData9";
-import { taroData10 } from "./day_taro/taroData10";
 
 // 3. 밤/테스트
 import { horrorTestData1 } from "./night_test/testData1";
@@ -67,8 +65,6 @@ export const TotalDataStore = {
       taroData5, //오늘 행운 장소
       taroData6, //지금 필요한 한마디
       taroData8, //운명 궁합
-      taroData9, //질문 명쾌 대답
-      taroData10, //타인이 보는 내 모습
     ],
   },
   night: {
