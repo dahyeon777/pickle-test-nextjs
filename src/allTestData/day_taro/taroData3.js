@@ -10,7 +10,7 @@ export const taroData3 = {
   questions: [
     {
       questionId: 1,
-      text: "심연의 목소리에 귀를 기울이세요.\n당신의 무의식이 이끄는 수정구슬을 선택하는 순간,\n오늘 당신을 지배하는 기분과 운명의 에너지가 드러납니다.",
+      text: "오늘 당신을 지배하는 운명의 에너지가 드러납니다.\n카드를 선택하세요",
       options: [
         {
           optionId: "A",

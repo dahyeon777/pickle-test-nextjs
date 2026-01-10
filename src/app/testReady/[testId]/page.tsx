@@ -108,8 +108,9 @@ function TestReadyPage() {
           /* Day 버전(낮)일 때 문구 */
           <div className={styles.infoBox}>
             <p className={styles.infoText}>
-              ※ 본 콘텐츠는 과학적 근거가 아닌 재미를 목적으로 제공되는
-              테스트입니다.
+              ※ 본 콘텐츠는 과학적 근거가 아닌
+              <br />
+              재미를 목적으로 제공됩니다.
             </p>
             <p className={styles.infoText}>
               모든 결과는 참고용으로만 활용해 주시길 바랍니다.
