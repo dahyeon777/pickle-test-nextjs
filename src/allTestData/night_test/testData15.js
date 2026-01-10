@@ -1,7 +1,7 @@
 export const horrorTestData15 = {
   id: 15,
   path: "",
-  title: "👩\n「어느 날 언니가\n사라졌다」",
+  title: "👩\n「어느 날,\n언니가\n사라졌다」",
 
   // --- [1. 초반 도입부: 썰북 (3페이지)] ---
   storyBook: {
