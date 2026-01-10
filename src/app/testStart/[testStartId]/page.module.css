@@ -17,8 +17,6 @@
 }
 
 /* --- 프로그레스 바 (TSX 로직 대응 추가) --- */
-/* 만약 별도의 ProgressBar 컴포넌트를 쓰신다면 그 컴포넌트용 CSS에 넣으셔도 되지만, 
-   일단 페이지 컨테이너 내에서 관리할 수 있도록 추가합니다. */
 .progressContainer {
   width: 100%;
   max-width: 600px;
@@ -159,19 +157,17 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  white-space: nowrap; /* 글자 세로 꺾임 방지 */
+  white-space: nowrap;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-/* 일반 모드 버튼 */
 .normal_button {
   background: #ffffff;
   color: rgba(11, 31, 2, 0.7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(81, 140, 53, 0.7);
 }
 
-/* 호러 모드 버튼 */
 .horror_button {
   background: #8b0000;
   color: #ffffff;
@@ -187,6 +183,71 @@
   color: #888 !important;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+/* --- [수정] 썰북 전용 스타일: 높이 고정 및 버튼 하단 고정 --- */
+.story_frame {
+  margin: 40px auto;
+  width: 100%;
+  max-width: 700px;
+  height: 550px; /* 전체 프레임 높이 고정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  animation: storyFadeIn 0.8s ease-out;
+}
+
+.story_content,
+.bridge_content {
+  width: 100%;
+  height: 400px; /* 텍스트 상자 높이 고정 */
+  padding: 40px 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #365a26;
+  text-align: left;
+  overflow-y: auto; /* 텍스트가 너무 길어질 경우 대비 */
+}
+
+.nightMode .story_content,
+.nightMode .bridge_content {
+  background-color: rgba(20, 20, 20, 0.85);
+  border-left: 5px solid #8b0000;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+}
+
+.story_text,
+.bridge_text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  word-break: keep-all;
+  white-space: pre-wrap;
+}
+
+.nightMode .story_text,
+.nightMode .bridge_text {
+  color: #e0e0e0;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* 버튼을 항상 하단에 위치시킴 */
+.story_frame .button1 {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+@keyframes storyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 📱 모바일 대응 */
@@ -207,16 +268,32 @@
     padding: 0;
   }
   .options_container.taro_grid {
-    flex-wrap: wrap; /* 모바일에서 카드 많으면 다음 줄로 개행 */
+    flex-wrap: wrap;
     justify-content: center;
     padding: 20px 10px;
-    overflow-x: hidden; /* 가로 스크롤 대신 세로로 배치 */
+    overflow-x: hidden;
   }
   .taro_card_wrapper {
-    width: 75px; /* 모바일에서 4개 배치를 위해 살짝 조정 */
+    width: 75px;
     min-height: 110px;
   }
   .taro_card_wrapper :global(label) {
     font-size: 0.7rem;
+  }
+
+  /* 썰북 모바일 대응 수치 조정 */
+  .story_frame {
+    height: 500px;
+    margin: 20px auto;
+  }
+  .story_content,
+  .bridge_content {
+    height: 350px;
+    padding: 30px 20px;
+  }
+  .story_text,
+  .bridge_text {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
