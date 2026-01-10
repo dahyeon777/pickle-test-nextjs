@@ -58,8 +58,8 @@ export const TotalDataStore = {
     ],
     taro: [
       taroData1, //2026 총운
-      taroData3, //오늘 운세
       taroData2, //그 사람 속마음
+      taroData3, //오늘 운세
       taroData4, //오늘 행운 아이템
       taroData5, //오늘 행운 장소
       taroData6, //지금 필요한 한마디
