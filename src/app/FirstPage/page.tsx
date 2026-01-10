@@ -23,7 +23,6 @@ function FirstPage() {
 
   /**
    * 리스트 아이템 렌더링 함수
-   * type에 'book'을 추가하여 대응합니다.
    */
   const renderGridItems = (
     dataList: any[],
@@ -57,11 +56,15 @@ function FirstPage() {
           : styles.dayItemBox
         : "";
 
-      // 북 모드일 경우 추가 스타일링을 적용할 수 있도록 클래스 분기 가능
+      // [수정 부분] type이 book일 경우 부모 grid-item에 bookItem 클래스 추가
+      const gridItemClass = type === "book" 
+        ? `${styles["grid-item"]} ${styles.bookItem}` 
+        : styles["grid-item"];
+
       const bookClass = type === "book" ? styles.bookItemBox : "";
 
       return (
-        <div className={styles["grid-item"]} key={`${type}-${id}-${index}`}>
+        <div className={gridItemClass} key={`${type}-${id}-${index}`}>
           <Link
             href={`/testReady/${id}?mode=${itemTheme}&type=${type}`}
             onClick={() => setMode(itemTheme, type)}

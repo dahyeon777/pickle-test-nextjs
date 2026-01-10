@@ -5,7 +5,6 @@
   transition: background-color 0.5s ease;
   display: flex;
   flex-direction: column;
-  /* 주의: 여기에 transform, filter, perspective 속성을 추가하면 피클 아이콘(fixed)이 갇힐 수 있습니다. */
 }
 
 /* 낮 버전 배경색 */
@@ -34,7 +33,7 @@
   margin: 40px auto 80px auto;
 }
 
-/* --- 상단 컨트롤 바 (검색창 + 버튼 한 줄 배치) --- */
+/* --- 상단 컨트롤 바 --- */
 .mainArea {
   position: relative;
   width: 100%;
@@ -54,7 +53,6 @@
   z-index: 20;
 }
 
-/* 테마 버튼 영역 */
 .themeButtonWrapper {
   position: relative;
   flex-shrink: 0;
@@ -74,11 +72,6 @@
   height: 44px;
 }
 
-.themeButton:hover {
-  transform: scale(1.05);
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
 .themeButtonText {
   color: #2d4d24;
   font-size: 13px;
@@ -96,7 +89,6 @@
   color: #ff3e3e;
 }
 
-/* 불빛 효과 */
 .greenLight {
   width: 10px;
   height: 10px;
@@ -116,14 +108,8 @@
 }
 
 @keyframes blinkRed {
-  0% {
-    opacity: 0.5;
-    box-shadow: 0 0 5px #ff0000;
-  }
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 15px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6);
-  }
+  0% { opacity: 0.5; box-shadow: 0 0 5px #ff0000; }
+  100% { opacity: 1; box-shadow: 0 0 15px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6); }
 }
 
 /* --- 그리드 컨테이너 및 아이템 --- */
@@ -169,7 +155,8 @@
 }
 
 .taroRow,
-.testRow {
+.testRow,
+.bookRow {
   display: flex;
   flex-direction: row;
   gap: 12px;
@@ -181,35 +168,17 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.taroRow {
+.taroRow, .testRow {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-auto-flow: column;
 }
 
-.testRow {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-auto-flow: column;
-}
-
-/* 스크롤바 커스텀 */
-.testRow::-webkit-scrollbar,
-.taroRow::-webkit-scrollbar {
-  height: 6px;
-}
-.testRow::-webkit-scrollbar-thumb,
-.taroRow::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-}
-/* 스크롤바 커스텀에 bookRow 추가 */
 .testRow::-webkit-scrollbar,
 .taroRow::-webkit-scrollbar,
 .bookRow::-webkit-scrollbar {
   height: 6px;
 }
-
 .testRow::-webkit-scrollbar-thumb,
 .taroRow::-webkit-scrollbar-thumb,
 .bookRow::-webkit-scrollbar-thumb {
@@ -217,11 +186,16 @@
   border-radius: 10px;
 }
 
-/* 썰북 아이템 박스에 약간의 포인트를 주고 싶다면 추가 (선택사항) */
+/* [중요] 썰북 배경 이미지 및 책등 효과 */
 .bookItemBox {
   border: 1.5px solid #a13c3cd2 !important;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0) !important;
+  background-image: url('/img/book_cover.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border-left: 8px solid rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px !important;
 }
+
 
 .grid-item {
   flex: 0 0 160px;
@@ -230,6 +204,14 @@
   position: relative;
   transition: transform 0.2s;
   z-index: 5;
+}
+
+/* [비율 수정] 썰북일 때만 세로 비율 적용 (3:4) */
+.bookItem {
+  flex: 0 0 140px !important;
+  width: 140px !important;
+  aspect-ratio: 3 / 4 !important;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.321) !important;
 }
 
 .grid-item:hover {
@@ -260,20 +242,9 @@
   border: 1px solid #a13c3cd2;
 }
 
-/* --- 검색 결과 전용 시각적 구분 --- */
-.dayItemBox {
-  border: 2px solid #5d8b52 !important;
-  background-color: #ffffff !important;
-}
-
-.nightItemBox {
-  border: 2px solid #ff3e3e !important;
-  background-color: #e5e3e3 !important;
-}
-
-.nightItemBox .testTitleText {
-  color: #ff3e3e !important;
-}
+.dayItemBox { border: 2px solid #5d8b52 !important; background-color: #ffffff !important; }
+.nightItemBox { border: 2px solid #ff3e3e !important; background-color: #e5e3e3 !important; }
+.nightItemBox .testTitleText { color: #ff3e3e !important; }
 
 .testTitleText {
   color: #333;
@@ -284,33 +255,14 @@
 }
 
 /* --- 푸터 설명 영역 --- */
-.footerSection {
-  background-color: rgba(70, 105, 64, 0.1);
-  padding: 30px 10%;
-}
-.footerDescription {
-  color: #666;
-  font-size: 0.7rem;
-  line-height: 1.6;
-  text-align: justify;
-}
-.footerInfo {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  text-align: center;
-}
-.footerInfo p,
-.footerInfo a {
-  color: #888;
-  font-size: 0.65rem;
-  text-decoration: none;
-}
+.footerSection { background-color: rgba(70, 105, 64, 0.1); padding: 30px 10%; }
+.footerDescription { color: #666; font-size: 0.7rem; line-height: 1.6; text-align: justify; }
+.footerInfo { padding: 20px; display: flex; flex-direction: column; gap: 5px; text-align: center; }
+.footerInfo p, .footerInfo a { color: #888; font-size: 0.65rem; text-decoration: none; }
 
-/* --- 애니메이션 피클 아이콘 (수정됨) --- */
+/* --- 애니메이션 피클 아이콘 --- */
 .floatingPickle {
-  position: fixed; /* 브라우저 창 기준 고정 */
+  position: fixed;
   width: 400px;
   height: 400px;
   z-index: 1;
@@ -321,93 +273,36 @@
   will-change: top, left, transform;
 }
 
-.nightMode .floatingPickle {
-  filter: sepia(1) hue-rotate(-50deg) saturate(3);
-}
+.nightMode .floatingPickle { filter: sepia(1) hue-rotate(-50deg) saturate(3); }
 
 @keyframes wander {
-  0% {
-    top: -10%;
-    left: -10%;
-    transform: rotate(0deg);
-  }
-  25% {
-    top: 70%;
-    left: 80%;
-    transform: rotate(90deg);
-  }
-  50% {
-    top: 80%;
-    left: 10%;
-    transform: rotate(180deg);
-  }
-  75% {
-    top: 20%;
-    left: 90%;
-    transform: rotate(270deg);
-  }
-  100% {
-    top: -10%;
-    left: -10%;
-    transform: rotate(360deg);
-  }
+  0% { top: -10%; left: -10%; transform: rotate(0deg); }
+  25% { top: 70%; left: 80%; transform: rotate(90deg); }
+  50% { top: 80%; left: 10%; transform: rotate(180deg); }
+  75% { top: 20%; left: 90%; transform: rotate(270deg); }
+  100% { top: -10%; left: -10%; transform: rotate(360deg); }
 }
 
-.pickle1 {
-  animation: wander 40s linear infinite;
-}
-
-.pickle2 {
-  animation: wander 45s linear infinite reverse;
-  animation-delay: -15s;
-}
+.pickle1 { animation: wander 40s linear infinite; }
+.pickle2 { animation: wander 45s linear infinite reverse; animation-delay: -15s; }
 
 /* --- 반응형 미디어 쿼리 --- */
 @media screen and (max-width: 850px) {
-  .topControlBar {
-    width: 92%;
-    margin-bottom: 10px;
-  }
-  .themeButton {
-    padding: 6px 12px;
-    height: 38px;
-  }
-  .themeButtonText {
-    font-size: 11px;
-  }
-  .grid-container {
-    width: 92%;
-    padding: 15px 10px;
-    margin-bottom: 60px;
-  }
-  .image_center {
-    width: 60%;
-    margin: 30px auto 25px auto;
-  }
-  .grid-item {
-    flex: 0 0 120px;
-    width: 120px;
-  }
-  .rowTitle {
-    font-size: 0.95rem;
-  }
-  .testTitleText {
-    font-size: 0.85rem;
-  }
-  .footerSection {
-    padding: 20px 5%;
-  }
+  .topControlBar { width: 92%; margin-bottom: 10px; }
+  .themeButton { padding: 6px 12px; height: 38px; }
+  .themeButtonText { font-size: 11px; }
+  .grid-container { width: 92%; padding: 15px 10px; margin-bottom: 60px; }
+  .image_center { width: 60%; margin: 30px auto 25px auto; }
+  .grid-item { flex: 0 0 120px; width: 120px; }
+  /* 모바일 비율 추가 수정 */
+  .bookItem { flex: 0 0 100px !important; width: 100px !important; }
+  .rowTitle { font-size: 0.95rem; }
+  .testTitleText { font-size: 0.85rem; }
+  .footerSection { padding: 20px 5%; }
 }
 
 @media screen and (max-width: 480px) {
-  .topControlBar {
-    gap: 8px;
-  }
-  .themeButton {
-    padding: 4px 10px;
-  }
-  .grid-item {
-    flex: 0 0 110px;
-    width: 110px;
-  }
+  .topControlBar { gap: 8px; }
+  .themeButton { padding: 4px 10px; }
+  .grid-item { flex: 0 0 110px; width: 110px; }
 }
