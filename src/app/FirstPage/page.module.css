@@ -246,10 +246,6 @@
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.2) !important;
 }
 
-.nightItemBox .testTitleText {
-  color: #ff3e3e !important;
-}
-
 .testTitleText {
   color: #333;
   font-size: 0.95rem;
