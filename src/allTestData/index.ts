@@ -73,12 +73,9 @@ export const TotalDataStore = {
   night: {
     test: [
       horrorTestData1, // 대기표
-      horrorTestData15, // 장화홍련(b)
-      horrorTestData10, // 야생동물(b)
       horrorTestData2, // 저수지
       horrorTestData13, // 학교
       horrorTestData14, // 병원
-      horrorTestData16, // 심청이(b)
       horrorTestData5, // 세차
       horrorTestData11, // 엘리베이터
       horrorTestData12, // 편의점
