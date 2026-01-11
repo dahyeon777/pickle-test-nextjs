@@ -22,7 +22,8 @@ import { taroData6 } from "./day_taro/taroData6";
 import { taroData7 } from "./day_taro/taroData7";
 import { taroData8 } from "./day_taro/taroData8";
 
-// 3. 밤/테스트
+// 4. 밤/테스트
+import { horrorTestData0 } from "./night_test/testData0";
 import { horrorTestData1 } from "./night_test/testData1";
 import { horrorTestData2 } from "./night_test/testData2";
 import { horrorTestData3 } from "./night_test/testData3";
@@ -89,6 +90,7 @@ export const TotalDataStore = {
       horrorTestData6, // 반사
     ],
     book: [
+      horrorTestData0, //피클테스트(b)
       horrorTestData15, // 장화홍련(b)
       horrorTestData10, // 야생동물(b)
       horrorTestData16, // 심청이(b)

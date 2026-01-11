@@ -214,11 +214,10 @@
 
 /* [비율 수정] 썰북일 때만 세로 비율 적용 (3:4) */
 .bookItem {
-  margin: 5px !important;
   flex: 0 0 140px !important;
   width: 140px !important;
   aspect-ratio: 3 / 4 !important;
-  text-shadow: 0px 0px 4px rgba(135, 29, 29, 0.781) !important;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.321) !important;
 }
 
 .grid-item:hover {
