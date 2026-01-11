@@ -1,7 +1,5 @@
-// HorrorTestData.ts
-
-export const horrorTestData0 = {
-  id: 0,
+export const horrorTestData19 = {
+  id: 19,
   path: "",
   title: "🥒\n「Pickle Shop」",
   tags: [

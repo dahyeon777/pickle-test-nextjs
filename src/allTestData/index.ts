@@ -23,7 +23,6 @@ import { taroData7 } from "./day_taro/taroData7";
 import { taroData8 } from "./day_taro/taroData8";
 
 // 4. 밤/테스트
-import { horrorTestData0 } from "./night_test/testData0";
 import { horrorTestData1 } from "./night_test/testData1";
 import { horrorTestData2 } from "./night_test/testData2";
 import { horrorTestData3 } from "./night_test/testData3";
@@ -41,7 +40,7 @@ import { horrorTestData14 } from "./night_test/testData14";
 import { horrorTestData15 } from "./night_test/testData15";
 import { horrorTestData16 } from "./night_test/testData16";
 import { horrorTestData17 } from "./night_test/testData17";
-import { horrorTestData18 } from "./night_test/testData18";
+import { horrorTestData19 } from "./night_test/testData19";
 
 export const TotalDataStore = {
   day: {
@@ -90,12 +89,12 @@ export const TotalDataStore = {
       horrorTestData6, // 반사
     ],
     book: [
-      horrorTestData0, //피클테스트(b)
       horrorTestData15, // 장화홍련(b)
       horrorTestData10, // 야생동물(b)
       horrorTestData16, // 심청이(b)
       horrorTestData17, // 별주부전(b)
       horrorTestData18, // 여우누이(b)
+      horrorTestData19, //피클테스트(b)
     ],
   },
 };
