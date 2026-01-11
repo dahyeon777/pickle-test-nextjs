@@ -52,7 +52,6 @@ header.night_mode .header_top_bar a {
 /* 밤 버전 버튼 스타일 */
 header.night_mode .install_btn {
   background-color: #2d0709;
-  color: #bbbbbb;
 }
 
 @media screen and (max-width: 600px) {

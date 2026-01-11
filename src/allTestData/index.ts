@@ -39,6 +39,8 @@ import { horrorTestData13 } from "./night_test/testData13";
 import { horrorTestData14 } from "./night_test/testData14";
 import { horrorTestData15 } from "./night_test/testData15";
 import { horrorTestData16 } from "./night_test/testData16";
+import { horrorTestData17 } from "./night_test/testData17";
+import { horrorTestData18 } from "./night_test/testData18";
 
 export const TotalDataStore = {
   day: {
@@ -70,12 +72,12 @@ export const TotalDataStore = {
   night: {
     test: [
       horrorTestData1, // 대기표
-      horrorTestData15, // 장화홍련
-      horrorTestData10, // 야생동물
+      horrorTestData15, // 장화홍련(b)
+      horrorTestData10, // 야생동물(b)
       horrorTestData2, // 저수지
       horrorTestData13, // 학교
       horrorTestData14, // 병원
-      horrorTestData16, // 심청이
+      horrorTestData16, // 심청이(b)
       horrorTestData5, // 세차
       horrorTestData11, // 엘리베이터
       horrorTestData12, // 편의점
@@ -87,7 +89,11 @@ export const TotalDataStore = {
       horrorTestData6, // 반사
     ],
     book: [
-      horrorTestData15, // 장화홍련 (스토리 포함)
+      horrorTestData15, // 장화홍련(b)
+      horrorTestData10, // 야생동물(b)
+      horrorTestData16, // 심청이(b)
+      horrorTestData17, // 별주부전(b)
+      horrorTestData18, // 여우누이(b)
     ],
   },
 };
