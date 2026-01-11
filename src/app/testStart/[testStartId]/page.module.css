@@ -286,7 +286,7 @@
 
   /* 썰북 모바일 대응 수치 조정 */
   .story_frame {
-    height: 550px;
+    height: 500px;
     margin: 20px auto;
   }
   .story_content,
