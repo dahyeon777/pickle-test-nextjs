@@ -286,12 +286,12 @@
 
   /* 썰북 모바일 대응 수치 조정 */
   .story_frame {
-    height: 600px;
+    height: 550px;
     margin: 20px auto;
   }
   .story_content,
   .bridge_content {
-    height: 450px;
+    height: 350px;
     padding: 30px 20px;
   }
   .story_text,

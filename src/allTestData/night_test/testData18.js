@@ -3,7 +3,7 @@
 export const horrorTestData18 = {
   id: 18,
   path: "",
-  title: "🦊\n「식구(食口)」",
+  title: "🦊\n「식구\n(食口)」",
   tags: [
     "공포",
     "미스테리",
