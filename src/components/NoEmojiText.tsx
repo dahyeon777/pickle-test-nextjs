@@ -11,25 +11,20 @@ interface NoEmojiTextProps {
 const NoEmojiText = ({ text, isCapturing, className }: NoEmojiTextProps) => {
   if (!text) return null;
 
-  // 평소엔 원본 그대로 (줄바꿈 포함)
+  // 1. 평상시: 그냥 원본 출력 (아이패드 안심)
   if (!isCapturing) {
-    // 💡 텍스트 내의 \n을 실제 줄바꿈으로 보여주려면 
-    // 부모의 CSS에 white-space: pre-wrap; 이 있어야 합니다.
-    return <span className={className}>{text}</span>;
+    return <span className={className} style={{ whiteSpace: "pre-wrap" }}>{text}</span>;
   }
 
-  // 캡처 시 로직
+  // 2. 캡처 시: 문제가 되는 유니코드 범위를 쓰지 않고 "허용할 문자"만 남깁니다.
+  // 한글, 영어, 숫자, 공백, 일반 문장부호(.,!?()"-) 및 줄바꿈(\n)만 허용
   const cleanedText = text
-    //이모티콘 제거
-    .replace(/[\u2600-\u27BF]|[\uD83C-\uD83E][\uDC00-\uDFFF]|[\u2011-\u26FF]/g, "")
-    .replace(/ +/g, " ") 
+    .replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9\s.,!?()\-""'']/g, "") 
+    // 위 정규식은 '지정된 문자'가 아니면 다 지우라는 뜻입니다. (아이패드에 매우 가벼움)
     .trim();
 
   return (
-    <span 
-      className={className} 
-      style={{ whiteSpace: "pre-wrap" }} // 💡 줄바꿈(\n)을 화면에 반영하기 위한 스타일
-    >
+    <span className={className} style={{ whiteSpace: "pre-wrap" }}>
       {cleanedText}
     </span>
   );
