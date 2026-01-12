@@ -2,38 +2,22 @@
 
 export const runtime = "edge";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react"; 
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { TotalDataStore } from "../../../../allTestData";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import KakaoShareButton from "@/src/components/KakaoShareButton";
-// import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
+import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
 
 // --- 결과 숨김을 위한 매핑 테이블 ---
 const MASK_MAP: { [key: string]: string } = {
-  ENFP: "p01",
-  ENFJ: "p02",
-  ENTP: "p03",
-  ENTJ: "p04",
-  ESFP: "p05",
-  ESFJ: "p06",
-  ESTP: "p07",
-  ESTJ: "p08",
-  INFP: "p09",
-  INFJ: "p10",
-  INTP: "p11",
-  INTJ: "p12",
-  ISFP: "p13",
-  ISFJ: "p14",
-  ISTP: "p15",
-  ISTJ: "p16",
-  TYPE_R: "h01",
-  TYPE_B: "h02",
-  TYPE_J: "h03",
-  TYPE_O: "h04",
-  TYPE_C: "h05",
+  ENFP: "p01", ENFJ: "p02", ENTP: "p03", ENTJ: "p04",
+  ESFP: "p05", ESFJ: "p06", ESTP: "p07", ESTJ: "p08",
+  INFP: "p09", INFJ: "p10", INTP: "p11", INTJ: "p12",
+  ISFP: "p13", ISFJ: "p14", ISTP: "p15", ISTJ: "p16",
+  TYPE_R: "h01", TYPE_B: "h02", TYPE_J: "h03", TYPE_O: "h04", TYPE_C: "h05",
 };
 
 // --- 역매핑 ---
@@ -41,15 +25,18 @@ const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
   Object.entries(MASK_MAP).map(([k, v]) => [v, k])
 );
 
-// --- 이모티콘 제거 함수 ---
+// --- 이모티콘 제거 함수 (아이패드 튕김 방지를 위해 성능 최적화 버전으로 교체) ---
 const removeEmojis = (str: string) => {
   if (!str) return "";
-  return str
-    .replace(
-      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-      ""
-    )
-    .trim();
+  try {
+    // 기존의 무거운 정규식 대신, 아이패드에서 안전하게 돌아가는 표준 범위 정규식으로 교체했습니다.
+    return str
+      .replace(/[^\p{L}\p{N}\p{P}\p{Z}^$\n]/gu, "")
+      .trim();
+  } catch (e) {
+    // 만약 이 정규식조차 에러가 나면 원본 문자열을 그대로 반환하여 페이지 다운을 막습니다.
+    return str;
+  }
 };
 
 function TestResultPage() {
@@ -66,8 +53,7 @@ function TestResultPage() {
   const [isCapturing, setIsCapturing] = useState(false);
 
   const currentMode = (searchParams.get("mode") as "day" | "night") || theme;
-  const currentType =
-    (searchParams.get("type") as "test" | "taro") || contentType;
+  const currentType = (searchParams.get("type") as "test" | "taro") || contentType;
   const isNight = currentMode === "night";
 
   useEffect(() => {
@@ -81,14 +67,10 @@ function TestResultPage() {
 
       if (tId && rCode) {
         const lookupKey = REVERSE_MASK_MAP[rCode] || rCode.toUpperCase();
-        const categoryData = (TotalDataStore as any)[currentMode]?.[
-          currentType
-        ];
+        const categoryData = (TotalDataStore as any)[currentMode]?.[currentType];
 
         if (categoryData) {
-          const selectedTest = categoryData.find(
-            (test: any) => Number(test.id) === tId
-          );
+          const selectedTest = categoryData.find((test: any) => Number(test.id) === tId);
           if (selectedTest) {
             setTestTitle(selectedTest.title);
             const finalResult = selectedTest.results?.[lookupKey];
@@ -97,9 +79,17 @@ function TestResultPage() {
               setResultData(finalResult);
               const maskCode = MASK_MAP[lookupKey] || rCode;
               const maskedPath = `/testResult/${tId}/${maskCode}?mode=${currentMode}&type=${currentType}`;
-              window.history.replaceState(null, "", maskedPath);
-              const fullUrl = `${window.location.origin}${maskedPath}`;
-              setShareUrl(fullUrl);
+              
+              // [안전 조치] 주소 변경 시 발생할 수 있는 런타임 오류 방지
+              if (typeof window !== "undefined") {
+                try {
+                  window.history.replaceState(null, "", maskedPath);
+                } catch (e) {
+                  console.error("History state error:", e);
+                }
+                const fullUrl = `${window.location.origin}${maskedPath}`;
+                setShareUrl(fullUrl);
+              }
             }
           }
         }
@@ -112,37 +102,29 @@ function TestResultPage() {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
-      alert(
-        isNight
-          ? "실험 기록 링크가 복사되었습니다."
-          : "결과 링크가 복사되었습니다!"
-      );
+      alert(isNight ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
     });
   };
 
-  // --- 이미지 저장 로직 (디자인 유지 + 아이패드 최적화) ---
+  // --- 이미지 저장 로직 ---
   const handleSaveImage = async () => {
     if (resultRef.current === null) return;
 
-    const confirmMessage = isNight
-      ? "실험 기록 이미지를 다운로드 하시겠습니까?"
+    const confirmMessage = isNight 
+      ? "실험 기록 이미지를 다운로드 하시겠습니까?" 
       : "결과 이미지를 다운로드 하시겠습니까?";
 
     if (window.confirm(confirmMessage)) {
       try {
-        setIsCapturing(true);
+        setIsCapturing(true); 
+        await new Promise((resolve) => setTimeout(resolve, 300)); // 지연시간 넉넉히
 
-        // 렌더링 동기화를 위해 지연 시간을 조금 넉넉히 (300ms)
-        await new Promise((resolve) => setTimeout(resolve, 300));
-
-        // 클라우드플레어/아이패드 에러 방지를 위해 클릭 시점에 라이브러리 dynamic import
+        // 빌드 에러 방지를 위한 dynamic import
         const { toJpeg } = await import("html-to-image");
-
-        // 아이패드 환경에서 가장 안정적인 toJpeg 사용 및 pixelRatio 조정
         const dataUrl = await toJpeg(resultRef.current, {
           cacheBust: true,
           backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-          pixelRatio: 1.5, // 2는 아이패드에서 튕길 가능성이 높음
+          pixelRatio: 1.2, // 아이패드 안정성을 위해 낮춤
           quality: 0.95,
         });
 
@@ -152,31 +134,23 @@ function TestResultPage() {
         link.click();
       } catch (err) {
         console.error("이미지 저장 실패:", err);
-        alert("이미지 저장에 실패했습니다. 화면을 캡처해 주세요.");
+        alert("이미지 저장에 실패했습니다. 화면을 직접 캡처해 주세요.");
       } finally {
-        setIsCapturing(false);
+        setIsCapturing(false); 
       }
     }
   };
 
   const handleRetry = () => {
-    const message = isNight
-      ? "기록을 파기하고 다시 실험하시겠습니까?"
-      : "다시 테스트하시겠습니까?";
+    const message = isNight ? "기록을 파기하고 다시 실험하시겠습니까?" : "다시 테스트하시겠습니까?";
     if (window.confirm(message)) {
-      router.push(
-        `/testReady/${params.testId}?mode=${currentMode}&type=${contentType}`
-      );
+      router.push(`/testReady/${params.testId}?mode=${currentMode}&type=${contentType}`);
     }
   };
 
   if (isLoading) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>데이터 분석 중...</div>
       </div>
     );
@@ -184,17 +158,11 @@ function TestResultPage() {
 
   if (!resultData) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>
           <p>기록을 찾을 수 없습니다.</p>
           <Link href="/">
-            <button className={styles.home_btn} style={{ marginTop: "20px" }}>
-              홈으로 돌아가기
-            </button>
+            <button className={styles.home_btn} style={{ marginTop: "20px" }}>홈으로 돌아가기</button>
           </Link>
         </div>
       </div>
@@ -202,23 +170,16 @@ function TestResultPage() {
   }
 
   const renderResultSection = () => {
-    const displayTitle = isCapturing
-      ? removeEmojis(resultData.title)
-      : resultData.title;
-    const displayDesc = isCapturing
-      ? removeEmojis(resultData.description)
-      : resultData.description;
+    // 렌더링 시점에 함수 호출로 인한 과부하 방지를 위해 변수 처리
+    const displayTitle = isCapturing ? removeEmojis(resultData.title) : resultData.title;
+    const displayDesc = isCapturing ? removeEmojis(resultData.description) : resultData.description;
 
     if (isNight) {
       return (
         <div className={styles.horror_report}>
           <h2 className={styles.horror_type_title}>{displayTitle}</h2>
           {resultData.result && (
-            <img
-              src={resultData.result}
-              alt="실험결과"
-              className={styles.result_image}
-            />
+            <img src={resultData.result} alt="실험결과" className={styles.result_image} />
           )}
           <p className={styles.horror_description}>{displayDesc?.trim()}</p>
         </div>
@@ -228,11 +189,7 @@ function TestResultPage() {
         <div className={styles.result_title_section}>
           <h2 className={styles.result_title}>{`"${displayTitle}"`}</h2>
           {resultData.result && (
-            <img
-              src={resultData.result}
-              alt="결과"
-              className={styles.result_image}
-            />
+            <img src={resultData.result} alt="결과" className={styles.result_image} />
           )}
           <p className={styles.description}>{displayDesc?.trim()}</p>
         </div>
@@ -241,11 +198,7 @@ function TestResultPage() {
   };
 
   return (
-    <div
-      className={`${styles.container} ${
-        isNight ? styles.nightMode : styles.dayMode
-      }`}
-    >
+    <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
       <div className={styles.content_wrapper}>
         <div ref={resultRef} style={{ width: "100%", paddingBottom: "10px" }}>
           <h1 className={styles.main_title}>
@@ -266,43 +219,28 @@ function TestResultPage() {
             <div style={{ flex: 8.5 }}>
               <KakaoShareButton
                 url={shareUrl}
-                title={
-                  isNight
-                    ? `[실험기록] ${resultData.title}`
-                    : `[테스트결과] ${resultData.title}`
-                }
+                title={isNight ? `[실험기록] ${resultData.title}` : `[테스트결과] ${resultData.title}`}
                 description={resultData.description?.slice(0, 45) + "..."}
                 imageUrl={resultData.result}
                 buttonText="💬 카카오톡 결과 공유"
               />
             </div>
-            <button
-              onClick={handleSaveImage}
-              className={styles.save_btn}
-              title="이미지 저장"
-              style={{ flex: 1.5 }}
-            >
+            <button onClick={handleSaveImage} className={styles.save_btn} title="이미지 저장" style={{ flex: 1.5 }}>
               💾
             </button>
           </div>
 
           <div className={styles.sub_button_row}>
-            <button
-              onClick={handleCopyLink}
-              className={isNight ? styles.horror_share_btn : styles.share_btn}
-            >
+            <button onClick={handleCopyLink} className={isNight ? styles.horror_share_btn : styles.share_btn}>
               🔗 링크 복사
             </button>
-            <button
-              onClick={handleRetry}
-              className={isNight ? styles.horror_home_btn : styles.home_btn}
-            >
+            <button onClick={handleRetry} className={isNight ? styles.horror_home_btn : styles.home_btn}>
               ↩ 다시하기
             </button>
           </div>
         </div>
       </div>
-      {/* <DynamicCoupangAds /> */}
+      <DynamicCoupangAds />
     </div>
   );
 }
