@@ -9,7 +9,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useThemeStore } from "@/src/store/useThemeStore";
 import KakaoShareButton from "@/src/components/KakaoShareButton";
-import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
+// import DynamicCoupangAds from "../../../../components/DynamicCoupangAds";
 
 // --- 결과 숨김을 위한 매핑 테이블 ---
 const MASK_MAP: { [key: string]: string } = {
@@ -302,7 +302,7 @@ function TestResultPage() {
           </div>
         </div>
       </div>
-      <DynamicCoupangAds />
+      {/* <DynamicCoupangAds /> */}
     </div>
   );
 }
