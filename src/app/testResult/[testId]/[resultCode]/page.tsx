@@ -128,22 +128,34 @@ function TestResultPage() {
     ) {
       try {
         setIsCapturing(true);
-        await new Promise((resolve) => setTimeout(resolve, 600));
+        // UI 리렌더링 및 사파리 레이아웃 안정을 위해 대기 시간 확보
+        await new Promise((resolve) => setTimeout(resolve, 800));
 
         const { toJpeg } = await import("html-to-image");
 
-        // 아이폰 대응: 실제 요소의 너비를 측정하여 강제 적용
-        const targetWidth = resultRef.current.offsetWidth;
+        // 💡 [iOS 짤림 방지 핵심 1] 
+        // offsetHeight(보이는 높이)가 아니라 scrollHeight(전체 높이)를 가져옵니다.
+        const node = resultRef.current;
+        const targetWidth = node.scrollWidth;
+        const targetHeight = node.scrollHeight;
 
-        const dataUrl = await toJpeg(resultRef.current, {
+        const dataUrl = await toJpeg(node, {
           cacheBust: true,
           backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-          pixelRatio: 1.5,
-          width: targetWidth, // 아이폰 뷰포트 갇힘 방지
+          pixelRatio: 1.5, // iOS 메모리 보호를 위해 1.5~2.0 추천
+          
+          // 💡 [iOS 짤림 방지 핵심 2]
+          // 사파리에게 창 크기가 아니라 "진짜 이만큼 그려!"라고 강제로 알려줍니다.
+          width: targetWidth,
+          height: targetHeight,
+          
           style: {
             transform: 'scale(1)',
             left: '0',
             top: '0',
+            // 캡처하는 동안 박스가 화면에 갇혀 잘리지 않도록 설정
+            overflow: 'visible',
+            height: `${targetHeight}px`,
           }
         });
 
@@ -176,7 +188,11 @@ function TestResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
+      <div
+        className={`${styles.container} ${
+          isNight ? styles.nightMode : styles.dayMode
+        }`}
+      >
         <div className={styles.content_wrapper}>데이터 분석 중...</div>
       </div>
     );
@@ -184,7 +200,11 @@ function TestResultPage() {
 
   if (!resultData) {
     return (
-      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
+      <div
+        className={`${styles.container} ${
+          isNight ? styles.nightMode : styles.dayMode
+        }`}
+      >
         <div className={styles.content_wrapper}>
           <p>기록을 찾을 수 없습니다.</p>
           <Link href="/">
@@ -198,7 +218,11 @@ function TestResultPage() {
   }
 
   return (
-    <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
+    <div
+      className={`${styles.container} ${
+        isNight ? styles.nightMode : styles.dayMode
+      }`}
+    >
       <div className={styles.content_wrapper}>
         <div ref={resultRef} style={{ width: "100%", paddingBottom: "10px" }}>
           <h1 className={styles.main_title}>
@@ -215,8 +239,16 @@ function TestResultPage() {
             )}
           </h1>
 
-          <div className={isNight ? styles.horror_report : styles.result_title_section}>
-            <h2 className={isNight ? styles.horror_type_title : styles.result_title}>
+          <div
+            className={
+              isNight ? styles.horror_report : styles.result_title_section
+            }
+          >
+            <h2
+              className={
+                isNight ? styles.horror_type_title : styles.result_title
+              }
+            >
               {!isNight && '"'}
               <NoEmojiText text={resultData.title} isCapturing={isCapturing} />
               {!isNight && '"'}
@@ -228,7 +260,11 @@ function TestResultPage() {
                 className={styles.result_image}
               />
             )}
-            <p className={isNight ? styles.horror_description : styles.description}>
+            <p
+              className={
+                isNight ? styles.horror_description : styles.description
+              }
+            >
               <NoEmojiText
                 text={resultData.description?.trim()}
                 isCapturing={isCapturing}
