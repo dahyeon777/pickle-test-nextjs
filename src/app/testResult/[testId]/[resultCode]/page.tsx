@@ -1,9 +1,8 @@
 "use client";
 
-// [수정] 아이패드/사파리 에러 방지를 위해 edge 런타임 설정을 지웁니다.
-// export const runtime = "edge"; 
+export const runtime = "edge";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react"; 
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { TotalDataStore } from "../../../../allTestData";
 import Link from "next/link";
@@ -21,14 +20,19 @@ const MASK_MAP: { [key: string]: string } = {
   TYPE_R: "h01", TYPE_B: "h02", TYPE_J: "h03", TYPE_O: "h04", TYPE_C: "h05",
 };
 
+// --- 역매핑 ---
 const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
   Object.entries(MASK_MAP).map(([k, v]) => [v, k])
 );
 
+// --- 이모티콘 제거 함수 ---
 const removeEmojis = (str: string) => {
   if (!str) return "";
   return str
-    .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, "")
+    .replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    )
     .trim();
 };
 
@@ -91,25 +95,30 @@ function TestResultPage() {
     });
   };
 
-  // --- 이미지 저장 로직 (안정화 버전) ---
+  // --- 이미지 저장 로직 (디자인 유지 + 아이패드 최적화) ---
   const handleSaveImage = async () => {
     if (resultRef.current === null) return;
 
-    const confirmMessage = isNight ? "실험 기록 이미지를 다운로드 하시겠습니까?" : "결과 이미지를 다운로드 하시겠습니까?";
+    const confirmMessage = isNight 
+      ? "실험 기록 이미지를 다운로드 하시겠습니까?" 
+      : "결과 이미지를 다운로드 하시겠습니까?";
 
     if (window.confirm(confirmMessage)) {
       try {
-        setIsCapturing(true);
+        setIsCapturing(true); 
+
+        // 렌더링 동기화를 위해 지연 시간을 조금 넉넉히 (300ms)
         await new Promise((resolve) => setTimeout(resolve, 300));
 
-        // 클라이언트 사이드에서만 안전하게 import
+        // 클라우드플레어/아이패드 에러 방지를 위해 클릭 시점에 라이브러리 dynamic import
         const { toJpeg } = await import("html-to-image");
-
-        // 아이패드 사파리에서는 PNG보다 JPEG가 메모리상 훨씬 안전합니다.
+        
+        // 아이패드 환경에서 가장 안정적인 toJpeg 사용 및 pixelRatio 조정
         const dataUrl = await toJpeg(resultRef.current, {
           cacheBust: true,
-          backgroundColor: isNight ? "#bbbbbb" : "#ffffff",
-          pixelRatio: 1.5, // 2보다 낮게 설정하여 아이패드 튕김 방지
+          backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
+          pixelRatio: 1.5, // 2는 아이패드에서 튕길 가능성이 높음
+          quality: 0.95,
         });
 
         const link = document.createElement("a");
@@ -118,9 +127,9 @@ function TestResultPage() {
         link.click();
       } catch (err) {
         console.error("이미지 저장 실패:", err);
-        alert("이미지 저장 중 오류가 발생했습니다. 화면을 캡처해 주세요.");
+        alert("이미지 저장에 실패했습니다. 화면을 캡처해 주세요.");
       } finally {
-        setIsCapturing(false);
+        setIsCapturing(false); 
       }
     }
   };
@@ -157,15 +166,27 @@ function TestResultPage() {
     const displayTitle = isCapturing ? removeEmojis(resultData.title) : resultData.title;
     const displayDesc = isCapturing ? removeEmojis(resultData.description) : resultData.description;
 
-    return (
-      <div className={isNight ? styles.horror_report : styles.result_title_section}>
-        <h2 className={isNight ? styles.horror_type_title : styles.result_title}>{displayTitle}</h2>
-        {resultData.result && (
-          <img src={resultData.result} alt="결과" className={styles.result_image} />
-        )}
-        <p className={isNight ? styles.horror_description : styles.description}>{displayDesc?.trim()}</p>
-      </div>
-    );
+    if (isNight) {
+      return (
+        <div className={styles.horror_report}>
+          <h2 className={styles.horror_type_title}>{displayTitle}</h2>
+          {resultData.result && (
+            <img src={resultData.result} alt="실험결과" className={styles.result_image} />
+          )}
+          <p className={styles.horror_description}>{displayDesc?.trim()}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.result_title_section}>
+          <h2 className={styles.result_title}>{`"${displayTitle}"`}</h2>
+          {resultData.result && (
+            <img src={resultData.result} alt="결과" className={styles.result_image} />
+          )}
+          <p className={styles.description}>{displayDesc?.trim()}</p>
+        </div>
+      );
+    }
   };
 
   return (
@@ -175,7 +196,7 @@ function TestResultPage() {
           <h1 className={styles.main_title}>
             {isNight ? (
               <>
-                {isCapturing ? "실험 기록" : "실험 기록"}
+                {isCapturing ? removeEmojis("실험 기록") : "실험 기록"}
                 <br /> {isCapturing ? removeEmojis(testTitle) : testTitle}
               </>
             ) : (
