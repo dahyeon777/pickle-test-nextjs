@@ -87,10 +87,6 @@ function TestResultPage() {
               const maskCode = MASK_MAP[lookupKey] || rCode;
               const maskedPath = `/testResult/${tId}/${maskCode}?mode=${currentMode}&type=${currentType}`;
 
-              /**
-               * [긴급 수정] 보안 및 크래시 방지를 위해 주소창 변경 기능을 완전히 비활성화합니다.
-               * 사파리 보안 정책과의 충돌 가능성을 원천 차단합니다.
-               */
               // window.history.replaceState(null, "", maskedPath);
 
               const fullUrl =
@@ -132,20 +128,25 @@ function TestResultPage() {
     ) {
       try {
         setIsCapturing(true);
-        // UI가 NoEmoji 상태로 완전히 전환되도록 대기 시간 증가
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 600));
 
         const { toJpeg } = await import("html-to-image");
+
+        // 아이폰 대응: 실제 요소의 너비를 측정하여 강제 적용
+        const targetWidth = resultRef.current.offsetWidth;
+
         const dataUrl = await toJpeg(resultRef.current, {
           cacheBust: true,
           backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
           pixelRatio: 1.5,
+          width: targetWidth, // 아이폰 뷰포트 갇힘 방지
+          style: {
+            transform: 'scale(1)',
+            left: '0',
+            top: '0',
+          }
         });
 
-        /**
-         * [긴급 수정] 파일명 생성 시 정규식을 사용하지 않습니다.
-         * 대신 단순히 테스트 ID와 결과 코드를 조합하여 안전한 파일명을 만듭/니다.
-         */
         const link = document.createElement("a");
         link.download = `Result_${params.testId}_${params.resultCode}.jpg`;
         link.href = dataUrl;
@@ -175,11 +176,7 @@ function TestResultPage() {
 
   if (isLoading) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>데이터 분석 중...</div>
       </div>
     );
@@ -187,11 +184,7 @@ function TestResultPage() {
 
   if (!resultData) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>
           <p>기록을 찾을 수 없습니다.</p>
           <Link href="/">
@@ -205,11 +198,7 @@ function TestResultPage() {
   }
 
   return (
-    <div
-      className={`${styles.container} ${
-        isNight ? styles.nightMode : styles.dayMode
-      }`}
-    >
+    <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
       <div className={styles.content_wrapper}>
         <div ref={resultRef} style={{ width: "100%", paddingBottom: "10px" }}>
           <h1 className={styles.main_title}>
@@ -226,16 +215,8 @@ function TestResultPage() {
             )}
           </h1>
 
-          <div
-            className={
-              isNight ? styles.horror_report : styles.result_title_section
-            }
-          >
-            <h2
-              className={
-                isNight ? styles.horror_type_title : styles.result_title
-              }
-            >
+          <div className={isNight ? styles.horror_report : styles.result_title_section}>
+            <h2 className={isNight ? styles.horror_type_title : styles.result_title}>
               {!isNight && '"'}
               <NoEmojiText text={resultData.title} isCapturing={isCapturing} />
               {!isNight && '"'}
@@ -247,11 +228,7 @@ function TestResultPage() {
                 className={styles.result_image}
               />
             )}
-            <p
-              className={
-                isNight ? styles.horror_description : styles.description
-              }
-            >
+            <p className={isNight ? styles.horror_description : styles.description}>
               <NoEmojiText
                 text={resultData.description?.trim()}
                 isCapturing={isCapturing}

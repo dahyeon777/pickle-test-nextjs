@@ -1,5 +1,3 @@
-/* src/app/testResult/[testId]/[resultCode]/page.module.css */
-
 .container {
   width: 100%;
   min-height: 100vh;
@@ -12,12 +10,10 @@
   transition: background-color 0.3s ease;
 }
 
-/* 낮 모드 배경 */
 .dayMode {
   background-color: #cde3c6a9;
 }
 
-/* 밤 모드 배경 (회색) */
 .nightMode {
   background-color: #bbbbbb; 
   color: #e0e0e0;
@@ -40,12 +36,11 @@
   text-align: center;
 }
 
-/* 밤 모드에서의 메인 타이틀 */
 .nightMode .main_title {
   color: #d93838;
 }
 
-/* --- 낮 버전: 일반 테스트 카드 디자인 --- */
+/* 낮 버전 카드 디자인 */
 .result_title_section {
   border: 2px solid #ffcc00;
   padding: 30px 15px;
@@ -53,14 +48,16 @@
   margin-bottom: 20px;
   background-color: #fff7e6;
   width: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box !important; /* 아이폰 패딩 버그 방지 */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: block; /* 아이폰 캡처 안정성 */
+  min-height: fit-content;
 }
 
-/* --- 밤 버전: 호러 실험 기록지 디자인 --- */
+/* 밤 버전 카드 디자인 */
 .horror_report {
   width: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box !important; /* 아이폰 패딩 버그 방지 */
   border: 2px solid #444;
   background-color: #262626;
   padding: 25px 15px;
@@ -71,6 +68,7 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 15px rgba(217, 56, 56, 0.2);
+  min-height: fit-content;
 }
 
 .result_title {
@@ -80,7 +78,6 @@
   color: #333;
 }
 
-/* 밤 버전 카드 내 제목 색상 */
 .nightMode .result_title {
   color: #ffffff;
 }
@@ -94,15 +91,16 @@
   letter-spacing: 1px;
 }
 
-/* --- 텍스트 줄바꿈 및 상세 설명 --- */
 .description,
 .horror_description {
   font-size: 0.95rem;
   line-height: 1.8;
   text-align: left;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word !important; /* 아이폰 강제 줄바꿈 대응 */
+  overflow-wrap: break-word;
   width: 100%;
+  display: block;
 }
 
 .description {
@@ -123,7 +121,6 @@
   display: block;
 }
 
-/* --- 버튼 그룹 레이아웃 --- */
 .button_group {
   display: flex;
   flex-direction: column;
@@ -132,21 +129,18 @@
   margin-top: 10px;
 }
 
-/* 카톡 버튼과 저장 버튼을 수평 배치하고 높이를 맞춤 */
 .share_row {
   display: flex;
   gap: 10px;
   width: 100%;
-  align-items: stretch; /* 자식 요소들의 높이를 동일하게 강제 */
+  align-items: stretch;
 }
 
-/* 외부 라이브러리 버튼 높이 강제 조정을 위한 컨테이너 */
 .kakao_btn_container {
   flex: 8.5;
   display: flex;
 }
 
-/* 카카오 버튼 내부의 모든 요소가 부모 높이를 따르도록 설정 */
 .kakao_btn_container > div,
 .kakao_btn_container button {
   width: 100% !important;
@@ -180,14 +174,12 @@
   box-sizing: border-box;
 }
 
-/* 이미지 저장 버튼 전용 스타일 */
 .save_btn {
   flex: 1.5;
   background-color: #888;
   padding: 0;
 }
 
-/* 밤 모드 저장 버튼 */
 .nightMode .save_btn {
   background-color: #444;
   border: 1px solid #666;
@@ -199,11 +191,9 @@
   opacity: 0.8;
 }
 
-/* 낮 모드 버튼 컬러 */
 .share_btn { background-color: #777; }
 .home_btn { background-color: #5cb85c; }
 
-/* 밤 모드 버튼 컬러 */
 .horror_share_btn {
   background-color: #3333336f;
   border: 1px solid #666;
@@ -213,7 +203,6 @@
   border: 1px solid #ff4d4d;
 }
 
-/* --- 반응형 처리 --- */
 @media screen and (max-width: 600px) {
   .main_title {
     font-size: 1.1rem;
