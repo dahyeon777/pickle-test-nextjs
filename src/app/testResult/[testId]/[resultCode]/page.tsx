@@ -25,19 +25,9 @@ const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
   Object.entries(MASK_MAP).map(([k, v]) => [v, k])
 );
 
-// --- 이모티콘 제거 함수 (아이패드 튕김 방지를 위해 성능 최적화 버전으로 교체) ---
-const removeEmojis = (str: string) => {
-  if (!str) return "";
-  try {
-    // 기존의 무거운 정규식 대신, 아이패드에서 안전하게 돌아가는 표준 범위 정규식으로 교체했습니다.
-    return str
-      .replace(/[^\p{L}\p{N}\p{P}\p{Z}^$\n]/gu, "")
-      .trim();
-  } catch (e) {
-    // 만약 이 정규식조차 에러가 나면 원본 문자열을 그대로 반환하여 페이지 다운을 막습니다.
-    return str;
-  }
-};
+/** * 원인 파악을 위해 removeEmojis 함수를 완전히 제거했습니다.
+ * 이제 모든 텍스트는 원본 그대로 출력됩니다.
+ */
 
 function TestResultPage() {
   const params = useParams();
@@ -80,16 +70,16 @@ function TestResultPage() {
               const maskCode = MASK_MAP[lookupKey] || rCode;
               const maskedPath = `/testResult/${tId}/${maskCode}?mode=${currentMode}&type=${currentType}`;
               
-              // [안전 조치] 주소 변경 시 발생할 수 있는 런타임 오류 방지
-              if (typeof window !== "undefined") {
-                try {
-                  window.history.replaceState(null, "", maskedPath);
-                } catch (e) {
-                  console.error("History state error:", e);
-                }
-                const fullUrl = `${window.location.origin}${maskedPath}`;
-                setShareUrl(fullUrl);
-              }
+              /**
+               * [원인 파악용] 주소 변경 로직을 일시적으로 주석 처리합니다.
+               * 아이패드 사파리에서 주소 강제 변경이 크래시를 유발할 수 있습니다.
+               */
+              // window.history.replaceState(null, "", maskedPath);
+              
+              const fullUrl = typeof window !== "undefined" 
+                ? `${window.location.origin}${maskedPath}` 
+                : "";
+              setShareUrl(fullUrl);
             }
           }
         }
@@ -101,12 +91,13 @@ function TestResultPage() {
   }, [params, searchParams, currentMode, currentType, setMode]);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      alert(isNight ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
-    });
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert(isNight ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
+      });
+    }
   };
 
-  // --- 이미지 저장 로직 ---
   const handleSaveImage = async () => {
     if (resultRef.current === null) return;
 
@@ -117,24 +108,23 @@ function TestResultPage() {
     if (window.confirm(confirmMessage)) {
       try {
         setIsCapturing(true); 
-        await new Promise((resolve) => setTimeout(resolve, 300)); // 지연시간 넉넉히
+        await new Promise((resolve) => setTimeout(resolve, 300));
 
-        // 빌드 에러 방지를 위한 dynamic import
         const { toJpeg } = await import("html-to-image");
         const dataUrl = await toJpeg(resultRef.current, {
           cacheBust: true,
           backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-          pixelRatio: 1.2, // 아이패드 안정성을 위해 낮춤
-          quality: 0.95,
+          pixelRatio: 1.5,
         });
 
         const link = document.createElement("a");
-        link.download = `${removeEmojis(testTitle)}_결과.jpg`;
+        // removeEmojis 제거로 인해 testTitle 원본 사용
+        link.download = `${testTitle}_결과.jpg`;
         link.href = dataUrl;
         link.click();
       } catch (err) {
         console.error("이미지 저장 실패:", err);
-        alert("이미지 저장에 실패했습니다. 화면을 직접 캡처해 주세요.");
+        alert("이미지 저장에 실패했습니다.");
       } finally {
         setIsCapturing(false); 
       }
@@ -170,9 +160,9 @@ function TestResultPage() {
   }
 
   const renderResultSection = () => {
-    // 렌더링 시점에 함수 호출로 인한 과부하 방지를 위해 변수 처리
-    const displayTitle = isCapturing ? removeEmojis(resultData.title) : resultData.title;
-    const displayDesc = isCapturing ? removeEmojis(resultData.description) : resultData.description;
+    // removeEmojis 호출을 모두 제거했습니다.
+    const displayTitle = resultData.title;
+    const displayDesc = resultData.description;
 
     if (isNight) {
       return (
@@ -204,11 +194,11 @@ function TestResultPage() {
           <h1 className={styles.main_title}>
             {isNight ? (
               <>
-                {isCapturing ? removeEmojis("실험 기록") : "실험 기록"}
-                <br /> {isCapturing ? removeEmojis(testTitle) : testTitle}
+                실험 기록
+                <br /> {testTitle}
               </>
             ) : (
-              `${isCapturing ? removeEmojis(testTitle) : testTitle} 결과`
+              `${testTitle} 결과`
             )}
           </h1>
           {renderResultSection()}
