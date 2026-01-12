@@ -14,30 +14,13 @@ import NoEmojiText from "../../../../components/NoEmojiText";
 
 // --- 결과 숨김을 위한 매핑 테이블 ---
 const MASK_MAP: { [key: string]: string } = {
-  ENFP: "p01",
-  ENFJ: "p02",
-  ENTP: "p03",
-  ENTJ: "p04",
-  ESFP: "p05",
-  ESFJ: "p06",
-  ESTP: "p07",
-  ESTJ: "p08",
-  INFP: "p09",
-  INFJ: "p10",
-  INTP: "p11",
-  INTJ: "p12",
-  ISFP: "p13",
-  ISFJ: "p14",
-  ISTP: "p15",
-  ISTJ: "p16",
-  TYPE_R: "h01",
-  TYPE_B: "h02",
-  TYPE_J: "h03",
-  TYPE_O: "h04",
-  TYPE_C: "h05",
+  ENFP: "p01", ENFJ: "p02", ENTP: "p03", ENTJ: "p04",
+  ESFP: "p05", ESFJ: "p06", ESTP: "p07", ESTJ: "p08",
+  INFP: "p09", INFJ: "p10", INTP: "p11", INTJ: "p12",
+  ISFP: "p13", ISFJ: "p14", ISTP: "p15", ISTJ: "p16",
+  TYPE_R: "h01", TYPE_B: "h02", TYPE_J: "h03", TYPE_O: "h04", TYPE_C: "h05",
 };
 
-// --- 역매핑 ---
 const REVERSE_MASK_MAP: { [key: string]: string } = Object.fromEntries(
   Object.entries(MASK_MAP).map(([k, v]) => [v, k])
 );
@@ -56,8 +39,7 @@ function TestResultPage() {
   const [isCapturing, setIsCapturing] = useState(false);
 
   const currentMode = (searchParams.get("mode") as "day" | "night") || theme;
-  const currentType =
-    (searchParams.get("type") as "test" | "taro") || contentType;
+  const currentType = (searchParams.get("type") as "test" | "taro") || contentType;
   const isNight = currentMode === "night";
 
   useEffect(() => {
@@ -71,14 +53,10 @@ function TestResultPage() {
 
       if (tId && rCode) {
         const lookupKey = REVERSE_MASK_MAP[rCode] || rCode.toUpperCase();
-        const categoryData = (TotalDataStore as any)[currentMode]?.[
-          currentType
-        ];
+        const categoryData = (TotalDataStore as any)[currentMode]?.[currentType];
 
         if (categoryData) {
-          const selectedTest = categoryData.find(
-            (test: any) => Number(test.id) === tId
-          );
+          const selectedTest = categoryData.find((test: any) => Number(test.id) === tId);
           if (selectedTest) {
             setTestTitle(selectedTest.title);
             const finalResult = selectedTest.results?.[lookupKey];
@@ -88,15 +66,13 @@ function TestResultPage() {
               const maskCode = MASK_MAP[lookupKey] || rCode;
               const maskedPath = `/testResult/${tId}/${maskCode}?mode=${currentMode}&type=${currentType}`;
 
-              // 안정성을 위해 주소 변경 로직 유지 (NoEmojiText로 인해 크래시 위험 낮아짐)
-              try {
-                window.history.replaceState(null, "", maskedPath);
-              } catch (e) {
-                console.error("Navigation error:", e);
-              }
+              /**
+               * [긴급 수정] 보안 및 크래시 방지를 위해 주소창 변경 기능을 완전히 비활성화합니다.
+               * 사파리 보안 정책과의 충돌 가능성을 원천 차단합니다.
+               */
+              // window.history.replaceState(null, "", maskedPath);
 
-              const fullUrl =
-                typeof window !== "undefined"
+              const fullUrl = typeof window !== "undefined"
                   ? `${window.location.origin}${maskedPath}`
                   : "";
               setShareUrl(fullUrl);
@@ -113,11 +89,7 @@ function TestResultPage() {
   const handleCopyLink = () => {
     if (typeof window !== "undefined") {
       navigator.clipboard.writeText(window.location.href).then(() => {
-        alert(
-          isNight
-            ? "실험 기록 링크가 복사되었습니다."
-            : "결과 링크가 복사되었습니다!"
-        );
+        alert(isNight ? "실험 기록 링크가 복사되었습니다." : "결과 링크가 복사되었습니다!");
       });
     }
   };
@@ -125,15 +97,11 @@ function TestResultPage() {
   const handleSaveImage = async () => {
     if (resultRef.current === null) return;
 
-    const confirmMessage = isNight
-      ? "실험 기록 이미지를 다운로드 하시겠습니까?"
-      : "결과 이미지를 다운로드 하시겠습니까?";
-
-    if (window.confirm(confirmMessage)) {
+    if (window.confirm(isNight ? "실험 기록 이미지를 다운로드 하시겠습니까?" : "결과 이미지를 다운로드 하시겠습니까?")) {
       try {
         setIsCapturing(true);
-        // 텍스트가 NoEmoji 버전으로 갈아끼워질 시간을 벌어줌
-        await new Promise((resolve) => setTimeout(resolve, 400));
+        // UI가 NoEmoji 상태로 완전히 전환되도록 대기 시간 증가
+        await new Promise((resolve) => setTimeout(resolve, 500));
 
         const { toJpeg } = await import("html-to-image");
         const dataUrl = await toJpeg(resultRef.current, {
@@ -142,20 +110,16 @@ function TestResultPage() {
           pixelRatio: 1.5,
         });
 
-        // 파일명에서도 이모티콘 제거 (간단한 정규식 직접 적용)
-        const cleanFileName = testTitle
-          .replace(
-            /[\u2600-\u27BF]|[\uD83C-\uD83E][\uDC00-\uDFFF]|[\u2011-\u26FF]/g,
-            ""
-          )
-          .trim();
-
+        /**
+         * [긴급 수정] 파일명 생성 시 정규식을 사용하지 않습니다.
+         * 대신 단순히 테스트 ID와 결과 코드를 조합하여 안전한 파일명을 만듭/니다.
+         */
         const link = document.createElement("a");
-        link.download = `${cleanFileName}_결과.jpg`;
+        link.download = `Result_${params.testId}_${params.resultCode}.jpg`;
         link.href = dataUrl;
         link.click();
       } catch (err) {
-        console.error("이미지 저장 실패:", err);
+        console.error("Image Save Error:", err);
         alert("이미지 저장에 실패했습니다.");
       } finally {
         setIsCapturing(false);
@@ -164,23 +128,14 @@ function TestResultPage() {
   };
 
   const handleRetry = () => {
-    const message = isNight
-      ? "기록을 파기하고 다시 실험하시겠습니까?"
-      : "다시 테스트하시겠습니까?";
-    if (window.confirm(message)) {
-      router.push(
-        `/testReady/${params.testId}?mode=${currentMode}&type=${contentType}`
-      );
+    if (window.confirm(isNight ? "기록을 파기하고 다시 실험하시겠습니까?" : "다시 테스트하시겠습니까?")) {
+      router.push(`/testReady/${params.testId}?mode=${currentMode}&type=${contentType}`);
     }
   };
 
   if (isLoading) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>데이터 분석 중...</div>
       </div>
     );
@@ -188,75 +143,19 @@ function TestResultPage() {
 
   if (!resultData) {
     return (
-      <div
-        className={`${styles.container} ${
-          isNight ? styles.nightMode : styles.dayMode
-        }`}
-      >
+      <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
         <div className={styles.content_wrapper}>
           <p>기록을 찾을 수 없습니다.</p>
           <Link href="/">
-            <button className={styles.home_btn} style={{ marginTop: "20px" }}>
-              홈으로 돌아가기
-            </button>
+            <button className={styles.home_btn} style={{ marginTop: "20px" }}>홈으로 돌아가기</button>
           </Link>
         </div>
       </div>
     );
   }
 
-  const renderResultSection = () => {
-    if (isNight) {
-      return (
-        <div className={styles.horror_report}>
-          <h2 className={styles.horror_type_title}>
-            <NoEmojiText text={resultData.title} isCapturing={isCapturing} />
-          </h2>
-          {resultData.result && (
-            <img
-              src={resultData.result}
-              alt="실험결과"
-              className={styles.result_image}
-            />
-          )}
-          <p className={styles.horror_description}>
-            <NoEmojiText
-              text={resultData.description?.trim()}
-              isCapturing={isCapturing}
-            />
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.result_title_section}>
-          <h2 className={styles.result_title}>
-            "<NoEmojiText text={resultData.title} isCapturing={isCapturing} />"
-          </h2>
-          {resultData.result && (
-            <img
-              src={resultData.result}
-              alt="결과"
-              className={styles.result_image}
-            />
-          )}
-          <p className={styles.description}>
-            <NoEmojiText
-              text={resultData.description?.trim()}
-              isCapturing={isCapturing}
-            />
-          </p>
-        </div>
-      );
-    }
-  };
-
   return (
-    <div
-      className={`${styles.container} ${
-        isNight ? styles.nightMode : styles.dayMode
-      }`}
-    >
+    <div className={`${styles.container} ${isNight ? styles.nightMode : styles.dayMode}`}>
       <div className={styles.content_wrapper}>
         <div ref={resultRef} style={{ width: "100%", paddingBottom: "10px" }}>
           <h1 className={styles.main_title}>
@@ -272,7 +171,20 @@ function TestResultPage() {
               </>
             )}
           </h1>
-          {renderResultSection()}
+          
+          <div className={isNight ? styles.horror_report : styles.result_title_section}>
+            <h2 className={isNight ? styles.horror_type_title : styles.result_title}>
+              {!isNight && '"'}
+              <NoEmojiText text={resultData.title} isCapturing={isCapturing} />
+              {!isNight && '"'}
+            </h2>
+            {resultData.result && (
+              <img src={resultData.result} alt="결과" className={styles.result_image} />
+            )}
+            <p className={isNight ? styles.horror_description : styles.description}>
+              <NoEmojiText text={resultData.description?.trim()} isCapturing={isCapturing} />
+            </p>
+          </div>
         </div>
 
         <div className={styles.button_group}>
@@ -280,37 +192,22 @@ function TestResultPage() {
             <div style={{ flex: 8.5 }}>
               <KakaoShareButton
                 url={shareUrl}
-                title={
-                  isNight
-                    ? `[실험기록] ${resultData.title}`
-                    : `[테스트결과] ${resultData.title}`
-                }
+                title={isNight ? `[실험기록] ${resultData.title}` : `[테스트결과] ${resultData.title}`}
                 description={resultData.description?.slice(0, 45) + "..."}
                 imageUrl={resultData.result}
                 buttonText="💬 카카오톡 결과 공유"
               />
             </div>
-            <button
-              onClick={handleSaveImage}
-              className={styles.save_btn}
-              title="이미지 저장"
-              style={{ flex: 1.5 }}
-            >
+            <button onClick={handleSaveImage} className={styles.save_btn} style={{ flex: 1.5 }}>
               💾
             </button>
           </div>
 
           <div className={styles.sub_button_row}>
-            <button
-              onClick={handleCopyLink}
-              className={isNight ? styles.horror_share_btn : styles.share_btn}
-            >
+            <button onClick={handleCopyLink} className={isNight ? styles.horror_share_btn : styles.share_btn}>
               🔗 링크 복사
             </button>
-            <button
-              onClick={handleRetry}
-              className={isNight ? styles.horror_home_btn : styles.home_btn}
-            >
+            <button onClick={handleRetry} className={isNight ? styles.horror_home_btn : styles.home_btn}>
               ↩ 다시하기
             </button>
           </div>

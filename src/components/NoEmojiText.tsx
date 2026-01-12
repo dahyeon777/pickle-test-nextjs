@@ -2,26 +2,22 @@
 
 import React from "react";
 
-interface NoEmojiTextProps {
-  text: string;
-  isCapturing: boolean;
-  className?: string;
-}
-
-const NoEmojiText = ({ text, isCapturing, className }: NoEmojiTextProps) => {
+const NoEmojiText = ({ text, isCapturing, className }: { text: string; isCapturing: boolean; className?: string }) => {
   if (!text) return null;
 
-  // 1. 평상시: 그냥 원본 출력 (아이패드 안심)
+  // 1. 평상시에는 로직을 아예 타지 않음
   if (!isCapturing) {
     return <span className={className} style={{ whiteSpace: "pre-wrap" }}>{text}</span>;
   }
 
-  // 2. 캡처 시: 문제가 되는 유니코드 범위를 쓰지 않고 "허용할 문자"만 남깁니다.
-  // 한글, 영어, 숫자, 공백, 일반 문장부호(.,!?()"-) 및 줄바꿈(\n)만 허용
+  // 2. [보안/부하 방지] 정규식을 쓰지 않고 글자 하나씩 필터링
+  // 한글, 영어, 숫자, 기본 기호, 줄바꿈만 직접 골라냅니다.
+  const allowedChars = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ㄱ-ㅎㅏ-ㅣ가-힣.,!?()\"'-~\n\r";
+  
   const cleanedText = text
-    .replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9\s.,!?()\-""'']/g, "") 
-    // 위 정규식은 '지정된 문자'가 아니면 다 지우라는 뜻입니다. (아이패드에 매우 가벼움)
-    .trim();
+    .split("") // 글자 단위로 쪼개기
+    .filter(char => allowedChars.includes(char)) // 허용 목록에 있는 글자만 남기기
+    .join(""); // 다시 합치기
 
   return (
     <span className={className} style={{ whiteSpace: "pre-wrap" }}>
