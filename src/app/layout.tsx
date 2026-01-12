@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   manifest: "/manifest.json", 
   icons: {
     icon: "/img/favicon.png",
-    apple: "/img/favicon192.png", // manifest와 경로 통일
+    apple: "/img/favicon192.png", 
   },
   
-  // --- iOS 전용 PWA 설정 ---
+  // --- iOS 전용 PWA 설정 (Next.js 권장 방식) ---
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -57,29 +57,29 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="피클테스트" />
+        {/* [수정] 메타데이터 객체와 중복되는 수동 meta 태그들을 삭제하여 충돌 방지 */}
         
+        {/* 구글 애드센스: 아이패드 안정성을 위해 lazyOnload 권장 */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6955061481766922"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
+        {/* 카카오 SDK */}
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
+        {/* suppressHydrationWarning: 아이패드 사파리 특유의 하이드레이션 경고가 에러로 번지는 것을 막아줌 */}
         <ThemeTimeInitializer />
         <Header />
         <main>{children}</main>
         
-        {/* iOS 전용 하단 말풍선 가이드 */}
         <IOSInstallGuide />
         
         <GoogleAnalytics gaId="G-WH9M5JGCTW" />
