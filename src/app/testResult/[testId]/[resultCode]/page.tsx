@@ -120,52 +120,52 @@ function TestResultPage() {
     });
   };
 
-  // --- 이미지 저장 로직 (iOS/iPad 안정화 버전) ---
-  const handleSaveImage = async () => {
-    if (resultRef.current === null) return;
+  // // --- 이미지 저장 로직 (iOS/iPad 안정화 버전) ---
+  // const handleSaveImage = async () => {
+  //   if (resultRef.current === null) return;
 
-    const confirmMessage = isNight
-      ? "실험 기록 이미지를 다운로드 하시겠습니까?"
-      : "결과 이미지를 다운로드 하시겠습니까?";
+  //   const confirmMessage = isNight
+  //     ? "실험 기록 이미지를 다운로드 하시겠습니까?"
+  //     : "결과 이미지를 다운로드 하시겠습니까?";
 
-    if (window.confirm(confirmMessage)) {
-      try {
-        setIsCapturing(true);
+  //   if (window.confirm(confirmMessage)) {
+  //     try {
+  //       setIsCapturing(true);
 
-        // 1. 렌더링 동기화를 위한 충분한 지연 (iOS PWA 대응)
-        await new Promise((resolve) => setTimeout(resolve, 300));
+  //       // 1. 렌더링 동기화를 위한 충분한 지연 (iOS PWA 대응)
+  //       await new Promise((resolve) => setTimeout(resolve, 300));
 
-        const { toPng } = await import("html-to-image");
+  //       const { toPng } = await import("html-to-image");
 
-        // 2. iOS/Safari 버그 대응: 첫 번째 호출은 렌더링 엔진 깨우기용 (더미 호출)
-        await toPng(resultRef.current, { cacheBust: true }).catch(() => {});
+  //       // 2. iOS/Safari 버그 대응: 첫 번째 호출은 렌더링 엔진 깨우기용 (더미 호출)
+  //       await toPng(resultRef.current, { cacheBust: true }).catch(() => {});
 
-        // 3. 실제 이미지 생성
-        const dataUrl = await toPng(resultRef.current, {
-          cacheBust: true,
-          backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-          // 아이패드 고해상도 메모리 부족 방지를 위해 pixelRatio를 2에서 1.5 정도로 타협하거나 자동설정(null)
-          pixelRatio: 1.5,
-          style: {
-            // 캡처 시 레이아웃 틀어짐 방지
-            transform: "scale(1)",
-          },
-        });
+  //       // 3. 실제 이미지 생성
+  //       const dataUrl = await toPng(resultRef.current, {
+  //         cacheBust: true,
+  //         backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
+  //         // 아이패드 고해상도 메모리 부족 방지를 위해 pixelRatio를 2에서 1.5 정도로 타협하거나 자동설정(null)
+  //         pixelRatio: 1.5,
+  //         style: {
+  //           // 캡처 시 레이아웃 틀어짐 방지
+  //           transform: "scale(1)",
+  //         },
+  //       });
 
-        const link = document.createElement("a");
-        link.download = `${removeEmojis(testTitle)}_결과.png`;
-        link.href = dataUrl;
-        link.click();
-      } catch (err) {
-        console.error("이미지 저장 실패:", err);
-        alert(
-          "이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 스크린샷을 이용해 주세요."
-        );
-      } finally {
-        setIsCapturing(false);
-      }
-    }
-  };
+  //       const link = document.createElement("a");
+  //       link.download = `${removeEmojis(testTitle)}_결과.png`;
+  //       link.href = dataUrl;
+  //       link.click();
+  //     } catch (err) {
+  //       console.error("이미지 저장 실패:", err);
+  //       alert(
+  //         "이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 스크린샷을 이용해 주세요."
+  //       );
+  //     } finally {
+  //       setIsCapturing(false);
+  //     }
+  //   }
+  // };
 
   const handleRetry = () => {
     const message = isNight
@@ -284,14 +284,14 @@ function TestResultPage() {
                 buttonText="💬 카카오톡 결과 공유"
               />
             </div>
-            <button
+            {/* <button
               onClick={handleSaveImage}
               className={styles.save_btn}
               title="이미지 저장"
               style={{ flex: 1.5 }}
             >
               💾
-            </button>
+            </button> */}
           </div>
 
           <div className={styles.sub_button_row}>
