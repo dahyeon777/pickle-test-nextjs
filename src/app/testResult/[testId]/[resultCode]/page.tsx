@@ -128,41 +128,54 @@ function TestResultPage() {
     ) {
       try {
         setIsCapturing(true);
-        // UI 리렌더링 및 사파리 레이아웃 안정을 위해 대기 시간 확보
+        // iOS 사파리의 레이아웃 재계산을 위해 대기 시간을 넉넉히 잡습니다.
         await new Promise((resolve) => setTimeout(resolve, 800));
 
         const { toJpeg } = await import("html-to-image");
 
-        // 💡 [iOS 짤림 방지 핵심 1] 
-        // offsetHeight(보이는 높이)가 아니라 scrollHeight(전체 높이)를 가져옵니다.
         const node = resultRef.current;
+        
+        // 💡 [핵심] 실제 콘텐츠의 전체 크기를 측정합니다.
+        // scrollHeight는 숨겨진 영역까지 포함한 전체 높이입니다.
         const targetWidth = node.scrollWidth;
         const targetHeight = node.scrollHeight;
 
         const dataUrl = await toJpeg(node, {
           cacheBust: true,
           backgroundColor: isNight ? "#bbbbbb" : "#cde3c6a9",
-          pixelRatio: 1.5, // iOS 메모리 보호를 위해 1.5~2.0 추천
-          
-          // 💡 [iOS 짤림 방지 핵심 2]
-          // 사파리에게 창 크기가 아니라 "진짜 이만큼 그려!"라고 강제로 알려줍니다.
+          pixelRatio: 2, // 화질을 위해 2로 상향 (메모리 이슈 발생 시 1.5로 조정)
           width: targetWidth,
           height: targetHeight,
-          
           style: {
+            // 💡 [iOS 자간/개행 버그 방지]
+            // 캡처 시점에 텍스트 렌더링 방식을 고정하여 iOS 특유의 벌어짐 방지
+            letterSpacing: "normal",
+            lineHeight: "1.6",
+            wordBreak: "break-word",
+            
+            // 💡 [iOS 짤림 방지]
             transform: 'scale(1)',
+            transformOrigin: 'top left',
+            width: `${targetWidth}px`,
+            height: `${targetHeight}px`,
+            margin: '0',
+            padding: '0',
             left: '0',
             top: '0',
-            // 캡처하는 동안 박스가 화면에 갇혀 잘리지 않도록 설정
-            overflow: 'visible',
-            height: `${targetHeight}px`,
-          }
+            overflow: 'visible', // 숨겨진 아래쪽까지 다 그리도록 강제
+          },
         });
 
+        /**
+         * [아이폰/아이패드 다운로드 호환성] 
+         * iOS 일부 환경에서는 a.click()이 작동하지 않을 수 있어 안전하게 처리
+         */
         const link = document.createElement("a");
         link.download = `Result_${params.testId}_${params.resultCode}.jpg`;
         link.href = dataUrl;
+        document.body.appendChild(link); // DOM에 잠시 추가
         link.click();
+        document.body.removeChild(link); // 캡처 후 제거
       } catch (err) {
         console.error("Image Save Error:", err);
         alert("이미지 저장에 실패했습니다.");

@@ -94,10 +94,14 @@
 .description,
 .horror_description {
   font-size: 0.95rem;
-  line-height: 1.8;
+  /* 💡 iOS 자간 벌어짐 방지: 자간을 명시적으로 0 또는 아주 좁게 고정 */
+  letter-spacing: -0.02em !important; 
+  /* 💡 iOS 행간 벌어짐 방지: 1.4~1.6 정도로 고정 (px보다 em/단위없음 추천) */
+  line-height: 1.5 !important; 
+  
   text-align: left;
   white-space: pre-wrap;
-  word-break: break-word !important; /* 아이폰 강제 줄바꿈 대응 */
+  word-break: break-word !important;
   overflow-wrap: break-word;
   width: 100%;
   display: block;
