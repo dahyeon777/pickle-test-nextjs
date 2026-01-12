@@ -1,55 +1,46 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 
-const NoEmojiText = ({ text, isCapturing, className }: { text: string; isCapturing: boolean; className?: string }) => {
+interface NoEmojiTextProps {
+  text: string;
+  isCapturing: boolean;
+  className?: string;
+}
+
+const NoEmojiText = ({ text, isCapturing, className }: NoEmojiTextProps) => {
   if (!text) return null;
 
-  if (!isCapturing) {
-    return (
-      <span 
-        className={className} 
-        style={{ 
-          whiteSpace: "pre-wrap", 
-          wordBreak: "break-all", // 👈 단어가 길어도 박스 안에서 강제 줄바꿈
-          display: "inline-block", // 👈 사파리 레이아웃 버그 방지
-          width: "100%" 
-        }}
-      >
-        {text}
-      </span>
-    );
-  }
+  // 이모티콘 제거 로직 (성능을 위해 useMemo 사용)
+  const cleanedText = useMemo(() => {
+    const isEmoji = (char: string) => {
+      const code = char.codePointAt(0);
+      if (!code) return false;
+      return (
+        (code >= 0x1F300 && code <= 0x1F9FF) || 
+        (code >= 0x1F600 && code <= 0x1F64F) || 
+        (code >= 0x1F680 && code <= 0x1F6FF) || 
+        (code >= 0x2600 && code <= 0x26FF) ||   
+        (code >= 0x2700 && code <= 0x27BF)      
+      );
+    };
+    return Array.from(text).filter(char => !isEmoji(char)).join("");
+  }, [text]);
 
-  // 이모티콘 제거 로직 (유니코드 대응 버전)
-  const isEmoji = (char: string) => {
-    const code = char.codePointAt(0);
-    if (!code) return false;
-    return (
-      (code >= 0x1F300 && code <= 0x1F9FF) || 
-      (code >= 0x1F600 && code <= 0x1F64F) || 
-      (code >= 0x1F680 && code <= 0x1F6FF) || 
-      (code >= 0x2600 && code <= 0x26FF) ||   
-      (code >= 0x2700 && code <= 0x27BF)      
-    );
+  // 💡 중요: 화면용 스타일과 캡처용 스타일을 완전히 일치시킵니다.
+  // 이렇게 하면 isCapturing이 변해도 레이아웃(개행)이 튀지 않습니다.
+  const sharedStyle: React.CSSProperties = {
+    whiteSpace: "pre-wrap",
+    wordBreak: "break-all",
+    display: "inline-block", // 사파리 버그 방지를 위해 항상 유지
+    width: "100%",
+    lineHeight: "1.6",       // 줄간격 고정
+    textAlign: "inherit"     // 부모의 정렬 속성 상속
   };
 
-  const cleanedText = Array.from(text)
-    .filter(char => !isEmoji(char))
-    .join("");
-
   return (
-    <span 
-      className={className} 
-      style={{ 
-        whiteSpace: "pre-wrap", 
-        wordBreak: "break-all", 
-        display: "inline-block", // 👈 캡처 시에도 블록 속성을 유지해서 박스 크기 보존
-        width: "100%",
-        lineHeight: "1.6" // 👈 사파리에서 줄간격이 좁아지는 현상 방지
-      }}
-    >
-      {cleanedText}
+    <span className={className} style={sharedStyle}>
+      {isCapturing ? cleanedText : text}
     </span>
   );
 };
