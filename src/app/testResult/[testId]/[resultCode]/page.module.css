@@ -10,12 +10,21 @@
   transition: background-color 0.3s ease;
 }
 
+/* 💡 캡처용 숨겨진 노드를 위한 클래스 추가 */
+.capture_hidden_area {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: -1;
+  visibility: hidden;
+}
+
 .dayMode {
   background-color: #cde3c6a9;
 }
 
 .nightMode {
-  background-color: #bbbbbb; 
+  background-color: #bbbbbb;
   color: #e0e0e0;
 }
 
@@ -48,16 +57,16 @@
   margin-bottom: 20px;
   background-color: #fff7e6;
   width: 100%;
-  box-sizing: border-box !important; /* 아이폰 패딩 버그 방지 */
+  box-sizing: border-box !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  display: block; /* 아이폰 캡처 안정성 */
+  display: block;
   min-height: fit-content;
 }
 
 /* 밤 버전 카드 디자인 */
 .horror_report {
   width: 100%;
-  box-sizing: border-box !important; /* 아이폰 패딩 버그 방지 */
+  box-sizing: border-box !important;
   border: 2px solid #444;
   background-color: #262626;
   padding: 25px 15px;
@@ -94,11 +103,8 @@
 .description,
 .horror_description {
   font-size: 0.95rem;
-  /* 💡 iOS 자간 벌어짐 방지: 자간을 명시적으로 0 또는 아주 좁게 고정 */
-  letter-spacing: -0.02em !important; 
-  /* 💡 iOS 행간 벌어짐 방지: 1.4~1.6 정도로 고정 (px보다 em/단위없음 추천) */
-  line-height: 1.5 !important; 
-  
+  letter-spacing: -0.02em !important;
+  line-height: 1.5 !important;
   text-align: left;
   white-space: pre-wrap;
   word-break: break-word !important;
@@ -164,7 +170,7 @@
 .horror_home_btn,
 .save_btn {
   flex: 1;
-  min-height: 48px; 
+  min-height: 48px;
   border-radius: 8px;
   border: none;
   font-size: 0.9rem;
@@ -195,8 +201,12 @@
   opacity: 0.8;
 }
 
-.share_btn { background-color: #777; }
-.home_btn { background-color: #5cb85c; }
+.share_btn {
+  background-color: #777;
+}
+.home_btn {
+  background-color: #5cb85c;
+}
 
 .horror_share_btn {
   background-color: #3333336f;
