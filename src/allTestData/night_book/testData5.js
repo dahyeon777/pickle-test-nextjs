@@ -1,7 +1,5 @@
-// HorrorTestData.ts
-
-export const horrorTestData18 = {
-  id: 18,
+export const nightBookTestData5 = {
+  id: 5,
   path: "",
   title: "🦊\n「식구\n(食口)」",
   tags: [

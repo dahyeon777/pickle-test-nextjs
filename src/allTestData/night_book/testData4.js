@@ -1,5 +1,5 @@
-export const horrorTestData16 = {
-  id: 16,
+export const nightBookTestData4 = {
+  id: 4,
   path: "/img/horror_test_main/simcheong_horror.png",
   title: "🌊\n「효심」",
   tags: [

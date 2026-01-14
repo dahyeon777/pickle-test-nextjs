@@ -36,14 +36,17 @@ import { horrorTestData10 } from "./night_test/testData10";
 import { horrorTestData11 } from "./night_test/testData11";
 import { horrorTestData12 } from "./night_test/testData12";
 import { horrorTestData13 } from "./night_test/testData13";
-import { horrorTestData14 } from "./night_test/testData14";
-import { horrorTestData15 } from "./night_test/testData15";
-import { horrorTestData16 } from "./night_test/testData16";
-import { horrorTestData17 } from "./night_test/testData17";
-import { horrorTestData18 } from "./night_test/testData18";
-import { horrorTestData19 } from "./night_test/testData19";
+
+// 5. 밤/북
+import { nightBookTestData1 } from "./night_book/testData1";
+import { nightBookTestData2 } from "./night_book/testData2";
+import { nightBookTestData3 } from "./night_book/testData3";
+import { nightBookTestData4 } from "./night_book/testData4";
+import { nightBookTestData5 } from "./night_book/testData5";
+import { nightBookTestData6 } from "./night_book/testData6";
 
 export const TotalDataStore = {
+  //낮 버전
   day: {
     test: [
       testData11, // 셰프
@@ -70,12 +73,13 @@ export const TotalDataStore = {
       taroData8, //운명 궁합
     ],
   },
+  //밤 버전
   night: {
     test: [
       horrorTestData1, // 대기표
       horrorTestData2, // 저수지
       horrorTestData13, // 학교
-      horrorTestData14, // 병원
+      horrorTestData10, // 병원
       horrorTestData5, // 세차
       horrorTestData11, // 엘리베이터
       horrorTestData12, // 편의점
@@ -87,12 +91,12 @@ export const TotalDataStore = {
       horrorTestData6, // 반사
     ],
     book: [
-      horrorTestData19, //피클테스트(b)
-      horrorTestData15, // 장화홍련(b)
-      horrorTestData10, // 야생동물(b)
-      horrorTestData16, // 심청이(b)
-      horrorTestData17, // 별주부전(b)
-      horrorTestData18, // 여우누이(b)
+      nightBookTestData1, //피클테스트(b)
+      nightBookTestData2, // 야생동물(b)
+      nightBookTestData3, // 장화홍련(b)
+      nightBookTestData4, // 심청이(b)
+      nightBookTestData5, // 여우누이(b)
+      nightBookTestData6, // 별주부전(b)
     ],
   },
 };
