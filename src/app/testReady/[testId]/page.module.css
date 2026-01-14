@@ -43,8 +43,6 @@
   font-weight: bold;
   line-height: 1.4;
   margin: 0;
-  /* ✨ 중요: \n 줄바꿈을 화면에 그대로 보여주는 속성 */
-  white-space: pre-wrap;
   word-break: keep-all;
   text-shadow: 0 0 8px rgba(7, 45, 18, 0.4);
 }
