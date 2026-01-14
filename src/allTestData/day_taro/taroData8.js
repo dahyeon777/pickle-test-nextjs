@@ -24,14 +24,14 @@ export const taroData8 = {
       questionId: 1,
       text: "서로 다른 두 세계가 만나는 일은 기적과도 같습니다.\n마음을 가라앉히고, 카드를 선택해 보세요.",
       options: [
-        { optionId: "A", text: "🌹", resultKey: "BOND_RESULT_1" },
-        { optionId: "B", text: "🌊", resultKey: "BOND_RESULT_2" },
-        { optionId: "C", text: "🔥", resultKey: "BOND_RESULT_3" },
-        { optionId: "D", text: "🧱", resultKey: "BOND_RESULT_4" }, // 부정적/현실적 한계
-        { optionId: "E", text: "🌬️", resultKey: "BOND_RESULT_5" },
-        { optionId: "F", text: "🧩", resultKey: "BOND_RESULT_6" },
-        { optionId: "G", text: "🧊", resultKey: "BOND_RESULT_7" }, // 부정적/정서적 고립
-        { optionId: "H", text: "♾️", resultKey: "BOND_RESULT_8" },
+        { optionId: "A", text: "👩🏻‍🤝‍👩🏻", resultKey: "BOND_RESULT_1" },
+        { optionId: "B", text: "💚", resultKey: "BOND_RESULT_2" },
+        { optionId: "C", text: "💕", resultKey: "BOND_RESULT_3" },
+        { optionId: "D", text: "💟", resultKey: "BOND_RESULT_4" }, // 부정적/현실적 한계
+        { optionId: "E", text: "🤎", resultKey: "BOND_RESULT_5" },
+        { optionId: "F", text: "💘", resultKey: "BOND_RESULT_6" },
+        { optionId: "G", text: "💝", resultKey: "BOND_RESULT_7" }, // 부정적/정서적 고립
+        { optionId: "H", text: "💗", resultKey: "BOND_RESULT_8" },
       ],
     },
   ],
