@@ -158,6 +158,7 @@
   .title {
     font-size: 1.6rem;
     padding: 0 10px;
+    white-space: pre-wrap;
   }
   .buttonWrapper {
     margin-top: 40px;
