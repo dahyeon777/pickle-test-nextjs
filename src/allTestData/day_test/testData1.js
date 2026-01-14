@@ -3,181 +3,285 @@ export const testData1 = {
   path: "/img/test_ready_img/dessert.png",
   title: "🍨\n달콤한\n디저트 테스트",
   tags: [
-    "음식", "디저트", "카페", "간식", "MBTI", 
-    "성격", "심리", "취향", "달콤한", "힐링",
-    "당충전", 
+    "음식",
+    "디저트",
+    "카페",
+    "간식",
+    "MBTI",
+    "성격",
+    "심리",
+    "취향",
+    "달콤한",
+    "힐링",
+    "당충전",
   ],
   questions: [
     {
       questionId: 1,
       text: "카페에 들어서면 가장 먼저 보이는 것은?",
       options: [
-        { optionId: "A", text: "왁자지껄 대화하는 사람들의 활기", score: { E_score: 2, F_score: 1 } },
-        { optionId: "B", text: "빠르게 주문 가능한 키오스크 위치", score: { J_score: 2, S_score: 1 } },
-        { optionId: "C", text: "혼자 쉬기 좋은 조용한 구석 자리", score: { I_score: 2, N_score: 1 } },
+        {
+          optionId: "A",
+          text: "왁자지껄 대화하는 사람들의 활기",
+          score: { E_score: 2, F_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "빠르게 주문 가능한 키오스크 위치",
+          score: { J_score: 2, S_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "혼자 쉬기 좋은 조용한 구석 자리",
+          score: { I_score: 2, N_score: 1 },
+        },
       ],
     },
     {
       questionId: 2,
       text: "메뉴판 앞에서 당신의 선택은?",
       options: [
-        { optionId: "A", text: "여기서만 파는 독특한 도전적 메뉴", score: { N_score: 2, P_score: 1 } },
-        { optionId: "B", text: "검증된 베스트셀러나 추천 메뉴", score: { S_score: 2, J_score: 1 } },
-        { optionId: "C", text: "내가 늘 즐겨 먹던 익숙한 메뉴", score: { I_score: 1, S_score: 1 } },
+        {
+          optionId: "A",
+          text: "여기서만 파는 독특한 도전적 메뉴",
+          score: { N_score: 2, P_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "검증된 베스트셀러나 추천 메뉴",
+          score: { S_score: 2, J_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "내가 늘 즐겨 먹던 익숙한 메뉴",
+          score: { I_score: 1, S_score: 1 },
+        },
       ],
     },
     {
       questionId: 3,
       text: "친구가 맛없다고 했던 디저트가 궁금하다면?",
       options: [
-        { optionId: "A", text: "직접 먹어보고 내 식으로 판단한다", score: { P_score: 2, S_score: 1 } },
-        { optionId: "B", text: "친구 말을 믿고 다른 걸 고른다", score: { J_score: 2, F_score: 1 } },
-        { optionId: "C", text: "왜 맛없는지 논리적으로 물어본다", score: { T_score: 2, N_score: 1 } },
+        {
+          optionId: "A",
+          text: "직접 먹어보고 내 식으로 판단한다",
+          score: { P_score: 2, S_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "친구 말을 믿고 다른 걸 고른다",
+          score: { J_score: 2, F_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "왜 맛없는지 논리적으로 물어본다",
+          score: { T_score: 2, N_score: 1 },
+        },
       ],
     },
     {
       questionId: 4,
       text: "디저트가 나왔을 때 가장 먼저 하는 행동은?",
       options: [
-        { optionId: "A", text: "인증샷 찍어 SNS에 바로 공유하기", score: { E_score: 2, S_score: 1 } },
-        { optionId: "B", text: "식기 전에 바로 맛 분석 시작하기", score: { T_score: 2, J_score: 1 } },
-        { optionId: "C", text: "천천히 분위기와 비주얼 감상하기", score: { I_score: 1, F_score: 2 } },
+        {
+          optionId: "A",
+          text: "인증샷 찍어 SNS에 바로 공유하기",
+          score: { E_score: 2, S_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "식기 전에 바로 맛 분석 시작하기",
+          score: { T_score: 2, J_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "천천히 분위기와 비주얼 감상하기",
+          score: { I_score: 1, F_score: 2 },
+        },
       ],
     },
     {
       questionId: 5,
       text: "베이킹 도중 레시피와 다르게 흘러간다면?",
       options: [
-        { optionId: "A", text: "원인을 분석하고 처음부터 다시 한다", score: { T_score: 2, J_score: 2 } },
-        { optionId: "B", text: "새로운 맛이 날 거라며 즉흥적으로 계속한다", score: { P_score: 2, N_score: 1 } },
-        { optionId: "C", text: "속상해서 누군가에게 위로받고 싶다", score: { F_score: 2, E_score: 1 } },
+        {
+          optionId: "A",
+          text: "원인을 분석하고 처음부터 다시 한다",
+          score: { T_score: 2, J_score: 2 },
+        },
+        {
+          optionId: "B",
+          text: "새로운 맛이 날 거라며 즉흥적으로 계속한다",
+          score: { P_score: 2, N_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "속상해서 누군가에게 위로받고 싶다",
+          score: { F_score: 2, E_score: 1 },
+        },
       ],
     },
     {
       questionId: 6,
       text: "디저트 맛집 정보를 찾는 방식은?",
       options: [
-        { optionId: "A", text: "상세 후기와 별점을 꼼꼼히 비교 검색", score: { I_score: 1, T_score: 1, J_score: 1 } },
-        { optionId: "B", text: "지인들이 많이 추천하는 곳으로 결정", score: { E_score: 2, F_score: 1 } },
-        { optionId: "C", text: "가장 힙하고 트렌디해 보이는 곳 선택", score: { N_score: 2, P_score: 1 } },
+        {
+          optionId: "A",
+          text: "상세 후기와 별점을 꼼꼼히 비교 검색",
+          score: { I_score: 1, T_score: 1, J_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "지인들이 많이 추천하는 곳으로 결정",
+          score: { E_score: 2, F_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "가장 힙하고 트렌디해 보이는 곳 선택",
+          score: { N_score: 2, P_score: 1 },
+        },
       ],
     },
     {
       questionId: 7,
       text: "친구가 배부르다며 커피만 마시겠다고 한다면?",
       options: [
-        { optionId: "A", text: "나눠 먹을 생각으로 조금 더 넉넉히 시킨다", score: { F_score: 2, E_score: 1 } },
-        { optionId: "B", text: "내 것만 깔끔하게 시켜서 집중해 먹는다", score: { I_score: 2, T_score: 1 } },
-        { optionId: "C", text: "왜 안 먹는지 궁금해서 계속 물어본다", score: { T_score: 1, E_score: 1 } },
+        {
+          optionId: "A",
+          text: "나눠 먹을 생각으로 조금 더 넉넉히 시킨다",
+          score: { F_score: 2, E_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "내 것만 깔끔하게 시켜서 집중해 먹는다",
+          score: { I_score: 2, T_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "왜 안 먹는지 궁금해서 계속 물어본다",
+          score: { T_score: 1, E_score: 1 },
+        },
       ],
     },
     {
       questionId: 8,
       text: "포장해온 디저트를 먹기 전 당신의 상태는?",
       options: [
-        { optionId: "A", text: "완벽하게 세팅하고 먹을 계획에 설렌다", score: { J_score: 2, S_score: 1 } },
-        { optionId: "B", text: "참지 못하고 포장 뜯자마자 바로 먹는다", score: { P_score: 2, I_score: 1 } },
-        { optionId: "C", text: "이걸 먹으며 느낄 행복한 상상에 빠진다", score: { N_score: 2, F_score: 1 } },
+        {
+          optionId: "A",
+          text: "완벽하게 세팅하고 먹을 계획에 설렌다",
+          score: { J_score: 2, S_score: 1 },
+        },
+        {
+          optionId: "B",
+          text: "참지 못하고 포장 뜯자마자 바로 먹는다",
+          score: { P_score: 2, I_score: 1 },
+        },
+        {
+          optionId: "C",
+          text: "이걸 먹으며 느낄 행복한 상상에 빠진다",
+          score: { N_score: 2, F_score: 1 },
+        },
       ],
     },
   ],
 
   results: {
     ESFJ: {
-      result: "/img/dessert_test/01.png", // result1
-      title: "대용량 파티 브라우니",
+      result: "/img/dessert_test/01.png",
+      title: "함께 나눌 때 더 달콤한 '대용량 파티 브라우니'",
       description:
-        "사교성이 뛰어나고, 모두에게 기쁨을 주기 위해 노력하는 당신. 주변 사람들과의 조화를 최우선으로 생각하는 친선 도모자 디저트입니다.",
+        "당신은 혼자보다 여럿이 모인 자리에서 가장 빛나는 사람입니다. 겉은 쫀득하고 속은 부드러운 브라우니처럼, 처음 보는 사람에게도 다정하며 주변 사람들을 챙기는 데서 큰 행복을 느낍니다. 모임에 활력을 불어넣고 갈등을 조율하는 당신은, 모두가 기분 좋게 나누어 먹을 수 있는 든든한 파티 브라우니 같은 존재네요!",
     },
     ENTP: {
-      result: "/img/dessert_test/02.png", // result2
-      title: "수제 막걸리 푸딩",
+      result: "/img/dessert_test/02.png",
+      title: "호기심을 자극하는 반전 매력 '수제 막걸리 푸딩'",
       description:
-        "예측 불가능하고 기발한 아이디어의 소유자. 평범함을 거부하고 독창적인 조합을 시도하며, 세상에 없는 새로운 맛을 창조하는 변론가 디저트입니다.",
+        "평범한 건 거부합니다! 익숙한 재료로 생각지도 못한 맛을 만들어내는 막걸리 푸딩처럼, 당신은 창의적이고 늘 새로운 가능성을 탐구합니다. 가끔은 엉뚱해 보일 수 있지만 그 속에는 날카로운 통찰력이 숨어 있죠. 고정관념을 깨는 당신의 톡톡 튀는 아이디어는 사람들에게 신선한 충격과 즐거움을 선사합니다.",
     },
     ENFP: {
-      result: "/img/dessert_test/03.png", // result3
-      title: "토핑 가득한 와플",
+      result: "/img/dessert_test/03.png",
+      title: "즐거움이 쏟아지는 '토핑 가득한 와플'",
       description:
-        "다채로운 매력과 호기심으로 가득 찬 당신. 자유롭고 즉흥적으로 삶의 재미를 찾아다니며, 예측 불가한 즐거움을 선사하는 활동가 디저트입니다.",
+        "어떤 토핑을 올리느냐에 따라 매번 새로워지는 와플처럼, 당신은 다채로운 매력과 호기심으로 가득 차 있습니다. 사람 만나는 것을 좋아하고 매 순간 즐거운 상상을 멈추지 않죠. 당신 특유의 밝고 긍정적인 에너지는 주변 사람들의 기분까지 환하게 바꿔놓습니다. 당신과 함께라면 지루한 일상도 축제처럼 느껴질 거예요!",
     },
     ESFP: {
-      result: "/img/dessert_test/04.png", // result4
-      title: "새콤한 맛의 젤리푸딩",
+      result: "/img/dessert_test/04.png",
+      title: "탱글탱글 살아있는 텐션 '새콤달콤 젤리푸딩'",
       description:
-        "밝고 긍정적이며, 주변에 즐거움을 선사하는 당신. 순간을 즐기고 파티를 주도하는 자유로운 영혼의 연예인 디저트입니다.",
+        "통통 튀는 탄력과 선명한 색감으로 시선을 사로잡는 젤리푸딩 같은 당신! 지금 이 순간의 즐거움을 가장 소중하게 생각합니다. 어디를 가든 분위기 메이커 역할을 자처하며, 사람들과 어울려 노는 데 천부적인 재능이 있습니다. 당신의 솔직하고 유쾌한 성격은 비타민처럼 모두에게 활기를 불어넣어 줍니다.",
     },
     ESTP: {
-      result: "/img/dessert_test/05.png", // result5
-      title: "팡팡 터지는 팝콘",
+      result: "/img/dessert_test/05.png",
+      title: "쉴 새 없이 손이 가는 '팡팡 터지는 팝콘'",
       description:
-        "즉흥적이고 에너지가 넘치며, 늘 새로운 트렌드의 중심에 있는 당신. 현장에서 행동하고 스릴을 즐기는 사업가 디저트입니다.",
+        "뜨거운 열기 속에서 팡팡 터져 나오는 팝콘처럼, 당신은 에너지가 넘치고 행동력이 뛰어납니다. 복잡한 생각보다는 몸으로 직접 부딪치며 경험하는 것을 선호하죠. 상황 판단이 빠르고 대담해서 어떤 위기 상황도 스릴 있게 즐기며 해결해 나갑니다. 당신 곁에 있으면 지루할 틈이 없는 다이내믹한 일상이 펼쳐집니다.",
     },
     ISFP: {
-      result: "/img/dessert_test/06.png", // result6
-      title: "예술적인 앙금 플라워 떡케이크",
+      result: "/img/dessert_test/06.png",
+      title: "섬세한 감각의 결정체 '플라워 앙금 떡케이크'",
       description:
-        "섬세한 감각과 미적 재능으로 자신의 감정을 아름답게 표현하는 당신. 유연하고 자유로운 영혼의 모험가 디저트입니다.",
+        "꽃잎 한 장 한 장을 정성스레 빚어낸 떡케이크처럼, 당신은 섬세한 감수성과 미적 감각을 지녔습니다. 겉으로 드러내기보다는 내면에 깊은 예술성을 간직하고 있으며, 자신만의 속도로 조용히 아름다운 결과물을 만들어냅니다. 타인에게 따뜻하고 유연하지만, 자신만의 확고한 가치관을 지키며 살아가는 은은한 매력의 소유자입니다.",
     },
     ISTP: {
-      result: "/img/dessert_test/07.png", // result7
-      title: "쌀과자",
+      result: "/img/dessert_test/07.png",
+      title: "질리지 않는 담백함 '바삭한 쌀과자'",
       description:
-        "단순하고 직관적이며, 복잡한 감정보다는 실용적인 결과와 과정을 중시하는 당신. 쿨하고 능숙하게 상황을 다루는 장인 디저트입니다.",
+        "화려한 장식은 없지만 씹을수록 고소한 매력이 느껴지는 쌀과자 같은 당신. 불필요한 감정 소모보다는 효율과 실용성을 중시합니다. 어떤 문제든 도구를 다루듯 쿨하고 능숙하게 해결하며, 혼자만의 시간을 통해 에너지를 충전합니다. 겉은 조금 딱딱해 보일 수 있어도 알고 보면 누구보다 솔직하고 담백한 사람입니다.",
     },
     ENFJ: {
-      result: "/img/dessert_test/08.png", // result8
-      title: "따뜻한 컵케이크",
+      result: "/img/dessert_test/08.png",
+      title: "마음을 어루만지는 '따뜻한 컵케이크'",
       description:
-        "친근하고 다정하며, 주변 사람들에게 안정과 활력을 주는 당신. 모두가 행복하길 바라며 따뜻한 온기를 나누는 선지자 디저트입니다.",
+        "갓 구워낸 빵의 온기와 달콤한 크림이 조화를 이루는 컵케이크처럼, 당신은 다정하고 포용력이 넓은 사람입니다. 주변 사람들의 잠재력을 알아보고 격려하는 데 능숙하며, 공동체의 행복을 위해 앞장서서 노력합니다. 당신의 진심 어린 위로와 따뜻한 미소는 사람들에게 다시 시작할 수 있는 커다란 용기를 줍니다.",
     },
     ESTJ: {
-      result: "/img/dessert_test/09.png", // result9
-      title: "깔끔한 에스프레소",
+      result: "/img/dessert_test/09.png",
+      title: "한 치의 오차도 없는 '진한 에스프레소'",
       description:
-        "복잡한 장식 없이 명료하고 효율성을 추구하는 당신. 목표 달성을 위해 체계적으로 움직이며, 결과를 중시하는 경영자 디저트입니다.",
+        "군더더기 없는 깔끔함과 강렬한 존재감을 가진 에스프레소처럼, 당신은 명확한 원칙과 질서를 중시합니다. 목표가 정해지면 누구보다 체계적이고 효율적으로 움직여 최상의 결과를 만들어냅니다. 책임감이 강하고 현실적인 판단력이 뛰어나 주위 사람들에게 두터운 신뢰를 받으며, 어떤 조직에서든 중심을 잡아주는 든든한 리더입니다.",
     },
     ISFJ: {
-      result: "/img/dessert_test/10.png", // result10
-      title: "오리지널 플레인 스콘",
+      result: "/img/dessert_test/10.png",
+      title: "매일 먹어도 편안한 '플레인 스콘'",
       description:
-        "자극적이지 않고 편안함을 주는 당신. 주변을 조용히 돌보며 안정적인 환경을 만드는 데 헌신하는 수호자 디저트입니다.",
+        "자극적이지 않으면서도 은근한 풍미가 느껴지는 스콘처럼, 당신은 한결같이 성실하고 믿음직한 사람입니다. 나서는 것보다 뒤에서 묵묵히 타인을 챙기고 배려하는 데 익숙하며, 자신이 맡은 일은 끝까지 책임지고 완수합니다. 당신이 만든 안정적인 울타리 덕분에 주변 사람들은 항상 포근한 안도감을 느낄 수 있습니다.",
     },
     ISTJ: {
-      result: "/img/dessert_test/11.png", // result11
-      title: "단단한 정통 초콜릿",
+      result: "/img/dessert_test/11.png",
+      title: "정통의 깊이와 신뢰 '단단한 초콜릿'",
       description:
-        "변치 않는 신뢰와 책임감을 상징하는 당신. 원칙을 중시하고 묵묵히 자신의 임무를 수행하며, 믿음을 주는 현실주의자 디저트입니다.",
+        "쉽게 녹지 않는 단단함과 정직한 카카오 맛을 지닌 정통 초콜릿 같은 당신. 규칙을 준수하고 약속을 철저히 지키는 것을 인생의 중요한 가치로 여깁니다. 화려한 말보다는 행동과 결과로 자신의 가치를 증명하며, 차분하고 논리적인 태도로 삶을 설계합니다. 변치 않는 신뢰감을 주는 당신은 주변에 없어서는 안 될 소중한 기반이 됩니다.",
     },
     INFP: {
-      result: "/img/dessert_test/12.png", // result12
-      title: "오래된 레시피의 마들렌",
+      result: "/img/dessert_test/12.png",
+      title: "추억을 머금은 '부드러운 마들렌'",
       description:
-        "소박한 외관 속에 깊은 감성과 가치를 지닌 당신. 자신의 내면의 기준을 중요시하며, 잔잔한 감동을 주는 소중한 중재자 디저트입니다.",
+        "한 입 베어 물면 몽글몽글한 상상이 펼쳐지는 마들렌처럼, 당신은 깊은 내면의 세계와 풍부한 감성을 가졌습니다. 소박해 보이지만 그 속에는 자신만의 확고한 가치관과 따뜻한 이상이 담겨 있죠. 눈에 보이지 않는 마음의 가치를 소중히 여기며, 조용히 세상을 아름답게 바라보는 당신은 사람들에게 잔잔한 울림을 줍니다.",
     },
     INFJ: {
-      result: "/img/dessert_test/13.png", // result13
-      title: "마카롱",
+      result: "/img/dessert_test/13.png",
+      title: "속 깊은 달콤함 '수제 마카롱'",
       description:
-        "겉은 화려하지 않아도 속은 깊은 공감과 이상을 담고 있는 당신. 타인에게 긍정적인 영향을 주고, 섬세한 감정의 조화를 중요시하는 옹호자 디저트입니다.",
+        "섬세한 꼬끄 속에 진한 필링을 감추고 있는 마카롱처럼, 당신은 부드러운 겉모습 뒤에 통찰력 있는 내면을 품고 있습니다. 타인의 감정을 예민하게 읽어내고 진심으로 공감해주며, 더 나은 세상을 향한 이상적인 꿈을 꿉니다. 당신의 조용하고 사려 깊은 조언은 사람들의 마음 깊숙한 곳을 터치하는 특별한 힘이 있습니다.",
     },
     ENTJ: {
-      result: "/img/dessert_test/14.png", // result14
-      title: "화려한 3단 케이크",
+      result: "/img/dessert_test/14.png",
+      title: "모두의 시선을 압도하는 '웅장한 3단 케이크'",
       description:
-        "시선을 압도하는 존재감과 확실한 목표 의식을 가진 당신. 모든 일을 주도하며 강력한 리더십으로 목표를 실현하는 지휘관 디저트입니다.",
+        "정교한 구조와 화려한 디자인으로 존재감을 뽐내는 3단 케이크처럼, 당신은 확실한 야망과 리더십을 가졌습니다. 어려운 도전일수록 더 열정적으로 임하며, 치밀한 전략과 추진력으로 결국 목표를 쟁취하고야 맙니다. 당신의 자신감 넘치는 모습은 사람들을 자연스럽게 따르게 만들며, 새로운 기준을 제시하는 독보적인 영향력을 발휘합니다.",
     },
     INTP: {
-      result: "/img/dessert_test/15.png", // result15
-      title: "무설탕/비건 대체 아이스크림",
+      result: "/img/dessert_test/15.png",
+      title: "본질을 탐구하는 '비건 아이스크림'",
       description:
-        "일반적이지 않은 조합과 깊은 탐구를 즐기는 당신. 논리적이지만 새로운 아이디어에 열려 있으며, 건강과 원리를 모두 따지는 사색가 디저트입니다.",
+        "기존의 공식을 깨고 새로운 원리로 만들어진 아이스크림처럼, 당신은 세상의 원리와 본질을 탐구하는 데 열중합니다. 논리적이고 비판적이며, 남들이 보지 못하는 지점을 예리하게 분석해내죠. 감정적인 호소보다는 명확한 근거를 선호하며, 지적인 호기심을 채울 때 가장 큰 희열을 느낍니다. 독창적인 사고로 세상을 분석하는 스마트한 관찰자입니다.",
     },
     INTJ: {
-      result: "/img/dessert_test/16.png", // result16
-      title: "완벽한 클래식 타르트",
+      result: "/img/dessert_test/16.png",
+      title: "빈틈없이 완벽한 '클래식 타르트'",
       description:
-        "깊이 있는 맛과 완벽한 구조를 추구하는 당신. 빈틈없는 계획과 논리로 삶을 설계하며, 오차 없는 만족감을 추구하는 분석가 디저트입니다.",
+        "바삭한 시트 위에 완벽하게 계산된 비율로 채워진 타르트처럼, 당신의 삶은 체계적이고 독립적입니다. 장기적인 미래를 내다보는 안목이 탁월하며, 자신이 세운 기준에 도달하기 위해 끊임없이 스스로를 단련합니다. 감정에 휘둘리지 않는 냉철한 판단력과 전략적 사고를 가진 당신은, 복잡한 세상 속에서도 흔들림 없이 자신만의 길을 개척해 나갑니다.",
     },
   },
 };
