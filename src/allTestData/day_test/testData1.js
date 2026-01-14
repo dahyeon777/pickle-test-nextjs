@@ -10,262 +10,74 @@ export const testData1 = {
   questions: [
     {
       questionId: 1,
-      text: "카페에 들어서자마자, 당신의 시선은 어디로 향하는가?",
+      text: "카페에 들어서면 가장 먼저 보이는 것은?",
       options: [
-        {
-          optionId: "A",
-          text: "테이블에 앉아있는 사람들의 대화나 분위기",
-          score: { E_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "주문할 때 쓸 수 있는 메뉴판 또는 키오스크",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "자신이 앉을 구석진 자리나 창가 자리",
-          score: { I_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "진열대 위의 디저트 실물이나 샘플",
-          score: { S_score: 1 },
-        },
+        { optionId: "A", text: "왁자지껄 대화하는 사람들의 활기", score: { E_score: 2, F_score: 1 } },
+        { optionId: "B", text: "빠르게 주문 가능한 키오스크 위치", score: { J_score: 2, S_score: 1 } },
+        { optionId: "C", text: "혼자 쉬기 좋은 조용한 구석 자리", score: { I_score: 2, N_score: 1 } },
       ],
     },
     {
       questionId: 2,
-      text: "디저트를 고를 때 가장 먼저 생각하는 것은?",
+      text: "메뉴판 앞에서 당신의 선택은?",
       options: [
-        {
-          optionId: "A",
-          text: "새롭고 독특한 시즈널 메뉴나 이색적인 조합",
-          score: { N_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "가장 인기 있거나 베스트셀러 표시가 있는 메뉴",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "내가 전에 먹어보고 맛있었던 안전한 메뉴",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "이 메뉴가 왜 만들어졌을지, 재료의 궁합은 어떨지",
-          score: { I_score: 1 },
-        },
+        { optionId: "A", text: "여기서만 파는 독특한 도전적 메뉴", score: { N_score: 2, P_score: 1 } },
+        { optionId: "B", text: "검증된 베스트셀러나 추천 메뉴", score: { S_score: 2, J_score: 1 } },
+        { optionId: "C", text: "내가 늘 즐겨 먹던 익숙한 메뉴", score: { I_score: 1, S_score: 1 } },
       ],
     },
     {
       questionId: 3,
-      text: "친구가 맛없다고 악평한 디저트가 눈에 들어왔다. 당신은?",
+      text: "친구가 맛없다고 했던 디저트가 궁금하다면?",
       options: [
-        {
-          optionId: "A",
-          text: "혹시 나한테는 맛있을까? 직접 경험해보고 평가한다.",
-          score: { P_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "친구 말을 믿고 바로 제외. 검증된 메뉴를 고른다.",
-          score: { J_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "맛없다고? 왜 그런지 논리적으로 분석하며 맛본다.",
-          score: { T_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "친구의 기분이나 취향을 배려하며 다른 메뉴를 추천한다.",
-          score: { F_score: 1 },
-        },
+        { optionId: "A", text: "직접 먹어보고 내 식으로 판단한다", score: { P_score: 2, S_score: 1 } },
+        { optionId: "B", text: "친구 말을 믿고 다른 걸 고른다", score: { J_score: 2, F_score: 1 } },
+        { optionId: "C", text: "왜 맛없는지 논리적으로 물어본다", score: { T_score: 2, N_score: 1 } },
       ],
     },
     {
       questionId: 4,
-      text: "디저트가 나왔을 때, 가장 먼저 하는 행동은?",
+      text: "디저트가 나왔을 때 가장 먼저 하는 행동은?",
       options: [
-        {
-          optionId: "A",
-          text: "먹기 전에 완벽한 각도로 사진 10장 이상을 찍는다.",
-          score: { S_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "바로 한 입 베어 물고 맛의 분석을 시작한다.",
-          score: { T_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "같이 온 사람들에게 먼저 맛보라고 권유하며 반응을 살핀다.",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "사진은 간단히 찍고, 맛을 천천히 음미하며 감상에 빠진다.",
-          score: { F_score: 1 },
-        },
+        { optionId: "A", text: "인증샷 찍어 SNS에 바로 공유하기", score: { E_score: 2, S_score: 1 } },
+        { optionId: "B", text: "식기 전에 바로 맛 분석 시작하기", score: { T_score: 2, J_score: 1 } },
+        { optionId: "C", text: "천천히 분위기와 비주얼 감상하기", score: { I_score: 1, F_score: 2 } },
       ],
     },
     {
       questionId: 5,
-      text: "디저트 만들기에 도전했다. 계획대로 되지 않았을 때 당신은?",
+      text: "베이킹 도중 레시피와 다르게 흘러간다면?",
       options: [
-        {
-          optionId: "A",
-          text: "실패 원인을 논리적으로 분석하고, 다음 시도를 계획한다.",
-          score: { T_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "의외의 새로운 맛이 났다면, 즉흥적으로 '신메뉴'로 포장한다.",
-          score: { P_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "결과물에 실망하여 자책하며 기분이 상한다.",
-          score: { F_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "정석 레시피로 돌아가 처음부터 다시 정확히 시작한다.",
-          score: { J_score: 1 },
-        },
+        { optionId: "A", text: "원인을 분석하고 처음부터 다시 한다", score: { T_score: 2, J_score: 2 } },
+        { optionId: "B", text: "새로운 맛이 날 거라며 즉흥적으로 계속한다", score: { P_score: 2, N_score: 1 } },
+        { optionId: "C", text: "속상해서 누군가에게 위로받고 싶다", score: { F_score: 2, E_score: 1 } },
       ],
     },
     {
       questionId: 6,
-      text: "디저트 맛집 정보를 얻는 방식은?",
+      text: "디저트 맛집 정보를 찾는 방식은?",
       options: [
-        {
-          optionId: "A",
-          text: "블로그나 인스타그램 후기, 리뷰를 꼼꼼히 찾아보고 신중하게 결정한다.",
-          score: { I_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "유명 셰프나 파티시에의 깊이 있는 철학을 먼저 탐독한다.",
-          score: { N_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "친구들이 '가봤다'는 즉각적인 추천이나 바이럴에 따른다.",
-          score: { E_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "가장 많은 사람이 간 곳, 현재 줄이 긴 곳을 직관적으로 따라간다.",
-          score: { S_score: 1 },
-        },
+        { optionId: "A", text: "상세 후기와 별점을 꼼꼼히 비교 검색", score: { I_score: 1, T_score: 1, J_score: 1 } },
+        { optionId: "B", text: "지인들이 많이 추천하는 곳으로 결정", score: { E_score: 2, F_score: 1 } },
+        { optionId: "C", text: "가장 힙하고 트렌디해 보이는 곳 선택", score: { N_score: 2, P_score: 1 } },
       ],
     },
     {
       questionId: 7,
-      text: "함께 간 사람이 디저트를 주문하지 않고 커피만 마시겠다고 한다면?",
+      text: "친구가 배부르다며 커피만 마시겠다고 한다면?",
       options: [
-        {
-          optionId: "A",
-          text: "혼자 먹어도 괜찮지만, 혹시 먹고 싶어질까 봐 나눠먹을 준비를 한다.",
-          score: { F_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "왜 디저트를 먹지 않는지 이유를 분석하고, 합리적인 조언을 한다.",
-          score: { T_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "각자의 취향이니 상관없다. 내 것만 완벽하게 즐긴다.",
-          score: { I_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "다 같이 먹는 재미가 없어서 아쉽다. 다음에 올 곳을 제안한다.",
-          score: { E_score: 1 },
-        },
+        { optionId: "A", text: "나눠 먹을 생각으로 조금 더 넉넉히 시킨다", score: { F_score: 2, E_score: 1 } },
+        { optionId: "B", text: "내 것만 깔끔하게 시켜서 집중해 먹는다", score: { I_score: 2, T_score: 1 } },
+        { optionId: "C", text: "왜 안 먹는지 궁금해서 계속 물어본다", score: { T_score: 1, E_score: 1 } },
       ],
     },
     {
       questionId: 8,
-      text: "새로운 디저트를 맛보았을 때, 당신이 느끼는 만족감의 기준은?",
+      text: "포장해온 디저트를 먹기 전 당신의 상태는?",
       options: [
-        {
-          optionId: "A",
-          text: "내가 생각했던 맛의 이상향과 얼마나 일치하는지",
-          score: { N_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "맛과 식감, 눈으로 보는 비주얼이 얼마나 조화로운지",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "내가 이 디저트를 먹고 기분이 얼마나 좋아졌는지",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "가격 대비 양이나 재료의 품질이 합리적인지",
-          score: { T_score: 2 },
-        },
-      ],
-    },
-    {
-      questionId: 9,
-      text: "디저트를 사서 집으로 돌아가는 길, 당신의 발걸음은?",
-      options: [
-        {
-          optionId: "A",
-          text: "집에 가서 뭘 하면서 먹을지 벌써 계획이 서 있다.",
-          score: { J_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "집에 가서 포장 뜯자마자 바로 먹을 수 있다.",
-          score: { P_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "가는 길에 디저트 사진을 찍어 SNS에 자랑한다.",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "디저트 상자가 망가지지 않게 조심스럽게 들고 간다.",
-          score: { I_score: 1 },
-        },
-      ],
-    },
-    {
-      questionId: 10,
-      text: "디저트를 남겨야 할 상황이다. 당신의 행동은?",
-      options: [
-        {
-          optionId: "A",
-          text: "포장해서 가져간다. 내일 아침에 먹을 계획을 세운다.",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "남긴 걸 보며 아쉬워하지만, 일단 지금은 포기한다.",
-          score: { P_score: 2 },
-        },
-        {
-          optionId: "C",
-          text: "남겨진 조각을 보며, 나중에 생각날 것 같은 아련한 감정에 빠진다.",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "남기는 것이 가장 합리적인 선택이었는지 이성적으로 검토한다.",
-          score: { T_score: 1 },
-        },
+        { optionId: "A", text: "완벽하게 세팅하고 먹을 계획에 설렌다", score: { J_score: 2, S_score: 1 } },
+        { optionId: "B", text: "참지 못하고 포장 뜯자마자 바로 먹는다", score: { P_score: 2, I_score: 1 } },
+        { optionId: "C", text: "이걸 먹으며 느낄 행복한 상상에 빠진다", score: { N_score: 2, F_score: 1 } },
       ],
     },
   ],

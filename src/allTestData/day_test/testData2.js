@@ -1,274 +1,191 @@
 export const testData2 = {
   id: 2,
-  path: "/img/test_ready_img/gemstone.png", // pic4 대신 직접 경로
+  path: "/img/test_ready_img/gemstone.png",
   title: "💎\n원석\n테스트",
-   tags: [
-    "원석", "보석", "광물", "주얼리", "탄생석", 
-    "성격", "심리", "MBTI", "본질", "가치", 
-    "내면", "성향", "악세사리",
+  tags: [
+    "원석",
+    "보석",
+    "광물",
+    "주얼리",
+    "탄생석",
+    "성격",
+    "심리",
+    "MBTI",
+    "본질",
+    "가치",
+    "내면",
+    "성향",
+    "악세사리",
   ],
   questions: [
     {
       questionId: 1,
-      text: "당신에게 가장 끌리는 '빛'은 무엇입니까?",
+      text: "당신에게 가장 끌리는 '빛'은 어떤 것인가요?",
       options: [
         {
           optionId: "A",
-          text: "밝고 화려해서 사람들의 시선을 끄는 빛",
-          score: { E_score: 2 },
+          text: "시선을 사로잡는 화려한 빛",
+          score: { E_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "어둠 속에서 길을 알려주는 실용적인 빛",
-          score: { S_score: 1 },
+          text: "어둠 속 길을 알려주는 실용적인 빛",
+          score: { S_score: 2, J_score: 1 },
         },
         {
           optionId: "C",
-          text: "은은하고 신비로워서 혼자서만 알고 싶은 빛",
-          score: { I_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "미래의 가능성을 암시하는 희미한 환상의 빛",
-          score: { N_score: 1 },
+          text: "은은하고 신비로운 나만의 빛",
+          score: { I_score: 2, N_score: 1 },
         },
       ],
     },
     {
       questionId: 2,
-      text: "새로운 문제를 맞닥뜨렸을 때, 당신의 접근 방식은?",
+      text: "예상치 못한 문제가 생겼을 때 나의 행동은?",
       options: [
         {
           optionId: "A",
-          text: "문제가 왜 발생했는지 논리적인 원인을 분석한다.",
-          score: { T_score: 2 },
+          text: "발생 원인부터 냉철하게 분석한다",
+          score: { T_score: 2, J_score: 1 },
         },
         {
           optionId: "B",
-          text: "주변 사람들의 의견과 감정을 고려하여 모두에게 좋은 해결책을 찾는다.",
-          score: { F_score: 2 },
+          text: "모두가 상처받지 않을 방법을 찾는다",
+          score: { F_score: 2, E_score: 1 },
         },
         {
           optionId: "C",
-          text: "경험했던 유사 사례를 떠올려 현실적인 해결책을 적용한다.",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "문제가 앞으로 가져올 파장과 더 나은 미래를 상상하며 해결한다.",
-          score: { N_score: 1 },
+          text: "경험을 토대로 빠르게 해결책을 낸다",
+          score: { S_score: 2, P_score: 1 },
         },
       ],
     },
     {
       questionId: 3,
-      text: "당신이 중요하게 생각하는 삶의 원동력은?",
+      text: "인생에서 가장 큰 에너지를 얻는 순간은?",
       options: [
         {
           optionId: "A",
-          text: "외부 활동과 다양한 사람들과의 적극적인 교류",
-          score: { E_score: 1 },
+          text: "계획한 일을 완벽히 끝냈을 때",
+          score: { J_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "철저하게 세운 계획을 완수했을 때의 성취감",
-          score: { J_score: 2 },
+          text: "새로운 영감과 아이디어가 떠오를 때",
+          score: { N_score: 2, P_score: 1 },
         },
         {
           optionId: "C",
-          text: "내면의 평화와 깊은 통찰을 통한 자아 성장",
-          score: { I_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "상황에 따라 유연하게 대처하는 자유로움",
-          score: { P_score: 2 },
+          text: "사람들과 즐겁게 교류하며 떠들 때",
+          score: { E_score: 2, F_score: 1 },
         },
       ],
     },
     {
       questionId: 4,
-      text: "친구가 고민을 털어놓았을 때, 당신의 반응은?",
+      text: "친구가 힘든 고민을 털어놓는다면?",
       options: [
         {
           optionId: "A",
-          text: "가장 효율적이고 논리적인 해결 방안을 제시한다.",
-          score: { T_score: 1 },
+          text: "가장 현실적인 해결책을 찾아준다",
+          score: { T_score: 2, S_score: 1 },
         },
         {
           optionId: "B",
-          text: "친구가 괜찮아질 때까지 감정을 공유하며 위로해 준다.",
-          score: { F_score: 1 },
+          text: "충분히 공감하며 따뜻하게 위로한다",
+          score: { F_score: 2, I_score: 1 },
         },
         {
           optionId: "C",
-          text: "비슷한 경험담을 공유하며 상황에 공감한다.",
-          score: { S_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "고민의 근본적인 의미를 파악하며 앞으로 나아갈 방향을 제시한다.",
-          score: { N_score: 2 },
+          text: "함께 고민하며 새로운 방향을 제시한다",
+          score: { N_score: 2, E_score: 1 },
         },
       ],
     },
     {
       questionId: 5,
-      text: "새로운 장소에 도착했다. 당신의 행동은?",
+      text: "처음 가본 낯선 장소에서 나는?",
       options: [
         {
           optionId: "A",
-          text: "가장 사람이 많고 활기찬 곳으로 가서 분위기를 즐긴다.",
-          score: { E_score: 2 },
+          text: "분위기가 가장 활기찬 곳으로 간다",
+          score: { E_score: 2, P_score: 1 },
         },
         {
           optionId: "B",
-          text: "구석진 곳이나 창가에 앉아 조용히 주변을 관찰한다.",
-          score: { I_score: 2 },
+          text: "조용한 구석에서 상황을 먼저 살핀다",
+          score: { I_score: 2, J_score: 1 },
         },
         {
           optionId: "C",
-          text: "이 장소의 규칙이나 운영 방식을 먼저 파악한다.",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "발길이 닿는 대로, 직감에 따라 탐험을 시작한다.",
-          score: { P_score: 1 },
+          text: "이곳의 이용 규칙부터 먼저 확인한다",
+          score: { J_score: 2, S_score: 1 },
         },
       ],
     },
     {
       questionId: 6,
-      text: "당신이 중요하게 생각하는 '약속'은?",
+      text: "나에게 더 참기 힘든 상황은?",
       options: [
         {
           optionId: "A",
-          text: "정해진 시간과 절차를 지키는 엄격한 약속",
-          score: { J_score: 2 },
+          text: "근거 없이 감정적으로만 우기는 상황",
+          score: { T_score: 2, J_score: 1 },
         },
         {
           optionId: "B",
-          text: "지킬 수 있는 한 유연하게 조정 가능한 약속",
-          score: { P_score: 2 },
+          text: "융통성 없이 너무 꽉 막힌 상황",
+          score: { P_score: 2, N_score: 1 },
         },
         {
           optionId: "C",
-          text: "타인과의 감정적 교류와 신뢰를 중요시하는 약속",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "합리적인 근거와 타당성이 있는 이성적인 약속",
-          score: { T_score: 1 },
+          text: "타인의 감정을 무시하는 무례한 상황",
+          score: { F_score: 2, E_score: 1 },
         },
       ],
     },
     {
       questionId: 7,
-      text: "당신에게 닥친 위기에 대한 대처 방식은?",
+      text: "위기의 순간, 나를 구하는 방법은?",
       options: [
         {
           optionId: "A",
-          text: "과거 경험을 바탕으로 현실적인 해결책을 즉시 실행한다.",
-          score: { S_score: 2 },
+          text: "현실적인 데이터를 바탕으로 즉시 실행",
+          score: { S_score: 2, T_score: 1 },
         },
         {
           optionId: "B",
-          text: "위기를 통해 얻을 수 있는 장기적인 교훈을 생각한다.",
-          score: { N_score: 2 },
+          text: "위기 뒤에 올 새로운 기회를 상상함",
+          score: { N_score: 2, P_score: 1 },
         },
         {
           optionId: "C",
-          text: "주변 사람들과 논의하며 사회적 해결책을 찾는다.",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "혼자 깊이 파고들어 가장 본질적이고 완벽한 탈출구를 찾는다.",
-          score: { I_score: 1 },
+          text: "혼자만의 시간을 가지며 본질을 탐구",
+          score: { I_score: 2, N_score: 1 },
         },
       ],
     },
     {
       questionId: 8,
-      text: "당신이 가장 싫어하는 행동은?",
+      text: "내가 생각하는 원석의 가장 큰 가치는?",
       options: [
         {
           optionId: "A",
-          text: "감정적으로 행동하며 논리나 근거 없이 주장하는 것",
-          score: { T_score: 2 },
+          text: "변치 않는 단단함과 정교한 구조",
+          score: { S_score: 1, T_score: 1, J_score: 1 },
         },
         {
           optionId: "B",
-          text: "타인의 감정을 무시하고 상처 주는 무심한 행동",
-          score: { F_score: 2 },
+          text: "다채로운 변화와 신비로운 에너지",
+          score: { N_score: 2, P_score: 1 },
         },
         {
           optionId: "C",
-          text: "자신이 세운 목표나 약속을 어기는 무책임한 행동",
-          score: { J_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "사소한 일에 얽매여 융통성 없이 행동하는 것",
-          score: { P_score: 1 },
+          text: "사람의 마음을 치유하는 따뜻한 힘",
+          score: { F_score: 2, E_score: 1 },
         },
       ],
     },
-    {
-      questionId: 9,
-      text: "당신이 느끼는 '만족감'이란?",
-      options: [
-        {
-          optionId: "A",
-          text: "새로운 지식과 깨달음을 얻었을 때의 지적인 기쁨",
-          score: { N_score: 2 },
-        },
-        {
-          optionId: "B",
-          text: "주변 사람들과 함께 웃고 즐기는 사회적인 행복",
-          score: { E_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "내가 만든 결과물이 눈앞에 명확하게 보일 때의 충족감",
-          score: { S_score: 2 },
-        },
-        {
-          optionId: "D",
-          text: "복잡한 환경에서 벗어나 혼자 평화로울 때 느끼는 안정감",
-          score: { I_score: 1 },
-        },
-      ],
-    },
-    {
-      questionId: 10,
-      text: "당신이 추구하는 원석의 이상적인 특성은?",
-      options: [
-        {
-          optionId: "A",
-          text: "어떤 상황에서도 변치 않는 단단함과 견고함",
-          score: { S_score: 1 },
-        },
-        {
-          optionId: "B",
-          text: "빛에 따라 다채롭게 변하며 신비한 힘을 내포함",
-          score: { N_score: 1 },
-        },
-        {
-          optionId: "C",
-          text: "손에 쥐었을 때 느껴지는 따뜻하고 안정적인 에너지",
-          score: { F_score: 1 },
-        },
-        {
-          optionId: "D",
-          text: "열을 가하거나 압력을 주어도 변하지 않는 강인한 구조",
-          score: { T_score: 1 },
-        },
-      ],
-    },
-    // ... 질문 2~10번은 로직이 동일하므로 그대로 유지하시면 됩니다 ...
   ],
 
   results: {
