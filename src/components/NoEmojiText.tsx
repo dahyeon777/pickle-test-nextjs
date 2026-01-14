@@ -31,17 +31,7 @@ const NoEmojiText = ({
       .join("");
   }, [text]);
 
-  return (
-    <span
-      className={className}
-      style={{
-        whiteSpace: "pre-wrap", // 줄바꿈(\n) 보존
-        wordBreak: "keep-all", // 단어 단위로 줄바꿈 (이게 가장 자연스럽습니다)
-      }}
-    >
-      {isCapturing ? cleanedText : text}
-    </span>
-  );
+  return <span className={className}>{isCapturing ? cleanedText : text}</span>;
 };
 
 export default NoEmojiText;
