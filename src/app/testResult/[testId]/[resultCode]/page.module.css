@@ -10,13 +10,13 @@
   transition: background-color 0.3s ease;
 }
 
-/* 💡 캡처용 숨겨진 노드를 위한 클래스 추가 */
 .capture_hidden_area {
   position: absolute;
   left: -9999px;
   top: 0;
   z-index: -1;
-  visibility: hidden;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .dayMode {
