@@ -41,14 +41,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const tests = (TotalDataStore[mode] as any)[type];
 
       tests.forEach((t: any) => {
-        // 1. 준비 페이지 (testReady)
-        allTestPages.push({
-          url: escapeXml(
-            `${baseUrl}/testReady/${t.id}?mode=${mode}&type=${type}`
-          ),
-          lastModified: new Date(),
-          priority: 0.8,
-        });
+        // // 1. 준비 페이지 (testReady)
+        // allTestPages.push({
+        //   url: escapeXml(
+        //     `${baseUrl}/testReady/${t.id}?mode=${mode}&type=${type}`
+        //   ),
+        //   lastModified: new Date(),
+        //   priority: 0.8,
+        // });
 
         // 2. 시작 페이지 (testStart)
         allTestPages.push({
