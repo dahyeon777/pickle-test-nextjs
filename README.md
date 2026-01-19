@@ -2,7 +2,11 @@
 심리테스트 플랫폼
 
 [pickletest.com](https://pickletest.com) 
+
+
 ![Image](https://github.com/user-attachments/assets/6c48966d-9356-4484-a3cd-bbf7bab182c5)
+
+
 ---
 
 ## 📅 프로젝트 개요
