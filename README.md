@@ -1,5 +1,5 @@
 # 🥒 Pickle Test (피클 테스트)
-> **Zustand와 Next.js를 활용한 확장형 심리테스트 플랫폼**
+심리테스트 플랫폼**
 
 [pickletest.com](https://pickletest.com) 
 
